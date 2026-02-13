@@ -1,0 +1,117 @@
+{
+  "date": "February 07, 2026",
+  "total_jobs": 4494,
+  "tools": {
+    "Rag": 2327,
+    "Rust": 1444,
+    "Salesforce": 868,
+    "Aws": 814,
+    "Hubspot": 169,
+    "Zoominfo": 52,
+    "Tableau": 46,
+    "Claude": 38,
+    "Gemini": 38,
+    "Linkedin Sales Navigator": 33,
+    "Gong": 33,
+    "G2": 28,
+    "Catalyst": 26,
+    "Azure": 24,
+    "Power Bi": 22,
+    "Anthropic": 21,
+    "Apollo": 21,
+    "Dynamics 365": 21,
+    "Gcp": 18,
+    "Clay": 15,
+    "Clari": 15,
+    "Salesloft": 14,
+    "Instantly": 11,
+    "Spiff": 11,
+    "Braze": 9,
+    "6Sense": 8,
+    "Outreach Io": 8,
+    "Docusign": 8,
+    "Reveal": 7,
+    "Trustradius": 7,
+    "Artisan": 7,
+    "Postal": 7,
+    "Klaviyo": 6,
+    "Openai": 5,
+    "Second Nature Training": 5,
+    "Fine Tuning": 5,
+    "Seismic": 5,
+    "Concord": 5,
+    "Looker": 4,
+    "Arcade": 4,
+    "Chorus": 4,
+    "Bedrock": 4,
+    "Langchain": 4,
+    "Zoho Crm": 4,
+    "Gong Forecast": 4,
+    "Nooks": 4,
+    "Sugarcrm": 4,
+    "Allego": 4,
+    "Allego Training": 4,
+    "Ironclad": 4
+  },
+  "motion": {
+    "Channel": 796,
+    "Direct": 568,
+    "Inside": 484,
+    "Outbound": 92,
+    "Abm": 31,
+    "Inbound": 30,
+    "Plg": 14
+  },
+  "hiring_signals": {
+    "Growth Hire": 3086,
+    "Turnaround": 560,
+    "Immediate": 404
+  },
+  "comp_signals": {
+    "Equity": 2418,
+    "Uncapped": 686,
+    "Ote Mentioned": 420
+  },
+  "geo_focus": {
+    "Global": 1162,
+    "North America": 1081,
+    "Apac": 216,
+    "Emea": 156,
+    "Latam": 80
+  },
+  "segment": {
+    "Enterprise": 808,
+    "Smb": 357,
+    "Fortune 500": 242,
+    "Mid Market": 203
+  },
+  "deal_size": {
+    "Enterprise Deal": 474,
+    "Seven Figure": 296,
+    "Transactional": 130,
+    "Mid Deal": 28
+  },
+  "sales_cycle": {
+    "Long": 398,
+    "Short": 92
+  },
+  "team_structure": {
+    "Build Team": 1737,
+    "Reports Vp": 147,
+    "First Hire": 128,
+    "Reports Cro": 88,
+    "Player Coach": 25,
+    "Reports Ceo": 18
+  },
+  "methodology": {
+    "Solution Selling": 341,
+    "Meddic": 95,
+    "Value Selling": 48,
+    "Miller Heiman": 48,
+    "Challenger": 24,
+    "Sandler": 19,
+    "Spin": 6,
+    "Bant": 4,
+    "Gap Selling": 2
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "generated_at": "2026-02-07T17:56:55.303827",
+  "total_records": 4494,
+  "records_with_salary": 2826,
+  "disclosure_rate": 62.9,
+  "salary_stats": {
+    "min": 160,
+    "max": 1000000,
+    "median": 80000,
+    "avg": 95462,
+    "count_with_salary": 2826
+  },
+  "by_seniority": {
+    "Unknown": {
+      "count": 1653,
+      "min_base_avg": 86233,
+      "max_base_avg": 131629,
+      "median": 71171
+    },
+    "VP": {
+      "count": 112,
+      "min_base_avg": 145388,
+      "max_base_avg": 207376,
+      "median": 135700
+    },
+    "Mid": {
+      "count": 498,
+      "min_base_avg": 82302,
+      "max_base_avg": 115040,
+      "median": 80000
+    },
+    "Director": {
+      "count": 228,
+      "min_base_avg": 129672,
+      "max_base_avg": 180570,
+      "median": 125000
+    },
+    "Entry": {
+      "count": 66,
+      "min_base_avg": 65870,
+      "max_base_avg": 97362,
+      "median": 58240
+    },
+    "Senior": {
+      "count": 232,
+      "min_base_avg": 129469,
+      "max_base_avg": 179250,
+      "median": 125293
+    },
+    "Head of": {
+      "count": 5,
+      "min_base_avg": 224320,
+      "max_base_avg": 313320,
+      "median": 280500
+    },
+    "SVP": {
+      "count": 11,
+      "min_base_avg": 194770,
+      "max_base_avg": 265169,
+      "median": 180000
+    },
+    "other": {
+      "count": 18,
+      "min_base_avg": 130200,
+      "max_base_avg": 211166,
+      "median": 90000
+    }
+  },
+  "by_metro": {
+    "Unknown": {
+      "count": 1845,
+      "min_base_avg": 88653,
+      "max_base_avg": 131161,
+      "median": 75000
+    },
+    "Los Angeles": {
+      "count": 281,
+      "min_base_avg": 89762,
+      "max_base_avg": 128675,
+      "median": 75000
+    },
+    "Chicago": {
+      "count": 42,
+      "min_base_avg": 115939,
+      "max_base_avg": 177669,
+      "median": 114720
+    },
+    "Boston": {
+      "count": 60,
+      "min_base_avg": 113833,
+      "max_base_avg": 160119,
+      "median": 100000
+    },
+    "New York": {
+      "count": 260,
+      "min_base_avg": 116948,
+      "max_base_avg": 166997,
+      "median": 110000
+    },
+    "Washington DC": {
+      "count": 23,
+      "min_base_avg": 124659,
+      "max_base_avg": 174874,
+      "median": 106250
+    },
+    "San Francisco": {
+      "count": 127,
+      "min_base_avg": 126206,
+      "max_base_avg": 186953,
+      "median": 110000
+    },
+    "Austin": {
+      "count": 79,
+      "min_base_avg": 91897,
+      "max_base_avg": 141710,
+      "median": 75000
+    },
+    "Denver": {
+      "count": 19,
+      "min_base_avg": 93431,
+      "max_base_avg": 133861,
+      "median": 81000
+    },
+    "Seattle": {
+      "count": 55,
+      "min_base_avg": 112389,
+      "max_base_avg": 154306,
+      "median": 102000
+    },
+    "Miami": {
+      "count": 5,
+      "min_base_avg": 104260,
+      "max_base_avg": 151440,
+      "median": 118000
+    },
+    "Other": {
+      "count": 19,
+      "min_base_avg": 150515,
+      "max_base_avg": 216984,
+      "median": 138600
+    },
+    "Remote": {
+      "count": 7,
+      "min_base_avg": 137762,
+      "max_base_avg": 290512,
+      "median": 135700
+    }
+  },
+  "by_remote": {
+    "remote": {
+      "count": 389,
+      "min_base_avg": 107837,
+      "max_base_avg": 149984,
+      "median": 97000
+    },
+    "onsite": {
+      "count": 2385,
+      "min_base_avg": 92238,
+      "max_base_avg": 136725,
+      "median": 80000
+    },
+    "Unknown": {
+      "count": 52,
+      "min_base_avg": 150734,
+      "max_base_avg": 226003,
+      "median": 135700
+    }
+  },
+  "top_paying_roles": [
+    {
+      "title": "Orthopedic Surgical sales representative(Spinal)",
+      "company": "Orthopedic sales represtitive",
+      "salary_min": 100000.0,
+      "salary_max": 1000000.0,
+      "seniority": ""
+    },
+    {
+      "title": "Door-to-Door Sales Representative",
+      "company": "Window Pure",
+      "salary_min": 104000.0,
+      "salary_max": 624000.0,
+      "seniority": ""
+    },
+    {
+      "title": "Vice President, Strategic Partnerships Business Development",
+      "company": "SAP",
+      "salary_min": 271800.0,
+      "salary_max": 578700.0,
+      "seniority": "VP"
+    },
+    {
+      "title": "Senior Account Executive -Enterprise",
+      "company": "Darktrace",
+      "salary_min": 520000.0,
+      "salary_max": 572000.0,
+      "seniority": "Senior"
+    },
+    {
+      "title": "Field Sales Representative",
+      "company": "Service Champions Heating & Air Conditioning",
+      "salary_min": 100000.0,
+      "salary_max": 550000.0,
+      "seniority": ""
+    },
+    {
+      "title": "Strategic Sales Director Cloud",
+      "company": "Akamai",
+      "salary_min": 263800.0,
+      "salary_max": 547800.0,
+      "seniority": "Director"
+    },
+    {
+      "title": "Outside Sales Account Manager",
+      "company": "Tandem Hotel Sales",
+      "salary_min": 180000.0,
+      "salary_max": 540000.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "Strategic Account Executive (SCP) Midwest",
+      "company": "SAP",
+      "salary_min": 256400.0,
+      "salary_max": 529000.0,
+      "seniority": ""
+    },
+    {
+      "title": "Sales Manager",
+      "company": "RoadRunner Roofing",
+      "salary_min": 95000.0,
+      "salary_max": 500000.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "Arborist Sales Representative",
+      "company": "Alpine Tree Service",
+      "salary_min": 65000.0,
+      "salary_max": 500000.0,
+      "seniority": ""
+    }
+  ]
+}
