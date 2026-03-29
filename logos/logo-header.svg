@@ -1,0 +1,8 @@
+<svg width="240" height="40" viewBox="0 0 240 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon -->
+  <rect x="0" y="0" width="40" height="40" rx="8" fill="#1D4ED8"/>
+  <path d="M20 11 L29 20 L27 22 L20 15 L13 22 L11 20 Z" fill="white"/>
+  
+  <!-- Wordmark inline -->
+  <text x="52" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#1e293b">The Seller Report</text>
+</svg>
