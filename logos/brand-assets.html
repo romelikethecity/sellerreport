@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Seller Report - Brand Assets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        .header {
+            background: #1D4ED8;
+            color: white;
+            padding: 48px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .header p {
+            opacity: 0.8;
+            font-size: 18px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px;
+        }
+        .section {
+            margin-bottom: 64px;
+        }
+        .section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        .section-desc {
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .card.dark {
+            background: #1e293b;
+        }
+        .card-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+        .card.dark .card-label {
+            color: #94a3b8;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-download {
+            margin-top: 16px;
+            display: inline-block;
+            font-size: 13px;
+            color: #1D4ED8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .card-download:hover {
+            text-decoration: underline;
+        }
+        .card.dark .card-download {
+            color: #60A5FA;
+        }
+        
+        .icon-grid {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .icon-item {
+            text-align: center;
+        }
+        .icon-item img {
+            border-radius: 20%;
+            margin-bottom: 8px;
+        }
+        .icon-item span {
+            display: block;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .color-swatches {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .swatch {
+            width: 120px;
+        }
+        .swatch-color {
+            width: 120px;
+            height: 80px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .swatch-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .swatch-code {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        .preview-container {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .checkerboard {
+            background-image: 
+                linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+                linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+                linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            padding: 32px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>The Seller Report</h1>
+        <p>Brand Assets Package</p>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Primary Logo -->
+        <div class="section">
+            <h2>Primary Logo</h2>
+            <p class="section-desc">Horizontal logo with icon for most use cases</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-label">Light Background</div>
+                    <img src="logo-horizontal-light.svg" alt="Logo Light">
+                    <a href="logo-horizontal-light.svg" download class="card-download">Download SVG</a>
+                </div>
+                <div class="card dark">
+                    <div class="card-label">Dark Background</div>
+                    <img src="logo-horizontal-dark.svg" alt="Logo Dark">
+                    <a href="logo-horizontal-dark.svg" download class="card-download">Download SVG</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stacked Logo -->
+        <div class="section">
+            <h2>Stacked Logo</h2>
+            <p class="section-desc">Vertical arrangement for square spaces</p>
+            <div class="grid">
+                <div class="card" style="text-align: center;">
+                    <div class="card-label">Light Background</div>
+                    <img src="logo-stacked-light.svg" alt="Stacked Logo Light" style="max-width: 200px;">
+                    <br>
+                    <a href="logo-stacked-light.svg" download class="card-download">Download SVG</a>
+                </div>
+                <div class="card dark" style="text-align: center;">
+                    <div class="card-label">Dark Background</div>
+                    <img src="logo-stacked-dark.svg" alt="Stacked Logo Dark" style="max-width: 200px;">
+                    <br>
+                    <a href="logo-stacked-dark.svg" download class="card-download">Download SVG</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Compact Header Logo -->
+        <div class="section">
+            <h2>Header Logo</h2>
+            <p class="section-desc">Compact version for website navigation</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-label">Standard</div>
+                    <img src="logo-header.svg" alt="Header Logo">
+                    <a href="logo-header.svg" download class="card-download">Download SVG</a>
+                </div>
+                <div class="card dark">
+                    <div class="card-label">White (for colored backgrounds)</div>
+                    <img src="logo-white.svg" alt="White Logo">
+                    <a href="logo-white.svg" download class="card-download">Download SVG</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wordmark Only -->
+        <div class="section">
+            <h2>Wordmark Only</h2>
+            <p class="section-desc">Text-only version when icon isn't needed</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-label">Light Background</div>
+                    <img src="wordmark-light.svg" alt="Wordmark Light">
+                    <a href="wordmark-light.svg" download class="card-download">Download SVG</a>
+                </div>
+                <div class="card dark">
+                    <div class="card-label">Dark Background</div>
+                    <img src="wordmark-dark.svg" alt="Wordmark Dark">
+                    <a href="wordmark-dark.svg" download class="card-download">Download SVG</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Icon & Favicon -->
+        <div class="section">
+            <h2>Icon & Favicons</h2>
+            <p class="section-desc">App icon and browser favicons at various sizes</p>
+            <div class="card">
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <img src="icon-512.svg" width="128" height="128" alt="Icon 512">
+                        <span>512px</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="icon-512.svg" width="96" height="96" alt="Icon 96">
+                        <span>96px</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="icon-512.svg" width="64" height="64" alt="Icon 64">
+                        <span>64px</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="icon-512.svg" width="48" height="48" alt="Icon 48">
+                        <span>48px</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="icon-512.svg" width="32" height="32" alt="Icon 32">
+                        <span>32px</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="icon-512.svg" width="16" height="16" alt="Icon 16">
+                        <span>16px</span>
+                    </div>
+                </div>
+                <div style="margin-top: 24px;">
+                    <a href="icon-512.svg" download class="card-download" style="margin-right: 16px;">Download Icon (512px)</a>
+                    <a href="favicon-32.svg" download class="card-download" style="margin-right: 16px;">Favicon 32px</a>
+                    <a href="favicon-16.svg" download class="card-download" style="margin-right: 16px;">Favicon 16px</a>
+                    <a href="apple-touch-icon.svg" download class="card-download">Apple Touch Icon</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Media -->
+        <div class="section">
+            <h2>Social Media</h2>
+            <p class="section-desc">Profile pictures, headers, and sharing images</p>
+            <div class="grid">
+                <div class="card" style="text-align: center;">
+                    <div class="card-label">Profile Picture</div>
+                    <img src="social-profile.svg" width="120" height="120" alt="Social Profile" style="border-radius: 24px;">
+                    <br>
+                    <a href="social-profile.svg" download class="card-download">Download SVG</a>
+                </div>
+                <div class="card full-width">
+                    <div class="card-label">Open Graph Image (1200×630)</div>
+                    <div class="preview-container">
+                        <img src="og-image.svg" alt="OG Image">
+                    </div>
+                    <a href="og-image.svg" download class="card-download">Download SVG</a>
+                </div>
+                <div class="card full-width">
+                    <div class="card-label">Twitter/X Header (1500×500)</div>
+                    <div class="preview-container">
+                        <img src="twitter-header.svg" alt="Twitter Header">
+                    </div>
+                    <a href="twitter-header.svg" download class="card-download">Download SVG</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Newsletter -->
+        <div class="section">
+            <h2>Newsletter & Email</h2>
+            <p class="section-desc">Headers for email communications</p>
+            <div class="card">
+                <div class="card-label">Newsletter Header</div>
+                <img src="newsletter-header.svg" alt="Newsletter Header">
+                <a href="newsletter-header.svg" download class="card-download">Download SVG</a>
+            </div>
+        </div>
+        
+        <!-- Brand Colors -->
+        <div class="section">
+            <h2>Brand Colors</h2>
+            <p class="section-desc">Primary color palette</p>
+            <div class="color-swatches">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #1D4ED8;"></div>
+                    <div class="swatch-name">Primary Blue</div>
+                    <div class="swatch-code">#1D4ED8</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #60A5FA;"></div>
+                    <div class="swatch-name">Light Blue</div>
+                    <div class="swatch-code">#60A5FA</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #1e293b;"></div>
+                    <div class="swatch-name">Dark Text</div>
+                    <div class="swatch-code">#1E293B</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #64748b;"></div>
+                    <div class="swatch-name">Gray Text</div>
+                    <div class="swatch-code">#64748B</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #0f172a;"></div>
+                    <div class="swatch-name">Dark BG</div>
+                    <div class="swatch-code">#0F172A</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Usage Notes -->
+        <div class="section">
+            <h2>Usage Notes</h2>
+            <div class="card">
+                <ul style="padding-left: 20px; color: #475569;">
+                    <li style="margin-bottom: 8px;"><strong>Minimum size:</strong> Don't use the logo smaller than 100px wide (horizontal) or 80px (icon only)</li>
+                    <li style="margin-bottom: 8px;"><strong>Clear space:</strong> Maintain padding equal to the icon height around the logo</li>
+                    <li style="margin-bottom: 8px;"><strong>Favicon:</strong> For ICO files, convert the SVG to PNG at 16px and 32px, then combine into ICO format</li>
+                    <li style="margin-bottom: 8px;"><strong>Social profiles:</strong> Platforms will crop to circle — the icon-only version works best</li>
+                    <li><strong>Font:</strong> System font stack (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto)</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
