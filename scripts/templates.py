@@ -19,23 +19,24 @@ OUTPUT_DIR = ""
 
 INLINE_CSS = """
 :root {
-    --sr-primary: #1B2A4A;
-    --sr-primary-light: #2C3E6B;
-    --sr-accent: #2ECC71;
-    --sr-accent-dark: #27AE60;
+    --sr-primary: #1D4ED8;
+    --sr-primary-light: #60A5FA;
+    --sr-accent: #60A5FA;
+    --sr-accent-dark: #1D4ED8;
     --sr-bg: #FAFAFA;
     --sr-bg-surface: #FFFFFF;
-    --sr-bg-tinted: #F0F7F4;
-    --sr-text: #1a1a1a;
-    --sr-text-secondary: #6B7280;
+    --sr-bg-tinted: #EFF6FF;
+    --sr-text: #1E293B;
+    --sr-text-secondary: #64748B;
     --sr-border: #E5E7EB;
     --sr-danger: #EF4444;
+    --sr-dark-bg: #0F172A;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: var(--sr-text);
     background: var(--sr-bg);
     line-height: 1.65;
@@ -75,6 +76,7 @@ a:hover { color: var(--sr-accent-dark); }
     text-decoration: none;
 }
 .nav-brand:hover { color: var(--sr-accent); }
+.nav-brand-logo { height: 32px; width: auto; }
 .nav-brand-icon {
     width: 32px;
     height: 32px;
@@ -322,7 +324,7 @@ a:hover { color: var(--sr-accent-dark); }
 
 /* Footer */
 .site-footer {
-    background: var(--sr-primary);
+    background: var(--sr-dark-bg);
     color: rgba(255,255,255,0.75);
     padding: 64px 0 32px;
 }
@@ -402,7 +404,7 @@ def get_html_head(title, description, canonical_path, extra_head=""):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="{('#1B2A4A')}">
+    <meta name="theme-color" content="#1D4ED8">
     <title>{full_title}</title>
     <meta name="description" content="{description}">
     <link rel="canonical" href="{canonical}">
@@ -420,10 +422,13 @@ def get_html_head(title, description, canonical_path, extra_head=""):
     <meta name="twitter:title" content="{full_title}">
     <meta name="twitter:description" content="{description}">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/logos/favicon-32.svg" sizes="32x32">
+    <link rel="apple-touch-icon" href="/logos/apple-touch-icon.svg">
+
+    <!-- OG Image -->
+    <meta property="og:image" content="{SITE_URL}/logos/og-image.svg">
+    <meta name="twitter:image" content="{SITE_URL}/logos/og-image.svg">
 
     <style>{INLINE_CSS}</style>
 {"" if not GA_MEASUREMENT_ID else f"""
@@ -471,8 +476,7 @@ def get_nav_html(active_path=""):
     return f'''<nav class="site-nav">
     <div class="nav-container">
         <a href="/" class="nav-brand">
-            <span class="nav-brand-icon">SR</span>
-            <span>Seller Report</span>
+            <img src="/logos/logo-header.svg" alt="Seller Report" class="nav-brand-logo">
         </a>
         <ul class="nav-links">
             {nav_links}
@@ -507,6 +511,9 @@ def get_footer_html():
 
     return f'''<footer class="site-footer">
     <div class="footer-container">
+        <div style="margin-bottom:32px;">
+            <a href="/"><img src="/logos/logo-white.svg" alt="Seller Report" style="height:36px;width:auto;"></a>
+        </div>
         <div class="footer-grid">
             {columns_html}
         </div>
