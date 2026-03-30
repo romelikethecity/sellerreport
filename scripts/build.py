@@ -1295,6 +1295,80 @@ Sitemap: {SITE_URL}/sitemap.xml
         f.write(content)
 
 
+def build_companies_page():
+    """Build top hiring companies page."""
+    top = COMPANIES.most_common(50)
+    cards = ""
+    for rank, (company, count) in enumerate(top, 1):
+        # Get salary data for this company
+        co_jobs = [j for j in ALL_JOBS if j.get("company") == company]
+        co_salaries = [j["salary_max"] for j in co_jobs if j.get("salary_max") and j["salary_max"] > 0]
+        salary_str = f"Avg max: {fmt_salary(int(sum(co_salaries)/len(co_salaries)))}" if co_salaries else "Salary not disclosed"
+        remote_count = sum(1 for j in co_jobs if j.get("is_remote"))
+        remote_str = f" · {remote_count} remote" if remote_count else ""
+
+        cards += f"""<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--sr-text);">#{rank} {company}</h3>
+        <span style="background:var(--sr-bg-tinted);color:var(--sr-primary);padding:2px 10px;border-radius:12px;font-size:0.85rem;font-weight:600;">{count} roles</span>
+    </div>
+    <p style="color:var(--sr-text-secondary);font-size:0.9rem;">{salary_str}{remote_str}</p>
+</div>
+"""
+
+    body = f"""<div class="container">
+    {breadcrumb_html([("Home", "/"), ("Companies", "")])}
+    <div class="section">
+        <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">Top Hiring Companies</h1>
+        <p class="section-subtitle">The {len(top)} companies with the most open sales roles right now.</p>
+        <div class="card-grid">{cards}</div>
+    </div>
+</div>"""
+
+    page = get_page_wrapper(
+        "Top Companies Hiring Sales Reps",
+        f"The {len(top)} companies hiring the most sales professionals right now. Updated weekly from {fmt_number(TOTAL_JOBS)} job postings.",
+        "/companies/", body, active_path="/companies/")
+    write_page("companies/index.html", page)
+
+
+def build_about_page():
+    """Build about page."""
+    body = """<div class="container">
+    """ + breadcrumb_html([("Home", "/"), ("About", "")]) + """
+    <div class="section" style="max-width:720px;">
+        <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:16px;">About The Seller Report</h1>
+        <p style="font-size:1.1rem;color:var(--sr-text-secondary);margin-bottom:32px;">Weekly sales job market intelligence, built from real data.</p>
+
+        <h2 style="font-size:1.4rem;margin-bottom:12px;">What We Do</h2>
+        <p>The Seller Report tracks the sales job market by analyzing thousands of real job postings every week. We extract salary data, identify hiring trends, and surface the companies building sales teams right now.</p>
+        <p style="margin-top:12px;">No surveys. No self-reported data. Just what companies are posting, what they are paying, and what it means for your career.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">How It Works</h2>
+        <p>Our pipeline scrapes job boards weekly, enriches each posting with salary analysis and company data, then generates every page on this site programmatically. The numbers you see are derived from """ + fmt_number(TOTAL_JOBS) + """ active sales job postings across """ + fmt_number(UNIQUE_COMPANIES) + """+ companies.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Who It's For</h2>
+        <p>Sales professionals evaluating the market. AEs wondering if they are underpaid. SDRs planning their next move. Sales leaders benchmarking compensation. Recruiters tracking where the demand is.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Part of the Network</h2>
+        <p>The Seller Report is part of a network of career intelligence sites covering different segments of the B2B job market:</p>
+        <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
+            <li style="margin-bottom:8px;"><a href="https://therevopsreport.com">The RevOps Report</a> — Revenue Operations</li>
+            <li style="margin-bottom:8px;"><a href="https://thecroreport.com">The CRO Report</a> — Executive Sales Leadership</li>
+            <li style="margin-bottom:8px;"><a href="https://gtmepulse.com">GTME Pulse</a> — GTM Engineers</li>
+            <li style="margin-bottom:8px;"><a href="https://theaimarketpulse.com">AI Market Pulse</a> — AI & ML Careers</li>
+            <li style="margin-bottom:8px;"><a href="https://b2bsalestools.com">B2B Sales Tools</a> — Sales Tech Reviews</li>
+        </ul>
+    </div>
+</div>"""
+
+    page = get_page_wrapper(
+        "About The Seller Report",
+        "Weekly sales job market intelligence built from real data. Salary benchmarks, hiring trends, and career insights for sales professionals.",
+        "/about/", body, active_path="/about/")
+    write_page("about/index.html", page)
+
+
 def build_nojekyll():
     path = os.path.join(OUTPUT_DIR, ".nojekyll")
     with open(path, "w") as f:
@@ -1315,10 +1389,17 @@ def main():
     print()
 
     # Clean output
+    import shutil
     if os.path.exists(OUTPUT_DIR):
-        import shutil
         shutil.rmtree(OUTPUT_DIR)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    # Copy logos to output
+    logos_src = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logos")
+    logos_dst = os.path.join(OUTPUT_DIR, "logos")
+    if os.path.exists(logos_src):
+        shutil.copytree(logos_src, logos_dst)
+        print(f"  Copied logos ({len(os.listdir(logos_dst))} files)")
 
     # Build pages
     print("  Building homepage...")
@@ -1337,6 +1418,12 @@ def main():
 
     print("  Building insight articles...")
     build_insight_articles()
+
+    print("  Building companies page...")
+    build_companies_page()
+
+    print("  Building about page...")
+    build_about_page()
 
     print("  Building sitemap & robots...")
     build_sitemap()

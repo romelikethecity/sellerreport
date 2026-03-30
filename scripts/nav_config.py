@@ -3,7 +3,7 @@
 # Pure data -- zero logic, zero imports.
 
 SITE_NAME = "Seller Report"
-SITE_URL = "https://sellerreport.com"
+SITE_URL = "https://thesellerreport.com"
 SITE_TAGLINE = "Job market intelligence for sales professionals"
 COPYRIGHT_YEAR = "2026"
 CURRENT_YEAR = 2026
@@ -27,6 +27,8 @@ NAV_ITEMS = [
         ],
     },
     {"href": "/insights/", "label": "Insights"},
+    {"href": "/companies/", "label": "Companies"},
+    {"href": "/about/", "label": "About"},
 ]
 
 FOOTER_COLUMNS = {

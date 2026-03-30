@@ -180,10 +180,10 @@ a:hover { color: var(--sr-accent-dark); }
 .hero-stat-number {
     font-size: 2.2rem;
     font-weight: 800;
-    color: var(--sr-accent);
+    color: #FFFFFF;
     display: block;
 }
-.hero-stat-label { font-size: 0.85rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+.hero-stat-label { font-size: 0.85rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
 
 /* Section */
 .section { padding: 64px 0; }
