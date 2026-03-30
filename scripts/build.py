@@ -4,12 +4,22 @@
 # Site constants live in nav_config.py.
 
 import os
+import re
 import sys
 import json
 import math
 import html as html_lib
 from datetime import datetime
 from collections import Counter
+
+
+def slugify(text):
+    """Convert text to URL-safe slug."""
+    s = text.lower().strip()
+    s = re.sub(r'[^\w\s-]', '', s)
+    s = re.sub(r'[\s_]+', '-', s)
+    s = re.sub(r'-+', '-', s)
+    return s.strip('-')
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from nav_config import *
@@ -1307,13 +1317,16 @@ def build_companies_page():
         remote_count = sum(1 for j in co_jobs if j.get("is_remote"))
         remote_str = f" · {remote_count} remote" if remote_count else ""
 
-        cards += f"""<div class="card">
+        co_slug = slugify(company)
+        cards += f"""<a href="/companies/{co_slug}/" style="text-decoration:none;color:inherit;display:block;">
+<div class="card" style="cursor:pointer;">
     <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
-        <h3 style="font-size:1.1rem;font-weight:700;color:var(--sr-text);">#{rank} {company}</h3>
-        <span style="background:var(--sr-bg-tinted);color:var(--sr-primary);padding:2px 10px;border-radius:12px;font-size:0.85rem;font-weight:600;">{count} roles</span>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--sr-text);">#{rank} {esc(company)}</h3>
+        <span style="background:var(--sr-bg-tinted);color:var(--sr-accent-dark);padding:2px 10px;border-radius:12px;font-size:0.85rem;font-weight:600;">{count} roles</span>
     </div>
     <p style="color:var(--sr-text-secondary);font-size:0.9rem;">{salary_str}{remote_str}</p>
 </div>
+</a>
 """
 
     body = f"""<div class="container">
@@ -1330,6 +1343,64 @@ def build_companies_page():
         f"The {len(top)} companies hiring the most sales professionals right now. Updated weekly from {fmt_number(TOTAL_JOBS)} job postings.",
         "/companies/", body, active_path="/companies/")
     write_page("companies/index.html", page)
+
+
+def build_company_pages():
+    """Build individual company pages with job listings."""
+    top = COMPANIES.most_common(50)
+    for company, count in top:
+        co_slug = slugify(company)
+        co_jobs = sorted(
+            [j for j in ALL_JOBS if j.get("company") == company],
+            key=lambda j: j.get("salary_max") or 0,
+            reverse=True
+        )
+        co_salaries = [j["salary_max"] for j in co_jobs if j.get("salary_max") and j["salary_max"] > 0]
+        remote_count = sum(1 for j in co_jobs if j.get("is_remote"))
+
+        # Stats row
+        stats_html = f"""<div class="stat-grid" style="margin-bottom:32px;">
+            <div class="stat-card">
+                <div class="stat-card-number">{count}</div>
+                <div class="stat-card-label">Open Roles</div>
+            </div>"""
+        if co_salaries:
+            avg_sal = int(sum(co_salaries) / len(co_salaries))
+            stats_html += f"""<div class="stat-card">
+                <div class="stat-card-number">{fmt_salary(avg_sal)}</div>
+                <div class="stat-card-label">Avg Max Salary</div>
+            </div>"""
+        stats_html += f"""<div class="stat-card">
+                <div class="stat-card-number">{remote_count}</div>
+                <div class="stat-card-label">Remote Roles</div>
+            </div>
+        </div>"""
+
+        # Job cards
+        job_cards = ""
+        for j in co_jobs[:50]:  # Show top 50 jobs per company
+            job_cards += _job_card_html(j, link=True)
+
+        more_html = ""
+        if len(co_jobs) > 50:
+            more_html = f'<p style="margin-top:24px;color:var(--sr-text-secondary);text-align:center;">Showing 50 of {len(co_jobs)} roles. <a href="/jobs/">Browse all jobs</a></p>'
+
+        body = f"""<div class="container">
+    {breadcrumb_html([("Home", "/"), ("Companies", "/companies/"), (esc(company), "")])}
+    <div class="section">
+        <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">{esc(company)} Sales Jobs</h1>
+        <p class="section-subtitle">{count} open sales positions at {esc(company)}.</p>
+        {stats_html}
+        <div class="card-grid">{job_cards}</div>
+        {more_html}
+    </div>
+</div>"""
+
+        page = get_page_wrapper(
+            f"{company} Sales Jobs ({count} Open Roles)",
+            f"Browse {count} open sales positions at {company}. Salary data, remote options, and seniority levels.",
+            f"/companies/{co_slug}/", body, active_path="/companies/")
+        write_page(f"companies/{co_slug}/index.html", page)
 
 
 def build_about_page():
@@ -1421,6 +1492,9 @@ def main():
 
     print("  Building companies page...")
     build_companies_page()
+
+    print("  Building company detail pages...")
+    build_company_pages()
 
     print("  Building about page...")
     build_about_page()
