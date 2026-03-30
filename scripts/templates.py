@@ -79,7 +79,7 @@ a:hover { color: var(--sr-accent-dark); }
 }
 .nav-brand:hover { color: var(--sr-accent); }
 .nav-brand span { font-size: 1.15rem; }
-.nav-brand-logo { height: 32px; width: auto; }
+.nav-brand-logo { height: 36px; width: auto; }
 .nav-brand-icon {
     width: 32px;
     height: 32px;
@@ -492,7 +492,7 @@ def get_nav_html(active_path=""):
     return f'''<nav class="site-nav">
     <div class="nav-container">
         <a href="/" class="nav-brand">
-            <img src="/logos/logo-header.svg" alt="Seller Report" class="nav-brand-logo">
+            <img src="/logos/logo-white.svg" alt="The Seller Report" class="nav-brand-logo">
         </a>
         <ul class="nav-links">
             {nav_links}
