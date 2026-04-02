@@ -401,6 +401,41 @@ a:hover { color: var(--sr-accent-dark); }
 .stat-card-number { font-size: 2rem; font-weight: 800; color: var(--sr-accent); }
 .stat-card-label { font-size: 0.85rem; color: var(--sr-text-secondary); margin-top: 4px; }
 
+/* Newsletter */
+.nl-section { padding: 64px 0; background: var(--sr-bg-tinted); }
+.nl-card { max-width: 560px; margin: 0 auto; text-align: center; }
+.nl-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; color: var(--sr-text); }
+.nl-desc { color: var(--sr-text-secondary); margin-bottom: 24px; font-size: 1.05rem; }
+.nl-form-row { display: flex; gap: 8px; max-width: 440px; margin: 0 auto; }
+.nl-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--sr-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.nl-input:focus { border-color: var(--sr-primary); }
+.nl-btn {
+    background: var(--sr-accent);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+.nl-btn:hover { background: var(--sr-accent-dark); }
+.nl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.nl-msg { margin-top: 12px; font-size: 0.95rem; min-height: 1.4em; }
+.nl-msg--success { color: var(--sr-accent-dark); font-weight: 500; }
+.nl-msg--error { color: var(--sr-danger); }
+.nl-fine { margin-top: 12px; font-size: 0.8rem; color: var(--sr-text-secondary); opacity: 0.7; }
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2rem; }
@@ -412,11 +447,20 @@ a:hover { color: var(--sr-accent-dark); }
     .nav-cta { display: none; }
     .card-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; text-align: center; }
+    .nl-form-row { flex-direction: column; }
     .salary-table { font-size: 0.85rem; }
     .salary-table th, .salary-table td { padding: 8px 10px; }
 }
 </style>
 
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TERL5S76D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1TERL5S76D');
+    </script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thesellerreport.com/"}, {"@type": "ListItem", "position": 2, "name": "Jobs", "item": "https://thesellerreport.com/jobs/"}, {"@type": "ListItem", "position": 3, "name": "Sales Manager, Preqin, Director"}]}</script>
 
 </head>
@@ -479,6 +523,22 @@ a:hover { color: var(--sr-accent-dark); }
     </div>
 </section>
 </main>
+<section class="nl-section">
+    <div class="container">
+        <div class="nl-card">
+            <h2 class="nl-title">Get the Seller Report</h2>
+            <p class="nl-desc">Free weekly sales job market data, salary shifts, and hiring trends. No spam.</p>
+            <form class="nl-form" id="nl-form" data-list="seller-report" onsubmit="handleSignup(event, this)">
+                <div class="nl-form-row">
+                    <input type="email" name="email" id="nl-email" class="nl-input" placeholder="you@company.com" required>
+                    <button type="submit" class="nl-btn">Subscribe Free</button>
+                </div>
+            </form>
+            <p id="nl-msg" class="nl-msg"></p>
+            <p class="nl-fine">Free weekly email for sales professionals. Unsubscribe anytime.</p>
+        </div>
+    </div>
+</section>
 <footer class="site-footer">
     <div class="footer-container">
         <div style="margin-bottom:32px;">
@@ -557,6 +617,47 @@ a:hover { color: var(--sr-accent-dark); }
         });
     });
 })();
+
+function handleSignup(e, form) {
+    e.preventDefault();
+    var btn = form.querySelector('button');
+    var origText = btn.textContent;
+    var msg = document.getElementById('nl-msg');
+    var email = form.querySelector('input[name="email"]').value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+    msg.className = 'nl-msg';
+    msg.textContent = '';
+    fetch('https://newsletter-subscribe.rome-workers.workers.dev/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email, list: 'seller-report'})
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (data.ok) {
+            msg.className = 'nl-msg nl-msg--success';
+            msg.textContent = "You're in. Watch your inbox.";
+            form.style.display = 'none';
+            form.parentElement.querySelector('.nl-fine').style.display = 'none';
+            if (typeof gtag === 'function') {
+                gtag('event', 'newsletter_signup', {event_category: 'newsletter', event_label: 'inline_form'});
+            }
+        } else {
+            msg.className = 'nl-msg nl-msg--error';
+            msg.textContent = data.error || 'Something went wrong. Try again.';
+        }
+    })
+    .catch(function() {
+        msg.className = 'nl-msg nl-msg--error';
+        msg.textContent = 'Something went wrong. Try again.';
+    })
+    .finally(function() {
+        btn.disabled = false;
+        btn.textContent = origText;
+    });
+}
 </script>
 </body>
 </html>
