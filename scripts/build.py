@@ -1397,6 +1397,40 @@ T("leadiq", "LeadIQ", "sales-data", "https://www.leadiq.com", 7.0,
    "Email accuracy trails Apollo and ZoomInfo",
    "Limited value for anyone not doing LinkedIn-first prospecting"])
 
+T("definitive-healthcare", "Definitive Healthcare", "sales-data",
+  "https://www.definitivehc.com", 8.2,
+  "The biggest healthcare commercial intelligence platform on the market. Covers hospitals, physicians, claims data, and org charts. But it's built for enterprise teams with enterprise budgets.",
+  "Large healthcare sales orgs that need deep facility and physician intelligence",
+  "$50,000/yr",
+  ["Massive healthcare-specific database with claims and affiliation data",
+   "Org charts and physician referral patterns for strategic selling",
+   "Strong analytics and territory planning tools"],
+  ["Starting at $50K/yr puts it out of reach for most small teams",
+   "Data can be stale in fast-moving segments like urgent care and telehealth",
+   "Overkill if you just need a contact list for a single territory"])
+
+T("doximity", "Doximity", "sales-data", "https://www.doximity.com", 6.5,
+  "A social network for physicians, not a prospecting tool. Useful for researching individual doctors, but you can't export lists or run outbound campaigns from it.",
+  "Reps who need to research individual physicians before meetings",
+  "Free (limited)",
+  ["Largest physician social network with 80%+ of US doctors on the platform",
+   "Verified profiles with specialty, hospital affiliations, and publications",
+   "Good for pre-call research and understanding a physician's background"],
+  ["Not a prospecting tool. You can't export contact data or build lists",
+   "No direct phone numbers or emails for outbound outreach",
+   "Physicians control their profiles, so contact attempts feel intrusive"])
+
+T("veeva", "Veeva", "sales-data", "https://www.veeva.com", 7.5,
+  "The dominant CRM for pharmaceutical and life sciences field teams. It's a CRM ecosystem, not a data provider. If your company is already on Veeva, the data integration is solid. If not, it's not worth switching for data alone.",
+  "Pharma and life sciences field reps already in the Veeva ecosystem",
+  "Custom pricing",
+  ["Industry standard CRM for pharma with deep compliance features",
+   "Strong HCP data integration through Veeva OpenData",
+   "Built for field reps with offline access and call planning"],
+  ["It's a CRM, not a standalone data tool. You're buying the whole ecosystem",
+   "Pricing is opaque and expensive for non-enterprise buyers",
+   "Not useful outside pharma and life sciences verticals"])
+
 
 # --- Roundup Articles ---
 
@@ -1460,6 +1494,31 @@ TOOL_ROUNDUPS = [
         "winner_label": "Best Overall Alternative",
         "runner_up_slug": "verum",
         "runner_up_label": "Best Managed Service",
+    },
+    {
+        "slug": "best-healthcare-prospecting-for-field-sales",
+        "title": "Best Healthcare Prospecting Tools for Field Sales in 2026",
+        "meta_desc": "The best healthcare prospecting tools for field sales reps in 2026. Provyx, Definitive Healthcare, ZoomInfo, Apollo, Doximity, and Veeva compared.",
+        "date": "2026-04-02",
+        "intro": "Field sales in healthcare means walking into practices. You need the right address, the right contact name, and a direct phone number. Showing up and asking the front desk \"who handles purchasing?\" is amateur hour. These tools give you the intel before you walk in.",
+        "tools": [
+            ("provyx", "Field reps need accurate addresses, direct phone numbers, and the right contact name before they walk in the door. Provyx builds NPI-verified lists with practice addresses, decision-maker names, and direct lines. No annual contract.", True),
+            ("definitive-healthcare", "Massive database with claims data, org charts, and physician affiliations. It's the gold standard for large healthcare sales organizations. But at $50K+/yr, it's built for enterprise teams, not individual reps covering a territory.", False),
+            ("zoominfo", None, False),
+            ("apollo", None, False),
+            ("doximity", "Doximity is a social network for doctors, not a prospecting tool. It's useful for researching a physician before a meeting, checking their specialty, publications, and hospital affiliations. But you can't export lists or get direct phone numbers from it.", False),
+            ("veeva", "Veeva is the dominant CRM for pharma field teams, not a standalone data provider. If your company already runs on Veeva, the HCP data integration is solid. If you're outside pharma, it won't help you.", False),
+        ],
+        "winner_slug": "provyx",
+        "winner_label": "Best for Verified Provider Lists",
+        "runner_up_slug": "definitive-healthcare",
+        "runner_up_label": "Best Enterprise Platform",
+        "faqs": [
+            ("What data do field sales reps actually need for healthcare prospecting?", "At minimum: practice address, decision-maker name, direct phone number, and specialty. Walking into a clinic without knowing who handles purchasing decisions wastes everyone's time. The best tools also give you NPI numbers, group affiliations, and whether the practice is independent or part of a health system."),
+            ("Is Definitive Healthcare worth $50K/yr for a single field rep?", "Almost never. Definitive Healthcare is built for enterprise teams that need claims data, referral patterns, and org charts across entire health systems. If you're an individual rep or a small team covering a territory, you'll pay for 90% of features you won't use. Per-record services like Provyx or even Apollo's free tier make more sense at that scale."),
+            ("Can I use Doximity for outbound prospecting?", "Not really. Doximity is a physician social network, and doctors don't want cold sales messages there. It's great for pre-call research: checking a physician's specialty, publications, and hospital affiliations before you walk in. But for building prospect lists with phone numbers and emails, you need a dedicated data provider."),
+            ("How do I verify that healthcare contact data is accurate before a field visit?", "Cross-reference against the NPI Registry, which is free and updated monthly. Any provider billing Medicare or Medicaid has an NPI number tied to their practice address. If the address in your data doesn't match the NPI Registry, the provider may have moved. Tools like Provyx do this verification automatically, but you can spot-check at npiregistry.cms.hhs.gov."),
+        ],
     },
 ]
 
@@ -1564,6 +1623,18 @@ def build_tool_roundups():
             <ol style="margin-bottom: 32px; padding-left: 24px;">{toc_items}</ol>
 
             {cards_html}
+'''
+
+        # Optional FAQs
+        faqs = roundup.get("faqs", [])
+        faq_section = ""
+        faq_schema_html = ""
+        if faqs:
+            faq_section = faq_html(faqs)
+            faq_schema_html = get_faq_schema(faqs)
+
+        body += f'''
+            {faq_section}
 
             <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--sr-border);">
                 <h3>Related</h3>
@@ -1587,7 +1658,7 @@ def build_tool_roundups():
             f"/tools/{slug}/",
             body,
             active_path="/insights/",
-            extra_head=art_schema + bc_schema,
+            extra_head=art_schema + bc_schema + faq_schema_html,
         )
         write_page(f"/tools/{slug}/index.html", page)
 
