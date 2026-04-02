@@ -27,6 +27,7 @@ NAV_ITEMS = [
         ],
     },
     {"href": "/insights/", "label": "Insights"},
+    {"href": "/tools/", "label": "Tools"},
     {"href": "/companies/", "label": "Companies"},
     {"href": "/about/", "label": "About"},
 ]
@@ -48,6 +49,12 @@ FOOTER_COLUMNS = {
         {"href": "/insights/best-companies-hiring-sales/", "label": "Best Companies Hiring"},
         {"href": "/insights/negotiate-sales-compensation/", "label": "Negotiate Your Comp"},
         {"href": "/insights/remote-sales-jobs/", "label": "Remote Sales Jobs"},
+    ],
+    "Tools": [
+        {"href": "/tools/", "label": "Tool Reviews"},
+        {"href": "/tools/best-data-providers-for-sdrs/", "label": "Best Data for SDRs"},
+        {"href": "/tools/best-lead-list-building-services/", "label": "Lead List Services"},
+        {"href": "/tools/best-cognism-alternatives/", "label": "Cognism Alternatives"},
     ],
     "Network": [
         {"href": "https://therevopsreport.com", "label": "RevOps Report", "external": True},

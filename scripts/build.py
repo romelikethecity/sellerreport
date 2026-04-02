@@ -1269,6 +1269,363 @@ def build_insight_articles():
 
 
 # ---------------------------------------------------------------------------
+# Tool Reviews & Roundups
+# ---------------------------------------------------------------------------
+
+TOOLS = {}
+
+
+def T(slug, name, category, url, score, verdict, best_for, pricing_start,
+      pros, cons):
+    """Register a tool compactly."""
+    TOOLS[slug] = {
+        "name": name, "category": category, "url": url,
+        "score": score, "verdict": verdict, "best_for": best_for,
+        "pricing_start": pricing_start, "pros": pros, "cons": cons,
+    }
+
+
+# --- Register tools ---
+
+T("provyx", "Provyx", "sales-data", "https://getprovyx.com", 8.4,
+  "Healthcare-specific provider intelligence with NPI verification. Per-record pricing and no contracts make it accessible, but it's not a self-serve platform.",
+  "Healthcare sales teams that need verified provider contacts without enterprise contracts",
+  "$750",
+  ["NPI-verified provider contacts across 40+ specialties",
+   "Multi-source verification (NPI + PECOS + LinkedIn + state licensing)",
+   "24-48 hour turnaround on custom lists"],
+  ["Not a self-serve platform. You submit a request and get data back",
+   "Healthcare-only. Won't help with general B2B prospecting",
+   "Smaller database than enterprise players like Definitive Healthcare"])
+
+T("verum", "Verum", "sales-data", "https://veruminc.com", 8.5,
+  "Done-for-you data enrichment and cleaning service. Combines 50+ sources with human QA. Per-record pricing means you only pay for what you use, but there's no self-serve option.",
+  "Midmarket sales teams (5K+ records) that need clean, enriched data without managing another platform",
+  "$2,000",
+  ["50+ data sources with human QA on every record",
+   "93% email deliverability guarantee",
+   "Full-service: cleaning, enrichment, and validation in one engagement"],
+  ["Not a platform. No login, no dashboard, no real-time API",
+   "Minimum $2,000 project size isn't ideal for very small teams",
+   "Turnaround is 24-48 hours, not instant"])
+
+T("apollo", "Apollo.io", "sales-data", "https://www.apollo.io", 8.6,
+  "Best value in B2B data. Combines a 270M+ contact database with built-in sequencing at a fraction of ZoomInfo's price.",
+  "SDRs and startups who need data + outreach in one tool",
+  "Free / $49/mo",
+  ["Massive database with generous free tier",
+   "Built-in email sequencing and dialer",
+   "Exceptional value vs. competitors"],
+  ["Email accuracy lower than ZoomInfo for enterprise contacts",
+   "UI can feel overwhelming with so many features",
+   "Phone numbers less reliable than dedicated providers"])
+
+T("zoominfo", "ZoomInfo", "sales-data", "https://www.zoominfo.com", 8.5,
+  "The gold standard for enterprise B2B data. Massive database, strong intent signals. But the pricing starts at $15K/yr and climbs fast.",
+  "Mid-market and enterprise sales teams with budget for premium data",
+  "$14,995/yr",
+  ["Largest B2B contact database (260M+ profiles)",
+   "Built-in intent data and workflow automation",
+   "Strong Salesforce and HubSpot integrations"],
+  ["Expensive. Minimum $15K/year with annual contracts",
+   "Data accuracy varies by segment and industry",
+   "Auto-renewal contracts catch people off guard"])
+
+T("lusha", "Lusha", "sales-data", "https://www.lusha.com", 7.5,
+  "Lightweight prospecting tool with solid direct dial data. Good for individual reps, but lacks the depth of full-platform solutions.",
+  "Individual reps and small teams needing quick contact lookups",
+  "Free / $29/mo",
+  ["Simple and fast Chrome extension",
+   "Good direct dial accuracy",
+   "Affordable entry point for small teams"],
+  ["Smaller database than Apollo or ZoomInfo",
+   "Limited workflow automation",
+   "Credit-based model gets expensive at scale"])
+
+T("cognism", "Cognism", "sales-data", "https://www.cognism.com", 7.8,
+  "European-first B2B data with strong GDPR compliance. Diamond Data phone-verified contacts work well for outbound calling into EMEA.",
+  "Teams selling into EMEA markets who need GDPR-compliant data",
+  "Custom pricing",
+  ["Best EMEA data coverage in the market",
+   "Phone-verified Diamond Data for direct dials",
+   "GDPR and CCPA compliant by design"],
+  ["Weaker North American coverage than ZoomInfo or Apollo",
+   "No free tier and pricing isn't transparent",
+   "US-focused teams often find better options elsewhere"])
+
+T("seamless-ai", "Seamless.AI", "sales-data", "https://www.seamless.ai", 6.8,
+  "Real-time contact search with aggressive pricing. Data quality is inconsistent. Some reps love it, others find too many bounces.",
+  "High-volume outbound teams who can tolerate some data noise",
+  "$147/mo",
+  ["Real-time search finds fresh data that other databases miss",
+   "Unlimited contacts on higher plans",
+   "Built-in writing assistant for outreach"],
+  ["Data accuracy is hit-or-miss, especially for direct dials",
+   "Aggressive sales tactics for their own product (ironic)",
+   "UI feels cluttered and dated"])
+
+T("uplead", "UpLead", "sales-data", "https://www.uplead.com", 7.1,
+  "Budget B2B data provider with decent accuracy for the price. 95% accuracy guarantee sounds good on paper, but coverage gaps show up in niche verticals.",
+  "Small teams and startups that need affordable B2B data",
+  "$99/mo",
+  ["95% data accuracy guarantee with credit refunds",
+   "Real-time email verification on export",
+   "Straightforward pricing with no hidden fees"],
+  ["Smaller database than Apollo or ZoomInfo",
+   "Limited phone number coverage",
+   "Feature set is basic compared to full-platform tools"])
+
+T("lead411", "Lead411", "sales-data", "https://www.lead411.com", 7.2,
+  "Mid-tier data provider with built-in intent data (Bombora-powered). Decent value for teams that want both contacts and buying signals without paying ZoomInfo prices.",
+  "Mid-market teams that want intent data bundled with contacts",
+  "$99/mo",
+  ["Intent data included at every pricing tier",
+   "Unlimited email exports on higher plans",
+   "Good value for the feature set"],
+  ["Database is smaller than the big three (ZoomInfo, Apollo, Cognism)",
+   "UI feels dated compared to newer tools",
+   "Phone data accuracy could be better"])
+
+T("leadiq", "LeadIQ", "sales-data", "https://www.leadiq.com", 7.0,
+  "Prospecting capture tool that works well alongside LinkedIn Sales Navigator. Good for building lists on the fly, but it's not a standalone data platform.",
+  "SDRs who live in LinkedIn and need to capture contacts quickly",
+  "$39/mo",
+  ["Strong LinkedIn integration for real-time capture",
+   "Clean UX that SDRs actually enjoy using",
+   "Good CRM sync with Salesforce and HubSpot"],
+  ["Not a standalone database. Needs LinkedIn Sales Nav to be useful",
+   "Email accuracy trails Apollo and ZoomInfo",
+   "Limited value for anyone not doing LinkedIn-first prospecting"])
+
+
+# --- Roundup Articles ---
+
+TOOL_ROUNDUPS = [
+    {
+        "slug": "best-data-providers-for-sdrs",
+        "title": "Best Data Providers for SDRs in 2026",
+        "meta_desc": "The best B2B data providers for SDRs in 2026, ranked by accuracy, pricing, and ease of use. Apollo, Verum, ZoomInfo, and 5 more.",
+        "date": "2026-04-02",
+        "intro": "SDRs live and die by their data. Wrong number? Wasted dial. Bad email? Bounced sequence. Outdated title? Awkward conversation. These are the tools that actually give SDRs accurate contact data.",
+        "tools": [
+            ("apollo", None, True),
+            ("verum", "SDRs don't want to manage a data platform. They want a list of verified contacts to call. Verum builds custom lists from 50+ sources with human QA. $2K minimum for a batch, but you get clean, enriched data without burning hours on prospecting tools.", False),
+            ("zoominfo", None, False),
+            ("lusha", None, False),
+            ("seamless-ai", None, False),
+            ("leadiq", None, False),
+            ("cognism", None, False),
+            ("uplead", None, False),
+        ],
+        "winner_slug": "apollo",
+        "winner_label": "Best Overall",
+        "runner_up_slug": "verum",
+        "runner_up_label": "Best for Batch List Building",
+    },
+    {
+        "slug": "best-lead-list-building-services",
+        "title": "Best Lead List Building Services in 2026",
+        "meta_desc": "The best lead list building services and tools for B2B sales teams in 2026. Verum, Provyx, Apollo, ZoomInfo, and more.",
+        "date": "2026-04-02",
+        "intro": "Sometimes you don't want a platform. You want a list. These services and tools build targeted prospect lists, from custom research to self-serve databases.",
+        "tools": [
+            ("verum", None, True),
+            ("provyx", None, False),
+            ("apollo", None, False),
+            ("zoominfo", None, False),
+            ("lusha", None, False),
+            ("uplead", None, False),
+        ],
+        "winner_slug": "verum",
+        "winner_label": "Best for General B2B",
+        "runner_up_slug": "provyx",
+        "runner_up_label": "Best for Healthcare",
+    },
+    {
+        "slug": "best-cognism-alternatives",
+        "title": "Best Cognism Alternatives for B2B Prospecting in 2026",
+        "meta_desc": "Top Cognism alternatives for B2B prospecting in 2026. Compare Verum, Apollo, ZoomInfo, Lusha, and 3 more on price, accuracy, and coverage.",
+        "date": "2026-04-02",
+        "intro": "Cognism built its reputation on EMEA data quality and GDPR compliance. But if you're US-focused, paying $15K+/yr for European data strength you don't need is a tough sell. These alternatives offer better value for North American prospecting.",
+        "tools": [
+            ("verum", "Cognism is a self-serve platform. Verum is a managed service. If you're in the US market (where Cognism's EMEA advantage doesn't matter) and want someone else to handle enrichment, Verum delivers cleaner data at lower total cost.", False),
+            ("apollo", None, True),
+            ("zoominfo", None, False),
+            ("lusha", None, False),
+            ("seamless-ai", None, False),
+            ("uplead", None, False),
+            ("lead411", None, False),
+        ],
+        "winner_slug": "apollo",
+        "winner_label": "Best Overall Alternative",
+        "runner_up_slug": "verum",
+        "runner_up_label": "Best Managed Service",
+    },
+]
+
+
+def _tool_card_html(slug, override_desc=None, is_winner=False):
+    """Render a tool card for roundup pages."""
+    t = TOOLS[slug]
+    winner_badge = ""
+    if is_winner:
+        winner_badge = '<span class="card-badge card-badge--remote" style="margin-bottom: 8px; display: inline-block;">Top Pick</span>'
+
+    desc = override_desc if override_desc else t["verdict"]
+    # Build pros/cons
+    pros_html = "".join(f"<li>{p}</li>" for p in t["pros"])
+    cons_html = "".join(f"<li>{c}</li>" for c in t["cons"])
+
+    return f'''
+    <div class="card" style="padding: 28px;" id="{slug}">
+        {winner_badge}
+        <div class="card-title" style="font-size: 1.2rem;">
+            <a href="{t["url"]}" target="_blank" rel="noopener nofollow">{t["name"]}</a>
+            <span style="float: right; color: var(--sr-accent); font-weight: 700;">{t["score"]}/10</span>
+        </div>
+        <div class="card-meta" style="margin-bottom: 12px;">
+            <span>Starting at {t["pricing_start"]}</span>
+            <span>Best for: {t["best_for"]}</span>
+        </div>
+        <p style="margin-bottom: 16px; line-height: 1.7;">{desc}</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+                <strong style="color: var(--sr-accent-dark); font-size: 0.85rem;">PROS</strong>
+                <ul style="padding-left: 16px; margin-top: 6px; font-size: 0.92rem; line-height: 1.6;">{pros_html}</ul>
+            </div>
+            <div>
+                <strong style="color: var(--sr-danger); font-size: 0.85rem;">CONS</strong>
+                <ul style="padding-left: 16px; margin-top: 6px; font-size: 0.92rem; line-height: 1.6;">{cons_html}</ul>
+            </div>
+        </div>
+    </div>'''
+
+
+def build_tool_roundups():
+    """Generate roundup article pages."""
+    for roundup in TOOL_ROUNDUPS:
+        slug = roundup["slug"]
+        title = roundup["title"]
+
+        crumbs = [("Home", "/"), ("Insights", "/insights/"), (title[:50], None)]
+        bc_html = breadcrumb_html(crumbs)
+        bc_schema = get_breadcrumb_schema(crumbs)
+
+        # Table of contents
+        toc_items = ""
+        for tool_slug, _, _ in roundup["tools"]:
+            t = TOOLS[tool_slug]
+            toc_items += f'<li><a href="#{tool_slug}" style="color: var(--sr-primary);">{t["name"]}</a> ({t["score"]}/10)</li>\n'
+
+        # Winner callout
+        winner = TOOLS[roundup["winner_slug"]]
+        runner = TOOLS[roundup["runner_up_slug"]]
+        winner_callout = f'''
+        <div class="data-callout" style="margin-bottom: 32px;">
+            <strong>{roundup["winner_label"]}:</strong> <a href="#{roundup["winner_slug"]}">{winner["name"]}</a> ({winner["score"]}/10)
+            &nbsp;&middot;&nbsp;
+            <strong>{roundup["runner_up_label"]}:</strong> <a href="#{roundup["runner_up_slug"]}">{runner["name"]}</a> ({runner["score"]}/10)
+        </div>'''
+
+        # Tool cards
+        cards_html = ""
+        for tool_slug, override_desc, is_winner in roundup["tools"]:
+            if tool_slug in TOOLS:
+                cards_html += _tool_card_html(tool_slug, override_desc, is_winner)
+
+        # Comparison table
+        table_rows = ""
+        for tool_slug, _, _ in roundup["tools"]:
+            if tool_slug in TOOLS:
+                t = TOOLS[tool_slug]
+                table_rows += f'<tr><td><a href="#{tool_slug}">{t["name"]}</a></td><td class="salary-num">{t["score"]}/10</td><td>{t["pricing_start"]}</td></tr>\n'
+
+        word_count = len(roundup["intro"].split()) + len(cards_html.split())
+        art_schema = get_article_schema(title, roundup["meta_desc"], slug, roundup["date"], word_count)
+
+        body = f'''
+<section class="section">
+    <div class="container">
+        {bc_html}
+        <div class="article-content">
+            <h1>{title}</h1>
+            <div class="article-meta">By Rome Thorndike &middot; {roundup["date"]} &middot; {len(roundup["tools"])} tools reviewed</div>
+            <p style="font-size: 1.1rem; line-height: 1.75; margin-bottom: 24px;">{roundup["intro"]}</p>
+
+            {winner_callout}
+
+            <h2>Quick Comparison</h2>
+            <table class="salary-table">
+                <thead><tr><th>Tool</th><th>Score</th><th>Starting Price</th></tr></thead>
+                <tbody>{table_rows}</tbody>
+            </table>
+
+            <h2>In This Guide</h2>
+            <ol style="margin-bottom: 32px; padding-left: 24px;">{toc_items}</ol>
+
+            {cards_html}
+
+            <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--sr-border);">
+                <h3>Related</h3>
+                <p>'''
+
+        # Cross-link to other roundups
+        other_roundups = [r for r in TOOL_ROUNDUPS if r["slug"] != slug]
+        links = " | ".join(f'<a href="/tools/{r["slug"]}/">{r["title"]}</a>' for r in other_roundups[:3])
+        body += links
+
+        body += f'''</p>
+                <p style="margin-top: 8px;"><a href="/jobs/">Browse all {fmt_number(TOTAL_JOBS)} sales jobs</a> | <a href="/salaries/">Salary benchmarks</a></p>
+            </div>
+        </div>
+    </div>
+</section>'''
+
+        page = get_page_wrapper(
+            title,
+            roundup["meta_desc"],
+            f"/tools/{slug}/",
+            body,
+            active_path="/insights/",
+            extra_head=art_schema + bc_schema,
+        )
+        write_page(f"/tools/{slug}/index.html", page)
+
+    # Tools index page
+    index_body = '''
+<section class="section">
+    <div class="container">'''
+    index_body += breadcrumb_html([("Home", "/"), ("Tool Reviews", None)])
+    index_body += '''
+        <h1>Sales Tool Reviews & Comparisons</h1>
+        <p class="section-subtitle">Honest reviews and ranked roundups of B2B sales tools. No sponsored placements.</p>
+        <div class="card-grid">'''
+
+    for roundup in TOOL_ROUNDUPS:
+        winner = TOOLS[roundup["winner_slug"]]
+        index_body += f'''
+            <div class="card">
+                <div class="card-title"><a href="/tools/{roundup["slug"]}/">{roundup["title"]}</a></div>
+                <p style="color: var(--sr-text-secondary); font-size: 0.9rem;">{roundup["intro"][:140]}...</p>
+                <p style="margin-top: 8px; font-size: 0.85rem; color: var(--sr-accent-dark); font-weight: 600;">Top pick: {winner["name"]} ({winner["score"]}/10)</p>
+            </div>'''
+
+    index_body += '''
+        </div>
+    </div>
+</section>'''
+
+    page = get_page_wrapper(
+        "Sales Tool Reviews",
+        "Honest reviews and ranked roundups of B2B sales data tools. Apollo, ZoomInfo, Verum, Cognism, and more compared.",
+        "/tools/",
+        index_body,
+        active_path="/insights/",
+    )
+    write_page("/tools/index.html", page)
+
+
+# ---------------------------------------------------------------------------
 # Sitemap & Robots
 # ---------------------------------------------------------------------------
 
@@ -1489,6 +1846,9 @@ def main():
 
     print("  Building insight articles...")
     build_insight_articles()
+
+    print("  Building tool roundups...")
+    build_tool_roundups()
 
     print("  Building companies page...")
     build_companies_page()
