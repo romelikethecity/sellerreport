@@ -719,6 +719,84 @@ ARTICLES = [
         "meta_desc": "Remote sales job analysis: 645 remote listings, salary premiums, top companies, and which roles go remote most often.",
         "date": "2026-03-29",
     },
+    {
+        "slug": "sdr-salary-guide-2026",
+        "title": "SDR Salary Guide 2026: Entry-Level Sales Compensation",
+        "meta_desc": "SDR and BDR salary data from 4,494 job postings. Base pay, OTE, variable comp splits, and what drives entry-level sales earnings in 2026.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "account-executive-salary-2026",
+        "title": "Account Executive Salary 2026: Mid-Level Comp Data",
+        "meta_desc": "Account Executive compensation breakdown from real job postings. Base, OTE, equity, and how segment, geography, and deal size affect AE pay.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sales-career-path-guide",
+        "title": "Sales Career Path: SDR to AE to Manager to VP",
+        "meta_desc": "The full sales career ladder mapped with salary data, timelines, and what it takes to advance from SDR through VP of Sales.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "how-to-get-into-sales",
+        "title": "How to Get Into Sales With No Experience",
+        "meta_desc": "Practical guide to landing your first sales job with no prior experience. What hiring managers look for, which roles to target, and how to stand out.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sales-interview-questions-2026",
+        "title": "Sales Interview Questions 2026 by Role Level",
+        "meta_desc": "Sales interview questions organized by seniority level. SDR, AE, manager, and VP questions with frameworks for strong answers.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sdr-to-ae-promotion-timeline",
+        "title": "SDR to AE Promotion: How Long and What Accelerates It",
+        "meta_desc": "Data on how long SDR-to-AE promotions take, what top performers do differently, and how to position yourself for the jump.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "remote-sales-jobs-guide",
+        "title": "Remote Sales Jobs Guide: Where to Find Them",
+        "meta_desc": "Where to find remote sales jobs in 2026. Platforms, company signals, salary data, and which roles have the highest remote availability.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "best-companies-sales-careers-2026",
+        "title": "Best Companies for Sales Careers 2026",
+        "meta_desc": "Ranking the best companies for sales careers based on compensation, growth opportunity, and hiring volume from 4,494 job postings.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sales-resume-guide",
+        "title": "Sales Resume Guide: What Hiring Managers Screen For",
+        "meta_desc": "How to write a sales resume that passes recruiter screening. Quota attainment, metrics, tools, and formatting that hiring managers want to see.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sales-quota-expectations-by-role",
+        "title": "Sales Quota Expectations by Role and Company Stage",
+        "meta_desc": "What sales quotas look like across SDR, AE, and leadership roles at startups, mid-market, and enterprise companies. Benchmarks from real postings.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sales-burnout-prevention",
+        "title": "Sales Burnout Prevention: Data and Practical Advice",
+        "meta_desc": "Sales burnout causes, warning signs, and prevention strategies. Data on turnover rates, quota pressure, and what sustainable sales careers look like.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "sales-compensation-negotiation",
+        "title": "How to Negotiate Sales Compensation: OTE and Base",
+        "meta_desc": "Step-by-step guide to negotiating sales compensation. Base salary, OTE, equity, ramp periods, and draw terms with data from 4,494 job postings.",
+        "date": "2026-04-02",
+    },
+    {
+        "slug": "inside-sales-vs-field-sales",
+        "title": "Inside Sales vs Field Sales: Comparing the Two Tracks",
+        "meta_desc": "Inside sales vs field sales compared on compensation, lifestyle, career trajectory, and job availability. Data from 4,494 current sales postings.",
+        "date": "2026-04-02",
+    },
 ]
 
 
@@ -1431,6 +1509,153 @@ T("veeva", "Veeva", "sales-data", "https://www.veeva.com", 7.5,
    "Pricing is opaque and expensive for non-enterprise buyers",
    "Not useful outside pharma and life sciences verticals"])
 
+# --- AI & Productivity Tools ---
+
+T("gong", "Gong", "ai-sales", "https://www.gong.io", 8.3,
+  "Records and analyzes every sales call with AI-powered insights. Shows what top reps do differently, tracks deal risk signals, and gives managers coaching data they'd never get from CRM notes alone.",
+  "Sales teams that want call intelligence and deal analytics",
+  "Custom pricing",
+  ["AI-powered call analysis that catches patterns humans miss",
+   "Deal risk scoring based on conversation signals",
+   "Coaching insights backed by real call data"],
+  ["No public pricing. Expect $100+/user/month on annual contracts",
+   "Requires call recording adoption from the full team to be useful",
+   "Overkill for solo reps or small teams under 5 people"])
+
+T("lavender", "Lavender", "ai-sales", "https://www.lavender.ai", 7.5,
+  "Real-time email coaching that scores your emails and suggests improvements before you hit send. Analyzes subject lines, body length, reading level, and personalization. Helpful for new reps learning to write cold emails.",
+  "SDRs who want to improve email writing with real-time AI coaching",
+  "$29/mo",
+  ["Real-time email scoring as you type in Gmail or Outlook",
+   "Personalization suggestions pulled from prospect data",
+   "Free tier covers basic scoring for individuals"],
+  ["Suggestions can feel formulaic after a while",
+   "Won't fix bad targeting or weak value props",
+   "Limited value for experienced reps who already write well"])
+
+T("fireflies-ai", "Fireflies.ai", "ai-sales", "https://fireflies.ai", 7.2,
+  "AI meeting transcription and summaries. Joins your calls, records everything, and gives you searchable transcripts with action items. Saves 30+ minutes per meeting on notes.",
+  "Reps and managers who want automated meeting notes and searchable call history",
+  "Free-$19/mo",
+  ["Joins meetings automatically and transcribes in real time",
+   "Searchable transcript library across all your calls",
+   "Free tier covers basic transcription needs"],
+  ["Audio quality matters. Poor connections produce poor transcripts",
+   "AI summaries sometimes miss nuance in complex discussions",
+   "Some prospects are uncomfortable being recorded"])
+
+T("chatgpt-claude", "ChatGPT/Claude", "ai-sales", "https://openai.com", 8.0,
+  "General-purpose AI assistants that handle prospect research, email drafting, objection prep, and competitive analysis. Not built for sales specifically, but flexible enough to handle almost any sales task you throw at them.",
+  "Reps who want a flexible AI assistant for research, writing, and prep",
+  "Free-$20/mo",
+  ["Handles prospect research, email writing, and objection prep in one tool",
+   "Free tiers are generous enough for daily sales use",
+   "Adapts to any sales task without specialized training"],
+  ["No CRM integration or sales-specific workflow automation",
+   "Output quality depends entirely on how well you prompt it",
+   "Won't replace purpose-built sales tools for specific tasks"])
+
+T("fathom", "Fathom", "ai-sales", "https://fathom.video", 7.6,
+  "Free AI call recorder that gives you summaries, action items, and highlights from every meeting. No complicated setup. Just works.",
+  "Reps who want simple, free call recording with AI summaries",
+  "Free",
+  ["Completely free for individual reps",
+   "Clean, simple interface with zero learning curve",
+   "AI summaries and action items generated automatically"],
+  ["Feature set is thinner than Gong or Fireflies",
+   "No team analytics or coaching features on the free plan",
+   "Limited integrations compared to enterprise tools"])
+
+T("autobound", "Autobound", "ai-sales", "https://www.autobound.ai", 7.0,
+  "AI that writes personalized first lines by pulling data from a prospect's LinkedIn, company news, job changes, and tech stack. Saves the hardest part of cold email: the opening line.",
+  "SDRs who want AI-generated personalized email openers",
+  "$39+/mo",
+  ["Pulls prospect data automatically for personalization",
+   "Integrates with major outbound platforms",
+   "Saves significant time on the hardest part of cold email"],
+  ["Personalization quality varies by prospect data availability",
+   "Can produce generic output for prospects with thin online presence",
+   "Another subscription on top of your existing outbound stack"])
+
+T("copy-ai", "Copy.ai", "ai-sales", "https://www.copy.ai", 6.8,
+  "AI content generation for sales copy, sequences, follow-ups, and social posts. Decent for first drafts that you'll edit, less reliable as a finished product.",
+  "Sales teams that need fast first drafts of emails, sequences, and follow-ups",
+  "Free-$36/mo",
+  ["Templates for every type of sales content",
+   "Free tier is generous for individual use",
+   "Fast first drafts that save 15-20 minutes per email"],
+  ["Output needs editing. Don't send AI-generated copy without review",
+   "Sales-specific templates feel generic compared to specialized tools",
+   "Doesn't pull prospect data for personalization like Autobound or Lavender"])
+
+# --- Cold Email Tools ---
+
+T("instantly", "Instantly", "cold-email", "https://instantly.ai", 8.0,
+  "Unlimited email accounts, built-in warmup, and strong deliverability features. The volume play for SDRs who run multi-inbox campaigns. Setup takes 30 minutes and you're sending.",
+  "SDRs and agencies who need high-volume cold email with strong deliverability",
+  "$30/mo",
+  ["Unlimited email accounts on all plans",
+   "Built-in warmup that runs automatically",
+   "Clean campaign builder with good analytics"],
+  ["No built-in data or contact finding. You need a separate data source",
+   "Email-only. No LinkedIn, phone, or multi-channel features",
+   "Advanced features like API access require higher-tier plans"])
+
+T("saleshandy", "Saleshandy", "cold-email", "https://www.saleshandy.com", 7.5,
+  "Affordable cold email platform with decent deliverability features. Email verification built in, sender rotation, and multi-step sequences. Good value for teams watching their budget.",
+  "Budget-conscious SDR teams that want solid cold email without overpaying",
+  "$25/mo",
+  ["Built-in email verification saves a separate tool subscription",
+   "Sender rotation and warmup included",
+   "Pricing is straightforward with no hidden upsells"],
+  ["Smaller user community means fewer resources and templates",
+   "Deliverability features are good but not best-in-class",
+   "Limited multi-channel capabilities beyond email"])
+
+T("lemlist", "Lemlist", "cold-email", "https://www.lemlist.com", 7.6,
+  "Cold email with a personalization edge. Image and video personalization let you stand out in crowded inboxes. The liquid syntax templating is powerful for reps who want to go beyond {{firstName}}.",
+  "SDRs who want to stand out with personalized images and videos in cold emails",
+  "$39+/mo",
+  ["Image and video personalization that competitors don't offer",
+   "Liquid syntax templating for advanced personalization",
+   "Built-in warmup and deliverability tools"],
+  ["Higher starting price than Instantly or Saleshandy",
+   "Personalization features require effort to set up properly",
+   "Volume limits on lower-tier plans"])
+
+T("smartlead", "Smartlead", "cold-email", "https://www.smartlead.ai", 7.3,
+  "Built for agencies managing multiple client campaigns. White-label dashboards, unlimited mailboxes, and client-level reporting. If you're running cold email for more than one company, Smartlead is built for your workflow.",
+  "Agencies and consultants managing cold email across multiple clients",
+  "$39+/mo",
+  ["Unlimited mailboxes and client-level campaign management",
+   "White-label reporting for agency clients",
+   "Strong deliverability with auto-rotation and warmup"],
+  ["UI is functional but less polished than Instantly or Lemlist",
+   "Learning curve for the multi-client setup",
+   "Primary focus on agencies means solo SDR features lag"])
+
+T("reply-io", "Reply.io", "cold-email", "https://reply.io", 7.3,
+  "Multi-channel sequences that combine email, LinkedIn, calls, and tasks in one workflow. If your outbound strategy goes beyond email-only, Reply.io connects the channels without needing separate tools.",
+  "SDR teams running multi-channel outbound across email, LinkedIn, and phone",
+  "$49+/user/mo",
+  ["True multi-channel: email, LinkedIn, calls, and tasks in one sequence",
+   "AI email assistant for drafting and optimizing",
+   "Chrome extension for LinkedIn prospecting"],
+  ["Per-seat pricing gets expensive for larger teams",
+   "Multi-channel setup requires more configuration than email-only tools",
+   "Deliverability features are solid but not market-leading"])
+
+T("woodpecker", "Woodpecker", "cold-email", "https://woodpecker.co", 7.0,
+  "Simple, clean cold email tool built for small teams. Good deliverability, straightforward sequences, no bloat. If you want to send cold emails without spending a day learning the platform, Woodpecker delivers.",
+  "Small sales teams that want simple, reliable cold email without complexity",
+  "$29+/mo",
+  ["Clean interface with minimal learning curve",
+   "Good deliverability with built-in warm-up",
+   "Condition-based follow-ups and A/B testing"],
+  ["Feature set is thinner than Instantly or Smartlead",
+   "No LinkedIn or multi-channel features",
+   "Smaller integration ecosystem than competitors"])
+
 
 # --- Roundup Articles ---
 
@@ -1566,6 +1791,59 @@ TOOL_ROUNDUPS = [
             ("Is Apollo's data accurate enough for outbound?", "For US contacts, yes. Email accuracy is strong, and direct dials are improving. For European or APAC contacts, accuracy drops. If more than 30% of your prospects are outside the US, test Apollo against Cognism on a sample list before committing. Most US-focused reps find Apollo's data more than sufficient."),
             ("Can Lusha replace Apollo for a sales team?", "Only if your team does quick one-off lookups and doesn't need sequencing. Lusha doesn't have built-in email sequences, a dialer, or workflow automation. It's a lookup tool, not a platform. Teams that try to use Lusha as their primary data source usually end up adding Apollo or ZoomInfo for bulk prospecting."),
             ("Why is Cognism so expensive compared to Apollo and Lusha?", "Phone-verified mobile numbers cost money to produce. Cognism's Diamond Data process involves calling numbers to verify they're active, which is expensive at scale. You're also paying for GDPR compliance infrastructure and European data coverage that Apollo and Lusha don't match. If you sell into EMEA, the premium pays for itself in connect rates. If you don't, it's wasted budget."),
+        ],
+    },
+    {
+        "slug": "best-ai-tools-for-sales-reps",
+        "title": "Best AI Tools for Sales Reps in 2026",
+        "meta_desc": "8 best AI tools for sales reps in 2026, ranked. Call intelligence, email coaching, meeting notes, and research assistants compared with honest pros and cons.",
+        "date": "2026-04-02",
+        "intro": "AI tools for sales reps fall into three categories: tools that find prospects, tools that write for you, and tools that analyze your calls. The best reps use all three. Here's what saves time versus what's just hype.",
+        "tools": [
+            ("apollo", "Apollo's AI features go beyond contact lookup. The AI email writer drafts personalized outreach from prospect data, the dialer logs calls automatically, and the workflow engine triggers actions based on prospect behavior. It's the closest thing to an all-in-one AI sales platform at a price that doesn't require VP approval.", True),
+            ("gong", "If you're on more than 5 calls a week, Gong pays for itself in coaching insights alone. The AI analyzes talk-to-listen ratios, competitive mentions, pricing discussions, and objection patterns across your entire team. Managers get data they'd never surface from CRM notes. The catch: it's expensive and requires full-team buy-in to work.", False),
+            ("lavender", "Real-time email scoring that tells you why your email won't get a reply before you send it. Subject line too long? Body too dense? No personalization? Lavender flags it. Most useful for reps in their first two years who are still building their email instincts.", False),
+            ("fireflies-ai", "Joins your Zoom, Google Meet, or Teams call, records everything, and gives you a searchable transcript with AI-generated action items. The free tier handles basic transcription. Paid plans add CRM integrations and team analytics. Biggest risk: prospects who don't want to be recorded.", False),
+            ("chatgpt-claude", "The Swiss Army knife. Research a prospect's company before a call. Draft a follow-up email in 30 seconds. Prep for objections you haven't heard before. Neither tool is built for sales, but both handle sales tasks better than most sales-specific AI tools. The trick is knowing how to prompt them.", False),
+            ("fathom", "Free call recording with AI summaries. That's it. No complex setup, no team-wide rollout required, no sales pitch from the vendor. Install it, join a call, get notes. For solo reps who want call recording without committing to Gong's price tag, Fathom is the answer.", False),
+            ("autobound", "Writes personalized first lines by pulling data from LinkedIn, company news, and job changes. The output is hit-or-miss depending on how much public data exists for your prospect. Works best for prospects at companies that publish content and make news. Falls flat for small private companies with no online footprint.", False),
+            ("copy-ai", "Fast first drafts for email sequences, follow-ups, LinkedIn messages, and sales decks. You'll need to edit everything it produces. Think of it as a rough draft machine, not a finished copy generator. The free tier is generous enough to test before committing.", False),
+        ],
+        "winner_slug": "apollo",
+        "winner_label": "Best All-in-One AI",
+        "runner_up_slug": "gong",
+        "runner_up_label": "Best Call Intelligence",
+        "faqs": [
+            ("Do I need separate AI tools if I already use Apollo?", "Apollo covers prospecting, email writing, and basic workflow automation. Where it falls short: call recording (use Gong or Fathom), real-time email coaching (use Lavender), and deep research (use ChatGPT or Claude). Most reps end up with Apollo as the base plus one or two specialized AI tools on top."),
+            ("Is Gong worth the price for a small team?", "Probably not for teams under 5 reps. Gong's value comes from aggregate call analysis across a team. With 2-3 reps, you don't have enough data for meaningful patterns. Fathom gives you individual call recording for free. Start there and upgrade to Gong when your team grows."),
+            ("Can ChatGPT or Claude replace dedicated sales AI tools?", "For research and email drafting, they're competitive. For call recording, email scoring, and CRM integration, they can't. The dedicated tools automate workflows that general AI assistants require manual effort to replicate. Use ChatGPT/Claude for tasks that don't have a purpose-built alternative."),
+            ("What's the fastest AI win for a new sales rep?", "Fathom for call recording (free, zero setup) and Lavender for email coaching (free tier available). Both deliver value on day one without any configuration. Add ChatGPT or Claude for prospect research and you have an AI-assisted workflow running in under an hour."),
+        ],
+    },
+    {
+        "slug": "best-cold-email-tools-for-sdrs",
+        "title": "Best Cold Email Tools for SDRs in 2026",
+        "meta_desc": "7 best cold email tools for SDRs in 2026. Instantly, Apollo, Saleshandy, Lemlist, and more ranked by deliverability, pricing, and volume.",
+        "date": "2026-04-02",
+        "intro": "Cold email is harder than it was two years ago. Google and Microsoft throttle bulk senders. Spam filters are smarter. But the SDRs who nail deliverability and personalization are still booking meetings. The tool you pick matters more than ever.",
+        "tools": [
+            ("instantly", "The volume play. Unlimited email accounts, built-in warmup, and deliverability that holds up at scale. If you're running 5+ inboxes and sending 500+ emails per day, Instantly is built for that workflow. No built-in data, so you'll need Apollo or another source for contacts. But for the sending and deliverability layer, it's the best value on the market.", True),
+            ("apollo", "Data plus sequences in one platform. You find the contacts and email them from the same tool. The free tier gives you 10,000 email credits monthly, which is enough for most SDRs to test before paying. Deliverability is decent but not best-in-class. If volume is your priority, pair Apollo's data with Instantly's sending.", False),
+            ("saleshandy", "The budget pick that doesn't feel like a compromise. Built-in email verification saves you a separate tool subscription. Sender rotation and warmup work out of the box. The interface is clean and the pricing is transparent. Won't win any awards for innovation, but it ships emails reliably at a fair price.", False),
+            ("lemlist", "Stands out with image and video personalization that no other cold email tool matches. You can drop a prospect's LinkedIn photo into a custom image, record a personalized video intro, and use liquid syntax templating that goes way beyond basic merge fields. If your differentiator is personalization depth, Lemlist gives you tools the others don't.", False),
+            ("smartlead", "Built for agencies, not individual SDRs. If you manage cold email campaigns for multiple clients, Smartlead's white-label dashboards, unlimited mailboxes, and client-level reporting make the workflow manageable. Solo SDRs will find the multi-client architecture overkill.", False),
+            ("reply-io", "The multi-channel option. Email, LinkedIn, phone, and manual tasks in a single sequence. If your outbound strategy requires touching prospects across multiple channels in a coordinated flow, Reply.io connects them without needing separate tools. Per-seat pricing adds up fast for larger teams.", False),
+            ("woodpecker", "Simple and reliable. Small teams that want to send cold emails without spending a day learning the platform will appreciate Woodpecker's clean interface and straightforward setup. Good deliverability, basic A/B testing, condition-based follow-ups. Nothing flashy, nothing broken.", False),
+        ],
+        "winner_slug": "instantly",
+        "winner_label": "Best for Volume & Deliverability",
+        "runner_up_slug": "apollo",
+        "runner_up_label": "Best All-in-One",
+        "faqs": [
+            ("How many email accounts do I need for cold outreach in 2026?", "Plan for 30-50 emails per inbox per day to stay under spam thresholds. If you're sending 500 emails daily, you need 10-15 inboxes. Instantly and Smartlead handle unlimited accounts. Apollo and Lemlist have limits on lower-tier plans. Warm up every new inbox for at least 2 weeks before sending cold emails."),
+            ("Is Apollo good enough for cold email, or do I need a separate sending tool?", "Apollo's email sequences work for moderate volume (under 200 emails/day from a few inboxes). For higher volume, most SDRs export Apollo contacts and send through Instantly or Smartlead for better deliverability controls and unlimited inbox management. Apollo's strength is the data, not the sending infrastructure."),
+            ("What's the best cold email tool for personalization?", "Lemlist, by a wide margin. Image personalization, video messages, and liquid syntax templating give you options that other tools don't have. Autobound (not a sending tool, but a writing tool) generates personalized first lines from prospect data. Pair Autobound's copy with Lemlist's sending for maximum personalization."),
+            ("How do I keep cold emails out of spam in 2026?", "Four things that matter: dedicated sending domains (never use your primary domain), proper SPF/DKIM/DMARC authentication, inbox warmup for at least 2 weeks, and keeping daily volume under 50 per inbox. Tools like Instantly and Smartlead automate warmup and rotation. But no tool fixes bad targeting. If you're emailing people who don't match your ICP, spam complaints will tank your domain regardless of the platform."),
         ],
     },
 ]
