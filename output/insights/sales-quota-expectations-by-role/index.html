@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1D4ED8">
+    <title>Sales Quota Expectations by Role and Company Stage - Seller Report</title>
+    <meta name="description" content="What sales quotas look like across SDR, AE, and leadership roles at startups, mid-market, and enterprise companies. Benchmarks from real postings.">
+    <link rel="canonical" href="https://thesellerreport.com/insights/sales-quota-expectations-by-role/">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thesellerreport.com/insights/sales-quota-expectations-by-role/">
+    <meta property="og:title" content="Sales Quota Expectations by Role and Company Stage - Seller Report">
+    <meta property="og:description" content="What sales quotas look like across SDR, AE, and leadership roles at startups, mid-market, and enterprise companies. Benchmarks from real postings.">
+    <meta property="og:site_name" content="Seller Report">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sales Quota Expectations by Role and Company Stage - Seller Report">
+    <meta name="twitter:description" content="What sales quotas look like across SDR, AE, and leadership roles at startups, mid-market, and enterprise companies. Benchmarks from real postings.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/logos/favicon-32.svg" sizes="32x32">
+    <link rel="apple-touch-icon" href="/logos/apple-touch-icon.svg">
+
+    <!-- OG Image — TODO: replace SVG with PNG for social sharing compatibility -->
+    <!-- <meta property="og:image" content="https://thesellerreport.com/logos/og-image.svg"> -->
+    <!-- <meta name="twitter:image" content="https://thesellerreport.com/logos/og-image.svg"> -->
+
+    <style>
+:root {
+    --sr-primary: #1D4ED8;
+    --sr-primary-light: #3B82F6;
+    --sr-accent: #10B981;
+    --sr-accent-light: #D1FAE5;
+    --sr-accent-dark: #059669;
+    --sr-bg: #FAFAFA;
+    --sr-bg-surface: #FFFFFF;
+    --sr-bg-tinted: #F0FDF4;
+    --sr-text: #1E293B;
+    --sr-text-secondary: #64748B;
+    --sr-border: #E5E7EB;
+    --sr-danger: #EF4444;
+    --sr-dark-bg: #0F172A;
+    --sr-hero-bg: #0F172A;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--sr-text);
+    background: var(--sr-bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--sr-primary); text-decoration: none; }
+a:hover { color: var(--sr-accent-dark); }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.site-nav {
+    background: var(--sr-dark-bg);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+.nav-brand:hover { color: var(--sr-accent); }
+.nav-brand span { font-size: 1.15rem; }
+.nav-brand-logo { height: 36px; width: auto; }
+.nav-brand-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--sr-accent);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--sr-primary);
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    align-items: center;
+}
+.nav-item { position: relative; }
+.nav-item > a {
+    color: rgba(255,255,255,0.85);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: block;
+}
+.nav-item > a:hover, .nav-item > a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+}
+.nav-item--dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-toggle {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    padding: 4px;
+    margin-left: -8px;
+}
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    min-width: 200px;
+    padding: 8px 0;
+    list-style: none;
+    z-index: 200;
+}
+.nav-item--dropdown.open .nav-dropdown { display: block; }
+.nav-dropdown li a {
+    display: block;
+    padding: 8px 16px;
+    color: var(--sr-text);
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+.nav-dropdown li a:hover { background: var(--sr-bg-tinted); }
+.nav-cta {
+    background: var(--sr-accent);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.15s;
+    text-decoration: none;
+}
+.nav-cta:hover { background: var(--sr-accent-dark); color: #fff !important; }
+.nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Hero */
+.hero {
+    background: var(--sr-dark-bg);
+    color: #fff;
+    padding: 80px 0 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(29,78,216,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero .container { position: relative; z-index: 1; }
+.hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; line-height: 1.15; }
+.hero p { font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto 40px; }
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-stat { text-align: center; }
+.hero-stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--sr-accent);
+    display: block;
+}
+.hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; }
+
+/* Section */
+.section { padding: 64px 0; }
+.section--alt { background: var(--sr-bg-surface); }
+.section h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; color: var(--sr-text); }
+.section-subtitle { color: var(--sr-text-secondary); font-size: 1.05rem; margin-bottom: 32px; }
+
+/* Cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+.card {
+    background: var(--sr-bg-surface);
+    border: 1px solid var(--sr-border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--sr-primary);
+}
+.card-title a { color: inherit; }
+.card-title a:hover { color: var(--sr-accent-dark); }
+.card-company { font-weight: 500; color: var(--sr-text-secondary); margin-bottom: 4px; }
+.card-meta { font-size: 0.85rem; color: var(--sr-text-secondary); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.card-salary { font-weight: 600; color: var(--sr-accent-dark); }
+.card-salary-green { font-weight: 700; color: var(--sr-accent); }
+.card-badge {
+    display: inline-block;
+    background: var(--sr-bg-tinted);
+    color: var(--sr-accent-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.card-badge--remote { background: var(--sr-accent-light); color: var(--sr-accent-dark); }
+
+/* Job Board */
+.job-filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--sr-border);
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.15s;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--sr-primary);
+    color: #fff;
+    border-color: var(--sr-primary);
+}
+
+/* Salary table */
+.salary-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.salary-table th {
+    background: var(--sr-primary);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.salary-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--sr-border);
+    font-size: 0.95rem;
+}
+.salary-table tr:hover td { background: var(--sr-bg-tinted); }
+.salary-table .salary-num { font-weight: 600; color: var(--sr-accent); }
+
+/* Article */
+.article-content { max-width: 780px; margin: 0 auto; }
+.article-content h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; color: var(--sr-text); line-height: 1.2; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 48px; margin-bottom: 16px; color: var(--sr-text); }
+.article-content h3 { font-size: 1.2rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
+.article-content p { margin-bottom: 20px; line-height: 1.75; }
+.article-content ul, .article-content ol { margin-bottom: 20px; padding-left: 24px; }
+.article-content li { margin-bottom: 8px; line-height: 1.65; }
+.article-meta { color: var(--sr-text-secondary); font-size: 0.9rem; margin-bottom: 32px; }
+.article-date { color: var(--sr-text-secondary); }
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 16px 0;
+    font-size: 0.85rem;
+    color: var(--sr-text-secondary);
+}
+.breadcrumb-link { color: var(--sr-text-secondary); }
+.breadcrumb-link:hover { color: var(--sr-primary); }
+.breadcrumb-sep { margin: 0 8px; opacity: 0.4; }
+.breadcrumb-current { color: var(--sr-text); font-weight: 500; }
+
+/* FAQ */
+.faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--sr-border); }
+.faq-section h2 { font-size: 1.5rem; margin-bottom: 24px; }
+.faq-item { margin-bottom: 24px; }
+.faq-question { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; color: var(--sr-text); }
+.faq-answer { color: var(--sr-text-secondary); line-height: 1.7; }
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.pagination a, .pagination span {
+    padding: 8px 14px;
+    border: 1px solid var(--sr-border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sr-text);
+}
+.pagination a:hover { background: var(--sr-primary); color: #fff; border-color: var(--sr-primary); }
+.pagination .current { background: var(--sr-primary); color: #fff; border-color: var(--sr-primary); }
+
+/* Footer */
+.site-footer {
+    background: var(--sr-dark-bg);
+    color: rgba(255,255,255,0.75);
+    padding: 64px 0 32px;
+}
+.footer-container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; margin-bottom: 48px; }
+.footer-column h4 { color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.footer-column ul { list-style: none; }
+.footer-column li { margin-bottom: 8px; }
+.footer-column a { color: rgba(255,255,255,0.65); font-size: 0.9rem; transition: color 0.15s; }
+.footer-column a:hover { color: var(--sr-accent); }
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Data callout */
+.data-callout {
+    background: var(--sr-bg-tinted);
+    border-left: 4px solid var(--sr-accent);
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 24px 0;
+}
+.data-callout strong { color: var(--sr-accent-dark); }
+
+/* Stat grid on homepage */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+}
+.stat-card {
+    background: var(--sr-bg-surface);
+    border: 1px solid var(--sr-border);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+}
+.stat-card-number { font-size: 2rem; font-weight: 800; color: var(--sr-accent); }
+.stat-card-label { font-size: 0.85rem; color: var(--sr-text-secondary); margin-top: 4px; }
+
+/* Newsletter */
+.nl-section { padding: 64px 0; background: var(--sr-bg-tinted); }
+.nl-card { max-width: 560px; margin: 0 auto; text-align: center; }
+.nl-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; color: var(--sr-text); }
+.nl-desc { color: var(--sr-text-secondary); margin-bottom: 24px; font-size: 1.05rem; }
+.nl-form-row { display: flex; gap: 8px; max-width: 440px; margin: 0 auto; }
+.nl-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--sr-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.nl-input:focus { border-color: var(--sr-primary); }
+.nl-btn {
+    background: var(--sr-accent);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+.nl-btn:hover { background: var(--sr-accent-dark); }
+.nl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.nl-msg { margin-top: 12px; font-size: 0.95rem; min-height: 1.4em; }
+.nl-msg--success { color: var(--sr-accent-dark); font-weight: 500; }
+.nl-msg--error { color: var(--sr-danger); }
+.nl-fine { margin-top: 12px; font-size: 0.8rem; color: var(--sr-text-secondary); opacity: 0.7; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .hero-stats { gap: 24px; }
+    .hero-stat-number { font-size: 1.6rem; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--sr-dark-bg); padding: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .nav-links.open { display: flex; }
+    .nav-mobile-toggle { display: block; }
+    .nav-cta { display: none; }
+    .card-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .nl-form-row { flex-direction: column; }
+    .salary-table { font-size: 0.85rem; }
+    .salary-table th, .salary-table td { padding: 8px 10px; }
+}
+</style>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TERL5S76D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1TERL5S76D');
+    </script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Sales Quota Expectations by Role and Company Stage", "description": "What sales quotas look like across SDR, AE, and leadership roles at startups, mid-market, and enterprise companies. Benchmarks from real postings.", "wordCount": 2072, "author": {"@type": "Person", "name": "Rome Thorndike", "url": "https://thesellerreport.com/about/"}, "publisher": {"@type": "Organization", "name": "Seller Report", "url": "https://thesellerreport.com"}, "datePublished": "2026-04-02", "dateModified": "2026-04-02", "url": "https://thesellerreport.com/insights/sales-quota-expectations-by-role/", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://thesellerreport.com/insights/sales-quota-expectations-by-role/"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thesellerreport.com/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://thesellerreport.com/insights/"}, {"@type": "ListItem", "position": 3, "name": "Sales Quota Expectations by Role and Com"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a typical SDR quota?", "acceptedAnswer": {"@type": "Answer", "text": "SDR quotas typically require 12-20 qualified meetings per month or $100K-$400K in pipeline value. Enterprise SDRs (808 roles) generate fewer meetings at higher values. At well-calibrated companies, 65-75% of SDRs hit quota monthly."}}, {"@type": "Question", "name": "What is a normal AE quota?", "acceptedAnswer": {"@type": "Answer", "text": "AE quotas vary by segment: SMB AEs carry $400K-$800K annual, mid-market AEs carry $600K-$1.2M, and enterprise AEs carry $800K-$2M+. 296 postings reference seven-figure deal values at the enterprise level."}}, {"@type": "Question", "name": "What is a good OTE-to-quota ratio?", "acceptedAnswer": {"@type": "Answer", "text": "The standard ratio is 5:1 to 8:1. If your OTE is $200K, a fair quota is $1M-$1.6M. Below 4:1 warrants investigation. Above 10:1 means the company expects very high leverage and fewer than 40% of reps likely hit target."}}, {"@type": "Question", "name": "How does quota ramp work for new sales hires?", "acceptedAnswer": {"@type": "Answer", "text": "Standard ramp: Month 1 at 0-25% quota, Month 2 at 25-50%, Month 3 at 50-75%, Month 4+ at full quota. The best companies offer guaranteed ramp (full OTE regardless of performance). Non-recoverable draws are second best. Recoverable draws create debt pressure and are the worst option."}}, {"@type": "Question", "name": "What percentage of sales reps hit their quota?", "acceptedAnswer": {"@type": "Answer", "text": "At healthy companies, 60-70% of the team hits plan. Below 50% indicates unrealistic quotas or inadequate enablement. Above 80% suggests quotas may be set too low, which often leads to aggressive raises the following year. Always ask about team attainment rates during interviews."}}]}</script>
+
+</head>
+<body>
+<nav class="site-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-brand">
+            <img src="/logos/logo-white.svg" alt="The Seller Report" class="nav-brand-logo">
+        </a>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="/jobs/">Jobs</a></li>
+<li class="nav-item nav-item--dropdown">
+    <a href="/salaries/">Salaries</a>
+    <button class="nav-dropdown-toggle" aria-label="Toggle Salaries submenu" aria-expanded="false">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav-dropdown">
+        <li><a href="/salaries/">Salary Index</a></li>
+<li><a href="/salaries/by-seniority/">By Seniority</a></li>
+<li><a href="/salaries/by-location/">By Location</a></li>
+
+    </ul>
+</li>
+<li class="nav-item"><a href="/insights/" class="active">Insights</a></li>
+<li class="nav-item"><a href="/tools/">Tools</a></li>
+<li class="nav-item"><a href="/companies/">Companies</a></li>
+<li class="nav-item"><a href="/about/">About</a></li>
+
+        </ul>
+        <a href="/jobs/" class="nav-cta">Browse Jobs</a>
+        <button class="nav-mobile-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+    </div>
+</nav>
+<main class="main-content">
+
+<section class="section">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/" class="breadcrumb-link">Home</a><span class="breadcrumb-sep">/</span><a href="/insights/" class="breadcrumb-link">Insights</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">Sales Quota Expectations by Role and Com</span></nav>
+        <div class="article-content">
+            <h1>Sales Quota Expectations by Role and Company Stage</h1>
+            <div class="article-meta">By Rome Thorndike &middot; 2026-04-02 &middot; 2072 words</div>
+            <p>Quota is the number that defines your sales career. It determines your compensation, your ranking, your promotion timeline, and your stress level. Despite its importance, quota expectations are rarely discussed openly during hiring. Companies protect this information because it directly affects their ability to recruit. We compiled benchmarks from 4,494 job postings and industry data to give you a realistic picture of what quotas look like across roles and company stages.</p>
+
+<h2>SDR Quota Benchmarks</h2>
+
+<p>SDR quotas are activity-based and outcome-based. The most common quota structures:</p>
+
+<p><strong>Meetings booked per month:</strong> 12-20 qualified meetings is the standard range. "Qualified" means the AE accepts the meeting after confirming it meets agreed-upon criteria. A meeting that gets rejected by the AE typically does not count.</p>
+
+<p><strong>Pipeline generated per month:</strong> $100K-$400K in pipeline value, depending on the company's average deal size. Enterprise-focused SDRs (808 enterprise roles in our data) generate fewer meetings at higher pipeline values. SMB SDRs (357 roles) generate more meetings at lower values.</p>
+
+<p><strong>Activity metrics:</strong> Some companies add activity quotas on top of outcome quotas: 50-80 calls per day, 30-50 emails per day, 10-15 LinkedIn touchpoints per day. Activity quotas are controversial. They ensure minimum effort but can incentivize quantity over quality. The best companies are moving away from activity quotas and toward outcome-only measurement.</p>
+
+<p>What percentage of SDRs hit quota? At well-calibrated companies, 65-75% of the team hits quota in any given month. If fewer than 50% of SDRs are hitting quota, the quota is likely unrealistic or the enablement is inadequate. This is a question worth asking during your interview.</p>
+
+<h2>AE Quota Benchmarks by Segment</h2>
+
+<p>AE quotas are revenue-based. The target varies dramatically by segment and deal size:</p>
+
+<p><strong>SMB AEs:</strong> Annual quotas of $400K-$800K in annual recurring revenue (ARR) or total contract value (TCV). These AEs close high volumes of smaller deals. Monthly quota translates to $33K-$67K, meaning you need to close 5-15 deals per month at average deal sizes of $5K-$15K. 92 postings reference short sales cycles, which cluster in the SMB segment.</p>
+
+<p><strong>Mid-market AEs:</strong> Annual quotas of $600K-$1.2M ARR. Deal sizes range from $25K-$100K ACV. Sales cycles run 2-4 months. You carry 8-15 active deals in your pipeline at any given time. 203 roles target mid-market buyers. This segment requires balancing deal quality with volume.</p>
+
+<p><strong>Enterprise AEs:</strong> Annual quotas of $800K-$2M+ ARR. Deal sizes exceed $100K ACV, with 296 postings referencing seven-figure deals. Sales cycles run 6-12 months (398 roles reference long cycles). You carry 3-8 active deals at a time, and each requires multi-stakeholder navigation across 6-12 month timelines.</p>
+
+<p><strong>Strategic/Named Account AEs:</strong> Quotas of $1.5M-$5M+ ARR. These AEs manage a portfolio of 5-15 named accounts and are responsible for all new business and expansion within those accounts. The quota includes a mix of new logo and expansion revenue.</p>
+
+<h2>Quota Ratios: OTE to Quota</h2>
+
+<p>A critical ratio that most candidates never calculate: the relationship between your OTE and your quota. This ratio reveals how realistic the compensation promise actually is.</p>
+
+<p><strong>Standard OTE-to-quota ratio:</strong> 5:1 to 8:1. Meaning if your OTE is $200K, your quota should be $1M-$1.6M. This ratio ensures that paying you OTE is economically rational for the company (you generate 5-8x what they pay you).</p>
+
+<p><strong>Below 4:1:</strong> The company is either overpaying (unlikely) or the quota is unrealistically low (rare). If you see this ratio, investigate further. It may indicate that the variable comp is structured to make OTE very difficult to achieve.</p>
+
+<p><strong>Above 10:1:</strong> The company expects you to generate 10x+ your OTE. This is common at companies with low-margin products or high customer acquisition costs. At these ratios, the quota is often unrealistic and fewer than 40% of reps hit target.</p>
+
+<p>420 postings disclose OTE. When OTE is disclosed, calculate this ratio using the company's product pricing to estimate your quota. If the ratio is above 8:1, ask directly about team attainment rates.</p>
+
+<h2>Quota by Company Stage</h2>
+
+<p><strong>Early-stage (Seed to Series A).</strong> Quotas are often undefined or loosely set. 128 postings are for first sales hire roles where you may help define the quota yourself. At this stage, the quota is aspirational. If the company has limited revenue history, there is no baseline to calibrate against. Expect frequent quota adjustments as the company learns its sales motion.</p>
+
+<p><strong>Growth-stage (Series B to D).</strong> Quotas become structured. Companies at this stage have enough revenue history to set data-informed targets. 3,086 growth-hiring postings cluster here. Quotas are competitive but achievable, typically calibrated so 60-70% of the team hits plan. This is the stage where quota-to-OTE ratios are most fairly set.</p>
+
+<p><strong>Late-stage and public companies.</strong> Quotas are rigid, often set by finance or RevOps teams using top-down models. Territory and quota assignments follow formulaic processes. Less room for negotiation, but more predictability. Quota attainment data is available internally, so you can see exactly how the team has performed historically.</p>
+
+<h2>Ramp Quota: Your First Months</h2>
+
+<p>Ramp quotas protect new hires during their learning period. Standard structures:</p>
+
+<p><strong>Month 1:</strong> 0-25% of full quota. Focus on training and pipeline building. Some companies set no quota for month one.</p>
+<p><strong>Month 2:</strong> 25-50% of full quota. Begin running deals with support from your manager or a senior AE.</p>
+<p><strong>Month 3:</strong> 50-75% of full quota. You should be running deals independently.</p>
+<p><strong>Month 4+:</strong> Full quota. The ramp is over, and you are expected to perform at the same level as tenured reps.</p>
+
+<p>Some companies offer a ramp guarantee: full OTE paid during the ramp period regardless of performance. This is the gold standard. A non-recoverable draw (advance against future commissions that does not need to be repaid) is the next best option. A recoverable draw (advance that must be repaid from future commissions) is the worst, as it creates debt pressure during your most vulnerable period.</p>
+
+<p>Negotiate ramp terms before you negotiate base salary. A 3-month guaranteed ramp at full OTE is worth $15-30K in protected income. That protection matters more than a $5K base salary increase.</p>
+
+<h2>Quota for Sales Leadership</h2>
+
+<p>Sales managers and directors carry team quotas, not individual quotas. The dynamics differ significantly:</p>
+
+<p><strong>Frontline managers:</strong> Own the aggregate quota of 5-10 direct reports. If each AE carries $1M and you manage 8, your team quota is $8M. Your compensation ties to the team's aggregate attainment, which means your personal performance depends on hiring, coaching, and territory management rather than your own selling.</p>
+
+<p><strong>Directors:</strong> Own multiple teams or a segment. Quotas of $20M-$50M+ depending on company size. At this level, quota attainment is as much about strategy (market selection, comp plan design, hiring caliber) as execution.</p>
+
+<p><strong>VPs:</strong> Own the entire company revenue target or a major division. Quotas of $50M-$200M+. VP-level compensation ties to company-wide revenue attainment, making it the most leveraged position in the org. Your success depends on every decision you make about people, process, and strategy.</p>
+
+<h2>How to Evaluate Quota Before Accepting an Offer</h2>
+
+<p>Ask these questions during the interview process to assess quota fairness:</p>
+
+<p><strong>"What percentage of the team hit quota last year?"</strong> Below 50% is a red flag. 60-70% is healthy. Above 80% suggests the quota may be too easy, which often means the company will raise it aggressively next year.</p>
+
+<p><strong>"How are territories assigned?"</strong> Random or tenure-based assignment introduces luck into your results. Data-driven territory assignment (by market size, company count, or revenue potential) is more fair and more predictable.</p>
+
+<p><strong>"When was the last time quotas were adjusted mid-year?"</strong> Companies that raise quotas mid-year when reps are performing well are punishing success. This is a serious red flag that signals bad faith in the comp plan.</p>
+
+<p><strong>"What is the quota ramp for new hires, and is there a draw?"</strong> The answer tells you how much financial protection you have during your most vulnerable months.</p>
+
+<p><strong>"What are the accelerators above 100%?"</strong> 686 postings advertise uncapped commissions. The difference between 1.2x and 2x accelerators above quota can mean $30-50K in a strong year. Accelerator structure is often more important than base salary for top performers.</p>
+
+<p>Quota defines your sales experience more than any other single factor. A generous base salary with an unrealistic quota produces stress and failure. A modest base salary with a fair quota and strong accelerators produces wealth and career momentum. Understand the quota before you accept the job, and you will make better career decisions than 90% of sales professionals who only negotiate base salary.</p>
+
+<h2>How Quotas Change Over Time</h2>
+
+<p>Quotas are not static. Understanding how they evolve helps you plan your career:</p>
+
+<p><strong>Annual increases.</strong> Most companies increase quotas 10-20% year over year, even when the market does not grow by that amount. The expectation is that experienced reps improve their efficiency and that new product features expand the addressable market. Budget for quota increases when evaluating long-term compensation at any company.</p>
+
+<p><strong>Territory changes.</strong> When companies restructure territories (new market segments, geographic splits, account reassignment), your quota may change dramatically. A territory restructure that cuts your best accounts and adds greenfield territory is effectively a demotion disguised as a lateral move. Watch for this and advocate for fair adjustment during restructuring.</p>
+
+<p><strong>Product launches.</strong> New product lines often come with add-on quotas. If your company launches a new product and adds $200K to your annual target, evaluate whether the product is ready to sell and whether the added quota is realistic given market adoption timelines.</p>
+
+<p><strong>Market downturns.</strong> In economic slowdowns, well-managed companies reduce quotas to reflect market reality. Poorly managed companies maintain unrealistic targets and blame their sellers when attainment drops. How a company handles quota during a downturn reveals everything about their relationship with their sales team.</p>
+
+<h2>Quota and Pipeline Coverage</h2>
+
+<p>The relationship between quota and pipeline coverage is the most important operational metric for any salesperson:</p>
+
+<p><strong>The 3x rule.</strong> For predictable businesses with established close rates, you need pipeline coverage of at least 3x your quota. If your quarterly quota is $300K, you need $900K in active pipeline at all times. This cushion accounts for deals that slip, stall, or close at lower values than projected.</p>
+
+<p><strong>The 5x rule for new markets.</strong> If you are selling a new product, entering a new segment, or working a territory with no existing pipeline, 5x coverage is more realistic. Close rates in unfamiliar territory run lower, and the additional pipeline protects you from the uncertainty.</p>
+
+<p><strong>Pipeline velocity.</strong> Coverage alone is not enough. You need pipeline that moves. $1M in pipeline where half the deals have not had activity in 30 days is not real coverage. Track your pipeline velocity (how quickly deals move from stage to stage) and clean out stalled deals ruthlessly. A smaller, active pipeline is more reliable than a large, stagnant one.</p>
+
+<p><strong>Building pipeline while closing.</strong> The most common quota miss pattern: a rep has a strong quarter, stops prospecting to focus on closing, and then faces an empty pipeline the following quarter. The discipline of allocating 20-30% of your time to prospecting, even during strong quarters, prevents the feast-famine cycle that derails careers.</p>
+
+<h2>Quota Fairness: What to Watch For</h2>
+
+<p>Not all quotas are created equal. Several practices indicate a company that sets quotas fairly versus one that manipulates them:</p>
+
+<p><strong>Fair practices:</strong></p>
+<ul>
+<li>Quotas set based on historical territory performance and market data</li>
+<li>Quota changes announced with at least one quarter of advance notice</li>
+<li>Transparent methodology that reps can review and understand</li>
+<li>Team attainment rates shared openly</li>
+<li>Ramp quotas that protect new hires during onboarding</li>
+</ul>
+
+<p><strong>Unfair practices:</strong></p>
+<ul>
+<li>Mid-year quota increases when reps are performing well (punishing success)</li>
+<li>Territory reassignment without quota adjustment (taking accounts without reducing target)</li>
+<li>Opaque quota methodology that reps cannot review</li>
+<li>Clawbacks on commissions for customer churn the rep cannot control</li>
+<li>Quota floors that prevent commission payments until a minimum threshold is reached</li>
+</ul>
+
+<p>If a company practices more than two items from the unfair list, your long-term earning potential is capped regardless of your performance. Choose companies that treat quota as a fair target, not a tool for controlling compensation.</p>
+
+<p>The single most important question you can ask in any sales interview is: "What percentage of the team hit quota last year, and how are quotas set?" The answer to that question tells you more about your future earnings, stress level, and career satisfaction than any other piece of information the company can share. A fair quota at a strong company with good accelerators is the foundation of a lucrative sales career. An unfair quota at any company, regardless of how impressive the OTE looks on paper, is a recipe for frustration and turnover. Know the number before you sign.</p>
+            <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+    <h3 class="faq-question">What is a typical SDR quota?</h3>
+    <p class="faq-answer">SDR quotas typically require 12-20 qualified meetings per month or $100K-$400K in pipeline value. Enterprise SDRs (808 roles) generate fewer meetings at higher values. At well-calibrated companies, 65-75% of SDRs hit quota monthly.</p>
+</div>
+<div class="faq-item">
+    <h3 class="faq-question">What is a normal AE quota?</h3>
+    <p class="faq-answer">AE quotas vary by segment: SMB AEs carry $400K-$800K annual, mid-market AEs carry $600K-$1.2M, and enterprise AEs carry $800K-$2M+. 296 postings reference seven-figure deal values at the enterprise level.</p>
+</div>
+<div class="faq-item">
+    <h3 class="faq-question">What is a good OTE-to-quota ratio?</h3>
+    <p class="faq-answer">The standard ratio is 5:1 to 8:1. If your OTE is $200K, a fair quota is $1M-$1.6M. Below 4:1 warrants investigation. Above 10:1 means the company expects very high leverage and fewer than 40% of reps likely hit target.</p>
+</div>
+<div class="faq-item">
+    <h3 class="faq-question">How does quota ramp work for new sales hires?</h3>
+    <p class="faq-answer">Standard ramp: Month 1 at 0-25% quota, Month 2 at 25-50%, Month 3 at 50-75%, Month 4+ at full quota. The best companies offer guaranteed ramp (full OTE regardless of performance). Non-recoverable draws are second best. Recoverable draws create debt pressure and are the worst option.</p>
+</div>
+<div class="faq-item">
+    <h3 class="faq-question">What percentage of sales reps hit their quota?</h3>
+    <p class="faq-answer">At healthy companies, 60-70% of the team hits plan. Below 50% indicates unrealistic quotas or inadequate enablement. Above 80% suggests quotas may be set too low, which often leads to aggressive raises the following year. Always ask about team attainment rates during interviews.</p>
+</div>
+
+</section>
+            <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--sr-border);">
+                <h3>Related</h3>
+                <p><a href="/insights/sales-job-market-2026/">Sales Job Market in 2026: What the Data Says</a> | <a href="/insights/ae-vs-sdr-salary/">AE vs SDR Salary: Compensation by Level</a> | <a href="/insights/best-companies-hiring-sales/">Best Companies Hiring Sales Reps Now</a></p>
+                <p style="margin-top: 8px;"><a href="/jobs/">Browse all 4,494 sales jobs</a> | <a href="/salaries/">Salary benchmarks</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<section class="nl-section">
+    <div class="container">
+        <div class="nl-card">
+            <h2 class="nl-title">Get the Seller Report</h2>
+            <p class="nl-desc">Free weekly sales job market data, salary shifts, and hiring trends. No spam.</p>
+            <form class="nl-form" id="nl-form" data-list="seller-report" onsubmit="handleSignup(event, this)">
+                <div class="nl-form-row">
+                    <input type="email" name="email" id="nl-email" class="nl-input" placeholder="you@company.com" required>
+                    <button type="submit" class="nl-btn">Subscribe Free</button>
+                </div>
+            </form>
+            <p id="nl-msg" class="nl-msg"></p>
+            <p class="nl-fine">Free weekly email for sales professionals. Unsubscribe anytime.</p>
+        </div>
+    </div>
+</section>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div style="margin-bottom:32px;">
+            <a href="/"><img src="/logos/logo-white.svg" alt="Seller Report" style="height:36px;width:auto;"></a>
+        </div>
+        <div class="footer-grid">
+            <div class="footer-column">
+    <h4>Jobs</h4>
+    <ul>
+        <li><a href="/jobs/">Job Board</a></li>
+<li><a href="/jobs/?filter=remote">Remote Sales Jobs</a></li>
+<li><a href="/jobs/?filter=ae">Account Executive Jobs</a></li>
+
+    </ul>
+</div>
+<div class="footer-column">
+    <h4>Salaries</h4>
+    <ul>
+        <li><a href="/salaries/">Salary Index</a></li>
+<li><a href="/salaries/by-seniority/">By Seniority</a></li>
+<li><a href="/salaries/by-location/">By Location</a></li>
+
+    </ul>
+</div>
+<div class="footer-column">
+    <h4>Insights</h4>
+    <ul>
+        <li><a href="/insights/sales-job-market-2026/">Sales Job Market 2026</a></li>
+<li><a href="/insights/ae-vs-sdr-salary/">AE vs SDR Salary</a></li>
+<li><a href="/insights/best-companies-hiring-sales/">Best Companies Hiring</a></li>
+<li><a href="/insights/negotiate-sales-compensation/">Negotiate Your Comp</a></li>
+<li><a href="/insights/remote-sales-jobs/">Remote Sales Jobs</a></li>
+
+    </ul>
+</div>
+<div class="footer-column">
+    <h4>Tools</h4>
+    <ul>
+        <li><a href="/tools/">Tool Reviews</a></li>
+<li><a href="/tools/best-data-providers-for-sdrs/">Best Data for SDRs</a></li>
+<li><a href="/tools/best-lead-list-building-services/">Lead List Services</a></li>
+<li><a href="/tools/best-cognism-alternatives/">Cognism Alternatives</a></li>
+
+    </ul>
+</div>
+<div class="footer-column">
+    <h4>Network</h4>
+    <ul>
+        <li><a href="https://therevopsreport.com" target="_blank" rel="noopener">RevOps Report</a></li>
+<li><a href="https://gtmepulse.com" target="_blank" rel="noopener">GTME Pulse</a></li>
+<li><a href="https://b2bsalestools.com" target="_blank" rel="noopener">B2B Sales Tools</a></li>
+
+    </ul>
+</div>
+
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Seller Report. All rights reserved.</span>
+            <span>Job market intelligence for sales professionals</span>
+        </div>
+    </div>
+</footer>
+<script>
+(function(){
+    // Mobile nav toggle
+    var toggle = document.querySelector('.nav-mobile-toggle');
+    var links = document.querySelector('.nav-links');
+    if (toggle && links) {
+        toggle.addEventListener('click', function() {
+            links.classList.toggle('open');
+            toggle.classList.toggle('open');
+        });
+    }
+    // Dropdown toggles
+    var dropdowns = document.querySelectorAll('.nav-dropdown-toggle');
+    dropdowns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var parent = btn.closest('.nav-item--dropdown');
+            if (parent) {
+                parent.classList.toggle('open');
+                btn.setAttribute('aria-expanded',
+                    parent.classList.contains('open') ? 'true' : 'false');
+            }
+        });
+    });
+})();
+
+function handleSignup(e, form) {
+    e.preventDefault();
+    var btn = form.querySelector('button');
+    var origText = btn.textContent;
+    var msg = document.getElementById('nl-msg');
+    var email = form.querySelector('input[name="email"]').value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
+    msg.className = 'nl-msg';
+    msg.textContent = '';
+    fetch('https://newsletter-subscribe.rome-workers.workers.dev/subscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email, list: 'seller-report'})
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (data.ok) {
+            msg.className = 'nl-msg nl-msg--success';
+            msg.textContent = "You're in. Watch your inbox.";
+            form.style.display = 'none';
+            form.parentElement.querySelector('.nl-fine').style.display = 'none';
+            if (typeof gtag === 'function') {
+                gtag('event', 'newsletter_signup', {event_category: 'newsletter', event_label: 'inline_form'});
+            }
+        } else {
+            msg.className = 'nl-msg nl-msg--error';
+            msg.textContent = data.error || 'Something went wrong. Try again.';
+        }
+    })
+    .catch(function() {
+        msg.className = 'nl-msg nl-msg--error';
+        msg.textContent = 'Something went wrong. Try again.';
+    })
+    .finally(function() {
+        btn.disabled = false;
+        btn.textContent = origText;
+    });
+}
+</script>
+</body>
+</html>
