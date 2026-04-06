@@ -478,9 +478,11 @@ def get_html_head(title, description, canonical_path, extra_head=""):
     <link rel="icon" type="image/svg+xml" href="/logos/favicon-32.svg" sizes="32x32">
     <link rel="apple-touch-icon" href="/logos/apple-touch-icon.svg">
 
-    <!-- OG Image — TODO: replace SVG with PNG for social sharing compatibility -->
-    <!-- <meta property="og:image" content="{SITE_URL}/logos/og-image.svg"> -->
-    <!-- <meta name="twitter:image" content="{SITE_URL}/logos/og-image.svg"> -->
+    <!-- OG Image -->
+    <meta property="og:image" content="{SITE_URL}/assets/social/og-default.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="{SITE_URL}/assets/social/og-default.png">
 
     <style>{INLINE_CSS}</style>
 {"" if not GA_MEASUREMENT_ID else f"""
