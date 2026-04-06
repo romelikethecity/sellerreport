@@ -1037,7 +1037,7 @@ def _article_content_best_companies():
 
 <p><strong>Methodology requirements.</strong> Companies that mention MEDDIC ({fmt_number(MARKET_DATA.get('methodology', {}).get('Meddic', 0))} postings) or solution selling ({fmt_number(MARKET_DATA.get('methodology', {}).get('Solution Selling', 0))} postings) have invested in sales process. That investment correlates with better training, clearer expectations, and higher win rates.</p>
 
-<h2>The Bottom Line</h2>
+<h2>Picking Your Next Sales Employer</h2>
 
 <p>The best sales employer for you depends on where you are in your career, your preferred selling motion, and your risk tolerance. Early career: join a company with structured training and clear promotion paths (Salesforce, AWS, large SaaS). Mid-career: target growth-stage companies where you can negotiate equity and build a team. Late career: optimize for total comp and look at the enterprise-deal roles at companies willing to pay VP-level money for individual contributors who close seven-figure deals.</p>"""
 
@@ -1356,7 +1356,7 @@ def _article_content_sdr_salary_guide():
 
 <p><strong>Real estate technology:</strong> PropTech companies hire SDRs at market rates. The advantage is exposure to a vertical with long-term growth potential and complex buying cycles that prepare you for enterprise selling.</p>
 
-<h2>The Bottom Line on SDR Compensation</h2>
+<h2>What SDR Compensation Means for Your Career</h2>
 
 <p>SDR salary in 2026 is not about the number on your offer letter. It is about the trajectory that number represents. A {fmt_salary(entry.get('median', 0))} base at the right company leads to {fmt_salary(mid.get('median', 0))} as an AE within 18 months, and the career path only accelerates from there. The best SDR compensation strategy is not finding the highest-paying entry role. It is finding the role with the strongest training, the clearest promotion path, and the most marketable product. Those three factors determine your earnings trajectory far more than any $5K difference in starting base salary.</p>"""
 
@@ -2451,7 +2451,7 @@ def _article_content_sales_resume():
 
 <p><strong>Vague descriptions.</strong> "Responsible for managing accounts" tells the reader nothing. "Managed 45 mid-market accounts generating $1.8M ARR with 95% retention" tells them everything. Replace every "responsible for" with a specific outcome and number.</p>
 
-<p><strong>Job hopping without progression.</strong> Multiple lateral moves (SDR to SDR to SDR at three different companies) suggest performance issues. If you have moved laterally, frame each move as progression: different market segment, larger deal size, better company. If the moves were genuinely lateral, address it proactively in your cover letter.</p>
+<p><strong>Job hopping without progression.</strong> Multiple lateral moves (SDR to SDR to SDR at three different companies) suggest performance issues. If you have moved laterally, frame each move as progression: different market segment, larger deal size, better company. If the moves were lateral, address it proactively in your cover letter.</p>
 
 <p><strong>Irrelevant experience without translation.</strong> Non-sales experience is fine if you translate it into sales-relevant terms. "Managed a team of 12 in retail" becomes "Led 12-person team to exceed monthly revenue targets by 15% for 6 consecutive months." The experience is the same. The framing makes it relevant.</p>
 
@@ -2481,7 +2481,7 @@ def _article_content_sales_resume():
 
 <p><strong>For management roles:</strong> Shift emphasis from personal selling metrics to team metrics: team attainment, hiring track record, rep development, and strategic initiatives. Include both the numbers you achieved individually and the numbers your team achieved under your leadership.</p>
 
-<p>Your sales resume is a selling document. It needs to convince the buyer (hiring manager) that you can deliver the outcome they need (revenue) within the timeline they expect (ramp period). Lead with evidence. Quantify everything. Match your language to what the job posting asks for. And keep it to one page unless you have 10+ years of progressive experience that genuinely requires two pages. In sales, brevity and clarity are features, not limitations.</p>
+<p>Your sales resume is a selling document. It needs to convince the buyer (hiring manager) that you can deliver the outcome they need (revenue) within the timeline they expect (ramp period). Lead with evidence. Quantify everything. Match your language to what the job posting asks for. And keep it to one page unless you have 10+ years of progressive experience that requires two pages. In sales, brevity and clarity are features, not limitations.</p>
 
 <h2>Cover Letters for Sales Roles</h2>
 
@@ -3972,7 +3972,7 @@ TOOL_ROUNDUPS = [
         "date": "2026-04-02",
         "intro": "You need contact data. Apollo, Lusha, and Cognism are the three tools sales reps actually compare. Each wins in a different scenario. Here's the honest breakdown.",
         "tools": [
-            ("apollo", "The all-in-one that works. Data plus sequencing plus dialer in one platform. The free tier is genuinely useful. Data quality is good in the US, weaker internationally. If you want one tool for prospecting and outreach, Apollo is the default choice for a reason.", True),
+            ("apollo", "The all-in-one that works. Data plus sequencing plus dialer in one platform. The free tier is useful. Data quality is good in the US, weaker internationally. If you want one tool for prospecting and outreach, Apollo is the default choice for a reason.", True),
             ("lusha", "Chrome extension, instant results, simple. Lusha does one thing well: give you a phone number or email when you're looking at a LinkedIn profile. But the database is smaller, credits burn fast, and you'll hit walls outside the US. Best for reps who need quick lookups, not bulk list building.", False),
             ("cognism", "If you sell into Europe, Cognism's data is noticeably better than Apollo or Lusha. GDPR-compliant mobile numbers that you can call without worrying about compliance. Diamond Data verification means the numbers are phone-verified. But the price locks out small teams, and North American coverage doesn't match Apollo.", False),
         ],
