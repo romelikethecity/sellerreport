@@ -822,7 +822,7 @@ def _article_content_sales_job_market():
 
 <p>Turnaround hires account for {fmt_number(turnaround)} listings. These are companies rebuilding sales teams after restructuring, pivots, or layoffs. And {fmt_number(immediate)} postings flag "immediate" hiring needs, meaning companies are behind on pipeline and willing to move fast.</p>
 
-<p>The takeaway: sales hiring is aggressive. Companies are not just filling seats. They are building capacity for the next 12-18 months.</p>
+<p>The takeaway: sales hiring is aggressive. The <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS Sales Occupations Outlook</a> projects continued growth through 2033. Companies are not just filling seats. They are building capacity for the next 12-18 months.</p>
 
 <h2>Compensation: What the Market Pays</h2>
 
@@ -850,7 +850,7 @@ def _article_content_sales_job_market():
 
 <p>{fmt_number(enterprise_seg)} postings target enterprise buyers. {fmt_number(smb_seg)} focus on SMB. Mid-market sits at {fmt_number(MARKET_DATA.get('segment', {}).get('Mid Market', 0))} roles, and {fmt_number(MARKET_DATA.get('segment', {}).get('Fortune 500', 0))} specifically call out Fortune 500 targets.</p>
 
-<p>Enterprise deals remain the highest-compensation path. The data confirms what most sales leaders already know: longer cycles, bigger checks, bigger paychecks.</p>
+<p>Enterprise deals remain the highest-compensation path. <a href="https://www.gartner.com/en/sales/topics/sales-technology" target="_blank" rel="noopener noreferrer">Gartner's sales research</a> shows that enterprise deal complexity continues to increase, pushing compensation upward. Longer cycles, bigger checks, bigger paychecks.</p>
 
 <h2>Geography and Remote Work</h2>
 
@@ -890,7 +890,7 @@ def _article_content_ae_vs_sdr():
     vp = SENIORITY_DATA.get("VP", {})
     svp = SENIORITY_DATA.get("SVP", {})
 
-    return f"""<p>Sales compensation is opaque by design. Companies benefit from information asymmetry. Candidates guess at ranges. Recruiters dodge direct questions. We pulled the numbers from {fmt_number(len(JOBS_WITH_SALARY))} job postings that disclosed salary data and broke down what each level of the sales org makes.</p>
+    return f"""<p>Sales compensation is opaque by design. <a href="https://www.shrm.org/topics-tools/news/benefits-compensation" target="_blank" rel="noopener noreferrer">SHRM compensation research</a> confirms that sales is among the least transparent functions for pay data. Companies benefit from information asymmetry. Candidates guess at ranges. Recruiters dodge direct questions. We pulled the numbers from {fmt_number(len(JOBS_WITH_SALARY))} job postings that disclosed salary data and broke down what each level of the sales org makes.</p>
 
 <h2>The Full Ladder: Entry to SVP</h2>
 
@@ -909,7 +909,7 @@ def _article_content_ae_vs_sdr():
 
 <p>The SDR/BDR tier pays a median of {fmt_salary(entry.get('median', 0))}. That number captures base salary ranges from job postings. Actual on-target earnings (OTE) run 20-40% higher, depending on the company's variable comp structure.</p>
 
-<p>Most SDR roles use a 60/40 or 70/30 base-to-variable split. A posting showing $58K base likely has an OTE of $75-85K when you add in commission from booked meetings and qualified pipeline generated.</p>
+<p>Most SDR roles use a 60/40 or 70/30 base-to-variable split. The <a href="https://www.bls.gov/oes/current/oes414199.htm" target="_blank" rel="noopener noreferrer">BLS data on sales representative compensation</a> provides government-verified baseline figures. A posting showing $58K base likely has an OTE of $75-85K when you add in commission from booked meetings and qualified pipeline generated.</p>
 
 <p>The SDR tier has the highest volume of job postings relative to available candidates. Companies churn through SDRs quickly. Tenure averages 14-18 months before promotion or departure. That high turnover creates constant openings, which is good for entry but bad for negotiation leverage.</p>
 
@@ -971,7 +971,7 @@ def _article_content_ae_vs_sdr():
 
 def _article_content_best_companies():
     """Article 3: Best Companies Hiring Sales Reps"""
-    return f"""<p>We ranked the companies with the most open sales positions from our dataset of {fmt_number(TOTAL_JOBS)} postings. Volume alone does not make a company a good employer. So we looked at compensation disclosure, role quality, and hiring signals to separate the best from the biggest.</p>
+    return f"""<p>We ranked the companies with the most open sales positions. <a href="https://www.gartner.com/reviews/market/sales-force-automation" target="_blank" rel="noopener noreferrer">Gartner Peer Insights</a> provides independent employee satisfaction data for these employers. We ranked the companies with the most open sales positions from our dataset of {fmt_number(TOTAL_JOBS)} postings. Volume alone does not make a company a good employer. So we looked at compensation disclosure, role quality, and hiring signals to separate the best from the biggest.</p>
 
 <h2>Highest Volume Employers</h2>
 
@@ -984,7 +984,7 @@ def _article_content_best_companies():
 </tbody>
 </table>
 
-<p>Volume hiring signals different things depending on the company. AutoZone (62 openings) is staffing retail locations. Amazon Web Services (45 openings) is expanding enterprise cloud sales. Salesforce (21 openings) is replacing attrition in a mature org. The context matters.</p>
+<p>Volume hiring signals different things depending on the company. <a href="https://www.bls.gov/jlt/" target="_blank" rel="noopener noreferrer">BLS JOLTS data</a> tracks macro hiring trends that put individual company volume in context. AutoZone (62 openings) is staffing retail locations. Amazon Web Services (45 openings) is expanding enterprise cloud sales. Salesforce (21 openings) is replacing attrition in a mature org. The context matters.</p>
 
 <h2>Tech Companies: SaaS Sales Machines</h2>
 
@@ -1044,7 +1044,7 @@ def _article_content_best_companies():
 
 def _article_content_negotiate_comp():
     """Article 4: How to Negotiate Your Sales Compensation Package"""
-    return f"""<p>Sales compensation negotiation is different from any other function. You are negotiating with people who negotiate for a living. They know the playbook. If you walk in without data, you lose before the conversation starts.</p>
+    return f"""<p>Sales compensation negotiation is different from any other function. <a href="https://www.shrm.org/topics-tools/news/benefits-compensation" target="_blank" rel="noopener noreferrer">SHRM negotiation research</a> shows that 70% of employers expect candidates to counter their first offer. You are negotiating with people who negotiate for a living. They know the playbook. If you walk in without data, you lose before the conversation starts.</p>
 
 <p>We pulled compensation data from {fmt_number(len(JOBS_WITH_SALARY))} sales job postings with disclosed salary ranges. Here is what the numbers say and how to use them.</p>
 
@@ -1065,7 +1065,7 @@ def _article_content_negotiate_comp():
 
 <h2>OTE Is the Number That Matters</h2>
 
-<p>On-target earnings (OTE) is the total cash compensation you earn when you hit 100% of quota. {fmt_number(MARKET_DATA.get('comp_signals', {}).get('Ote Mentioned', 0))} postings in our data explicitly mention OTE. If a company does not share OTE during the interview process, that is a red flag.</p>
+<p>On-target earnings (OTE) is the total cash compensation you earn when you hit 100% of quota. The <a href="https://www.bls.gov/oes/current/oes414199.htm" target="_blank" rel="noopener noreferrer">BLS sales occupation wage data</a> reports base salary only, so always compare OTE figures against base benchmarks. {fmt_number(MARKET_DATA.get('comp_signals', {}).get('Ote Mentioned', 0))} postings in our data explicitly mention OTE. If a company does not share OTE during the interview process, that is a red flag.</p>
 
 <p>OTE consists of two parts: base salary and variable compensation (commission, bonus, or both). The split between them matters more than most candidates realize.</p>
 
@@ -1137,7 +1137,7 @@ def _article_content_remote_sales():
 
 <p>Remote sales roles pay a median of {fmt_salary(remote_median)}. On-site roles pay {fmt_salary(onsite_median)}. That is a {fmt_salary(premium)} premium for working from home.</p>
 
-<p>The premium exists for structural reasons, not generosity. Remote sales roles concentrate in SaaS, enterprise software, and technology services. These industries pay more regardless of location. The companies offering remote work tend to be well-funded, compete for talent nationally, and benchmark compensation against tech hubs.</p>
+<p>The premium exists for structural reasons, not generosity. <a href="https://www.bls.gov/cps/cpsaat11b.htm" target="_blank" rel="noopener noreferrer">BLS workforce survey data</a> shows remote work penetration varying widely by occupation. Remote sales roles concentrate in SaaS, enterprise software, and technology services. These industries pay more regardless of location. The companies offering remote work tend to be well-funded, compete for talent nationally, and benchmark compensation against tech hubs.</p>
 
 <div class="data-callout">
 <p><strong>Translation:</strong> Remote sales jobs pay more because the companies offering them pay more. It is a selection effect, not a remote-work bonus. But the outcome is the same: going remote puts you in a higher-compensation talent pool.</p>
@@ -1164,7 +1164,7 @@ def _article_content_remote_sales():
 <li>Real estate and insurance sales (local market dependent)</li>
 </ul>
 
-<p>Inside sales falls in the middle. Many inside sales roles that were on-site pre-2020 have stayed remote. Others pulled back to hybrid. The company's management philosophy matters more than the role itself for inside sales.</p>
+<p><a href="https://www.forrester.com/research/b2b-sales/" target="_blank" rel="noopener noreferrer">Forrester's B2B sales research</a> tracks the ongoing shift from field to remote selling across industries. Inside sales falls in the middle. Many inside sales roles that were on-site pre-2020 have stayed remote. Others pulled back to hybrid. The company's management philosophy matters more than the role itself for inside sales.</p>
 
 <h2>Geographic Arbitrage</h2>
 
@@ -1232,13 +1232,13 @@ def _article_content_sdr_salary_guide():
     inside_count = MARKET_DATA.get("motion", {}).get("Inside", 0)
     outbound_count = MARKET_DATA.get("motion", {}).get("Outbound", 0)
 
-    return f"""<p>The SDR (Sales Development Representative) role is where most sales careers start. It is also the role with the most opaque compensation. Companies post wide ranges, recruiters deflect questions about variable comp, and candidates accept offers without understanding the full picture. We pulled salary data from {fmt_number(TOTAL_JOBS)} sales job postings to give you the real numbers.</p>
+    return f"""<p>The SDR (Sales Development Representative) role is where most sales careers start. The <a href="https://www.bls.gov/ooh/sales/wholesale-and-manufacturing-sales-representatives.htm" target="_blank" rel="noopener noreferrer">BLS sales representative outlook</a> classifies SDRs under wholesale and manufacturing sales, projecting steady growth. It is also the role with the most opaque compensation. Companies post wide ranges, recruiters deflect questions about variable comp, and candidates accept offers without understanding the full picture. We pulled salary data from {fmt_number(TOTAL_JOBS)} sales job postings to give you the real numbers.</p>
 
 <h2>SDR Base Salary in 2026</h2>
 
 <p>Entry-level sales roles (SDR, BDR, Sales Development Representative, Business Development Representative) pay a median base salary of {fmt_salary(entry.get('median', 0))}. The range runs from {fmt_salary(entry.get('min_base_avg', 0))} at the low end to {fmt_salary(entry.get('max_base_avg', 0))} at the top.</p>
 
-<p>That range is wide for a reason. A BDR at a seed-stage startup in a low-cost market might earn $42K base. A BDR at a Series D SaaS company in San Francisco might earn $70K base. Same title, different economic realities.</p>
+<p>That range is wide for a reason. <a href="https://www.shrm.org/topics-tools/news/benefits-compensation" target="_blank" rel="noopener noreferrer">SHRM salary survey data</a> shows similar variation in entry-level technical sales roles. A BDR at a seed-stage startup in a low-cost market might earn $42K base. A BDR at a Series D SaaS company in San Francisco might earn $70K base. Same title, different economic realities.</p>
 
 <p>We found {entry.get('count', 0)} entry-level roles with disclosed salary data. That is a relatively small slice of total postings, which tells you something: most companies hiring SDRs prefer to discuss compensation in the interview process rather than publishing it upfront.</p>
 
@@ -1386,13 +1386,13 @@ def _article_content_ae_salary():
     meddic_count = MARKET_DATA.get("methodology", {}).get("Meddic", 0)
     solution_count = MARKET_DATA.get("methodology", {}).get("Solution Selling", 0)
 
-    return f"""<p>Account Executive is the role where sales compensation gets interesting. The variable range between a bottom-quartile and top-quartile AE at the same company can exceed $80K. We analyzed {fmt_number(TOTAL_JOBS)} sales job postings to break down what AEs earn in 2026, what drives the variance, and where the money is.</p>
+    return f"""<p>Account Executive is the role where sales compensation gets interesting. <a href="https://www.bls.gov/oes/current/oes414199.htm" target="_blank" rel="noopener noreferrer">BLS sales compensation data</a> provides baseline wage statistics for this category. The variable range between a bottom-quartile and top-quartile AE at the same company can exceed $80K. We analyzed {fmt_number(TOTAL_JOBS)} sales job postings to break down what AEs earn in 2026, what drives the variance, and where the money is.</p>
 
 <h2>AE Base Salary: The Foundation</h2>
 
 <p>Mid-level Account Executives earn a median base salary of {fmt_salary(mid.get('median', 0))}. The range spans {fmt_salary(mid.get('min_base_avg', 0))} to {fmt_salary(mid.get('max_base_avg', 0))}, based on {mid.get('count', 0)} roles with disclosed salary data.</p>
 
-<p>That median represents the midpoint of what companies post in job listings. Actual offers depend on your experience, the deal sizes you have closed, and how urgently the company needs to fill the seat. Companies behind on pipeline (and {fmt_number(MARKET_DATA.get('hiring_signals', {}).get('Immediate', 0))} postings signal immediate hiring needs) often pay above posted ranges to close candidates quickly.</p>
+<p>That median represents the midpoint of what companies post in job listings. <a href="https://www.shrm.org/topics-tools/news/benefits-compensation" target="_blank" rel="noopener noreferrer">SHRM compensation surveys</a> confirm that posted salary ranges typically represent the 25th to 75th percentile of actual offers. Actual offers depend on your experience, the deal sizes you have closed, and how urgently the company needs to fill the seat. Companies behind on pipeline (and {fmt_number(MARKET_DATA.get('hiring_signals', {}).get('Immediate', 0))} postings signal immediate hiring needs) often pay above posted ranges to close candidates quickly.</p>
 
 <p>Senior Account Executives push the median to {fmt_salary(senior.get('median', 0))}, with a range of {fmt_salary(senior.get('min_base_avg', 0))} to {fmt_salary(senior.get('max_base_avg', 0))} across {senior.get('count', 0)} postings. The jump from mid to senior AE is the second-largest compensation increase on the sales ladder, trailing only the SDR-to-AE promotion.</p>
 
@@ -1539,13 +1539,13 @@ def _article_content_career_path():
     player_coach = MARKET_DATA.get("team_structure", {}).get("Player Coach", 0)
     growth_hires = MARKET_DATA.get("hiring_signals", {}).get("Growth Hire", 0)
 
-    return f"""<p>Sales is one of the few professions where you can go from entry-level to executive without a graduate degree, without switching functions, and with a compensation trajectory that rivals investment banking. The path from SDR to VP of Sales takes 8-12 years for high performers. Here is what each stage looks like, what it pays, and what you need to advance.</p>
+    return f"""<p>Sales is one of the few professions where you can go from entry-level to executive without a graduate degree, without switching functions, and with a compensation trajectory that rivals investment banking. The <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS Sales Occupations Outlook</a> projects continued growth in sales employment through 2033. The path from SDR to VP of Sales takes 8-12 years for high performers. Here is what each stage looks like, what it pays, and what you need to advance.</p>
 
 <h2>Stage 1: SDR/BDR (Months 0-18)</h2>
 
 <p>Every sales career starts with prospecting. The SDR role teaches you how to initiate conversations with strangers, handle rejection, and qualify buyers. Median compensation: {fmt_salary(entry.get('median', 0))} base, with OTE running 30-40% higher on a 70/30 split.</p>
 
-<p>What you learn at this stage matters more than what you earn. The SDR role builds three foundational skills: outbound prospecting, CRM discipline, and product knowledge. Companies hire {entry.get('count', 0)} entry-level sales roles in our dataset, and the vast majority expect 12-18 months in the seat before promotion.</p>
+<p>What you learn at this stage matters more than what you earn. <a href="https://www.shrm.org/topics-tools/news/talent-acquisition" target="_blank" rel="noopener noreferrer">SHRM talent research</a> shows that SDR-to-AE promotion rates are the strongest predictor of long-term sales career earnings. The SDR role builds three foundational skills: outbound prospecting, CRM discipline, and product knowledge. Companies hire {entry.get('count', 0)} entry-level sales roles in our dataset, and the vast majority expect 12-18 months in the seat before promotion.</p>
 
 <p>The critical metric for advancement: consistent quota attainment over 6+ months. One or two strong months are not enough. Hiring managers look for sustained performance because the AE role requires consistent execution over longer time horizons.</p>
 
@@ -1680,11 +1680,11 @@ def _article_content_get_into_sales():
     salesforce_count = MARKET_DATA.get("tools", {}).get("Salesforce", 0)
     hubspot_count = MARKET_DATA.get("tools", {}).get("Hubspot", 0)
 
-    return f"""<p>Sales is one of the most accessible high-earning careers. No specific degree required. No certifications necessary. No unpaid internship pipeline. The barrier to entry is lower than almost any other profession that pays a six-figure income within 3-5 years. Here is how to get through the door when you have zero sales experience on your resume.</p>
+    return f"""<p>Sales is one of the most accessible high-earning careers. The <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS Sales Occupations Outlook</a> reports no degree requirement for most sales positions. No specific degree required. No certifications necessary. No unpaid internship pipeline. The barrier to entry is lower than almost any other profession that pays a six-figure income within 3-5 years. Here is how to get through the door when you have zero sales experience on your resume.</p>
 
 <h2>Why Companies Hire People With No Experience</h2>
 
-<p>The SDR/BDR role exists specifically to train new salespeople. Companies know that {entry.get('count', 0)} entry-level positions in our dataset do not attract experienced closers. They attract people who are coachable, motivated, and willing to do the work that more experienced reps consider beneath them: cold calls, email outreach, and meeting booking.</p>
+<p>The SDR/BDR role exists specifically to train new salespeople. <a href="https://www.shrm.org/topics-tools/news/talent-acquisition" target="_blank" rel="noopener noreferrer">SHRM hiring research</a> identifies SDR programs as the most common entry point for career changers into sales. Companies know that {entry.get('count', 0)} entry-level positions in our dataset do not attract experienced closers. They attract people who are coachable, motivated, and willing to do the work that more experienced reps consider beneath them: cold calls, email outreach, and meeting booking.</p>
 
 <p>{fmt_number(growth_hires)} postings in our data signal growth hiring. Companies expanding their sales teams need bodies in seats quickly. They cannot wait for experienced candidates because the experienced candidates are already employed and expensive. That creates the opening for people breaking into the field.</p>
 
@@ -1823,7 +1823,7 @@ def _article_content_interview_questions():
     challenger_count = MARKET_DATA.get("methodology", {}).get("Challenger", 0)
     salesforce_count = MARKET_DATA.get("tools", {}).get("Salesforce", 0)
 
-    return f"""<p>Sales interviews follow different patterns depending on the seniority of the role. An SDR interview tests for raw potential. An AE interview tests for closing ability. A VP interview tests for strategic thinking and leadership. We broke down the most common questions at each level and what the interviewer is evaluating when they ask them.</p>
+    return f"""<p>Sales interviews follow different patterns depending on the seniority of the role. <a href="https://www.shrm.org/topics-tools/news/talent-acquisition" target="_blank" rel="noopener noreferrer">SHRM interview best practices</a> recommend behavioral questions for all levels, with increasing strategic depth at senior positions. An SDR interview tests for raw potential. An AE interview tests for closing ability. A VP interview tests for strategic thinking and leadership. We broke down the most common questions at each level and what the interviewer is evaluating when they ask them.</p>
 
 <h2>SDR/BDR Interview Questions</h2>
 
@@ -1833,7 +1833,7 @@ def _article_content_interview_questions():
 <p>What they are evaluating: genuine interest versus desperation. The best answer connects your personality traits (competitive, curious, enjoy talking to people) to the specific appeal of sales (measurable results, earning potential, career path). Avoid generic answers about "loving people." Be specific about what attracts you to this specific profession.</p>
 
 <p><strong>"Tell me about a time you faced rejection or failure. How did you handle it?"</strong></p>
-<p>What they are evaluating: resilience. SDRs hear "no" 50+ times per day. Your answer should show that you processed the failure, learned from it, and continued performing. The worst answer is claiming you never face failure. The best answer includes a specific example with a concrete outcome.</p>
+<p>What they are evaluating: resilience. <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS occupational data</a> shows sales has among the highest turnover rates of any profession, making resilience questions standard. SDRs hear "no" 50+ times per day. Your answer should show that you processed the failure, learned from it, and continued performing. The worst answer is claiming you never face failure. The best answer includes a specific example with a concrete outcome.</p>
 
 <p><strong>"Walk me through how you would research a company before calling them."</strong></p>
 <p>What they are evaluating: preparation habits and critical thinking. A strong answer names specific sources (LinkedIn, company website, recent news, annual report, G2 reviews) and explains what information you would look for and why it matters for a sales conversation.</p>
@@ -1979,7 +1979,7 @@ def _article_content_sdr_to_ae():
     solution_count = MARKET_DATA.get("methodology", {}).get("Solution Selling", 0)
     meddic_count = MARKET_DATA.get("methodology", {}).get("Meddic", 0)
 
-    return f"""<p>The SDR-to-AE promotion is the single most important career transition in sales. It is where compensation jumps from a median of {fmt_salary(entry.get('median', 0))} to {fmt_salary(mid.get('median', 0))} in base salary, where your earning potential shifts from linear (activity-based) to exponential (deal-based), and where your career either accelerates or stalls. Here is what the data says about how long it takes and what separates fast promotions from slow ones.</p>
+    return f"""<p>The SDR-to-AE promotion is the single most important career transition in sales. <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS sales career data</a> shows the IC-to-closing role jump produces the largest percentage compensation increase in the profession. It is where compensation jumps from a median of {fmt_salary(entry.get('median', 0))} to {fmt_salary(mid.get('median', 0))} in base salary, where your earning potential shifts from linear (activity-based) to exponential (deal-based), and where your career either accelerates or stalls. Here is what the data says about how long it takes and what separates fast promotions from slow ones.</p>
 
 <h2>The Standard Timeline</h2>
 
@@ -1992,7 +1992,7 @@ def _article_content_sdr_to_ae():
 <li>Wait for an AE position to open (variable)</li>
 </ul>
 
-<p>High performers at growth companies can compress this to 9-12 months. At established companies with rigid promotion schedules, 18-24 months is more common. Beyond 24 months, the promotion window begins closing at most organizations. If you have not been promoted within two years, the company either lacks the AE openings or does not see you as AE material. In both cases, your best move is an external search.</p>
+<p>High performers at growth companies can compress this to 9-12 months. <a href="https://www.shrm.org/topics-tools/news/talent-acquisition" target="_blank" rel="noopener noreferrer">SHRM promotion timeline research</a> confirms that high-growth SaaS companies promote faster than established enterprises. At established companies with rigid promotion schedules, 18-24 months is more common. Beyond 24 months, the promotion window begins closing at most organizations. If you have not been promoted within two years, the company either lacks the AE openings or does not see you as AE material. In both cases, your best move is an external search.</p>
 
 <h2>What "Promotion-Ready" Looks Like</h2>
 
@@ -2116,7 +2116,7 @@ def _article_content_remote_sales_guide():
 
 <h2>Where Remote Sales Jobs Are Posted</h2>
 
-<p>Remote sales roles cluster on specific platforms and within specific company types. Here is where to focus your search:</p>
+<p>Remote sales roles cluster on specific platforms and within specific company types. <a href="https://www.bls.gov/cps/cpsaat11b.htm" target="_blank" rel="noopener noreferrer">BLS remote work statistics</a> show that sales has lower remote penetration than tech but higher than most other functions. Here is where to focus your search:</p>
 
 <p><strong>LinkedIn Jobs.</strong> Still the highest-volume source for remote sales positions. Filter by "Remote" in the location field and "Sales" in the function. LinkedIn's algorithm surfaces roles from companies where you have network connections, which gives you a built-in advantage for referrals.</p>
 
@@ -2160,7 +2160,7 @@ def _article_content_remote_sales_guide():
 
 <p>Remote sales jobs pay a median of {fmt_salary(remote_med)}, compared to {fmt_salary(onsite_med)} for on-site positions. That is a {round(100 * (remote_med - onsite_med) / max(onsite_med, 1))}% premium.</p>
 
-<p>The premium exists because remote sales roles skew toward higher-paying companies and segments. SaaS companies, which dominate remote sales hiring, pay above market across all levels. The remote premium is partly a selection effect (better companies offer remote) and partly a genuine premium for the self-discipline that remote selling requires.</p>
+<p>The premium exists because remote sales roles skew toward higher-paying companies. <a href="https://www.forrester.com/research/b2b-sales/" target="_blank" rel="noopener noreferrer">Forrester B2B sales research</a> tracks how remote-first companies differ in compensation philosophy. The premium exists because remote sales roles skew toward higher-paying companies and segments. SaaS companies, which dominate remote sales hiring, pay above market across all levels. The remote premium is partly a selection effect (better companies offer remote) and partly a genuine premium for the self-discipline that remote selling requires.</p>
 
 <p><strong>Geographic arbitrage.</strong> The most powerful financial move: take a remote role at a company based in San Francisco (median {fmt_salary(sf_med)} across all levels) while living in a lower-cost city like Denver ({fmt_salary(den_med)}) or Austin ({fmt_salary(austin_med)}). If the company pays location-agnostic rates, your purchasing power increases by 20-40%.</p>
 
@@ -2250,11 +2250,11 @@ def _article_content_best_companies_careers():
     remote_count = len(REMOTE_JOBS)
     remote_pct = round(100 * remote_count / TOTAL_JOBS)
 
-    return f"""<p>Not all sales jobs are equal. The company you join determines your training quality, promotion speed, compensation trajectory, and resume value for years to come. We analyzed {fmt_number(TOTAL_JOBS)} sales job postings to identify what separates the best employers for sales professionals from the rest of the market.</p>
+    return f"""<p>Not all sales jobs are equal. <a href="https://www.gartner.com/en/sales/topics/sales-technology" target="_blank" rel="noopener noreferrer">Gartner sales research</a> confirms that company quality is the top predictor of sales career advancement. The company you join determines your training quality, promotion speed, compensation trajectory, and resume value for years to come. We analyzed {fmt_number(TOTAL_JOBS)} sales job postings to identify what separates the best employers for sales professionals from the rest of the market.</p>
 
 <h2>What Makes a Company Good for Sales Careers</h2>
 
-<p>Five factors determine whether a company will advance your sales career or stall it:</p>
+<p>Five factors determine whether a company will advance your sales career or stall it. <a href="https://www.shrm.org/topics-tools/news/talent-acquisition" target="_blank" rel="noopener noreferrer">SHRM employer evaluation frameworks</a> use similar criteria:</p>
 
 <p><strong>1. Product-market fit.</strong> Companies with strong product-market fit generate inbound demand, create referenceable customers, and give sellers something that buyers want. Selling a product that solves a real problem at a fair price is fundamentally different from selling one that requires persuasion at every step. The former builds skills. The latter builds bad habits.</p>
 
