@@ -4349,8 +4349,89 @@ def build_robots():
 Allow: /
 
 Sitemap: {SITE_URL}/sitemap.xml
+
+# AI/LLM crawlers - explicitly allowed for AI search citations
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
 """
     path = os.path.join(OUTPUT_DIR, "robots.txt")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def build_llms_txt():
+    content = f"""# Seller Report
+
+> Seller Report is an independent career intelligence platform for sales professionals. The site tracks thousands of active sales job listings, provides salary benchmarks by seniority and location for SDRs, Account Executives, and sales leadership, publishes career guides and market analysis, and reviews sales tools including prospecting platforms, cold email tools, and AI assistants. All data is updated weekly and free to access.
+
+## Core Pages
+- [Homepage]({SITE_URL}/)
+- [Job Board]({SITE_URL}/jobs/): Active sales job listings
+
+## Salary Data
+- [Salary Index]({SITE_URL}/salaries/): Aggregate sales salary benchmarks
+- [By Seniority]({SITE_URL}/salaries/by-seniority/)
+- [By Location]({SITE_URL}/salaries/by-location/)
+
+## Career Insights
+- [Insights Index]({SITE_URL}/insights/)
+- [Sales Job Market 2026]({SITE_URL}/insights/sales-job-market-2026/)
+- [AE vs SDR Salary]({SITE_URL}/insights/ae-vs-sdr-salary/)
+- [SDR Salary Guide 2026]({SITE_URL}/insights/sdr-salary-guide-2026/)
+- [Account Executive Salary 2026]({SITE_URL}/insights/account-executive-salary-2026/)
+- [Sales Career Path Guide]({SITE_URL}/insights/sales-career-path-guide/)
+- [How to Get Into Sales]({SITE_URL}/insights/how-to-get-into-sales/)
+- [SDR to AE Promotion Timeline]({SITE_URL}/insights/sdr-to-ae-promotion-timeline/)
+- [Sales Compensation Negotiation]({SITE_URL}/insights/sales-compensation-negotiation/)
+
+## Tool Reviews
+- [Tools Index]({SITE_URL}/tools/)
+- [Best Data Providers for SDRs]({SITE_URL}/tools/best-data-providers-for-sdrs/)
+- [Best AI Tools for Sales Reps]({SITE_URL}/tools/best-ai-tools-for-sales-reps/)
+- [Best Cold Email Tools for SDRs]({SITE_URL}/tools/best-cold-email-tools-for-sdrs/)
+- [Best Free Prospecting Tools]({SITE_URL}/tools/best-free-prospecting-tools-sdrs/)
+- [Apollo vs Lusha vs Cognism]({SITE_URL}/tools/apollo-vs-lusha-vs-cognism/)
+"""
+    path = os.path.join(OUTPUT_DIR, "llms.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
@@ -4555,6 +4636,7 @@ def main():
     print("  Building sitemap & robots...")
     build_sitemap()
     build_robots()
+    build_llms_txt()
     build_nojekyll()
 
     print(f"\nDone! {len(ALL_PAGES)} pages generated.")

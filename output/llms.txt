@@ -1,0 +1,44 @@
+# Seller Report
+
+> Seller Report is an independent career intelligence platform for sales professionals. The site tracks thousands of active sales job listings, provides salary benchmarks by seniority and location for SDRs, Account Executives, and sales leadership, publishes career guides and market analysis, and reviews sales tools including prospecting platforms, cold email tools, and AI assistants. All data is updated weekly and free to access.
+
+## Core Pages
+- [Homepage](https://thesellerreport.com/)
+- [Job Board](https://thesellerreport.com/jobs/): Active sales job listings
+
+## Salary Data
+- [Salary Index](https://thesellerreport.com/salaries/): Aggregate sales salary benchmarks
+- [By Seniority](https://thesellerreport.com/salaries/by-seniority/)
+- [By Location](https://thesellerreport.com/salaries/by-location/)
+
+## Career Insights
+- [Insights Index](https://thesellerreport.com/insights/)
+- [Sales Job Market 2026](https://thesellerreport.com/insights/sales-job-market-2026/)
+- [AE vs SDR Salary](https://thesellerreport.com/insights/ae-vs-sdr-salary/)
+- [SDR Salary Guide 2026](https://thesellerreport.com/insights/sdr-salary-guide-2026/)
+- [Account Executive Salary 2026](https://thesellerreport.com/insights/account-executive-salary-2026/)
+- [Sales Career Path Guide](https://thesellerreport.com/insights/sales-career-path-guide/)
+- [How to Get Into Sales](https://thesellerreport.com/insights/how-to-get-into-sales/)
+- [Sales Interview Questions 2026](https://thesellerreport.com/insights/sales-interview-questions-2026/)
+- [SDR to AE Promotion Timeline](https://thesellerreport.com/insights/sdr-to-ae-promotion-timeline/)
+- [Remote Sales Jobs Guide](https://thesellerreport.com/insights/remote-sales-jobs-guide/)
+- [Best Companies for Sales Careers 2026](https://thesellerreport.com/insights/best-companies-sales-careers-2026/)
+- [Sales Resume Guide](https://thesellerreport.com/insights/sales-resume-guide/)
+- [Sales Quota Expectations by Role](https://thesellerreport.com/insights/sales-quota-expectations-by-role/)
+- [Sales Burnout Prevention](https://thesellerreport.com/insights/sales-burnout-prevention/)
+- [Inside Sales vs Field Sales](https://thesellerreport.com/insights/inside-sales-vs-field-sales/)
+- [Sales Compensation Negotiation](https://thesellerreport.com/insights/sales-compensation-negotiation/)
+
+## Tool Reviews
+- [Tools Index](https://thesellerreport.com/tools/)
+- [Best Data Providers for SDRs](https://thesellerreport.com/tools/best-data-providers-for-sdrs/)
+- [Best Lead List Building Services](https://thesellerreport.com/tools/best-lead-list-building-services/)
+- [Best AI Tools for Sales Reps](https://thesellerreport.com/tools/best-ai-tools-for-sales-reps/)
+- [Best Cold Email Tools for SDRs](https://thesellerreport.com/tools/best-cold-email-tools-for-sdrs/)
+- [Best Chrome Extensions for Sales](https://thesellerreport.com/tools/best-chrome-extensions-sales/)
+- [Best Free Prospecting Tools](https://thesellerreport.com/tools/best-free-prospecting-tools-sdrs/)
+- [Best Call Recording Tools](https://thesellerreport.com/tools/best-call-recording-tools-reps/)
+- [Best Meeting Scheduling Tools](https://thesellerreport.com/tools/best-meeting-scheduling-tools/)
+- [Apollo vs Lusha vs Cognism](https://thesellerreport.com/tools/apollo-vs-lusha-vs-cognism/)
+- [Best Cognism Alternatives](https://thesellerreport.com/tools/best-cognism-alternatives/)
+- [Best Seamless.ai Alternatives](https://thesellerreport.com/tools/best-seamless-ai-alternatives/)
