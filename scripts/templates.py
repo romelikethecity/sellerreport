@@ -484,7 +484,7 @@ def get_html_head(title, description, canonical_path, extra_head=""):
     <meta property="og:image:height" content="630">
     <meta name="twitter:image" content="{SITE_URL}/assets/social/og-default.png">
 
-    <style>{INLINE_CSS}</style>
+    <link rel="stylesheet" href="/css/styles.css">
 {"" if not GA_MEASUREMENT_ID else f"""
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>

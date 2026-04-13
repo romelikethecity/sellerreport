@@ -4577,6 +4577,16 @@ def build_nojekyll():
         f.write("")
 
 
+def build_css():
+    """Write CSS to external stylesheet for browser caching."""
+    css_dir = os.path.join(OUTPUT_DIR, "css")
+    os.makedirs(css_dir, exist_ok=True)
+    path = os.path.join(css_dir, "styles.css")
+    with open(path, "w") as f:
+        f.write(templates.INLINE_CSS)
+    print(f"  Built: css/styles.css")
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -4633,7 +4643,8 @@ def main():
     print("  Building about page...")
     build_about_page()
 
-    print("  Building sitemap & robots...")
+    print("  Building CSS & meta files...")
+    build_css()
     build_sitemap()
     build_robots()
     build_llms_txt()
