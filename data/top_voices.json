@@ -1,0 +1,258 @@
+{
+  "title": "Top 25 Sales Voices of 2026",
+  "subtitle": "The most influential practitioners, trainers, and creators shaping how modern sales professionals prospect, close, and grow their careers",
+  "last_updated": "2026-04-14",
+  "methodology": "Ranked by cross-list appearances across independent publications (Favikon, Demandbase, Capsule CRM, Clutch, GetAccept, Better Proposals, HippoVideo, and others), LinkedIn engagement, content output, and direct impact on sales practitioners. We evaluated 80+ candidates from these sources and filtered for people whose work actively changes how individual contributors and frontline managers sell.",
+  "voices": [
+    {
+      "rank": 1,
+      "name": "John Barrows",
+      "title": "Founder & CEO",
+      "company": "JB Sales / SellBetter",
+      "linkedin_url": "https://www.linkedin.com/in/johnbarrows/",
+      "bio": "Trained over 100,000 sales reps in 25+ years, including teams at Salesforce, LinkedIn, Google, Amazon, and Slack. 3x LinkedIn Top Voice with 390,000+ followers. Created Filling the Funnel for prospecting and Driving to Close for deal execution. His Make It Happen Mondays podcast reaches 100,000+ listeners weekly.",
+      "tags": ["Sales Training", "Prospecting", "Enterprise Sales"],
+      "tier": "leader"
+    },
+    {
+      "rank": 2,
+      "name": "Keenan",
+      "title": "Founder & CEO",
+      "company": "A Sales Growth Company",
+      "linkedin_url": "https://www.linkedin.com/in/jimkeenan/",
+      "bio": "Author of Gap Selling, the problem-centric methodology that's become required reading at hundreds of sales orgs. His approach shifts reps from leading with features to diagnosing the gap between a buyer's current state and desired outcome. Known for zero-filter takes on why most sales training fails.",
+      "tags": ["Gap Selling", "Discovery", "Sales Methodology"],
+      "tier": "leader"
+    },
+    {
+      "rank": 3,
+      "name": "Morgan J Ingram",
+      "title": "Founder & CEO",
+      "company": "AMP",
+      "linkedin_url": "https://www.linkedin.com/in/morganjingram/",
+      "bio": "4x LinkedIn Top Voice who built AMP to help B2B companies grow pipeline through LinkedIn, outbound, and creator-led content. His daily prospecting content reaches millions of impressions per month. Trains reps on multi-channel outbound with shareable playbooks that work for SDRs and AEs alike.",
+      "tags": ["LinkedIn", "Outbound", "Creator-Led Sales"],
+      "tier": "leader"
+    },
+    {
+      "rank": 4,
+      "name": "Sam McKenna",
+      "title": "Founder & CEO",
+      "company": "#samsales Consulting",
+      "linkedin_url": "https://www.linkedin.com/in/samsalesli/",
+      "bio": "Former LinkedIn Enterprise sales exec who broke 13 sales records before founding #samsales, an all-women consulting firm serving 250+ clients. Creator of Show Me You Know Me, a trademarked personalization framework for outreach. Named one of the 100 Most Powerful Women in Sales by Demandbase. 100,000+ LinkedIn followers.",
+      "tags": ["Social Selling", "Personalization", "LinkedIn"],
+      "tier": "leader"
+    },
+    {
+      "rank": 5,
+      "name": "Jeb Blount",
+      "title": "Founder & CEO",
+      "company": "Sales Gravy",
+      "linkedin_url": "https://www.linkedin.com/in/jebblount/",
+      "bio": "17x bestselling author including Fanatical Prospecting, Sales EQ, and Objections. His Sales Gravy podcast has been downloaded 60 million+ times, making it one of the most listened-to sales shows ever. SalesGravy.com is the most visited sales-specific website on the planet. Keynote speaker and GTM consultant.",
+      "tags": ["Prospecting", "Objection Handling", "Sales Mindset"],
+      "tier": "leader"
+    },
+    {
+      "rank": 6,
+      "name": "Josh Braun",
+      "title": "Founder",
+      "company": "Josh Braun Sales Training",
+      "linkedin_url": "https://www.linkedin.com/in/joshbraun/",
+      "bio": "Built his reputation teaching non-pushy sales outreach that flips traditional cold calling on its head. His LinkedIn posts on discovery, empathy, and trust-building get massive engagement from reps tired of scripted pitches. Creator of the Badass B2B Growth Guide and Tongue Tied Sales Objection Flashcards.",
+      "tags": ["Cold Outreach", "Conversational Selling", "Empathy"],
+      "tier": "leader"
+    },
+    {
+      "rank": 7,
+      "name": "Will Allred",
+      "title": "Co-Founder & COO",
+      "company": "Lavender",
+      "linkedin_url": "https://www.linkedin.com/in/williamallred/",
+      "bio": "Co-founded Lavender, the AI-powered email coaching tool that's analyzed billions of sales emails. Their data on what gets replies vs. what gets ignored is the most cited email research in the sales community. His breakdowns of real cold emails on LinkedIn are some of the most-shared sales content on the platform.",
+      "tags": ["Cold Email", "AI Sales Tools", "Data-Driven Outreach"],
+      "tier": "leader"
+    },
+    {
+      "rank": 8,
+      "name": "Kyle Coleman",
+      "title": "Global VP of Marketing",
+      "company": "ClickUp (formerly Copy.ai CMO)",
+      "linkedin_url": "https://www.linkedin.com/in/kyletcoleman/",
+      "bio": "Employee #6 at Looker, helped scale to $2.6B Google acquisition. Then served as CMO at Clari during a near-10x ARR run and later at Copy.ai. LinkedIn Top Voice with 130,000+ followers. Known for tactical prospecting frameworks and content on how AI is changing the SDR function.",
+      "tags": ["AI Prospecting", "GTM Strategy", "Sales Content"],
+      "tier": "leader"
+    },
+    {
+      "rank": 9,
+      "name": "Jen Allen-Knuth",
+      "title": "Founder",
+      "company": "DemandJen",
+      "linkedin_url": "https://www.linkedin.com/in/demandjen1/",
+      "bio": "18 years selling to C-level executives with $50M+ in career closed revenue. Former Chief Evangelist at Challenger and Head of Community Growth at Lavender. Co-host of 30 Minutes to President's Club podcast. Trains teams at G2, IBM, and Autodesk on defeating buyer indecision, the real competitor in enterprise deals.",
+      "tags": ["Enterprise Sales", "Status Quo", "Challenger"],
+      "tier": "leader"
+    },
+    {
+      "rank": 10,
+      "name": "Marcus Chan",
+      "title": "Founder & CEO",
+      "company": "Venli Consulting Group",
+      "linkedin_url": "https://www.linkedin.com/in/marcuschanmba/",
+      "bio": "WSJ and USA Today bestselling author of Six-Figure Sales Secrets. Left a Fortune 500 role leading a 110-person team doing $195M/year, scaled Venli to 7 figures in 18 months. Named a Top Sales Voice by LinkedIn and Salesforce. His clients have collectively generated $950M+ in revenue using his frameworks.",
+      "tags": ["B2B Sales", "Career Growth", "Pipeline"],
+      "tier": "leader"
+    },
+    {
+      "rank": 11,
+      "name": "Belal Batrawy",
+      "title": "Founder",
+      "company": "LearnToSell.io",
+      "linkedin_url": "https://www.linkedin.com/in/belbatrawy/",
+      "bio": "15 years in SaaS sales as one of the first hires at 7 startups, including 3 acquisitions and 2 IPOs. Created the Mic Drop Cold Call Method (Permission, Problem, Provoke, Promise) and the #DeathToFluff movement. Has competed and won against ADP, LinkedIn, Adobe, IBM, and ZoomInfo using 100% outbound.",
+      "tags": ["Cold Calling", "Startup Sales", "Outbound"],
+      "tier": "rising"
+    },
+    {
+      "rank": 12,
+      "name": "Scott Leese",
+      "title": "Founder & CEO",
+      "company": "Scott Leese Consulting / Surf & Sales",
+      "linkedin_url": "https://www.linkedin.com/in/scottleese/",
+      "bio": "Fractional CRO and GTM advisor who's worked with 130+ companies, been part of 15 exits, and helped build 12 unicorns. Amazon bestselling author. Founded the Surf & Sales Summit, which brings together sales leaders for learning outside the conference room. Known for helping startups get from $0 to $25M.",
+      "tags": ["Fractional CRO", "Startups", "GTM Advisory"],
+      "tier": "rising"
+    },
+    {
+      "rank": 13,
+      "name": "Collin Mitchell",
+      "title": "Co-Founder & CRO",
+      "company": "Salescast",
+      "linkedin_url": "https://www.linkedin.com/in/collinmitchell/",
+      "bio": "4x founder who became VP of Sales at 24. Hosts the Sales Transformation podcast, consistently in Apple's Business Top 50. Has built multiple 7-figure companies fueled entirely by outbound. His rapid-fire LinkedIn videos on sales tactics get thousands of views daily.",
+      "tags": ["Outbound", "Podcasting", "Entrepreneurship"],
+      "tier": "rising"
+    },
+    {
+      "rank": 14,
+      "name": "Jason Bay",
+      "title": "Founder & CEO",
+      "company": "Outbound Squad",
+      "linkedin_url": "https://www.linkedin.com/in/jasondbay/",
+      "bio": "Runs Outbound Squad, training B2B sales teams to book more meetings through cold outreach. His cold call openers and email frameworks get widely shared across LinkedIn. Hosts the Blissful Prospecting podcast and has trained teams at Gong, Zoom, and HubSpot on modern prospecting techniques.",
+      "tags": ["Cold Calling", "Prospecting", "Sales Training"],
+      "tier": "rising"
+    },
+    {
+      "rank": 15,
+      "name": "Armand Farrokh",
+      "title": "Co-Host",
+      "company": "30 Minutes to President's Club",
+      "linkedin_url": "https://www.linkedin.com/in/armandfarrokh/",
+      "bio": "Co-hosts 30 Minutes to President's Club, one of the fastest-growing B2B sales podcasts. Every episode delivers a single tactical playbook in 30 minutes or less. Known for cold call teardowns and live coaching sessions. His no-fluff approach resonates with reps who want scripts and frameworks they can use immediately.",
+      "tags": ["Sales Tactics", "Podcasting", "Cold Calling"],
+      "tier": "rising"
+    },
+    {
+      "rank": 16,
+      "name": "Nick Cegelski",
+      "title": "Co-Host",
+      "company": "30 Minutes to President's Club",
+      "linkedin_url": "https://www.linkedin.com/in/nickcegelski/",
+      "bio": "Co-hosts 30 Minutes to President's Club alongside Armand Farrokh, bringing a practitioner's perspective from years in the trenches as an AE. Their show's format of one tactic, broken down in 30 minutes, has made it a daily listen for SDRs and AEs. Also known for his viral cold call role-play content on LinkedIn.",
+      "tags": ["Sales Tactics", "Podcasting", "Role-Playing"],
+      "tier": "rising"
+    },
+    {
+      "rank": 17,
+      "name": "Gabrielle Blackwell",
+      "title": "Sales Manager & Creator",
+      "company": "Airtable",
+      "linkedin_url": "https://www.linkedin.com/in/gabrielleblackwell/",
+      "bio": "One of LinkedIn's most-followed SDR leaders, sharing tactical content on frontline sales management, coaching, and career pathing. Her posts on running effective 1:1s, managing up, and building SDR orgs consistently get six-figure impressions. A practitioner voice that first-time managers trust.",
+      "tags": ["SDR Leadership", "Coaching", "Career Development"],
+      "tier": "rising"
+    },
+    {
+      "rank": 18,
+      "name": "Chris Voss",
+      "title": "Founder & CEO",
+      "company": "The Black Swan Group",
+      "linkedin_url": "https://www.linkedin.com/in/christophervoss/",
+      "bio": "Former FBI lead international hostage negotiator who wrote Never Split the Difference, now a staple in every serious sales rep's library. His techniques (tactical empathy, mirroring, labeling) have been adopted by enterprise teams worldwide. Teaches negotiation at Georgetown and USC.",
+      "tags": ["Negotiation", "Tactical Empathy", "Closing"],
+      "tier": "rising"
+    },
+    {
+      "rank": 19,
+      "name": "Sarah Brazier",
+      "title": "Account Executive & Creator",
+      "company": "Gong",
+      "linkedin_url": "https://www.linkedin.com/in/sarahkbrazier/",
+      "bio": "Built one of the largest personal brands in sales while working as an AE, proving you don't need a title to have influence. Her raw, honest content about the daily grind of quota-carrying sales resonates with thousands of reps. Active voice for mental health awareness in sales.",
+      "tags": ["AE Life", "Personal Branding", "Mental Health"],
+      "tier": "rising"
+    },
+    {
+      "rank": 20,
+      "name": "Chris Orlob",
+      "title": "Founder & CEO",
+      "company": "pClub.io",
+      "linkedin_url": "https://www.linkedin.com/in/chrisorlob/",
+      "bio": "Former Director of Sales at Gong where he built the research program that produced the most-cited data on what top reps do differently. Now runs pClub.io, a sales coaching platform. His data-backed insights on discovery calls, demo delivery, and pricing conversations have shaped modern sales methodology.",
+      "tags": ["Data-Driven Sales", "Gong Research", "Coaching"],
+      "tier": "rising"
+    },
+    {
+      "rank": 21,
+      "name": "Lori Richardson",
+      "title": "Founder & CEO",
+      "company": "Score More Sales / Women Sales Pros",
+      "linkedin_url": "https://www.linkedin.com/in/scoremoresales/",
+      "bio": "Named a Top Sales Influencer by Salesforce from 2021 to 2025. Author of She Sells and sales coach at Harvard Business School. Founded Women Sales Pros to address the gap in female sales leadership, helping companies build more inclusive and higher-performing revenue teams.",
+      "tags": ["Women in Sales", "Coaching", "B2B Strategy"],
+      "tier": "rising"
+    },
+    {
+      "rank": 22,
+      "name": "Becc Holland",
+      "title": "Founder & CEO",
+      "company": "Flip the Script",
+      "linkedin_url": "https://www.linkedin.com/in/beccholland/",
+      "bio": "Became known for writing prospecting sequences that got responses from executives who ignored everything else. Founded Flip the Script to teach reps how to write outbound that doesn't sound like outbound. Her cold email teardowns at SaaStr became some of the most-watched sessions of the conference.",
+      "tags": ["Cold Email", "Prospecting Sequences", "Messaging"],
+      "tier": "rising"
+    },
+    {
+      "rank": 23,
+      "name": "Amy Volas",
+      "title": "Founder & CEO",
+      "company": "Avenue Talent Partners",
+      "linkedin_url": "https://www.linkedin.com/in/amyvolas/",
+      "bio": "20+ years closing $100M+ in sales before founding Avenue Talent Partners, which helps startups hire VP and C-level sales leaders who actually fit. Her LinkedIn content on what separates great sales leaders from mediocre ones is some of the most shared in the startup ecosystem.",
+      "tags": ["Sales Hiring", "Leadership", "Startups"],
+      "tier": "rising"
+    },
+    {
+      "rank": 24,
+      "name": "Jed Mahrle",
+      "title": "Founder",
+      "company": "Practical Prospecting",
+      "linkedin_url": "https://www.linkedin.com/in/jedmahrle/",
+      "bio": "Runs the Practical Prospecting newsletter and training, sharing bite-sized outbound frameworks that SDRs and AEs can implement the same day. His cold email teardowns and sequencing advice are widely cited across the sales community. Previously an SDR leader who built programs from scratch at high-growth startups.",
+      "tags": ["Prospecting", "Cold Email", "SDR Playbooks"],
+      "tier": "rising"
+    },
+    {
+      "rank": 25,
+      "name": "Kevin Dorsey",
+      "title": "SVP of Sales",
+      "company": "Bench Accounting",
+      "linkedin_url": "https://www.linkedin.com/in/kaborsey/",
+      "bio": "Known as KD in the sales community, he's built a massive LinkedIn following through candid content on sales leadership, coaching, and personal accountability. His posts about the gap between what managers say and what they actually do resonate with frontline leaders. Regular speaker at SaaStr and Pavilion events.",
+      "tags": ["Sales Leadership", "Coaching", "Accountability"],
+      "tier": "rising"
+    }
+  ]
+}
