@@ -58,8 +58,10 @@ FOOTER_COLUMNS = {
         {"href": "/tools/best-cognism-alternatives/", "label": "Cognism Alternatives"},
     ],
     "Network": [
+        {"href": "https://thegtmindex.com", "label": "The GTM Index", "external": True},
         {"href": "https://therevopsreport.com", "label": "RevOps Report", "external": True},
         {"href": "https://gtmepulse.com", "label": "GTME Pulse", "external": True},
         {"href": "https://b2bsalestools.com", "label": "B2B Sales Tools", "external": True},
+        {"href": "https://thecroreport.com", "label": "The CRO Report", "external": True},
     ],
 }
