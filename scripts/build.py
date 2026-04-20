@@ -4329,6 +4329,9 @@ def build_sitemap():
     for page_path in ALL_PAGES:
         # Convert file path to URL
         url_path = page_path.replace("index.html", "").rstrip("/")
+        # Ensure path starts with / to avoid malformed URLs
+        if url_path and not url_path.startswith("/"):
+            url_path = "/" + url_path
         if not url_path:
             url_path = "/"
         elif not url_path.endswith("/"):
@@ -4473,7 +4476,7 @@ def build_companies_page():
         "Top Companies Hiring Sales Reps",
         f"The {len(top)} companies hiring the most sales professionals right now. Updated weekly from {fmt_number(TOTAL_JOBS)} job postings.",
         "/companies/", body, active_path="/companies/")
-    write_page("companies/index.html", page)
+    write_page("/companies/index.html", page)
 
 
 def build_company_pages():
@@ -4531,7 +4534,7 @@ def build_company_pages():
             f"{company} Sales Jobs ({count} Open Roles)",
             f"Browse {count} open sales positions at {company}. Salary data, remote options, and seniority levels.",
             f"/companies/{co_slug}/", body, active_path="/companies/")
-        write_page(f"companies/{co_slug}/index.html", page)
+        write_page(f"/companies/{co_slug}/index.html", page)
 
 
 def build_about_page():
@@ -4568,7 +4571,7 @@ def build_about_page():
         "About The Seller Report",
         "Weekly sales job market intelligence built from real data. Salary benchmarks, hiring trends, and career insights for sales professionals.",
         "/about/", body, active_path="/about/")
-    write_page("about/index.html", page)
+    write_page("/about/index.html", page)
 
 
 def build_top_voices():
@@ -4705,7 +4708,7 @@ def build_top_voices():
     page = get_page_wrapper(data["title"], data.get("subtitle", ""),
                             "/voices/", body, active_path="/voices/",
                             extra_head=extra)
-    write_page("voices/index.html", page)
+    write_page("/voices/index.html", page)
     print(f"  Built: /voices/ ({len(voices)} voices)")
 
 
@@ -4713,6 +4716,12 @@ def build_nojekyll():
     path = os.path.join(OUTPUT_DIR, ".nojekyll")
     with open(path, "w") as f:
         f.write("")
+
+
+def build_cname():
+    path = os.path.join(OUTPUT_DIR, "CNAME")
+    with open(path, "w") as f:
+        f.write("thesellerreport.com\n")
 
 
 def build_css():
@@ -4790,6 +4799,7 @@ def main():
     build_robots()
     build_llms_txt()
     build_nojekyll()
+    build_cname()
 
     print(f"\nDone! {len(ALL_PAGES)} pages generated.")
 

@@ -32,6 +32,7 @@ RESOURCE_DATA = {
             {"name": "Lavender Blog", "url": "https://www.lavender.ai/blog", "desc": "AI sales email coaching content with cold email benchmarking data and signal-based outbound strategies."},
             {"name": "Outreach.io Blog", "url": "https://www.outreach.io/resources/blog/sales-trends", "desc": "2026 sales trends, tech innovations, and prospecting strategy content."},
             {"name": "Seller Report", "url": "https://sellerreport.com/", "desc": "Sales professional intelligence and career resources for B2B sellers.", "owned": True},
+            {"name": "MOPs Report", "url": "https://mopsreport.com/", "desc": "Marketing operations intelligence — the team that builds your lead scoring, routing, and automation.", "owned": True},
         ]},
         {"title": "Communities", "items": [
             {"name": "Lemlist Blog & Community", "url": "https://www.lemlist.com/blog", "desc": "Cold outreach tips, templates, and a 5,000+ member community of sales professionals."},
