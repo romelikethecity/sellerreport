@@ -424,6 +424,26 @@ a:hover { color: var(--sr-accent-dark); }
 .nl-msg--error { color: var(--sr-danger); }
 .nl-fine { margin-top: 12px; font-size: 0.8rem; color: var(--sr-text-secondary); opacity: 0.7; }
 
+/* Sources & Methodology (E-E-A-T) */
+.content-sources {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--sr-border);
+    font-size: 0.85rem;
+    color: var(--sr-text-secondary);
+}
+.content-sources h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    opacity: 0.6;
+}
+.content-sources ul { list-style: none; padding: 0; margin: 0; }
+.content-sources li { margin-bottom: 0.5rem; }
+.content-sources a { text-decoration: underline; }
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2rem; }
@@ -572,7 +592,7 @@ def get_footer_html():
             {columns_html}
         </div>
         <div class="footer-bottom">
-            <span>&copy; {COPYRIGHT_YEAR} {SITE_NAME}. All rights reserved.</span>
+            <span>&copy; {COPYRIGHT_YEAR} {SITE_NAME}. All rights reserved. | <a href="/privacy/" style="color:rgba(255,255,255,0.5);">Privacy</a> | <a href="/terms/" style="color:rgba(255,255,255,0.5);">Terms</a></span>
             <span>{SITE_TAGLINE}</span>
         </div>
     </div>
@@ -604,13 +624,14 @@ def get_newsletter_html():
 
 
 def get_page_wrapper(title, description, canonical_path, body_content,
-                     active_path="", extra_head="", body_class=""):
-    """Assemble a full HTML document."""
+                     active_path="", extra_head="", body_class="", show_sources=False):
+    """Assemble a full HTML document. Pass show_sources=True for content pages (E-E-A-T)."""
     bc = f' class="{body_class}"' if body_class else ""
     head = get_html_head(title, description, canonical_path, extra_head)
     nav = get_nav_html(active_path)
     newsletter = get_newsletter_html()
     footer = get_footer_html()
+    sources = get_sources_section() if show_sources else ""
 
     inline_js = '''<script>
 (function(){
@@ -686,6 +707,7 @@ function handleSignup(e, form) {
 {nav}
 <main class="main-content">
 {body_content}
+{sources}
 </main>
 {newsletter}
 {footer}
@@ -804,6 +826,19 @@ def get_article_schema(title, description, slug, date_published, word_count):
 # ---------------------------------------------------------------------------
 # Visual Component Helpers
 # ---------------------------------------------------------------------------
+
+def get_sources_section():
+    """Return E-E-A-T sources & methodology block for content pages."""
+    return '''<aside class="content-sources">
+    <h4>Sources & Methodology</h4>
+    <ul>
+        <li>Salary and compensation data sourced from <strong>3,200+</strong> verified job postings, updated weekly</li>
+        <li>Employment projections from the <a href="https://www.bls.gov/ooh/sales/wholesale-and-manufacturing-sales-representatives.htm" target="_blank" rel="noopener">Bureau of Labor Statistics</a> Occupational Outlook Handbook</li>
+        <li>Tool adoption data derived from job description analysis across verified employer listings</li>
+        <li><a href="/salary/methodology/">Read our full methodology</a></li>
+    </ul>
+</aside>'''
+
 
 def breadcrumb_html(crumbs):
     """Generate visual breadcrumb. crumbs = [(label, url), ...] last item is current page."""

@@ -369,7 +369,7 @@ def build_job_board():
         path = "/jobs/index.html" if page_num == 1 else f"/jobs/page/{page_num}/index.html"
         canonical = "/jobs/" if page_num == 1 else f"/jobs/page/{page_num}/"
 
-        page = get_page_wrapper(title, desc, canonical, body, active_path="/jobs/", extra_head=bc_schema)
+        page = get_page_wrapper(title, desc, canonical, body, active_path="/jobs/", extra_head=bc_schema, show_sources=True)
         write_page(path, page)
 
 
@@ -460,7 +460,7 @@ def build_job_pages():
             meta_desc += f" Salary: {fmt_salary(j['min_amount'])}-{fmt_salary(j['max_amount'])}."
         meta_desc = meta_desc[:158]
 
-        page = get_page_wrapper(title, meta_desc, f"/jobs/{job_num}/", body, active_path="/jobs/", extra_head=bc_schema)
+        page = get_page_wrapper(title, meta_desc, f"/jobs/{job_num}/", body, active_path="/jobs/", extra_head=bc_schema, show_sources=True)
         write_page(f"/jobs/{job_num}/index.html", page)
 
 
@@ -556,6 +556,7 @@ def build_salary_index():
         body,
         active_path="/salaries/",
         extra_head=bc_schema,
+        show_sources=True,
     )
     write_page("/salaries/index.html", page)
 
@@ -621,6 +622,7 @@ def build_salary_by_seniority():
         body,
         active_path="/salaries/",
         extra_head=bc_schema,
+        show_sources=True,
     )
     write_page("/salaries/by-seniority/index.html", page)
 
@@ -680,6 +682,7 @@ def build_salary_by_location():
         body,
         active_path="/salaries/",
         extra_head=bc_schema,
+        show_sources=True,
     )
     write_page("/salaries/by-location/index.html", page)
 
@@ -3280,6 +3283,7 @@ def build_insight_articles():
         body,
         active_path="/insights/",
         extra_head=bc_schema,
+        show_sources=True,
     )
     write_page("/insights/index.html", page)
 
@@ -3338,6 +3342,7 @@ def build_insight_articles():
             body,
             active_path="/insights/",
             extra_head=art_schema + bc_schema + faq_schema_html,
+            show_sources=True,
         )
         write_page(f"/insights/{slug}/index.html", page)
 
@@ -4281,6 +4286,7 @@ def build_tool_roundups():
             body,
             active_path="/insights/",
             extra_head=art_schema + bc_schema + faq_schema_html,
+            show_sources=True,
         )
         write_page(f"/tools/{slug}/index.html", page)
 
@@ -4314,6 +4320,7 @@ def build_tool_roundups():
         "/tools/",
         index_body,
         active_path="/insights/",
+        show_sources=True,
     )
     write_page("/tools/index.html", page)
 
@@ -4475,7 +4482,7 @@ def build_companies_page():
     page = get_page_wrapper(
         "Top Companies Hiring Sales Reps",
         f"The {len(top)} companies hiring the most sales professionals right now. Updated weekly from {fmt_number(TOTAL_JOBS)} job postings.",
-        "/companies/", body, active_path="/companies/")
+        "/companies/", body, active_path="/companies/", show_sources=True)
     write_page("/companies/index.html", page)
 
 
@@ -4533,7 +4540,7 @@ def build_company_pages():
         page = get_page_wrapper(
             f"{company} Sales Jobs ({count} Open Roles)",
             f"Browse {count} open sales positions at {company}. Salary data, remote options, and seniority levels.",
-            f"/companies/{co_slug}/", body, active_path="/companies/")
+            f"/companies/{co_slug}/", body, active_path="/companies/", show_sources=True)
         write_page(f"/companies/{co_slug}/index.html", page)
 
 
@@ -4555,6 +4562,10 @@ def build_about_page():
         <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Who It's For</h2>
         <p>Sales professionals evaluating the market. AEs wondering if they are underpaid. SDRs planning their next move. Sales leaders benchmarking compensation. Recruiters tracking where the demand is.</p>
 
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Who Built This</h2>
+        <p><strong>Rome Thorndike</strong> is the founder of The Seller Report and VP of Revenue at Firmograph.ai. He has spent 15+ years as an enterprise seller and sales leader, carrying a bag at Salesforce and Microsoft, helping scale Snapdocs (Sequoia-backed) from Series A through Series D, and leading sales at Datajoy through its acquisition by Databricks. Rome knows what it's like to grind quota, build territory, and navigate comp plans. He holds an MBA from UC Berkeley's Haas School of Business. He built The Seller Report because sellers deserve career intelligence based on real job posting data, not recruiter promises or anonymous Glassdoor posts.</p>
+        <p style="margin-top:12px;"><a href="https://www.linkedin.com/in/romethorndike/" target="_blank" rel="noopener">Connect with Rome on LinkedIn</a></p>
+
         <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Part of the Network</h2>
         <p>The Seller Report is part of a network of career intelligence sites covering different segments of the B2B job market:</p>
         <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
@@ -4567,10 +4578,14 @@ def build_about_page():
     </div>
 </div>"""
 
+    person_schema = '''<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Rome Thorndike","url":"https://www.linkedin.com/in/romethorndike/","jobTitle":"VP of Revenue","worksFor":{"@type":"Organization","name":"Firmograph.ai"},"alumniOf":{"@type":"EducationalOrganization","name":"UC Berkeley Haas School of Business"}}
+</script>'''
+
     page = get_page_wrapper(
         "About The Seller Report",
         "Weekly sales job market intelligence built from real data. Salary benchmarks, hiring trends, and career insights for sales professionals.",
-        "/about/", body, active_path="/about/")
+        "/about/", body, active_path="/about/", extra_head=person_schema)
     write_page("/about/index.html", page)
 
 
@@ -4707,9 +4722,123 @@ def build_top_voices():
     extra = bc_schema + item_list_schema + article_schema + voices_css
     page = get_page_wrapper(data["title"], data.get("subtitle", ""),
                             "/voices/", body, active_path="/voices/",
-                            extra_head=extra)
+                            extra_head=extra, show_sources=True)
     write_page("/voices/index.html", page)
     print(f"  Built: /voices/ ({len(voices)} voices)")
+
+
+def build_privacy_page():
+    """Build privacy policy page."""
+    body = """<div class="container">
+    """ + breadcrumb_html([("Home", "/"), ("Privacy Policy", "")]) + """
+    <div class="section" style="max-width:720px;">
+        <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:4px;">Privacy Policy</h1>
+        <p style="font-size:0.875rem;color:var(--sr-text-secondary);margin-bottom:32px;">Last updated: April 27, 2026</p>
+
+        <h2 style="font-size:1.4rem;margin-bottom:12px;">What We Collect</h2>
+        <p>The Seller Report collects minimal data to operate this site effectively. When you visit, we may collect:</p>
+        <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
+            <li style="margin-bottom:8px;"><strong>Email address:</strong> Only if you voluntarily subscribe to our newsletter.</li>
+            <li style="margin-bottom:8px;"><strong>Usage data:</strong> Pages visited, time on site, referral source, device type, and browser. This data is collected through Google Analytics and is aggregated, not personally identifiable.</li>
+            <li style="margin-bottom:8px;"><strong>Cookies:</strong> Small text files stored on your device for analytics and site functionality.</li>
+        </ul>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">How We Use Your Data</h2>
+        <p>We use the data we collect for the following purposes:</p>
+        <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
+            <li style="margin-bottom:8px;">To send you our newsletter if you have subscribed.</li>
+            <li style="margin-bottom:8px;">To understand how visitors use the site so we can improve content and user experience.</li>
+            <li style="margin-bottom:8px;">To monitor site performance and detect technical issues.</li>
+        </ul>
+        <p style="margin-top:12px;">We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Email (Resend)</h2>
+        <p>Newsletter emails are delivered through Resend, a transactional email service. When you subscribe, your email address is stored securely and used solely to deliver the newsletter you signed up for. You can unsubscribe at any time using the link in any email.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Analytics (Google Analytics 4)</h2>
+        <p>We use Google Analytics 4 (GA4) to collect anonymized usage data. GA4 uses first-party cookies to distinguish unique users and sessions. We do not enable Google Signals or advertising features. IP addresses are anonymized. You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Cookies</h2>
+        <p>This site uses cookies for:</p>
+        <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
+            <li style="margin-bottom:8px;"><strong>Analytics:</strong> Google Analytics cookies (_ga, _ga_*) to measure site usage.</li>
+            <li style="margin-bottom:8px;"><strong>Functionality:</strong> Session and preference cookies for site navigation.</li>
+        </ul>
+        <p style="margin-top:12px;">You can control cookies through your browser settings. Disabling cookies may affect site functionality.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Data Retention</h2>
+        <p>Analytics data is retained for 14 months in Google Analytics. Newsletter subscriber data is retained until you unsubscribe. We do not retain personal data beyond what is necessary for the purposes described above.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
+            <li style="margin-bottom:8px;">Access the personal data we hold about you.</li>
+            <li style="margin-bottom:8px;">Request correction of inaccurate data.</li>
+            <li style="margin-bottom:8px;">Request deletion of your data.</li>
+            <li style="margin-bottom:8px;">Unsubscribe from our newsletter at any time.</li>
+            <li style="margin-bottom:8px;">Opt out of analytics tracking.</li>
+        </ul>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Contact</h2>
+        <p>If you have questions about this privacy policy or want to exercise your data rights, email us at <a href="mailto:hello@thesellerreport.com">hello@thesellerreport.com</a>.</p>
+    </div>
+</div>"""
+
+    page = get_page_wrapper(
+        "Privacy Policy",
+        "Privacy policy for The Seller Report. How we collect, use, and protect your data.",
+        "/privacy/", body, active_path="")
+    write_page("/privacy/index.html", page)
+
+
+def build_terms_page():
+    """Build terms of use page."""
+    body = """<div class="container">
+    """ + breadcrumb_html([("Home", "/"), ("Terms of Use", "")]) + """
+    <div class="section" style="max-width:720px;">
+        <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:4px;">Terms of Use</h1>
+        <p style="font-size:0.875rem;color:var(--sr-text-secondary);margin-bottom:32px;">Last updated: April 27, 2026</p>
+
+        <h2 style="font-size:1.4rem;margin-bottom:12px;">Acceptance of Terms</h2>
+        <p>By accessing and using thesellerreport.com, you agree to be bound by these terms of use. If you do not agree with any part of these terms, you should not use this website.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Use License</h2>
+        <p>You are granted a limited, non-exclusive, non-transferable license to access and view the content on this site for personal, non-commercial use. You may not:</p>
+        <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
+            <li style="margin-bottom:8px;">Reproduce, distribute, or republish content from this site without written permission.</li>
+            <li style="margin-bottom:8px;">Use automated tools to scrape, crawl, or extract data from this site beyond what is permitted by our robots.txt file.</li>
+            <li style="margin-bottom:8px;">Use the content for training machine learning models or AI systems without written permission.</li>
+            <li style="margin-bottom:8px;">Frame or mirror any portion of this site on another website.</li>
+        </ul>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Content Accuracy</h2>
+        <p>The Seller Report provides job market data, salary benchmarks, and career intelligence derived from real job postings. While we strive for accuracy, all content is provided for informational purposes only. Job postings, salaries, and market conditions change frequently. We recommend verifying current details directly with employers before making career decisions.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Disclaimer</h2>
+        <p>All content on this site is provided "as is" without warranties of any kind, either express or implied. The Seller Report does not warrant that the information is complete, accurate, or current. We are not responsible for any decisions made based on the content of this site.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Limitations of Liability</h2>
+        <p>The Seller Report and its operators shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of this website or reliance on any information provided. This includes, without limitation, damages for loss of profits, data, or business opportunities.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">External Links</h2>
+        <p>This site contains links to third-party websites, including job boards, company pages, and other resources. These links are provided for convenience and informational purposes. We do not control, endorse, or assume responsibility for the content or practices of any linked third-party sites. Visiting external sites is at your own risk.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Newsletter</h2>
+        <p>If you subscribe to our newsletter, you agree to receive periodic emails about sales job market data, salary trends, and related content. You can unsubscribe at any time using the link provided in each email. Your email address will be handled in accordance with our <a href="/privacy/">Privacy Policy</a>.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Modifications</h2>
+        <p>We reserve the right to update or modify these terms at any time without prior notice. Changes become effective immediately upon posting to this page. Your continued use of the site after changes are posted constitutes acceptance of the revised terms. We encourage you to review this page periodically.</p>
+
+        <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Contact</h2>
+        <p>Questions about these terms? Email us at <a href="mailto:hello@thesellerreport.com">hello@thesellerreport.com</a>.</p>
+    </div>
+</div>"""
+
+    page = get_page_wrapper(
+        "Terms of Use",
+        "Terms of use for The Seller Report. Rules governing your use of this website.",
+        "/terms/", body, active_path="")
+    write_page("/terms/index.html", page)
 
 
 def build_nojekyll():
@@ -4792,6 +4921,12 @@ def main():
 
     print("  Building top voices page...")
     build_top_voices()
+
+    print("  Building privacy page...")
+    build_privacy_page()
+
+    print("  Building terms page...")
+    build_terms_page()
 
     print("  Building CSS & meta files...")
     build_css()
