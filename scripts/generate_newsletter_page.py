@@ -3,8 +3,8 @@
 Generate the Seller Report newsletter archive page + per-issue HTML pages.
 
 Reads newsletters/*.md, writes:
-  output/newsletter/index.html         — paginated archive index
-  output/newsletter/YYYY-MM-DD/index.html  — per-issue rendered HTML
+  site/newsletter/index.html         — paginated archive index
+  site/newsletter/YYYY-MM-DD/index.html  — per-issue rendered HTML
 
 Each page integrates with the site's existing CSS at /css/styles.css and
 includes a signup form that posts to the central D1 worker.
@@ -24,7 +24,7 @@ except ImportError:
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 NEWSLETTERS_DIR = PROJECT_DIR / "newsletters"
-OUTPUT_DIR = PROJECT_DIR / "output" / "newsletter"
+OUTPUT_DIR = PROJECT_DIR / "site" / "newsletter"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Share one implementation with the homepage form.

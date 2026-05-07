@@ -34,7 +34,7 @@ from templates import (get_page_wrapper, write_page, get_homepage_schema,
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(PROJECT_DIR, "output")
+OUTPUT_DIR = os.path.join(PROJECT_DIR, "site")
 BUILD_DATE = datetime.now().strftime("%Y-%m-%d")
 
 # Wire up templates module

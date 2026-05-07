@@ -12,7 +12,7 @@ sys.path.insert(0, SCRIPT_DIR)
 import templates
 from templates import get_page_wrapper, write_page
 
-templates.OUTPUT_DIR = os.path.join(PROJECT_DIR, "output")
+templates.OUTPUT_DIR = os.path.join(PROJECT_DIR, "site")
 
 # ---------------------------------------------------------------------------
 # Resource data
