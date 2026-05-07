@@ -87,7 +87,7 @@
     "Plg": 26
   },
   "geo_focus": {
-    "Global": 2416,
+    "Global": 2417,
     "North America": 2128,
     "Apac": 426,
     "Emea": 310,
@@ -138,7 +138,7 @@
   },
   "location_mix": {
     "unknown": 1717,
-    "remote": 1127,
-    "onsite": 5076
+    "onsite": 5076,
+    "remote": 1127
   }
 }

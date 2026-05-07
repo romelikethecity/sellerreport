@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T20:41:21.737168",
+  "generated_at": "2026-05-07T21:03:19.838650",
   "total_records": 7920,
   "records_with_salary": 4580,
   "disclosure_rate": 57.8,
@@ -17,17 +17,17 @@
       "max_base_avg": 148229,
       "median": 89100
     },
-    "Mid": {
-      "count": 2564,
-      "min_base_avg": 91290,
-      "max_base_avg": 135406,
-      "median": 78000
-    },
     "VP": {
       "count": 104,
       "min_base_avg": 174331,
       "max_base_avg": 234351,
       "median": 170000
+    },
+    "Mid": {
+      "count": 2564,
+      "min_base_avg": 91290,
+      "max_base_avg": 135406,
+      "median": 78000
     },
     "Director": {
       "count": 460,
@@ -97,17 +97,17 @@
       "max_base_avg": 157448,
       "median": 110000
     },
-    "Austin": {
-      "count": 36,
-      "min_base_avg": 119933,
-      "max_base_avg": 179187,
-      "median": 70000
-    },
     "San Francisco": {
       "count": 84,
       "min_base_avg": 130551,
       "max_base_avg": 176421,
       "median": 113000
+    },
+    "Austin": {
+      "count": 36,
+      "min_base_avg": 119933,
+      "max_base_avg": 179187,
+      "median": 70000
     },
     "Boston": {
       "count": 46,
@@ -115,17 +115,17 @@
       "max_base_avg": 149920,
       "median": 100000
     },
-    "Seattle": {
-      "count": 38,
-      "min_base_avg": 112725,
-      "max_base_avg": 162156,
-      "median": 100130
-    },
     "Miami": {
       "count": 14,
       "min_base_avg": 101964,
       "max_base_avg": 135490,
       "median": 85000
+    },
+    "Seattle": {
+      "count": 38,
+      "min_base_avg": 112725,
+      "max_base_avg": 162156,
+      "median": 100130
     },
     "Denver": {
       "count": 38,
@@ -281,20 +281,20 @@
       "median_total": 151059,
       "limited_sample": false
     },
-    "RVP": {
-      "n": 35,
-      "n_total": 35,
-      "n_with_salary": 12,
-      "median_base": 199000,
-      "median_total": 268125,
-      "limited_sample": false
-    },
     "AE - SMB": {
       "n": 35,
       "n_total": 35,
       "n_with_salary": 24,
       "median_base": 47540,
       "median_total": 129400,
+      "limited_sample": false
+    },
+    "RVP": {
+      "n": 35,
+      "n_total": 35,
+      "n_with_salary": 12,
+      "median_base": 199000,
+      "median_total": 268125,
       "limited_sample": false
     }
   },
@@ -303,13 +303,13 @@
       "median_years": 5,
       "n": 814
     },
-    "AE - Mid-Market": {
-      "median_years": 4,
-      "n": 601
-    },
     "SDR/BDR": {
       "median_years": 2,
       "n": 251
+    },
+    "AE - Mid-Market": {
+      "median_years": 4,
+      "n": 601
     },
     "CRO": {
       "median_years": 11,
@@ -319,10 +319,6 @@
       "median_years": 6,
       "n": 46
     },
-    "RVP": {
-      "median_years": 7,
-      "n": 7
-    },
     "VP Sales": {
       "median_years": 10,
       "n": 61
@@ -330,6 +326,10 @@
     "AE - SMB": {
       "median_years": 4,
       "n": 13
+    },
+    "RVP": {
+      "median_years": 7,
+      "n": 7
     }
   }
 }
