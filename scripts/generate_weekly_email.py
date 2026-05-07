@@ -190,8 +190,8 @@ def save_snapshot(jobs_data, date_iso):
     """Save jobs.json as a snapshot for next week's WoW comparison."""
     os.makedirs(HISTORY_DIR, exist_ok=True)
     path = os.path.join(HISTORY_DIR, f"jobs_{date_iso}.json")
-    with open(path, "w") as f:
-        json.dump(jobs_data, f, indent=2)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(jobs_data, f, indent=2, ensure_ascii=False)
     print(f"Snapshot saved to {path}")
 
 
