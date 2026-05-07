@@ -16,7 +16,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
@@ -42,7 +42,7 @@ def load_json(filename):
     if not os.path.exists(path):
         print(f"WARNING: {path} not found", file=sys.stderr)
         return {}
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -67,7 +67,7 @@ def fmt_money(n):
 
 def fmt_delta(now, then):
     """Format week-over-week delta as +N% or -N% or '—' if unavailable."""
-    if not then or not now:
+    if then is None or now is None or then == 0:
         return "—"
     pct = round(100 * (now - then) / then)
     sign = "+" if pct >= 0 else ""
@@ -120,9 +120,10 @@ def section_where_the_money_is(comp_data):
 
 def section_what_the_market_wants(market_intel):
     tools = market_intel.get("tools", {})
-    # Filter out placeholders like "_none" and take top 10 real tools
+    # Filter out placeholders like "_none" and take top 10 real tools.
+    # Sort defensively in case the upstream writer's order ever drifts.
     filtered = [(t, c) for t, c in tools.items() if t.lower() not in TOOL_BLOCKLIST]
-    top10 = filtered[:10]
+    top10 = sorted(filtered, key=lambda x: x[1], reverse=True)[:10]
     if not top10:
         return ""
     lines = ["## What the market wants\n", "Top tools/skills mentioned in active job descriptions:\n"]
@@ -150,7 +151,7 @@ def section_career_map(comp_data):
 
 def section_top_hiring_companies(market_intel):
     companies = market_intel.get("top_hiring_companies", {})
-    top10 = list(companies.items())[:10]
+    top10 = sorted(companies.items(), key=lambda x: x[1], reverse=True)[:10]
     if not top10:
         return ""
     lines = ["## Top hiring this week\n"]
@@ -204,7 +205,7 @@ def main():
                         help="Save current jobs.json as a snapshot for next week's WoW")
     args = parser.parse_args()
 
-    date_iso = args.date or datetime.utcnow().date().isoformat()
+    date_iso = args.date or datetime.now(timezone.utc).date().isoformat()
 
     jobs_data = load_json("jobs.json")
     comp_data = load_json("comp_analysis.json")
