@@ -26,8 +26,7 @@ from nav_config import *
 import templates
 from templates import (get_page_wrapper, write_page, get_homepage_schema,
                        get_breadcrumb_schema, get_faq_schema,
-                       get_article_schema, breadcrumb_html, faq_html, ALL_PAGES,
-                       signup_form_partial)
+                       get_article_schema, breadcrumb_html, faq_html, ALL_PAGES)
 
 # ---------------------------------------------------------------------------
 # Path constants
@@ -230,16 +229,6 @@ def build_homepage():
     body += '''
             </tbody>
         </table>
-    </div>
-</section>
-'''
-
-    body += f'''
-<section class="section">
-    <div class="container" style="max-width: 720px; text-align: center;">
-        <h2>Get the weekly seller report — free</h2>
-        <p class="section-subtitle">B2B sales jobs, comp by tier, tools in demand. Every Monday morning.</p>
-        {signup_form_partial(form_id="nl-form-home", msg_id="nl-msg-home", ga_label="homepage")}
     </div>
 </section>
 '''
