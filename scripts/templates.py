@@ -603,6 +603,97 @@ def get_footer_html():
 # Page Wrapper
 # ---------------------------------------------------------------------------
 
+def signup_form_partial(form_id: str = "nl-form-inline", msg_id: str = "nl-msg-inline",
+                        ga_label: str = "inline_form") -> str:
+    """Self-contained newsletter signup form (HTML + inline JS + inline CSS).
+
+    Posts to the central D1 worker at newsletter-subscribe.rome-workers.workers.dev
+    with list slug 'seller-report'. Used on the homepage and the newsletter
+    archive page so both share one implementation.
+
+    Uses unique element IDs (default nl-form-inline / nl-msg-inline) so it can
+    coexist with the sitewide newsletter section emitted by get_newsletter_html()
+    without conflicting on getElementById lookups.
+    """
+    worker_url = "https://newsletter-subscribe.rome-workers.workers.dev/subscribe"
+    list_slug = "seller-report"
+    return f"""
+<div class=\"nl-signup\">
+  <form id=\"{form_id}\" class=\"nl-signup-form\">
+    <input type=\"email\" name=\"email\" class=\"nl-signup-input\"
+           placeholder=\"you@company.com\" required>
+    <button type=\"submit\" class=\"nl-signup-btn\">Subscribe — free</button>
+    <p class=\"nl-signup-msg\" id=\"{msg_id}\"></p>
+    <p class=\"nl-signup-fine\">No spam. Unsubscribe anytime.</p>
+  </form>
+</div>
+<script>
+(function() {{
+  var form = document.getElementById('{form_id}');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {{
+    e.preventDefault();
+    var email = form.email.value.trim();
+    var msg = document.getElementById('{msg_id}');
+    var btn = form.querySelector('button');
+    var origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    msg.className = 'nl-signup-msg';
+    msg.textContent = '';
+    fetch('{worker_url}', {{
+      method: 'POST',
+      headers: {{'Content-Type': 'application/json'}},
+      body: JSON.stringify({{email: email, list: '{list_slug}'}})
+    }})
+    .then(function(r) {{ return r.json(); }})
+    .then(function(data) {{
+      if (data.ok) {{
+        msg.className = 'nl-signup-msg success';
+        msg.textContent = "You're in. Check your inbox to confirm.";
+        form.querySelector('input[name=\\"email\\"]').value = '';
+        if (typeof gtag === 'function') {{
+          gtag('event', 'newsletter_signup', {{event_category: 'newsletter', event_label: '{ga_label}'}});
+        }}
+      }} else {{
+        msg.className = 'nl-signup-msg error';
+        msg.textContent = data.error || 'Something went wrong. Try again.';
+      }}
+    }})
+    .catch(function() {{
+      msg.className = 'nl-signup-msg error';
+      msg.textContent = 'Network error. Try again.';
+    }})
+    .finally(function() {{
+      btn.disabled = false;
+      btn.textContent = origText;
+    }});
+  }});
+}})();
+</script>
+<style>
+.nl-signup {{ max-width: 480px; margin: 24px auto; }}
+.nl-signup-form {{ display: flex; flex-wrap: wrap; gap: 8px; }}
+.nl-signup-input {{
+  flex: 1; min-width: 220px; padding: 12px 16px;
+  border: 1px solid var(--sr-border, #e5e7eb); border-radius: 8px;
+  font-size: 16px; outline: none;
+}}
+.nl-signup-input:focus {{ border-color: var(--sr-primary, #1d4ed8); }}
+.nl-signup-btn {{
+  padding: 12px 24px; background: var(--sr-primary, #1d4ed8); color: #fff;
+  border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
+}}
+.nl-signup-btn:hover {{ background: var(--sr-primary-light, #3b82f6); }}
+.nl-signup-btn:disabled {{ opacity: 0.6; cursor: not-allowed; }}
+.nl-signup-msg {{ width: 100%; margin: 8px 0 0; font-size: 14px; }}
+.nl-signup-msg.success {{ color: var(--sr-accent-dark, #059669); }}
+.nl-signup-msg.error {{ color: var(--sr-danger, #ef4444); }}
+.nl-signup-fine {{ width: 100%; margin: 6px 0 0; font-size: 12px; color: var(--sr-text-secondary, #64748b); }}
+</style>
+""".strip()
+
+
 def get_newsletter_html():
     """Generate newsletter signup section."""
     return '''<section class="nl-section">
