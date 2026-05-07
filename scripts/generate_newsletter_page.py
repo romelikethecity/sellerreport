@@ -9,10 +9,10 @@ Reads newsletters/*.md, writes:
 Each page integrates with the site's existing CSS at /css/styles.css and
 includes a signup form that posts to the central D1 worker.
 """
+import html
 import os
 import re
 import glob
-from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -151,7 +151,7 @@ def site_head(title: str) -> str:
 def render_issue_page(issue: dict) -> str:
     """Render one issue as standalone HTML."""
     body = md_lib.markdown(issue["md"], extensions=["tables"])
-    return site_head(issue["title"]) + f"""
+    return site_head(html.escape(issue["title"])) + f"""
 <main class="container" style="max-width: 760px; padding: 60px 24px;">
 {body}
 <hr style="margin: 48px 0; border: none; border-top: 1px solid var(--sr-border, #e5e7eb);">
@@ -166,7 +166,7 @@ def render_issue_page(issue: dict) -> str:
 def render_index(issues: list[dict]) -> str:
     items = "".join(
         f'<li style="margin-bottom: 12px;">'
-        f'<a href="/newsletter/{i["date"]}/" style="font-weight: 600;">{i["title"]}</a>'
+        f'<a href="/newsletter/{i["date"]}/" style="font-weight: 600;">{html.escape(i["title"])}</a>'
         f' &middot; <time datetime="{i["date"]}" style="color: var(--sr-text-secondary, #64748b);">{i["date"]}</time>'
         f'</li>'
         for i in issues
@@ -180,7 +180,7 @@ Weekly read on the B2B sales job market. Comp by tier, tools in demand, top hiri
 {signup_form_html()}
 <h2 style="margin-top: 48px;">Past issues</h2>
 <ul style="list-style: none; padding: 0;">
-{items if items else '<li>No issues yet — first issue ships next Monday.</li>'}
+{items if items else '<li>No issues yet. First issue ships next Monday.</li>'}
 </ul>
 </main>
 </body>
