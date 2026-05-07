@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1D4ED8">
+<title>Newsletter | The Seller Report</title>
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="icon" type="image/svg+xml" href="/logos/favicon-32.svg">
+</head>
+<body>
+
+<main class="container" style="max-width: 760px; padding: 60px 24px;">
+<h1>The Seller Report Newsletter</h1>
+<p style="font-size: 1.1em; color: var(--sr-text-secondary, #64748b);">
+Weekly read on the B2B sales job market. Comp by tier, tools in demand, top hiring companies. Free.
+</p>
+<div class="nl-signup">
+  <form id="nl-form" class="nl-form">
+    <input type="email" name="email" class="nl-input"
+           placeholder="you@company.com" required>
+    <button type="submit" class="nl-btn">Subscribe — free</button>
+    <p class="nl-msg" id="nl-msg"></p>
+    <p class="nl-fine">No spam. Unsubscribe anytime.</p>
+  </form>
+</div>
+<script>
+(function() {
+  var form = document.getElementById('nl-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    var msg = document.getElementById('nl-msg');
+    var btn = form.querySelector('button');
+    var origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    msg.className = 'nl-msg';
+    msg.textContent = '';
+    fetch('https://newsletter-subscribe.rome-workers.workers.dev/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: email, list: 'seller-report'})
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        msg.className = 'nl-msg success';
+        msg.textContent = "You're in. Check your inbox to confirm.";
+        form.querySelector('input[name=\"email\"]').value = '';
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_signup', {event_category: 'newsletter', event_label: 'newsletter_page'});
+        }
+      } else {
+        msg.className = 'nl-msg error';
+        msg.textContent = data.error || 'Something went wrong. Try again.';
+      }
+    })
+    .catch(function() {
+      msg.className = 'nl-msg error';
+      msg.textContent = 'Network error. Try again.';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = origText;
+    });
+  });
+})();
+</script>
+<style>
+.nl-signup { max-width: 480px; margin: 24px 0; }
+.nl-form { display: flex; flex-wrap: wrap; gap: 8px; }
+.nl-input {
+  flex: 1; min-width: 220px; padding: 12px 16px;
+  border: 1px solid var(--sr-border, #e5e7eb); border-radius: 8px;
+  font-size: 16px; outline: none;
+}
+.nl-input:focus { border-color: var(--sr-primary, #1d4ed8); }
+.nl-btn {
+  padding: 12px 24px; background: var(--sr-primary, #1d4ed8); color: #fff;
+  border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
+}
+.nl-btn:hover { background: var(--sr-primary-light, #3b82f6); }
+.nl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.nl-msg { width: 100%; margin: 8px 0 0; font-size: 14px; }
+.nl-msg.success { color: var(--sr-accent-dark, #059669); }
+.nl-msg.error { color: var(--sr-danger, #ef4444); }
+.nl-fine { width: 100%; margin: 6px 0 0; font-size: 12px; color: var(--sr-text-secondary, #64748b); }
+</style>
+<h2 style="margin-top: 48px;">Past issues</h2>
+<ul style="list-style: none; padding: 0;">
+<li style="margin-bottom: 12px;"><a href="/newsletter/2026-05-07/" style="font-weight: 600;">The Seller Report — Week of 2026-05-07</a> &middot; <time datetime="2026-05-07" style="color: var(--sr-text-secondary, #64748b);">2026-05-07</time></li>
+</ul>
+</main>
+</body>
+</html>
