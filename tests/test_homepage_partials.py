@@ -113,3 +113,87 @@ def test_career_ladder_handles_missing_tier_gracefully():
     assert "CRO" in html
     # SDR/BDR isn't in by_tier — should not appear
     assert "SDR/BDR" not in html
+
+
+from templates import newsletter_preview_partial
+
+
+SAMPLE_MARKET = {
+    "date": "May 07, 2026",
+    "total_jobs": 7920,
+    "tools": {"Salesforce": 1764, "Hubspot": 479},
+    "comp_signals": {"Equity": 4703, "Uncapped": 792, "Ote Mentioned": 738},
+    "segment": {"Enterprise": 1670, "Smb": 461, "Mid Market": 401, "Fortune 500": 402},
+    "motion": {"Channel": 1386, "Inside": 1059, "Direct": 707},
+    "methodology": {"Solution Selling": 652, "Meddic": 214, "Value Selling": 123},
+    "top_hiring_companies": {
+        "Amazon Web Services": 54, "Salesforce": 31, "Comcast": 29,
+        "ADP": 21, "Google": 19,
+    },
+}
+
+
+SAMPLE_JOBS = {
+    "total_jobs": 7920,
+    "last_updated": "2026-05-07",
+    "jobs": [
+        {"title": "Enterprise Account Executive", "company": "Acme",
+         "location": "Remote, US", "min_amount": 130000, "max_amount": 200000},
+        {"title": "VP Sales", "company": "Beta Corp",
+         "location": "New York, NY", "min_amount": 200000, "max_amount": 300000},
+        {"title": "SMB Account Executive", "company": "Gamma",
+         "location": "Austin, TX", "min_amount": 60000, "max_amount": 110000},
+    ],
+}
+
+
+def test_preview_renders_traffic_light_dots():
+    html = newsletter_preview_partial(SAMPLE_COMP, SAMPLE_MARKET, SAMPLE_JOBS)
+    assert html.count("preview-dot") == 3, "should have exactly 3 traffic-light dots"
+
+
+def test_preview_shows_total_openings_and_market_date():
+    html = newsletter_preview_partial(SAMPLE_COMP, SAMPLE_MARKET, SAMPLE_JOBS)
+    assert "7,920" in html
+    assert "May 07, 2026" in html or "2026-05-07" in html
+
+
+def test_preview_renders_three_signal_callouts():
+    """Equity, Uncapped, OTE — 3 percent stats from comp_signals."""
+    html = newsletter_preview_partial(SAMPLE_COMP, SAMPLE_MARKET, SAMPLE_JOBS)
+    # 4703/7920 = 59%, 792/7920 = 10%, 738/7920 = 9%
+    assert "59%" in html
+    assert "10%" in html
+    assert "9%" in html
+    assert "Equity" in html
+    assert "Uncapped" in html
+    assert "OTE" in html
+
+
+def test_preview_includes_top_5_tier_rows():
+    html = newsletter_preview_partial(SAMPLE_COMP, SAMPLE_MARKET, SAMPLE_JOBS)
+    # Top 5 tiers shown in the preview table
+    for tier in ["SDR/BDR", "AE - Mid-Market", "AE - Enterprise",
+                 "Director / Sales Manager", "VP Sales"]:
+        assert tier in html, f"tier {tier!r} missing from preview table"
+
+
+def test_preview_includes_top_5_hiring_companies():
+    html = newsletter_preview_partial(SAMPLE_COMP, SAMPLE_MARKET, SAMPLE_JOBS)
+    for co in ["Amazon Web Services", "Salesforce", "Comcast", "ADP", "Google"]:
+        assert co in html, f"company {co!r} missing"
+
+
+def test_preview_includes_3_featured_listings():
+    html = newsletter_preview_partial(SAMPLE_COMP, SAMPLE_MARKET, SAMPLE_JOBS)
+    for title in ["Enterprise Account Executive", "VP Sales", "SMB Account Executive"]:
+        assert title in html
+
+
+def test_preview_handles_empty_comp_signals_gracefully():
+    """If comp_signals is missing, signal callouts render as 0% or '—'."""
+    market = dict(SAMPLE_MARKET)
+    market["comp_signals"] = {}
+    html = newsletter_preview_partial(SAMPLE_COMP, market, SAMPLE_JOBS)
+    # Should not crash; should still render the section
+    assert "preview-signals" in html

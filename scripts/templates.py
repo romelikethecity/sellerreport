@@ -820,6 +820,133 @@ def career_map_ladder(comp_data: dict) -> str:
 {footnote}""".strip()
 
 
+# Order for the preview's mini comp table (top 5 tiers shown)
+PREVIEW_TIER_ORDER = [
+    "SDR/BDR", "AE - Mid-Market", "AE - Enterprise",
+    "Director / Sales Manager", "VP Sales",
+]
+
+
+def _signal_pct(market_intel: dict, key: str) -> str:
+    """Render a comp_signals key as a percent of total_jobs, or '—' if missing."""
+    signals = market_intel.get("comp_signals", {})
+    n = signals.get(key, 0)
+    total = market_intel.get("total_jobs", 0)
+    if not total:
+        return "—"
+    return f"{round(100 * n / total)}%"
+
+
+def newsletter_preview_partial(comp_data: dict, market_intel: dict,
+                               jobs_data: dict) -> str:
+    """Render the CSS-mocked Mac inbox preview block.
+    Used on the homepage AND the /newsletter/ page.
+
+    Reads:
+      comp_data['by_tier'][tier] = {median_base, median_total, n, limited_sample}
+      market_intel['date'], ['total_jobs'], ['comp_signals'], ['top_hiring_companies']
+      jobs_data['jobs'] (a list — first 3 with salaries are featured)
+    """
+    total_jobs = jobs_data.get("total_jobs") or market_intel.get("total_jobs", 0)
+    date_str = market_intel.get("date", "")
+
+    # 3 signal callouts from comp_signals
+    pct_equity = _signal_pct(market_intel, "Equity")
+    pct_uncapped = _signal_pct(market_intel, "Uncapped")
+    pct_ote = _signal_pct(market_intel, "Ote Mentioned")
+
+    # Mini comp table — top 5 tiers in spec order
+    tier_rows = []
+    by_tier = comp_data.get("by_tier", {})
+    for tier in PREVIEW_TIER_ORDER:
+        row = by_tier.get(tier)
+        if not row:
+            continue
+        tier_rows.append(f"""
+<tr>
+  <td>{tier}</td>
+  <td class="val">{_fmt_money_short(row.get('median_base'))}</td>
+  <td class="val">{_fmt_money_short(row.get('median_total'))}</td>
+  <td class="val">{row.get('n', 0):,}</td>
+</tr>""")
+
+    # Top 5 hiring companies
+    companies = list(market_intel.get("top_hiring_companies", {}).items())[:5]
+    company_rows = "".join(
+        f'<tr><td>{name}</td><td class="val">{count}</td></tr>'
+        for name, count in companies
+    )
+
+    # 3 featured listings (first 3 jobs with disclosed salary)
+    jobs = [j for j in jobs_data.get("jobs", []) if j.get("min_amount")][:3]
+    featured_html = "".join(
+        f"""<div class="preview-featured-card">
+  <div class="preview-featured-title">{j.get('title', '')}</div>
+  <div class="preview-featured-meta">{j.get('company', '')} · {j.get('location', '')}</div>
+  <div class="preview-featured-salary">{_fmt_money_short(j.get('min_amount'))} — {_fmt_money_short(j.get('max_amount'))}</div>
+</div>""" for j in jobs)
+
+    return f"""
+<section class="preview-section">
+  <div class="container">
+    <h2>What you'll get every Monday</h2>
+    <p class="preview-subtitle">A peek inside the Seller Report. Live data from this week.</p>
+    <div class="preview-container">
+      <div class="preview-toolbar">
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <span class="preview-toolbar-title">Inbox &mdash; The Seller Report</span>
+      </div>
+      <div class="preview-body">
+        <div class="preview-header-bar">THE SELLER REPORT — {date_str}</div>
+
+        <div class="preview-stats">
+          <div class="preview-stat-card">
+            <div class="preview-stat-label">Active Openings</div>
+            <div class="preview-stat-value">{total_jobs:,}</div>
+          </div>
+          <div class="preview-stat-card">
+            <div class="preview-stat-label">Median Total (AE Mid-Market)</div>
+            <div class="preview-stat-value">{_fmt_money_short(by_tier.get('AE - Mid-Market', {}).get('median_total'))}</div>
+          </div>
+        </div>
+
+        <div class="preview-signals">
+          <div class="preview-signal">
+            <div class="preview-signal-value">{pct_equity}</div>
+            <div class="preview-signal-label">Equity Mentioned</div>
+          </div>
+          <div class="preview-signal">
+            <div class="preview-signal-value">{pct_uncapped}</div>
+            <div class="preview-signal-label">Uncapped Comm</div>
+          </div>
+          <div class="preview-signal">
+            <div class="preview-signal-value">{pct_ote}</div>
+            <div class="preview-signal-label">OTE Published</div>
+          </div>
+        </div>
+
+        <div class="preview-table-title">Comp by tier</div>
+        <table class="preview-table">
+          <thead><tr><th>Tier</th><th>Base</th><th>Total</th><th>n</th></tr></thead>
+          <tbody>{''.join(tier_rows)}</tbody>
+        </table>
+
+        <div class="preview-table-title">Top hiring this week</div>
+        <table class="preview-table">
+          <thead><tr><th>Company</th><th>Openings</th></tr></thead>
+          <tbody>{company_rows}</tbody>
+        </table>
+
+        <div class="preview-table-title">Featured listings</div>
+        <div class="preview-featured">{featured_html}</div>
+      </div>
+    </div>
+  </div>
+</section>""".strip()
+
+
 def get_newsletter_html():
     """Generate newsletter signup section."""
     return '''<section class="nl-section">
