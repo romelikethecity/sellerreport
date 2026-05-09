@@ -1228,12 +1228,15 @@ def get_newsletter_html():
 
 
 def get_page_wrapper(title, description, canonical_path, body_content,
-                     active_path="", extra_head="", body_class="", show_sources=False):
-    """Assemble a full HTML document. Pass show_sources=True for content pages (E-E-A-T)."""
+                     active_path="", extra_head="", body_class="", show_sources=False,
+                     show_newsletter=True):
+    """Assemble a full HTML document. Pass show_sources=True for content pages (E-E-A-T).
+    Pass show_newsletter=False to suppress the sitewide nl-section (used by the homepage,
+    which has its own hero CTA + footer signup)."""
     bc = f' class="{body_class}"' if body_class else ""
     head = get_html_head(title, description, canonical_path, extra_head)
     nav = get_nav_html(active_path)
-    newsletter = get_newsletter_html()
+    newsletter = get_newsletter_html() if show_newsletter else ""
     footer = get_footer_html()
     sources = get_sources_section() if show_sources else ""
 
