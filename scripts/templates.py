@@ -753,6 +753,73 @@ def signup_form_hero(form_id: str = "hero-form", msg_id: str = "hero-msg",
 """.strip()
 
 
+# Tier order top-down (CRO at top, SDR/BDR at bottom). Must match the
+# order used by the newsletter generator for consistency.
+CAREER_LADDER_ORDER = [
+    "CRO",
+    "VP Sales",
+    "RVP",
+    "Director / Sales Manager",
+    "AE - Enterprise",
+    "AE - Mid-Market",
+    "AE - SMB",
+    "SDR/BDR",
+]
+
+
+def _fmt_money_short(n):
+    """90000 -> $90K · 1500000 -> $1.5M · None -> —."""
+    if n is None or n <= 0:
+        return "—"
+    if n >= 1_000_000:
+        return f"${n / 1_000_000:.1f}M"
+    return f"${n // 1000}K"
+
+
+def career_map_ladder(comp_data: dict) -> str:
+    """Render the 8-tier ladder. Reads:
+       comp_data['by_tier'][tier] = {n, median_base, median_total, limited_sample}
+       comp_data['career_map_years'][tier] = {median_years, n}
+    """
+    by_tier = comp_data.get("by_tier", {})
+    years_by_tier = comp_data.get("career_map_years", {})
+
+    rungs = []
+    has_limited = False
+    for tier in CAREER_LADDER_ORDER:
+        row = by_tier.get(tier)
+        if not row:
+            continue
+        years_row = years_by_tier.get(tier, {})
+        is_limited = bool(row.get("limited_sample"))
+        has_limited = has_limited or is_limited
+        flag = "*" if is_limited else ""
+        median_yrs = years_row.get("median_years")
+        years_html = f'<span class="career-rung-years">{median_yrs} yrs</span>' \
+                     if median_yrs is not None else ""
+        rungs.append(f"""
+<div class="career-rung">
+  <div class="career-rung-tier">{tier}{flag}</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">{_fmt_money_short(row.get('median_base'))}</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">{_fmt_money_short(row.get('median_total'))} OTE</span>
+    {years_html}
+    <span class="career-rung-n">n={row.get('n', 0):,}</span>
+  </div>
+</div>""")
+
+    footnote = ('<p class="career-ladder-footnote">'
+                '* Limited sample (n&lt;10) — directional only.</p>'
+                if has_limited else "")
+
+    return f"""
+<div class="career-ladder">
+{''.join(rungs)}
+</div>
+{footnote}""".strip()
+
+
 def get_newsletter_html():
     """Generate newsletter signup section."""
     return '''<section class="nl-section">
