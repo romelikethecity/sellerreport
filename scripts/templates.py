@@ -694,6 +694,65 @@ def signup_form_partial(form_id: str = "nl-form-inline", msg_id: str = "nl-msg-i
 """.strip()
 
 
+def signup_form_hero(form_id: str = "hero-form", msg_id: str = "hero-msg",
+                    ga_label: str = "hero") -> str:
+    """Hero-sized signup form. Same worker + slug as signup_form_partial,
+    larger input + button styled via the .hero-signup class."""
+    return f"""
+<div class="hero-signup">
+  <form class="hero-signup-form" id="{form_id}">
+    <input type="email" name="email" class="hero-signup-input"
+           placeholder="you@company.com" required>
+    <button type="submit" class="hero-signup-btn">Subscribe</button>
+  </form>
+  <p class="hero-signup-msg" id="{msg_id}"></p>
+  <p class="hero-signup-fine">Free weekly email. Unsubscribe anytime.</p>
+</div>
+<script>
+(function() {{
+  var form = document.getElementById('{form_id}');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {{
+    e.preventDefault();
+    var email = form.email.value.trim();
+    var msg = document.getElementById('{msg_id}');
+    var btn = form.querySelector('button');
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Submitting...';
+    msg.className = 'hero-signup-msg'; msg.textContent = '';
+    fetch('https://newsletter-subscribe.rome-workers.workers.dev/subscribe', {{
+      method: 'POST',
+      headers: {{'Content-Type': 'application/json'}},
+      body: JSON.stringify({{email: email, list: 'seller-report'}})
+    }})
+    .then(function(r) {{ return r.json(); }})
+    .then(function(data) {{
+      if (data.ok) {{
+        msg.className = 'hero-signup-msg success';
+        msg.textContent = "You're in. Check your inbox to confirm.";
+        form.querySelector('input[name=\\"email\\"]').value = '';
+        if (typeof gtag === 'function') {{
+          gtag('event', 'newsletter_signup',
+            {{event_category: 'newsletter', event_label: '{ga_label}'}});
+        }}
+      }} else {{
+        msg.className = 'hero-signup-msg error';
+        msg.textContent = data.error || 'Something went wrong. Try again.';
+      }}
+    }})
+    .catch(function() {{
+      msg.className = 'hero-signup-msg error';
+      msg.textContent = 'Network error. Try again.';
+    }})
+    .finally(function() {{
+      btn.disabled = false; btn.textContent = orig;
+    }});
+  }});
+}})();
+</script>
+""".strip()
+
+
 def get_newsletter_html():
     """Generate newsletter signup section."""
     return '''<section class="nl-section">
