@@ -71,7 +71,7 @@
 <li class="nav-item"><a href="/about/">About</a></li>
 
         </ul>
-        <a href="/jobs/" class="nav-cta">Browse Jobs</a>
+        <a href="/newsletter/" class="nav-cta">Get Sales Intel</a>
         <button class="nav-mobile-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
@@ -80,207 +80,527 @@
 <main class="main-content">
 
 <section class="hero">
-    <div class="container">
-        <h1>Sales Job Market Intelligence</h1>
-        <p>Real salary data, hiring trends, and career insights from 7,920 sales job postings. Updated weekly.</p>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <span class="hero-stat-number">7,920</span>
-                <span class="hero-stat-label">Active Jobs</span>
-            </div>
-            <div class="hero-stat">
-                <span class="hero-stat-number">$85K</span>
-                <span class="hero-stat-label">Median Salary</span>
-            </div>
-            <div class="hero-stat">
-                <span class="hero-stat-number">43%</span>
-                <span class="hero-stat-label">Remote</span>
-            </div>
-            <div class="hero-stat">
-                <span class="hero-stat-number">5,178+</span>
-                <span class="hero-stat-label">Companies</span>
-            </div>
-        </div>
-    </div>
+  <div class="hero-content">
+    <p class="eyebrow">Free Weekly Newsletter</p>
+    <h1>We read 7,920+ B2B sales job postings so you don't have to.</h1>
+    <p class="hero-subtitle">Real salary data, comp by tier, tools in demand. One email, every Monday.</p>
+    <div class="hero-signup">
+  <form class="hero-signup-form" id="hero-form">
+    <input type="email" name="email" class="hero-signup-input"
+           placeholder="you@company.com" required>
+    <button type="submit" class="hero-signup-btn">Subscribe</button>
+  </form>
+  <p class="hero-signup-msg" id="hero-msg"></p>
+  <p class="hero-signup-fine">Free weekly email. Unsubscribe anytime.</p>
+</div>
+<script>
+(function() {
+  var form = document.getElementById('hero-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    var msg = document.getElementById('hero-msg');
+    var btn = form.querySelector('button');
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Submitting...';
+    msg.className = 'hero-signup-msg'; msg.textContent = '';
+    fetch('https://newsletter-subscribe.rome-workers.workers.dev/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: email, list: 'seller-report'})
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        msg.className = 'hero-signup-msg success';
+        msg.textContent = "You're in. Check your inbox to confirm.";
+        form.querySelector('input[name=\"email\"]').value = '';
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_signup',
+            {event_category: 'newsletter', event_label: 'hero'});
+        }
+      } else {
+        msg.className = 'hero-signup-msg error';
+        msg.textContent = data.error || 'Something went wrong. Try again.';
+      }
+    })
+    .catch(function() {
+      msg.className = 'hero-signup-msg error';
+      msg.textContent = 'Network error. Try again.';
+    })
+    .finally(function() {
+      btn.disabled = false; btn.textContent = orig;
+    });
+  });
+})();
+</script>
+    <p class="hero-trust">Updated every Monday. Read in 5 minutes.</p>
+  </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <h2>Salary Benchmarks</h2>
-        <p class="section-subtitle">Compensation data across 4,580 jobs with disclosed salary ranges.</p>
-        <div class="stat-grid">
-            <div class="stat-card">
-                <div class="stat-card-number">$60K</div>
-                <div class="stat-card-label">Entry Median</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-number">$78K</div>
-                <div class="stat-card-label">Mid Median</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-number">$106K</div>
-                <div class="stat-card-label">Senior Median</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-number">$126K</div>
-                <div class="stat-card-label">Director Median</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-number">$170K</div>
-                <div class="stat-card-label">VP Median</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-number">$200K</div>
-                <div class="stat-card-label">SVP Median</div>
-            </div>
-        </div>
-        <p style="margin-top: 16px;"><a href="/salaries/" style="color: var(--sr-accent-dark); font-weight: 600;">View full salary data &rarr;</a></p>
-    </div>
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">7,920+</div><div class="stat-label">Active Roles</div></div>
+    <div class="stat-card"><div class="stat-number">14%</div><div class="stat-label">Remote</div></div>
+    <div class="stat-card"><div class="stat-number">$85K</div><div class="stat-label">Median Total Comp</div></div>
+    <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Tools Tracked</div></div>
+  </div>
 </section>
 
-<section class="section section--alt">
-    <div class="container">
-        <h2>Featured Sales Jobs</h2>
-        <p class="section-subtitle">Top-paying and high-quality listings from the current market.</p>
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-title"><a href="/jobs/1/">Account Executive</a></div>
-                <div class="card-company">BillionToOne</div>
-                <div class="card-meta">
-                    <span>West Bergen, NJ, US</span>
-                    <span class="card-salary">$136K&ndash;$248K</span>
-                </div>
-                 <span class="card-badge card-badge--remote">Remote</span> <span class="card-badge">Mid</span>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/jobs/2/">Regional Sales Manager</a></div>
-                <div class="card-company">Luxe Vending</div>
-                <div class="card-meta">
-                    <span>CA, US</span>
-                    <span class="card-salary">$36K&ndash;$240K</span>
-                </div>
-                 <span class="card-badge card-badge--remote">Remote</span> <span class="card-badge">Mid</span>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/jobs/3/">Auto Regional Sales Manager</a></div>
-                <div class="card-company">Digi Solutions</div>
-                <div class="card-meta">
-                    <span>Remote, US</span>
-                    <span class="card-salary">$120K&ndash;$300K</span>
-                </div>
-                 <span class="card-badge card-badge--remote">Remote</span> <span class="card-badge">Mid</span>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/jobs/4/">Regional Sales Manager - Data Protection</a></div>
-                <div class="card-company">Hewlett Packard Enterprise | HPE</div>
-                <div class="card-meta">
-                    <span>OR, US</span>
-                    <span class="card-salary">$204K&ndash;$456K</span>
-                </div>
-                 <span class="card-badge card-badge--remote">Remote</span> <span class="card-badge">Mid</span>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/jobs/5/">Ford Truck Sales Manager</a></div>
-                <div class="card-company">Stevens Ford Inc.</div>
-                <div class="card-meta">
-                    <span>Milford, CT, US</span>
-                    <span class="card-salary">$80K&ndash;$220K</span>
-                </div>
-                 <span class="card-badge card-badge--remote">Remote</span> <span class="card-badge">Mid</span>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/jobs/6/">Inside Sales Account Manager</a></div>
-                <div class="card-company">DIVERSE SUPPLY INC</div>
-                <div class="card-meta">
-                    <span>Remote, US</span>
-                    <span class="card-salary">$60K&ndash;$200K</span>
-                </div>
-                 <span class="card-badge card-badge--remote">Remote</span> <span class="card-badge">Mid</span>
-            </div>
-        </div>
-        <p style="margin-top: 24px; text-align: center;"><a href="/jobs/" style="color: var(--sr-accent-dark); font-weight: 600;">Browse all 7,920 jobs &rarr;</a></p>
-    </div>
+<section class="logo-strip">
+  <p class="logo-strip-label">Tools the market is hiring for</p>
+  <div class="logo-strip-row"><img src="/assets/logos/tools/salesforce.png" alt="Salesforce" title="Salesforce" class="logo-icon">
+<img src="/assets/logos/tools/hubspot.png" alt="Hubspot" title="Hubspot" class="logo-icon">
+<img src="/assets/logos/tools/outreach.png" alt="Outreach" title="Outreach" class="logo-icon">
+<img src="/assets/logos/tools/salesloft.png" alt="Salesloft" title="Salesloft" class="logo-icon">
+<img src="/assets/logos/tools/gong.png" alt="Gong" title="Gong" class="logo-icon">
+<img src="/assets/logos/tools/apollo.png" alt="Apollo" title="Apollo" class="logo-icon">
+<img src="/assets/logos/tools/zoominfo.png" alt="Zoominfo" title="Zoominfo" class="logo-icon">
+<img src="/assets/logos/tools/linkedin-sales-navigator.png" alt="Linkedin Sales Navigator" title="Linkedin Sales Navigator" class="logo-icon">
+<img src="/assets/logos/tools/clay.png" alt="Clay" title="Clay" class="logo-icon">
+<img src="/assets/logos/tools/chili-piper.png" alt="Chili Piper" title="Chili Piper" class="logo-icon">
+<img src="/assets/logos/tools/calendly.png" alt="Calendly" title="Calendly" class="logo-icon">
+<img src="/assets/logos/tools/drift.png" alt="Drift" title="Drift" class="logo-icon"></div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <h2>Market Insights</h2>
-        <p class="section-subtitle">Data-driven analysis of the sales job market.</p>
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-title"><a href="/insights/sales-job-market-2026/">Sales Job Market in 2026</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">What 7,920 job postings reveal about hiring patterns, compensation, and where sales careers are heading.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/ae-vs-sdr-salary/">AE vs SDR Salary Breakdown</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">Compensation analysis by seniority level, from entry-level SDRs to VP of Sales, with OTE splits and equity data.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/best-companies-hiring-sales/">Best Companies Hiring Sales</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">The top employers actively hiring sales professionals, ranked by volume, compensation, and role quality.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/negotiate-sales-compensation/">Negotiate Your Comp Package</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">OTE structures, base/variable splits, equity, and the tactics that work when negotiating a sales offer.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/remote-sales-jobs/">Remote Sales Jobs</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">Where the remote opportunities are, which companies pay the most, and the salary premium for distributed roles.</p>
-            </div>
-        </div>
-    </div>
+<section class="logo-strip logo-strip--alt">
+  <p class="logo-strip-label">Companies hiring B2B sales roles this week</p>
+  <div class="logo-strip-row"><img src="/assets/logos/companies/google.png" alt="Google" title="Google" class="logo-icon">
+<img src="/assets/logos/companies/salesforce.png" alt="Salesforce" title="Salesforce" class="logo-icon">
+<img src="/assets/logos/companies/amazon.png" alt="Amazon" title="Amazon" class="logo-icon">
+<img src="/assets/logos/companies/microsoft.png" alt="Microsoft" title="Microsoft" class="logo-icon">
+<img src="/assets/logos/companies/aws.png" alt="AWS" title="AWS" class="logo-icon">
+<img src="/assets/logos/companies/stripe.png" alt="Stripe" title="Stripe" class="logo-icon">
+<img src="/assets/logos/companies/snowflake.png" alt="Snowflake" title="Snowflake" class="logo-icon">
+<img src="/assets/logos/companies/datadog.png" alt="Datadog" title="Datadog" class="logo-icon">
+<img src="/assets/logos/companies/okta.png" alt="Okta" title="Okta" class="logo-icon">
+<img src="/assets/logos/companies/jpmorgan.png" alt="JPMorgan" title="JPMorgan" class="logo-icon">
+<img src="/assets/logos/companies/mastercard.png" alt="Mastercard" title="Mastercard" class="logo-icon">
+<img src="/assets/logos/companies/servicenow.png" alt="ServiceNow" title="ServiceNow" class="logo-icon"></div>
 </section>
 
-<section class="section section--alt">
-    <div class="container">
-        <h2>Top Hiring Companies</h2>
-        <p class="section-subtitle">Companies with the most open sales positions right now.</p>
-        <table class="salary-table">
-            <thead><tr><th>Company</th><th>Open Roles</th></tr></thead>
-            <tbody><tr><td>Amazon Web Services</td><td class="salary-num">54</td></tr>
-<tr><td>Amazon.com</td><td class="salary-num">37</td></tr>
-<tr><td>T-Mobile</td><td class="salary-num">35</td></tr>
-<tr><td>Salesforce</td><td class="salary-num">31</td></tr>
-<tr><td>Comcast</td><td class="salary-num">29</td></tr>
-<tr><td>ADP</td><td class="salary-num">21</td></tr>
-<tr><td>Caris Life Sciences</td><td class="salary-num">21</td></tr>
-<tr><td>Google</td><td class="salary-num">19</td></tr>
-<tr><td>JPMorganChase</td><td class="salary-num">18</td></tr>
-<tr><td>Hilton</td><td class="salary-num">18</td></tr>
-<tr><td>Encore Global</td><td class="salary-num">17</td></tr>
-<tr><td>Tata Consultancy Services (TCS)</td><td class="salary-num">17</td></tr>
-<tr><td>Paragon Micro Incorporated</td><td class="salary-num">16</td></tr>
-<tr><td>CoStar Group</td><td class="salary-num">15</td></tr>
-<tr><td>Northrop Grumman</td><td class="salary-num">15</td></tr>
-<tr><td>Rippling</td><td class="salary-num">14</td></tr>
-<tr><td>Aimbridge Hospitality</td><td class="salary-num">14</td></tr>
-<tr><td>Spectrum</td><td class="salary-num">13</td></tr>
-<tr><td>Gartner</td><td class="salary-num">13</td></tr>
-<tr><td>YipitData</td><td class="salary-num">13</td></tr>
+<section class="explore-section">
+  <div class="section-header">
+    <h2>Explore Sales Intelligence</h2>
+    <p class="section-subtitle">Everything you need to navigate your B2B sales career and stay ahead of market trends.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card"><div class="card-icon">💼</div><h3>Job Board</h3><p>Curated B2B sales roles from companies hiring this week.</p><a href="/jobs/" class="card-link">View all jobs →</a></div>
+    <div class="card"><div class="card-icon">💰</div><h3>Salary Benchmarks</h3><p>Median base + total comp across 8 seniority tiers.</p><a href="/salaries/" class="card-link">See benchmarks →</a></div>
+    <div class="card"><div class="card-icon">🛠️</div><h3>Tools & Tech Stack</h3><p>Tools in demand across the B2B sales market.</p><a href="/tools/" class="card-link">Browse tools →</a></div>
+    <div class="card"><div class="card-icon">📊</div><h3>Insights & Analysis</h3><p>Data-driven articles on sales careers and the market.</p><a href="/insights/" class="card-link">Read insights →</a></div>
+    <div class="card"><div class="card-icon">🎤</div><h3>Top Voices</h3><p>Sales leaders worth following on LinkedIn.</p><a href="/voices/" class="card-link">See top voices →</a></div>
+    <div class="card"><div class="card-icon">📰</div><h3>Newsletter Archive</h3><p>Past issues of the Seller Report.</p><a href="/newsletter/" class="card-link">Read past issues →</a></div>
+  </div>
+</section>
 
-            </tbody>
+<section class="methodology-section">
+  <div class="section-header">
+    <h2>Methodologies in demand</h2>
+    <p class="section-subtitle">What sales orgs are asking for in this week's job descriptions. Pick what to learn or claim on your resume.</p>
+  </div>
+  <div class="methodology-bars"><div class="methodology-row">
+            <div class="methodology-label">Solution Selling</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 100%"></div>
+            </div>
+            <div class="methodology-count">652</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Meddic</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 33%"></div>
+            </div>
+            <div class="methodology-count">214</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Value Selling</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 19%"></div>
+            </div>
+            <div class="methodology-count">123</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Miller Heiman</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 16%"></div>
+            </div>
+            <div class="methodology-count">105</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Sandler</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 8%"></div>
+            </div>
+            <div class="methodology-count">50</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Challenger</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 5%"></div>
+            </div>
+            <div class="methodology-count">32</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Bant</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 4%"></div>
+            </div>
+            <div class="methodology-count">28</div>
+          </div>
+<div class="methodology-row">
+            <div class="methodology-label">Gap Selling</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: 1%"></div>
+            </div>
+            <div class="methodology-count">6</div>
+          </div></div>
+</section>
+
+<section class="preview-section">
+  <div class="container">
+    <h2>What you'll get every Monday</h2>
+    <p class="preview-subtitle">A peek inside the Seller Report. Live data from this week.</p>
+    <div class="preview-container">
+      <div class="preview-toolbar">
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <div class="preview-dot"></div>
+        <span class="preview-toolbar-title">Inbox &mdash; The Seller Report</span>
+      </div>
+      <div class="preview-body">
+        <div class="preview-header-bar">THE SELLER REPORT — May 07, 2026</div>
+
+        <div class="preview-stats">
+          <div class="preview-stat-card">
+            <div class="preview-stat-label">Active Openings</div>
+            <div class="preview-stat-value">7,920</div>
+          </div>
+          <div class="preview-stat-card">
+            <div class="preview-stat-label">Median Total (AE Mid-Market)</div>
+            <div class="preview-stat-value">$129K</div>
+          </div>
+        </div>
+
+        <div class="preview-signals">
+          <div class="preview-signal">
+            <div class="preview-signal-value">59%</div>
+            <div class="preview-signal-label">Equity Mentioned</div>
+          </div>
+          <div class="preview-signal">
+            <div class="preview-signal-value">10%</div>
+            <div class="preview-signal-label">Uncapped Comm</div>
+          </div>
+          <div class="preview-signal">
+            <div class="preview-signal-value">9%</div>
+            <div class="preview-signal-label">OTE Published</div>
+          </div>
+        </div>
+
+        <div class="preview-table-title">Comp by tier</div>
+        <table class="preview-table">
+          <thead><tr><th>Tier</th><th>Base</th><th>Total</th><th>n</th></tr></thead>
+          <tbody>
+<tr>
+  <td>SDR/BDR</td>
+  <td class="val">$55K</td>
+  <td class="val">$75K</td>
+  <td class="val">778</td>
+</tr>
+<tr>
+  <td>AE - Mid-Market</td>
+  <td class="val">$85K</td>
+  <td class="val">$129K</td>
+  <td class="val">1,831</td>
+</tr>
+<tr>
+  <td>AE - Enterprise</td>
+  <td class="val">$128K</td>
+  <td class="val">$180K</td>
+  <td class="val">250</td>
+</tr>
+<tr>
+  <td>Director / Sales Manager</td>
+  <td class="val">$95K</td>
+  <td class="val">$137K</td>
+  <td class="val">2,224</td>
+</tr>
+<tr>
+  <td>VP Sales</td>
+  <td class="val">$175K</td>
+  <td class="val">$247K</td>
+  <td class="val">168</td>
+</tr></tbody>
         </table>
+
+        <div class="preview-table-title">Top hiring this week</div>
+        <table class="preview-table">
+          <thead><tr><th>Company</th><th>Openings</th></tr></thead>
+          <tbody><tr><td>Amazon Web Services</td><td class="val">54</td></tr><tr><td>Amazon.com</td><td class="val">37</td></tr><tr><td>T-Mobile</td><td class="val">35</td></tr><tr><td>Salesforce</td><td class="val">31</td></tr><tr><td>Comcast</td><td class="val">29</td></tr></tbody>
+        </table>
+
+        <div class="preview-table-title">Featured listings</div>
+        <div class="preview-featured"><div class="preview-featured-card">
+  <div class="preview-featured-title">Sales Manager - U.S. Operations</div>
+  <div class="preview-featured-meta">GACC South · Charlotte, NC, US</div>
+  <div class="preview-featured-salary">$75K — $90K</div>
+</div><div class="preview-featured-card">
+  <div class="preview-featured-title">Inside Sales Representative</div>
+  <div class="preview-featured-meta">SOS Technologies Holdings LLC · Remote, US</div>
+  <div class="preview-featured-salary">$60K — $70K</div>
+</div><div class="preview-featured-card">
+  <div class="preview-featured-title">Inside Sales Office Manager</div>
+  <div class="preview-featured-meta">Prince Rubber & Plastics · Buffalo, NY, US</div>
+  <div class="preview-featured-salary">$50K — $70K</div>
+</div></div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="opportunities-section">
+  <div class="section-header">
+    <h2>Latest Sales Opportunities</h2>
+    <p class="section-subtitle">Fresh roles added this week from companies actively hiring.</p>
+  </div>
+  <div class="jobs-list">
+            <div class="card">
+                <div class="card-title">Sales Manager - U.S. Operations</div>
+                <div class="card-company">GACC South</div>
+                <div class="card-meta">
+                    <span>Charlotte, NC, US</span>
+                    <span class="card-salary">$75K&ndash;$90K</span>
+                </div>
+                
+            </div>
+
+            <div class="card">
+                <div class="card-title">Inside Sales Representative</div>
+                <div class="card-company">SOS Technologies Holdings LLC</div>
+                <div class="card-meta">
+                    <span>Remote, US</span>
+                    <span class="card-salary">$60K&ndash;$70K</span>
+                </div>
+                 <span class="card-badge card-badge--remote">Remote</span>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Inside Sales Office Manager</div>
+                <div class="card-company">Prince Rubber &amp; Plastics</div>
+                <div class="card-meta">
+                    <span>Buffalo, NY, US</span>
+                    <span class="card-salary">$50K&ndash;$70K</span>
+                </div>
+                
+            </div>
+
+            <div class="card">
+                <div class="card-title">Regional Sales Manager</div>
+                <div class="card-company">Jamesway</div>
+                <div class="card-meta">
+                    <span>Remote, US</span>
+                    <span class="card-salary">$80K&ndash;$100K</span>
+                </div>
+                 <span class="card-badge card-badge--remote">Remote</span>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Director of Sales</div>
+                <div class="card-company">Marquis Health Consulting Services</div>
+                <div class="card-meta">
+                    <span>Newport News, VA, US</span>
+                    <span class="card-salary">$70K&ndash;$80K</span>
+                </div>
+                
+            </div></div>
+  <div class="opportunities-cta">
+    <a href="/jobs/" class="btn-primary">View All 7,920 Jobs</a>
+  </div>
+</section>
+
+<section class="role-mix-section">
+  <div class="section-header">
+    <h2>What kind of roles are open?</h2>
+    <p class="section-subtitle">Segment and motion breakdown across this week's openings.</p>
+  </div>
+  <div class="role-mix-grid">
+    <div class="role-mix-block">
+      <h3>Segment</h3>
+      <div class="stacked-bar"><div class="stacked-bar-segment" style="width: 62.1%; background:#1D4ED8;">62%</div><div class="stacked-bar-segment" style="width: 17.2%; background:#3B82F6;">17%</div><div class="stacked-bar-segment" style="width: 15.0%; background:#10B981;">15%</div><div class="stacked-bar-segment" style="width: 5.8%; background:#64748B;">6%</div></div><div class="stacked-bar-legend"><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#1D4ED8"></div>Enterprise (1670)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#3B82F6"></div>Smb (461)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#10B981"></div>Fortune 500 (402)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#64748B"></div>Mid Market (155)</div></div>
+    </div>
+    <div class="role-mix-block">
+      <h3>Sales motion</h3>
+      <div class="stacked-bar"><div class="stacked-bar-segment" style="width: 39.0%; background:#1D4ED8;">39%</div><div class="stacked-bar-segment" style="width: 29.8%; background:#3B82F6;">30%</div><div class="stacked-bar-segment" style="width: 19.9%; background:#0F766E;">20%</div><div class="stacked-bar-segment" style="width: 7.7%; background:#10B981;">8%</div><div class="stacked-bar-segment" style="width: 1.4%; background:#64748B;">1%</div><div class="stacked-bar-segment" style="width: 1.4%; background:#94A3B8;">1%</div><div class="stacked-bar-segment" style="width: 0.7%; background:#1D4ED8;">1%</div></div><div class="stacked-bar-legend"><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#1D4ED8"></div>Channel (1386)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#3B82F6"></div>Inside (1059)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#0F766E"></div>Direct (707)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#10B981"></div>Outbound (275)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#64748B"></div>Abm (51)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#94A3B8"></div>Inbound (51)</div><div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:#1D4ED8"></div>Plg (26)</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="career-section">
+  <div class="section-header">
+    <h2>Career map: from SDR to CRO</h2>
+    <p class="section-subtitle">Median base, total comp, and years experience at each tier of the B2B sales career path.</p>
+  </div>
+  <div class="career-ladder">
+
+<div class="career-rung">
+  <div class="career-rung-tier">CRO</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$130K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$151K OTE</span>
+    <span class="career-rung-years">11 yrs</span>
+    <span class="career-rung-n">n=20</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">VP Sales</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$175K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$247K OTE</span>
+    <span class="career-rung-years">10 yrs</span>
+    <span class="career-rung-n">n=168</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">RVP</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$199K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$268K OTE</span>
+    <span class="career-rung-years">7 yrs</span>
+    <span class="career-rung-n">n=35</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">Director / Sales Manager</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$95K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$137K OTE</span>
+    <span class="career-rung-years">5 yrs</span>
+    <span class="career-rung-n">n=2,224</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">AE - Enterprise</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$128K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$180K OTE</span>
+    <span class="career-rung-years">6 yrs</span>
+    <span class="career-rung-n">n=250</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">AE - Mid-Market</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$85K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$129K OTE</span>
+    <span class="career-rung-years">4 yrs</span>
+    <span class="career-rung-n">n=1,831</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">AE - SMB</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$47K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$129K OTE</span>
+    <span class="career-rung-years">4 yrs</span>
+    <span class="career-rung-n">n=35</span>
+  </div>
+</div>
+<div class="career-rung">
+  <div class="career-rung-tier">SDR/BDR</div>
+  <div class="career-rung-stats">
+    <span class="career-rung-base">$55K</span>
+    <span class="career-rung-sep">·</span>
+    <span class="career-rung-total">$75K OTE</span>
+    <span class="career-rung-years">2 yrs</span>
+    <span class="career-rung-n">n=778</span>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="testimonials-section">
+  <h2>What readers are saying</h2>
+  <div class="testimonials-grid"><div class="testimonial-card">
+              <p class="testimonial-quote">"Finally a sales-job newsletter that actually reads job descriptions. The methodology breakdown alone changed how I'm pitching myself for AE roles."</p>
+              <p class="testimonial-author">— Senior AE, Series B SaaS</p>
+            </div>
+<div class="testimonial-card">
+              <p class="testimonial-quote">"The career map is the only thing on the internet that shows comp AND years experience together. Saves me 20 minutes of LinkedIn scrolling per week."</p>
+              <p class="testimonial-author">— Director of Sales, Mid-Market</p>
+            </div>
+<div class="testimonial-card">
+              <p class="testimonial-quote">"Subscribed after the first issue. The 'tools in demand' data is exactly what I needed when prepping for my next move."</p>
+              <p class="testimonial-author">— Enterprise Account Executive</p>
+            </div></div>
+</section>
+
+<section class="cta-section">
+  <h2>Get this in your inbox every Monday — free</h2>
+  <p class="section-subtitle">B2B sales jobs, comp by tier, tools in demand. No spam.</p>
+  <div class="hero-signup">
+  <form class="hero-signup-form" id="cta-form">
+    <input type="email" name="email" class="hero-signup-input"
+           placeholder="you@company.com" required>
+    <button type="submit" class="hero-signup-btn">Subscribe</button>
+  </form>
+  <p class="hero-signup-msg" id="cta-msg"></p>
+  <p class="hero-signup-fine">Free weekly email. Unsubscribe anytime.</p>
+</div>
+<script>
+(function() {
+  var form = document.getElementById('cta-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    var msg = document.getElementById('cta-msg');
+    var btn = form.querySelector('button');
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Submitting...';
+    msg.className = 'hero-signup-msg'; msg.textContent = '';
+    fetch('https://newsletter-subscribe.rome-workers.workers.dev/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: email, list: 'seller-report'})
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        msg.className = 'hero-signup-msg success';
+        msg.textContent = "You're in. Check your inbox to confirm.";
+        form.querySelector('input[name=\"email\"]').value = '';
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_signup',
+            {event_category: 'newsletter', event_label: 'footer_cta'});
+        }
+      } else {
+        msg.className = 'hero-signup-msg error';
+        msg.textContent = data.error || 'Something went wrong. Try again.';
+      }
+    })
+    .catch(function() {
+      msg.className = 'hero-signup-msg error';
+      msg.textContent = 'Network error. Try again.';
+    })
+    .finally(function() {
+      btn.disabled = false; btn.textContent = orig;
+    });
+  });
+})();
+</script>
 </section>
 
 
 </main>
-<section class="nl-section">
-    <div class="container">
-        <div class="nl-card">
-            <h2 class="nl-title">Get the Seller Report</h2>
-            <p class="nl-desc">Free weekly sales job market data, salary shifts, and hiring trends. No spam.</p>
-            <form class="nl-form" id="nl-form" data-list="seller-report" onsubmit="handleSignup(event, this)">
-                <div class="nl-form-row">
-                    <input type="email" name="email" id="nl-email" class="nl-input" placeholder="you@company.com" required>
-                    <button type="submit" class="nl-btn">Subscribe Free</button>
-                </div>
-            </form>
-            <p id="nl-msg" class="nl-msg"></p>
-            <p class="nl-fine">Free weekly email for sales professionals. Unsubscribe anytime.</p>
-        </div>
-    </div>
-</section>
+
 <footer class="site-footer">
     <div class="footer-container">
         <div style="margin-bottom:32px;">

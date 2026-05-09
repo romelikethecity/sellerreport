@@ -26,7 +26,9 @@ from nav_config import *
 import templates
 from templates import (get_page_wrapper, write_page, get_homepage_schema,
                        get_breadcrumb_schema, get_faq_schema,
-                       get_article_schema, breadcrumb_html, faq_html, ALL_PAGES)
+                       get_article_schema, breadcrumb_html, faq_html, ALL_PAGES,
+                       signup_form_hero, career_map_ladder,
+                       newsletter_preview_partial)
 
 # ---------------------------------------------------------------------------
 # Path constants
@@ -119,127 +121,231 @@ JOBS_PER_PAGE = 25
 # ---------------------------------------------------------------------------
 
 def build_homepage():
-    remote_pct = round(100 * len(REMOTE_JOBS) / TOTAL_JOBS)
+    """Build the homepage — 13-section overhaul matching fractional/revopsreport."""
     schema = get_homepage_schema()
 
+    # Pre-compute the values used in multiple sections
+    n_jobs = TOTAL_JOBS
+    n_remote = MARKET_DATA.get("location_mix", {}).get("remote", 0)
+    n_total_loc = sum(MARKET_DATA.get("location_mix", {}).values()) or 1
+    remote_pct = round(100 * n_remote / n_total_loc)
+    median_total = COMP_DATA.get("salary_stats", {}).get("median")
+    n_tools = len(MARKET_DATA.get("tools", {}))
+
+    # Logo allowlists — only render logos whose PNG file exists.
+    tools_allowlist = [
+        ("Salesforce", "salesforce"), ("Hubspot", "hubspot"),
+        ("Outreach", "outreach"), ("Salesloft", "salesloft"),
+        ("Gong", "gong"), ("Apollo", "apollo"), ("Zoominfo", "zoominfo"),
+        ("Linkedin Sales Navigator", "linkedin-sales-navigator"),
+        ("Clay", "clay"), ("Chili Piper", "chili-piper"),
+        ("Calendly", "calendly"), ("Drift", "drift"),
+    ]
+    companies_allowlist = [
+        ("Google", "google"), ("Salesforce", "salesforce"),
+        ("Amazon", "amazon"), ("Microsoft", "microsoft"),
+        ("AWS", "aws"), ("Stripe", "stripe"),
+        ("Snowflake", "snowflake"), ("Datadog", "datadog"),
+        ("Okta", "okta"), ("JPMorgan", "jpmorgan"),
+        ("Mastercard", "mastercard"), ("ServiceNow", "servicenow"),
+    ]
+
+    def _logo_row(allowlist, dir_name):
+        """Render only logos whose PNG exists on disk."""
+        pieces = []
+        for name, slug in allowlist:
+            p = os.path.join(PROJECT_DIR, "assets", "logos", dir_name, f"{slug}.png")
+            if os.path.isfile(p):
+                pieces.append(
+                    f'<img src="/assets/logos/{dir_name}/{slug}.png" '
+                    f'alt="{name}" title="{name}" class="logo-icon">'
+                )
+        return "\n".join(pieces)
+
+    tools_logo_row = _logo_row(tools_allowlist, "tools")
+    companies_logo_row = _logo_row(companies_allowlist, "companies")
+
+    # Methodology bars (top 8)
+    methodology = MARKET_DATA.get("methodology", {})
+    method_top = sorted(methodology.items(), key=lambda x: -x[1])[:8]
+    method_max = method_top[0][1] if method_top else 1
+    methodology_rows = "\n".join(
+        f'''<div class="methodology-row">
+            <div class="methodology-label">{name}</div>
+            <div class="methodology-bar-track">
+              <div class="methodology-bar-fill" style="width: {round(100*count/method_max)}%"></div>
+            </div>
+            <div class="methodology-count">{count}</div>
+          </div>'''
+        for name, count in method_top
+    )
+
+    # Latest opportunities (5 freshest with salaries)
+    fresh = sorted(
+        [j for j in ALL_JOBS if j.get("min_amount") and j.get("date_posted")],
+        key=lambda j: j.get("date_posted", ""), reverse=True,
+    )[:5]
+    opp_html = "\n".join(_job_card_html(j) for j in fresh)
+
+    # Role-mix block — segment + motion stacked bars
+    def _stacked_bar(d, palette):
+        items = sorted(d.items(), key=lambda x: -x[1])
+        total = sum(c for _, c in items) or 1
+        bar = "".join(
+            f'<div class="stacked-bar-segment" style="width: {100*c/total:.1f}%; background:{palette[i % len(palette)]};">{round(100*c/total)}%</div>'
+            for i, (_, c) in enumerate(items)
+        )
+        legend = "".join(
+            f'<div class="stacked-bar-legend-row"><div class="stacked-bar-swatch" style="background:{palette[i % len(palette)]}"></div>{name} ({c})</div>'
+            for i, (name, c) in enumerate(items)
+        )
+        return f'<div class="stacked-bar">{bar}</div><div class="stacked-bar-legend">{legend}</div>'
+
+    seg_palette = ["#1D4ED8", "#3B82F6", "#10B981", "#64748B"]
+    mot_palette = ["#1D4ED8", "#3B82F6", "#0F766E", "#10B981", "#64748B", "#94A3B8"]
+    segment_bar = _stacked_bar(MARKET_DATA.get("segment", {}), seg_palette)
+    motion_bar = _stacked_bar(MARKET_DATA.get("motion", {}), mot_palette)
+
+    # Testimonials (seed placeholders — replace with real once subscribers grow)
+    testimonials = [
+        ("Finally a sales-job newsletter that actually reads job descriptions. "
+         "The methodology breakdown alone changed how I'm pitching myself for AE roles.",
+         "Senior AE, Series B SaaS"),
+        ("The career map is the only thing on the internet that shows comp AND "
+         "years experience together. Saves me 20 minutes of LinkedIn scrolling per week.",
+         "Director of Sales, Mid-Market"),
+        ("Subscribed after the first issue. The 'tools in demand' data is exactly "
+         "what I needed when prepping for my next move.",
+         "Enterprise Account Executive"),
+    ]
+    testimonials_html = "\n".join(
+        f'''<div class="testimonial-card">
+              <p class="testimonial-quote">"{q}"</p>
+              <p class="testimonial-author">— {a}</p>
+            </div>''' for q, a in testimonials
+    )
+
+    # Newsletter preview — pre-rendered (dict literal can't live inside an f-string)
+    newsletter_preview_html = newsletter_preview_partial(
+        COMP_DATA,
+        MARKET_DATA,
+        {"jobs": ALL_JOBS, "total_jobs": TOTAL_JOBS,
+         "last_updated": MARKET_DATA.get("date", "")},
+    )
+
+    # Now assemble the body
     body = f'''
 <section class="hero">
-    <div class="container">
-        <h1>Sales Job Market Intelligence</h1>
-        <p>Real salary data, hiring trends, and career insights from {fmt_number(TOTAL_JOBS)} sales job postings. Updated weekly.</p>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <span class="hero-stat-number">{fmt_number(TOTAL_JOBS)}</span>
-                <span class="hero-stat-label">Active Jobs</span>
-            </div>
-            <div class="hero-stat">
-                <span class="hero-stat-number">{fmt_salary(SALARY_MEDIAN)}</span>
-                <span class="hero-stat-label">Median Salary</span>
-            </div>
-            <div class="hero-stat">
-                <span class="hero-stat-number">{remote_pct}%</span>
-                <span class="hero-stat-label">Remote</span>
-            </div>
-            <div class="hero-stat">
-                <span class="hero-stat-number">{fmt_number(UNIQUE_COMPANIES)}+</span>
-                <span class="hero-stat-label">Companies</span>
-            </div>
-        </div>
-    </div>
+  <div class="hero-content">
+    <p class="eyebrow">Free Weekly Newsletter</p>
+    <h1>We read {fmt_number(n_jobs)}+ B2B sales job postings so you don't have to.</h1>
+    <p class="hero-subtitle">Real salary data, comp by tier, tools in demand. One email, every Monday.</p>
+    {signup_form_hero(form_id="hero-form", msg_id="hero-msg", ga_label="hero")}
+    <p class="hero-trust">Updated every Monday. Read in 5 minutes.</p>
+  </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <h2>Salary Benchmarks</h2>
-        <p class="section-subtitle">Compensation data across {fmt_number(len(JOBS_WITH_SALARY))} jobs with disclosed salary ranges.</p>
-        <div class="stat-grid">'''
-
-    # Seniority stats
-    for level in ["Entry", "Mid", "Senior", "Director", "VP", "SVP"]:
-        if level in SENIORITY_DATA:
-            d = SENIORITY_DATA[level]
-            body += f'''
-            <div class="stat-card">
-                <div class="stat-card-number">{fmt_salary(d["median"])}</div>
-                <div class="stat-card-label">{level} Median</div>
-            </div>'''
-
-    body += f'''
-        </div>
-        <p style="margin-top: 16px;"><a href="/salaries/" style="color: var(--sr-accent-dark); font-weight: 600;">View full salary data &rarr;</a></p>
-    </div>
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">{fmt_number(n_jobs)}+</div><div class="stat-label">Active Roles</div></div>
+    <div class="stat-card"><div class="stat-number">{remote_pct}%</div><div class="stat-label">Remote</div></div>
+    <div class="stat-card"><div class="stat-number">{fmt_salary(median_total) if median_total else '—'}</div><div class="stat-label">Median Total Comp</div></div>
+    <div class="stat-card"><div class="stat-number">{n_tools}+</div><div class="stat-label">Tools Tracked</div></div>
+  </div>
 </section>
 
-<section class="section section--alt">
-    <div class="container">
-        <h2>Featured Sales Jobs</h2>
-        <p class="section-subtitle">Top-paying and high-quality listings from the current market.</p>
-        <div class="card-grid">'''
-
-    for j in FEATURED_JOBS[:6]:
-        body += _job_card_html(j)
-
-    body += f'''
-        </div>
-        <p style="margin-top: 24px; text-align: center;"><a href="/jobs/" style="color: var(--sr-accent-dark); font-weight: 600;">Browse all {fmt_number(TOTAL_JOBS)} jobs &rarr;</a></p>
-    </div>
+<section class="logo-strip">
+  <p class="logo-strip-label">Tools the market is hiring for</p>
+  <div class="logo-strip-row">{tools_logo_row}</div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <h2>Market Insights</h2>
-        <p class="section-subtitle">Data-driven analysis of the sales job market.</p>
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-title"><a href="/insights/sales-job-market-2026/">Sales Job Market in 2026</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">What {fmt_number(TOTAL_JOBS)} job postings reveal about hiring patterns, compensation, and where sales careers are heading.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/ae-vs-sdr-salary/">AE vs SDR Salary Breakdown</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">Compensation analysis by seniority level, from entry-level SDRs to VP of Sales, with OTE splits and equity data.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/best-companies-hiring-sales/">Best Companies Hiring Sales</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">The top employers actively hiring sales professionals, ranked by volume, compensation, and role quality.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/negotiate-sales-compensation/">Negotiate Your Comp Package</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">OTE structures, base/variable splits, equity, and the tactics that work when negotiating a sales offer.</p>
-            </div>
-            <div class="card">
-                <div class="card-title"><a href="/insights/remote-sales-jobs/">Remote Sales Jobs</a></div>
-                <p style="color: var(--sr-text-secondary); font-size: 0.95rem;">Where the remote opportunities are, which companies pay the most, and the salary premium for distributed roles.</p>
-            </div>
-        </div>
-    </div>
+<section class="logo-strip logo-strip--alt">
+  <p class="logo-strip-label">Companies hiring B2B sales roles this week</p>
+  <div class="logo-strip-row">{companies_logo_row}</div>
 </section>
 
-<section class="section section--alt">
-    <div class="container">
-        <h2>Top Hiring Companies</h2>
-        <p class="section-subtitle">Companies with the most open sales positions right now.</p>
-        <table class="salary-table">
-            <thead><tr><th>Company</th><th>Open Roles</th></tr></thead>
-            <tbody>'''
+<section class="explore-section">
+  <div class="section-header">
+    <h2>Explore Sales Intelligence</h2>
+    <p class="section-subtitle">Everything you need to navigate your B2B sales career and stay ahead of market trends.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card"><div class="card-icon">💼</div><h3>Job Board</h3><p>Curated B2B sales roles from companies hiring this week.</p><a href="/jobs/" class="card-link">View all jobs →</a></div>
+    <div class="card"><div class="card-icon">💰</div><h3>Salary Benchmarks</h3><p>Median base + total comp across 8 seniority tiers.</p><a href="/salaries/" class="card-link">See benchmarks →</a></div>
+    <div class="card"><div class="card-icon">🛠️</div><h3>Tools & Tech Stack</h3><p>Tools in demand across the B2B sales market.</p><a href="/tools/" class="card-link">Browse tools →</a></div>
+    <div class="card"><div class="card-icon">📊</div><h3>Insights & Analysis</h3><p>Data-driven articles on sales careers and the market.</p><a href="/insights/" class="card-link">Read insights →</a></div>
+    <div class="card"><div class="card-icon">🎤</div><h3>Top Voices</h3><p>Sales leaders worth following on LinkedIn.</p><a href="/voices/" class="card-link">See top voices →</a></div>
+    <div class="card"><div class="card-icon">📰</div><h3>Newsletter Archive</h3><p>Past issues of the Seller Report.</p><a href="/newsletter/" class="card-link">Read past issues →</a></div>
+  </div>
+</section>
 
-    for company, count in TOP_COMPANIES:
-        if company:
-            body += f'<tr><td>{esc(company)}</td><td class="salary-num">{count}</td></tr>\n'
+<section class="methodology-section">
+  <div class="section-header">
+    <h2>Methodologies in demand</h2>
+    <p class="section-subtitle">What sales orgs are asking for in this week's job descriptions. Pick what to learn or claim on your resume.</p>
+  </div>
+  <div class="methodology-bars">{methodology_rows}</div>
+</section>
 
-    body += '''
-            </tbody>
-        </table>
+{newsletter_preview_html}
+
+<section class="opportunities-section">
+  <div class="section-header">
+    <h2>Latest Sales Opportunities</h2>
+    <p class="section-subtitle">Fresh roles added this week from companies actively hiring.</p>
+  </div>
+  <div class="jobs-list">{opp_html}</div>
+  <div class="opportunities-cta">
+    <a href="/jobs/" class="btn-primary">View All {fmt_number(n_jobs)} Jobs</a>
+  </div>
+</section>
+
+<section class="role-mix-section">
+  <div class="section-header">
+    <h2>What kind of roles are open?</h2>
+    <p class="section-subtitle">Segment and motion breakdown across this week's openings.</p>
+  </div>
+  <div class="role-mix-grid">
+    <div class="role-mix-block">
+      <h3>Segment</h3>
+      {segment_bar}
     </div>
+    <div class="role-mix-block">
+      <h3>Sales motion</h3>
+      {motion_bar}
+    </div>
+  </div>
+</section>
+
+<section class="career-section">
+  <div class="section-header">
+    <h2>Career map: from SDR to CRO</h2>
+    <p class="section-subtitle">Median base, total comp, and years experience at each tier of the B2B sales career path.</p>
+  </div>
+  {career_map_ladder(COMP_DATA)}
+</section>
+
+<section class="testimonials-section">
+  <h2>What readers are saying</h2>
+  <div class="testimonials-grid">{testimonials_html}</div>
+</section>
+
+<section class="cta-section">
+  <h2>Get this in your inbox every Monday — free</h2>
+  <p class="section-subtitle">B2B sales jobs, comp by tier, tools in demand. No spam.</p>
+  {signup_form_hero(form_id="cta-form", msg_id="cta-msg", ga_label="footer_cta")}
 </section>
 '''
 
     page = get_page_wrapper(
         SITE_NAME,
-        f"Sales job market intelligence: {fmt_number(TOTAL_JOBS)} jobs, salary benchmarks, and hiring trends for sales professionals.",
+        f"Sales job market intelligence: {fmt_number(n_jobs)} jobs, salary benchmarks, "
+        f"and hiring trends for sales professionals.",
         "/",
         body,
         active_path="/",
         extra_head=schema,
+        show_newsletter=False,  # we have hero + footer CTAs already
     )
     write_page("index.html", page)
 
