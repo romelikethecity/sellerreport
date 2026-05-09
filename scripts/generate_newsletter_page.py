@@ -29,7 +29,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Share one implementation with the homepage form.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from templates import signup_form_partial
+from templates import signup_form_partial, newsletter_preview_partial
 
 WORKER_URL = "https://newsletter-subscribe.rome-workers.workers.dev/subscribe"
 LIST_SLUG = "seller-report"
@@ -102,13 +102,32 @@ def render_index(issues: list[dict]) -> str:
         f'</li>'
         for i in issues
     )
+
+    # Load data for the preview block (graceful fallback if files missing)
+    import json as _json
+    data_dir = PROJECT_DIR / "data"
+    def _load(name):
+        p = data_dir / name
+        if not p.exists():
+            return {}
+        with open(p, encoding="utf-8") as f:
+            return _json.load(f)
+    comp_data = _load("comp_analysis.json")
+    market_intel = _load("market_intelligence.json")
+    jobs_data = _load("jobs.json")
+    preview_html = newsletter_preview_partial(comp_data, market_intel, jobs_data) \
+                   if comp_data and market_intel and jobs_data else ""
+
     return site_head("Newsletter") + f"""
-<main class="container" style="max-width: 760px; padding: 60px 24px;">
+<main class="container" style="max-width: 860px; padding: 60px 24px;">
 <h1>The Seller Report Newsletter</h1>
 <p style="font-size: 1.1em; color: var(--sr-text-secondary, #64748b);">
 Weekly read on the B2B sales job market. Comp by tier, tools in demand, top hiring companies. Free.
 </p>
-{signup_form_html()}
+{signup_form_partial(form_id="nl-form-archive", msg_id="nl-msg-archive", ga_label="newsletter_page")}
+
+{preview_html}
+
 <h2 style="margin-top: 48px;">Past issues</h2>
 <ul style="list-style: none; padding: 0;">
 {items if items else '<li>No issues yet. First issue ships next Monday.</li>'}
