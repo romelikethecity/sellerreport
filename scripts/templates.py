@@ -538,10 +538,13 @@ a:hover { color: var(--sr-accent-dark); }
     gap: 32px;
 }
 .logo-icon {
-    height: 36px; width: auto; opacity: 0.7;
-    filter: grayscale(0.3); transition: opacity 0.2s, filter 0.2s;
+    height: 32px; width: auto; opacity: 0.95;
+    transition: opacity 0.2s;
+    object-fit: contain;
 }
-.logo-icon:hover { opacity: 1; filter: grayscale(0); }
+.logo-icon--svg { height: 36px; }
+.logo-icon--png { height: 28px; }
+.logo-icon:hover { opacity: 1; }
 
 /* Explore cards */
 .explore-section { padding: 64px 24px; }

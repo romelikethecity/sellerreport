@@ -151,15 +151,18 @@ def build_homepage():
     ]
 
     def _logo_row(allowlist, dir_name):
-        """Render only logos whose PNG exists on disk."""
+        """Render only logos whose file exists on disk. Prefers SVG over PNG."""
         pieces = []
         for name, slug in allowlist:
-            p = os.path.join(PROJECT_DIR, "assets", "logos", dir_name, f"{slug}.png")
-            if os.path.isfile(p):
-                pieces.append(
-                    f'<img src="/assets/logos/{dir_name}/{slug}.png" '
-                    f'alt="{name}" title="{name}" class="logo-icon">'
-                )
+            for ext in ("svg", "png"):
+                p = os.path.join(PROJECT_DIR, "assets", "logos", dir_name, f"{slug}.{ext}")
+                if os.path.isfile(p):
+                    cls = f"logo-icon logo-icon--{ext}"
+                    pieces.append(
+                        f'<img src="/assets/logos/{dir_name}/{slug}.{ext}" '
+                        f'alt="{name}" title="{name}" class="{cls}">'
+                    )
+                    break
         return "\n".join(pieces)
 
     tools_logo_row = _logo_row(tools_allowlist, "tools")
@@ -4988,12 +4991,19 @@ def main():
         shutil.rmtree(OUTPUT_DIR)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # Copy logos to output
+    # Copy logos to output (favicons under /logos/)
     logos_src = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logos")
     logos_dst = os.path.join(OUTPUT_DIR, "logos")
     if os.path.exists(logos_src):
         shutil.copytree(logos_src, logos_dst)
         print(f"  Copied logos ({len(os.listdir(logos_dst))} files)")
+
+    # Copy assets/ to site/assets/ (homepage logo strips, etc.)
+    assets_src = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets")
+    assets_dst = os.path.join(OUTPUT_DIR, "assets")
+    if os.path.exists(assets_src):
+        shutil.copytree(assets_src, assets_dst)
+        print(f"  Copied assets/ tree")
 
     # Build pages
     print("  Building homepage...")
