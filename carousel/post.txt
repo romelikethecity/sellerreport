@@ -1,11 +1,16 @@
-The Seller Report — Week of 2026-05-09
+The Seller Report — Week of 2026-05-13
 
-7,920 active B2B sales openings tracked this week.
+8,497 active B2B sales openings tracked this week.
 
-Inside:
-→ Comp by tier (SDR/BDR through CRO)
-→ Tools the market actually wants
-→ Years of experience expected at each level
-→ Top hiring companies
+OTE by tier:
+→ SDR/BDR: $75K
+→ AE Mid-Market: $129K
+→ AE Enterprise: $180K
+→ CRO: $151K
 
-Get the full read free: thesellerreport.com
+Top tools: Salesforce, HubSpot, LinkedIn Sales Navigator
+Salary disclosure rate: 56.9%
+
+Get the full read free: https://thesellerreport.com
+
+#B2BSales #SalesCareers #SalesComp #SalesData
