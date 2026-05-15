@@ -29,6 +29,7 @@ from templates import (get_page_wrapper, write_page, get_homepage_schema,
                        get_article_schema, breadcrumb_html, faq_html, ALL_PAGES,
                        signup_form_hero, career_map_ladder,
                        newsletter_preview_partial)
+import programmatic_pages
 
 # ---------------------------------------------------------------------------
 # Path constants
@@ -5231,6 +5232,42 @@ def build_llms_txt():
 - [Best Cold Email Tools for SDRs]({SITE_URL}/tools/best-cold-email-tools-for-sdrs/)
 - [Best Free Prospecting Tools]({SITE_URL}/tools/best-free-prospecting-tools-sdrs/)
 - [Apollo vs Lusha vs Cognism]({SITE_URL}/tools/apollo-vs-lusha-vs-cognism/)
+
+## Tool Comparisons
+- [Compare Index]({SITE_URL}/compare/)
+- [Apollo vs Outreach]({SITE_URL}/compare/apollo-vs-outreach/)
+- [Apollo vs ZoomInfo]({SITE_URL}/compare/apollo-vs-zoominfo/)
+- [Salesloft vs Outreach]({SITE_URL}/compare/salesloft-vs-outreach/)
+- [Gong vs Chorus]({SITE_URL}/compare/gong-vs-chorus/)
+- [Salesforce vs HubSpot for Sales]({SITE_URL}/compare/salesforce-vs-hubspot-sales/)
+- [LinkedIn Sales Navigator vs ZoomInfo]({SITE_URL}/compare/linkedin-sales-navigator-vs-zoominfo/)
+
+## Tool Alternatives
+- [Alternatives Index]({SITE_URL}/alternatives/)
+- [Apollo Alternatives]({SITE_URL}/alternatives/apollo/)
+- [Outreach Alternatives]({SITE_URL}/alternatives/outreach/)
+- [ZoomInfo Alternatives]({SITE_URL}/alternatives/zoominfo/)
+- [Gong Alternatives]({SITE_URL}/alternatives/gong/)
+- [Salesforce Alternatives]({SITE_URL}/alternatives/salesforce/)
+- [HubSpot Sales Alternatives]({SITE_URL}/alternatives/hubspot-sales/)
+
+## Sales Methodologies
+- [Methodologies Index]({SITE_URL}/methodologies/)
+- [MEDDIC]({SITE_URL}/methodologies/meddic/)
+- [MEDDPICC]({SITE_URL}/methodologies/meddpicc/)
+- [BANT]({SITE_URL}/methodologies/bant/)
+- [Sandler Selling System]({SITE_URL}/methodologies/sandler/)
+- [Challenger Sale]({SITE_URL}/methodologies/challenger-sale/)
+- [SPIN Selling]({SITE_URL}/methodologies/spin-selling/)
+- [Solution Selling]({SITE_URL}/methodologies/solution-selling/)
+
+## City Salary Pages
+- [San Francisco AE Salary]({SITE_URL}/salaries/san-francisco/account-executive/)
+- [New York AE Salary]({SITE_URL}/salaries/new-york/account-executive/)
+- [Austin AE Salary]({SITE_URL}/salaries/austin/account-executive/)
+- [Boston AE Salary]({SITE_URL}/salaries/boston/account-executive/)
+- [Chicago Sales Manager Salary]({SITE_URL}/salaries/chicago/sales-manager/)
+- [Seattle SDR Salary]({SITE_URL}/salaries/seattle/sdr/)
 """
     path = os.path.join(OUTPUT_DIR, "llms.txt")
     with open(path, "w", encoding="utf-8") as f:
@@ -5707,6 +5744,22 @@ def main():
 
     print("  Building tool roundups...")
     build_tool_roundups()
+
+    print("  Building tool comparison pages...")
+    n_compare = programmatic_pages.build_compare_pages(OUTPUT_DIR)
+    print(f"    {n_compare} compare pages")
+
+    print("  Building alternatives pages...")
+    n_alt = programmatic_pages.build_alternative_pages(OUTPUT_DIR)
+    print(f"    {n_alt} alternative pages")
+
+    print("  Building sales methodology pages...")
+    n_method = programmatic_pages.build_methodology_pages(OUTPUT_DIR)
+    print(f"    {n_method} methodology pages")
+
+    print("  Building city x role salary pages...")
+    n_city = programmatic_pages.build_city_role_pages(OUTPUT_DIR, COMP_DATA)
+    print(f"    {n_city} city x role salary pages")
 
     print("  Building companies page...")
     build_companies_page()

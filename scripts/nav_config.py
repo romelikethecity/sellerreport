@@ -27,7 +27,16 @@ NAV_ITEMS = [
         ],
     },
     {"href": "/insights/", "label": "Insights"},
-    {"href": "/tools/", "label": "Tools"},
+    {
+        "href": "/tools/",
+        "label": "Tools",
+        "children": [
+            {"href": "/tools/", "label": "Tool Reviews"},
+            {"href": "/compare/", "label": "Compare Tools"},
+            {"href": "/alternatives/", "label": "Alternatives"},
+            {"href": "/methodologies/", "label": "Sales Methodologies"},
+        ],
+    },
     {"href": "/companies/", "label": "Companies"},
     {"href": "/voices/", "label": "Top Voices"},
     {"href": "/about/", "label": "About"},
@@ -53,8 +62,10 @@ FOOTER_COLUMNS = {
     ],
     "Tools": [
         {"href": "/tools/", "label": "Tool Reviews"},
+        {"href": "/compare/", "label": "Compare Tools"},
+        {"href": "/alternatives/", "label": "Tool Alternatives"},
+        {"href": "/methodologies/", "label": "Sales Methodologies"},
         {"href": "/tools/best-data-providers-for-sdrs/", "label": "Best Data for SDRs"},
-        {"href": "/tools/best-lead-list-building-services/", "label": "Lead List Services"},
         {"href": "/tools/best-cognism-alternatives/", "label": "Cognism Alternatives"},
     ],
     "Network": [
