@@ -1,151 +1,145 @@
 {
-  "generated_at": "2026-05-08T11:39:48.833723",
-  "total_records": 8497,
-  "records_with_salary": 4831,
-  "disclosure_rate": 56.9,
+  "generated_at": "2026-05-15T05:08:10.784219",
+  "total_records": 2830,
+  "records_with_salary": 1700,
+  "disclosure_rate": 60.1,
   "salary_stats": {
     "min": 1,
     "max": 12000000,
-    "median": 85000,
-    "avg": 100466,
-    "count_with_salary": 4831
+    "median": 100000,
+    "avg": 117366,
+    "count_with_salary": 1700
   },
   "by_seniority": {
+    "Senior": {
+      "count": 131,
+      "min_base_avg": 126482,
+      "max_base_avg": 176175,
+      "median": 120000
+    },
     "Mid": {
-      "count": 3478,
-      "min_base_avg": 91777,
-      "max_base_avg": 135490,
-      "median": 80000
+      "count": 1206,
+      "min_base_avg": 106262,
+      "max_base_avg": 155051,
+      "median": 90000
     },
     "Director": {
-      "count": 639,
-      "min_base_avg": 130342,
-      "max_base_avg": 178870,
-      "median": 125000
-    },
-    "Senior": {
-      "count": 342,
-      "min_base_avg": 116981,
-      "max_base_avg": 165304,
-      "median": 110000
-    },
-    "VP": {
-      "count": 136,
-      "min_base_avg": 176141,
-      "max_base_avg": 330081,
-      "median": 172800
+      "count": 141,
+      "min_base_avg": 152820,
+      "max_base_avg": 211465,
+      "median": 150000
     },
     "Entry": {
-      "count": 213,
-      "min_base_avg": 71123,
-      "max_base_avg": 103287,
+      "count": 62,
+      "min_base_avg": 74259,
+      "max_base_avg": 102559,
       "median": 60000
     },
-    "SVP": {
-      "count": 7,
-      "min_base_avg": 203571,
-      "max_base_avg": 244285,
-      "median": 190000
-    },
-    "Head of": {
-      "count": 8,
-      "min_base_avg": 154587,
-      "max_base_avg": 201751,
-      "median": 140000
+    "VP": {
+      "count": 131,
+      "min_base_avg": 175825,
+      "max_base_avg": 349817,
+      "median": 170000
     },
     "C-Level": {
+      "count": 14,
+      "min_base_avg": 198619,
+      "max_base_avg": 299980,
+      "median": 225000
+    },
+    "SVP": {
       "count": 8,
-      "min_base_avg": 135675,
-      "max_base_avg": 167740,
-      "median": 101401
+      "min_base_avg": 198750,
+      "max_base_avg": 241250,
+      "median": 200000
+    },
+    "Head of": {
+      "count": 5,
+      "min_base_avg": 168374,
+      "max_base_avg": 265122,
+      "median": 191300
     }
   },
   "by_metro": {
     "Unknown": {
-      "count": 3198,
-      "min_base_avg": 95065,
-      "max_base_avg": 143691,
-      "median": 80000
-    },
-    "Denver": {
-      "count": 70,
-      "min_base_avg": 103747,
-      "max_base_avg": 139113,
-      "median": 95000
-    },
-    "Chicago": {
-      "count": 122,
-      "min_base_avg": 119751,
-      "max_base_avg": 164152,
-      "median": 110000
+      "count": 1009,
+      "min_base_avg": 108304,
+      "max_base_avg": 171154,
+      "median": 90000
     },
     "Los Angeles": {
-      "count": 464,
-      "min_base_avg": 93755,
-      "max_base_avg": 134878,
-      "median": 75000
+      "count": 148,
+      "min_base_avg": 106465,
+      "max_base_avg": 160015,
+      "median": 79900
     },
-    "Miami": {
-      "count": 21,
-      "min_base_avg": 98185,
-      "max_base_avg": 151236,
-      "median": 80000
-    },
-    "San Francisco": {
-      "count": 120,
-      "min_base_avg": 137128,
-      "max_base_avg": 190363,
-      "median": 121400
-    },
-    "Washington DC": {
-      "count": 71,
-      "min_base_avg": 110902,
-      "max_base_avg": 156212,
-      "median": 102000
+    "Denver": {
+      "count": 24,
+      "min_base_avg": 109010,
+      "max_base_avg": 151961,
+      "median": 90000
     },
     "New York": {
-      "count": 587,
-      "min_base_avg": 117311,
-      "max_base_avg": 162530,
-      "median": 105000
-    },
-    "Austin": {
-      "count": 51,
-      "min_base_avg": 118709,
-      "max_base_avg": 176691,
-      "median": 78800
-    },
-    "Boston": {
-      "count": 72,
-      "min_base_avg": 119258,
-      "max_base_avg": 161266,
-      "median": 100000
+      "count": 274,
+      "min_base_avg": 135763,
+      "max_base_avg": 190613,
+      "median": 125000
     },
     "Seattle": {
-      "count": 48,
-      "min_base_avg": 114269,
-      "max_base_avg": 162514,
-      "median": 92400
+      "count": 22,
+      "min_base_avg": 126576,
+      "max_base_avg": 172437,
+      "median": 129600
     },
-    "Dallas": {
-      "count": 7,
-      "min_base_avg": 82857,
-      "max_base_avg": 115937,
-      "median": 53000
+    "San Francisco": {
+      "count": 65,
+      "min_base_avg": 169103,
+      "max_base_avg": 230267,
+      "median": 160000
+    },
+    "Boston": {
+      "count": 27,
+      "min_base_avg": 127192,
+      "max_base_avg": 175410,
+      "median": 100000
+    },
+    "Washington DC": {
+      "count": 29,
+      "min_base_avg": 133120,
+      "max_base_avg": 197215,
+      "median": 102000
+    },
+    "Chicago": {
+      "count": 61,
+      "min_base_avg": 134486,
+      "max_base_avg": 182926,
+      "median": 122300
+    },
+    "Austin": {
+      "count": 33,
+      "min_base_avg": 129509,
+      "max_base_avg": 189360,
+      "median": 100000
+    },
+    "Miami": {
+      "count": 6,
+      "min_base_avg": 159650,
+      "max_base_avg": 194833,
+      "median": 150000
     }
   },
   "by_remote": {
     "onsite": {
-      "count": 4025,
-      "min_base_avg": 100170,
-      "max_base_avg": 143715,
-      "median": 85000
+      "count": 1365,
+      "min_base_avg": 118487,
+      "max_base_avg": 170623,
+      "median": 100000
     },
     "remote": {
-      "count": 805,
-      "min_base_avg": 101876,
-      "max_base_avg": 167394,
-      "median": 90000
+      "count": 335,
+      "min_base_avg": 112801,
+      "max_base_avg": 201131,
+      "median": 100000
     }
   },
   "top_paying_roles": [
@@ -157,53 +151,18 @@
       "seniority": "VP"
     },
     {
-      "title": "Sales Director/VP - C&I Energy Storage",
-      "company": "Renon Power Technology Inc",
-      "salary_min": 168000.0,
-      "salary_max": 2400000.0,
+      "title": "Inside Sales Representative",
+      "company": "Performacentric",
+      "salary_min": 840000.0,
+      "salary_max": 1680000.0,
       "seniority": "Mid"
     },
     {
-      "title": "Sales Director (SaaS / Remote / Spanish / Spain)",
-      "company": "Publitas",
-      "salary_min": 1200000.0,
-      "salary_max": 1560000.0,
-      "seniority": "Director"
-    },
-    {
-      "title": "Director of Sales Operations",
-      "company": "Numotion",
-      "salary_min": 95000.0,
-      "salary_max": 1250000.0,
-      "seniority": "Director"
-    },
-    {
-      "title": "Promotional Product Account Executive",
-      "company": "Iconic Supply Co",
-      "salary_min": 65000.0,
+      "title": "VP of Sales",
+      "company": "Smart Communications",
+      "salary_min": 150000.0,
       "salary_max": 1000000.0,
-      "seniority": "Mid"
-    },
-    {
-      "title": "Business Development Partner / Referral Agent (Finance & Lending)",
-      "company": "Wolfcrest Financial LLC",
-      "salary_min": 100000.0,
-      "salary_max": 1000000.0,
-      "seniority": "Mid"
-    },
-    {
-      "title": "B2B2C & B2C Inside Sales Professional",
-      "company": "DomiDocs, Inc.",
-      "salary_min": 50000.0,
-      "salary_max": 1000000.0,
-      "seniority": "Mid"
-    },
-    {
-      "title": "Regional Sales Manager-Volume Energy Deregulation Sales (Fast Pay)",
-      "company": "RAD MARKETING & ADVERTISING",
-      "salary_min": 100000.0,
-      "salary_max": 999999.0,
-      "seniority": "Mid"
+      "seniority": "VP"
     },
     {
       "title": "Account Executive -PEO /HCM",
@@ -213,111 +172,146 @@
       "seniority": "Mid"
     },
     {
-      "title": "Sr. Business Development Manager",
-      "company": "Distro",
-      "salary_min": 840000.0,
-      "salary_max": 960000.0,
+      "title": "Sales Manager",
+      "company": "NUEARN MARKETING AND CONSULTING ",
+      "salary_min": 300000.0,
+      "salary_max": 900000.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "Area Sales Manager (ASM)",
+      "company": "chillcloud",
+      "salary_min": 360000.0,
+      "salary_max": 840000.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "RVP Sales, Public Cloud ERP Americas, Finance and Spend",
+      "company": "SAP",
+      "salary_min": 341600.0,
+      "salary_max": 701500.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "VP Sales - Aerospace and Defense",
+      "company": "SAP",
+      "salary_min": 341600.0,
+      "salary_max": 701500.0,
+      "seniority": "VP"
+    },
+    {
+      "title": "Account Executive, FAM",
+      "company": "M Booth",
+      "salary_min": 56000.0,
+      "salary_max": 650000.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "RVP Sales, SLED",
+      "company": "SAP",
+      "salary_min": 311200.0,
+      "salary_max": 638100.0,
       "seniority": "Mid"
     }
   ],
   "by_tier": {
     "Director / Sales Manager": {
-      "n": 2385,
-      "n_total": 2385,
-      "n_with_salary": 1309,
-      "median_base": 95000,
-      "median_total": 135000,
-      "limited_sample": false
-    },
-    "AE - Mid-Market": {
-      "n": 1907,
-      "n_total": 1907,
-      "n_with_salary": 1148,
-      "median_base": 85000,
-      "median_total": 129500,
+      "n": 413,
+      "n_total": 413,
+      "n_with_salary": 217,
+      "median_base": 120000,
+      "median_total": 168200,
       "limited_sample": false
     },
     "SDR/BDR": {
-      "n": 876,
-      "n_total": 876,
-      "n_with_salary": 472,
+      "n": 348,
+      "n_total": 348,
+      "n_with_salary": 192,
       "median_base": 55000,
-      "median_total": 75000,
+      "median_total": 80000,
       "limited_sample": false
     },
-    "VP Sales": {
-      "n": 174,
-      "n_total": 174,
-      "n_with_salary": 91,
-      "median_base": 175300,
-      "median_total": 250000,
+    "AE - Mid-Market": {
+      "n": 307,
+      "n_total": 307,
+      "n_with_salary": 165,
+      "median_base": 90000,
+      "median_total": 140400,
       "limited_sample": false
     },
     "AE - Enterprise": {
-      "n": 265,
-      "n_total": 265,
-      "n_with_salary": 162,
-      "median_base": 130000,
-      "median_total": 180000,
-      "limited_sample": false
-    },
-    "RVP": {
-      "n": 36,
-      "n_total": 36,
-      "n_with_salary": 13,
-      "median_base": 200000,
-      "median_total": 278450,
-      "limited_sample": false
-    },
-    "CRO": {
-      "n": 19,
-      "n_total": 19,
-      "n_with_salary": 8,
-      "median_base": 130700,
-      "median_total": 151059,
+      "n": 583,
+      "n_total": 583,
+      "n_with_salary": 346,
+      "median_base": 133196,
+      "median_total": 180600,
       "limited_sample": false
     },
     "AE - SMB": {
-      "n": 37,
-      "n_total": 37,
+      "n": 103,
+      "n_total": 103,
+      "n_with_salary": 51,
+      "median_base": 70000,
+      "median_total": 100000,
+      "limited_sample": false
+    },
+    "VP Sales": {
+      "n": 219,
+      "n_total": 219,
+      "n_with_salary": 108,
+      "median_base": 175300,
+      "median_total": 249900,
+      "limited_sample": false
+    },
+    "CRO": {
+      "n": 33,
+      "n_total": 33,
+      "n_with_salary": 10,
+      "median_base": 227500,
+      "median_total": 325000,
+      "limited_sample": false
+    },
+    "RVP": {
+      "n": 52,
+      "n_total": 52,
       "n_with_salary": 25,
-      "median_base": 43080,
-      "median_total": 129400,
+      "median_base": 198000,
+      "median_total": 247040,
       "limited_sample": false
     }
   },
   "career_map_years": {
-    "Director / Sales Manager": {
-      "median_years": 5,
-      "n": 863
-    },
     "SDR/BDR": {
       "median_years": 2,
-      "n": 283
+      "n": 120
+    },
+    "Director / Sales Manager": {
+      "median_years": 5,
+      "n": 98
+    },
+    "AE - SMB": {
+      "median_years": 3,
+      "n": 36
+    },
+    "AE - Mid-Market": {
+      "median_years": 5,
+      "n": 92
+    },
+    "AE - Enterprise": {
+      "median_years": 5,
+      "n": 111
     },
     "VP Sales": {
       "median_years": 10,
-      "n": 65
-    },
-    "AE - Mid-Market": {
-      "median_years": 4,
-      "n": 626
-    },
-    "AE - Enterprise": {
-      "median_years": 6,
-      "n": 48
-    },
-    "CRO": {
-      "median_years": 12,
-      "n": 5
-    },
-    "AE - SMB": {
-      "median_years": 4,
-      "n": 14
+      "n": 27
     },
     "RVP": {
-      "median_years": 7,
-      "n": 7
+      "median_years": 10,
+      "n": 5
+    },
+    "CRO": {
+      "median_years": 16,
+      "n": 2
     }
   }
 }
