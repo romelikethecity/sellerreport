@@ -1,50 +1,50 @@
 {
-  "generated_at": "2026-05-15T05:08:10.784219",
-  "total_records": 2830,
-  "records_with_salary": 1700,
-  "disclosure_rate": 60.1,
+  "generated_at": "2026-05-17T11:07:17.839507",
+  "total_records": 2902,
+  "records_with_salary": 1692,
+  "disclosure_rate": 58.3,
   "salary_stats": {
     "min": 1,
-    "max": 12000000,
+    "max": 18000000,
     "median": 100000,
-    "avg": 117366,
-    "count_with_salary": 1700
+    "avg": 122752,
+    "count_with_salary": 1692
   },
   "by_seniority": {
-    "Senior": {
-      "count": 131,
-      "min_base_avg": 126482,
-      "max_base_avg": 176175,
-      "median": 120000
-    },
     "Mid": {
-      "count": 1206,
-      "min_base_avg": 106262,
-      "max_base_avg": 155051,
+      "count": 1204,
+      "min_base_avg": 111914,
+      "max_base_avg": 171282,
       "median": 90000
     },
-    "Director": {
-      "count": 141,
-      "min_base_avg": 152820,
-      "max_base_avg": 211465,
-      "median": 150000
+    "Senior": {
+      "count": 119,
+      "min_base_avg": 124129,
+      "max_base_avg": 176879,
+      "median": 120000
     },
     "Entry": {
-      "count": 62,
-      "min_base_avg": 74259,
-      "max_base_avg": 102559,
+      "count": 55,
+      "min_base_avg": 76087,
+      "max_base_avg": 102714,
       "median": 60000
     },
     "VP": {
       "count": 131,
-      "min_base_avg": 175825,
-      "max_base_avg": 349817,
+      "min_base_avg": 178431,
+      "max_base_avg": 354708,
       "median": 170000
     },
+    "Director": {
+      "count": 151,
+      "min_base_avg": 161401,
+      "max_base_avg": 223665,
+      "median": 150000
+    },
     "C-Level": {
-      "count": 14,
-      "min_base_avg": 198619,
-      "max_base_avg": 299980,
+      "count": 15,
+      "min_base_avg": 205377,
+      "max_base_avg": 303315,
       "median": 225000
     },
     "SVP": {
@@ -62,87 +62,100 @@
   },
   "by_metro": {
     "Unknown": {
-      "count": 1009,
-      "min_base_avg": 108304,
-      "max_base_avg": 171154,
-      "median": 90000
-    },
-    "Los Angeles": {
-      "count": 148,
-      "min_base_avg": 106465,
-      "max_base_avg": 160015,
-      "median": 79900
-    },
-    "Denver": {
-      "count": 24,
-      "min_base_avg": 109010,
-      "max_base_avg": 151961,
-      "median": 90000
+      "count": 981,
+      "min_base_avg": 117804,
+      "max_base_avg": 195364,
+      "median": 95000
     },
     "New York": {
-      "count": 274,
-      "min_base_avg": 135763,
-      "max_base_avg": 190613,
+      "count": 280,
+      "min_base_avg": 133260,
+      "max_base_avg": 188743,
+      "median": 120000
+    },
+    "Chicago": {
+      "count": 62,
+      "min_base_avg": 132931,
+      "max_base_avg": 194404,
+      "median": 110000
+    },
+    "San Francisco": {
+      "count": 69,
+      "min_base_avg": 170795,
+      "max_base_avg": 229361,
+      "median": 155000
+    },
+    "Los Angeles": {
+      "count": 150,
+      "min_base_avg": 106460,
+      "max_base_avg": 158296,
+      "median": 75000
+    },
+    "Boston": {
+      "count": 32,
+      "min_base_avg": 118740,
+      "max_base_avg": 161019,
+      "median": 100000
+    },
+    "Denver": {
+      "count": 28,
+      "min_base_avg": 103555,
+      "max_base_avg": 139088,
+      "median": 80000
+    },
+    "Austin": {
+      "count": 32,
+      "min_base_avg": 133125,
+      "max_base_avg": 190025,
       "median": 125000
     },
     "Seattle": {
-      "count": 22,
-      "min_base_avg": 126576,
-      "max_base_avg": 172437,
-      "median": 129600
-    },
-    "San Francisco": {
-      "count": 65,
-      "min_base_avg": 169103,
-      "max_base_avg": 230267,
-      "median": 160000
-    },
-    "Boston": {
-      "count": 27,
-      "min_base_avg": 127192,
-      "max_base_avg": 175410,
-      "median": 100000
-    },
-    "Washington DC": {
-      "count": 29,
-      "min_base_avg": 133120,
-      "max_base_avg": 197215,
-      "median": 102000
-    },
-    "Chicago": {
-      "count": 61,
-      "min_base_avg": 134486,
-      "max_base_avg": 182926,
-      "median": 122300
-    },
-    "Austin": {
-      "count": 33,
-      "min_base_avg": 129509,
-      "max_base_avg": 189360,
-      "median": 100000
+      "count": 18,
+      "min_base_avg": 135330,
+      "max_base_avg": 180778,
+      "median": 139000
     },
     "Miami": {
-      "count": 6,
-      "min_base_avg": 159650,
-      "max_base_avg": 194833,
-      "median": 150000
+      "count": 7,
+      "min_base_avg": 154700,
+      "max_base_avg": 186285,
+      "median": 125000
+    },
+    "Washington DC": {
+      "count": 28,
+      "min_base_avg": 123053,
+      "max_base_avg": 186223,
+      "median": 102000
+    },
+    "New York Metro": {
+      "count": 3,
+      "min_base_avg": 244333,
+      "max_base_avg": 295000,
+      "median": 225000
     }
   },
   "by_remote": {
-    "onsite": {
-      "count": 1365,
-      "min_base_avg": 118487,
-      "max_base_avg": 170623,
+    "remote": {
+      "count": 331,
+      "min_base_avg": 131777,
+      "max_base_avg": 258844,
       "median": 100000
     },
-    "remote": {
-      "count": 335,
-      "min_base_avg": 112801,
-      "max_base_avg": 201131,
-      "median": 100000
+    "onsite": {
+      "count": 1361,
+      "min_base_avg": 120557,
+      "max_base_avg": 173744,
+      "median": 101401
     }
   },
   "top_paying_roles": [
+    {
+      "title": "Enterprise Sales Manager",
+      "company": "insight7",
+      "salary_min": 6000000.0,
+      "salary_max": 18000000.0,
+      "seniority": "Mid"
+    },
     {
       "title": "VP Sales & Marketing",
       "company": "MDS Wealth Consulting",
@@ -158,6 +171,13 @@
       "seniority": "Mid"
     },
     {
+      "title": "Business Development Manager",
+      "company": "insight7",
+      "salary_min": 500000.0,
+      "salary_max": 1000000.0,
+      "seniority": "Mid"
+    },
+    {
       "title": "VP of Sales",
       "company": "Smart Communications",
       "salary_min": 150000.0,
@@ -169,6 +189,13 @@
       "company": "Distro",
       "salary_min": 840000.0,
       "salary_max": 960000.0,
+      "seniority": "Mid"
+    },
+    {
+      "title": "Regional Sales Director, Enterprise Solutions",
+      "company": "Cvent",
+      "salary_min": 82000.0,
+      "salary_max": 900000.0,
       "seniority": "Mid"
     },
     {
@@ -191,119 +218,98 @@
       "salary_min": 341600.0,
       "salary_max": 701500.0,
       "seniority": "Mid"
-    },
-    {
-      "title": "VP Sales - Aerospace and Defense",
-      "company": "SAP",
-      "salary_min": 341600.0,
-      "salary_max": 701500.0,
-      "seniority": "VP"
-    },
-    {
-      "title": "Account Executive, FAM",
-      "company": "M Booth",
-      "salary_min": 56000.0,
-      "salary_max": 650000.0,
-      "seniority": "Mid"
-    },
-    {
-      "title": "RVP Sales, SLED",
-      "company": "SAP",
-      "salary_min": 311200.0,
-      "salary_max": 638100.0,
-      "seniority": "Mid"
     }
   ],
   "by_tier": {
     "Director / Sales Manager": {
-      "n": 413,
-      "n_total": 413,
-      "n_with_salary": 217,
-      "median_base": 120000,
-      "median_total": 168200,
+      "n": 444,
+      "n_total": 444,
+      "n_with_salary": 227,
+      "median_base": 125000,
+      "median_total": 177000,
       "limited_sample": false
     },
     "SDR/BDR": {
-      "n": 348,
-      "n_total": 348,
-      "n_with_salary": 192,
+      "n": 364,
+      "n_total": 364,
+      "n_with_salary": 196,
       "median_base": 55000,
       "median_total": 80000,
       "limited_sample": false
     },
+    "AE - Enterprise": {
+      "n": 603,
+      "n_total": 603,
+      "n_with_salary": 327,
+      "median_base": 134200,
+      "median_total": 180100,
+      "limited_sample": false
+    },
     "AE - Mid-Market": {
-      "n": 307,
-      "n_total": 307,
+      "n": 313,
+      "n_total": 313,
       "n_with_salary": 165,
       "median_base": 90000,
-      "median_total": 140400,
-      "limited_sample": false
-    },
-    "AE - Enterprise": {
-      "n": 583,
-      "n_total": 583,
-      "n_with_salary": 346,
-      "median_base": 133196,
-      "median_total": 180600,
-      "limited_sample": false
-    },
-    "AE - SMB": {
-      "n": 103,
-      "n_total": 103,
-      "n_with_salary": 51,
-      "median_base": 70000,
-      "median_total": 100000,
-      "limited_sample": false
-    },
-    "VP Sales": {
-      "n": 219,
-      "n_total": 219,
-      "n_with_salary": 108,
-      "median_base": 175300,
-      "median_total": 249900,
-      "limited_sample": false
-    },
-    "CRO": {
-      "n": 33,
-      "n_total": 33,
-      "n_with_salary": 10,
-      "median_base": 227500,
-      "median_total": 325000,
+      "median_total": 142350,
       "limited_sample": false
     },
     "RVP": {
-      "n": 52,
-      "n_total": 52,
-      "n_with_salary": 25,
-      "median_base": 198000,
-      "median_total": 247040,
+      "n": 54,
+      "n_total": 54,
+      "n_with_salary": 26,
+      "median_base": 199000,
+      "median_total": 253080,
+      "limited_sample": false
+    },
+    "AE - SMB": {
+      "n": 106,
+      "n_total": 106,
+      "n_with_salary": 56,
+      "median_base": 70000,
+      "median_total": 102875,
+      "limited_sample": false
+    },
+    "VP Sales": {
+      "n": 224,
+      "n_total": 224,
+      "n_with_salary": 109,
+      "median_base": 175300,
+      "median_total": 250000,
+      "limited_sample": false
+    },
+    "CRO": {
+      "n": 35,
+      "n_total": 35,
+      "n_with_salary": 11,
+      "median_base": 230000,
+      "median_total": 337500,
       "limited_sample": false
     }
   },
   "career_map_years": {
-    "SDR/BDR": {
-      "median_years": 2,
-      "n": 120
+    "AE - Enterprise": {
+      "median_years": 5,
+      "n": 139
     },
     "Director / Sales Manager": {
-      "median_years": 5,
-      "n": 98
+      "median_years": 6,
+      "n": 115
+    },
+    "AE - Mid-Market": {
+      "median_years": 4,
+      "n": 96
+    },
+    "SDR/BDR": {
+      "median_years": 2,
+      "n": 127
     },
     "AE - SMB": {
       "median_years": 3,
-      "n": 36
-    },
-    "AE - Mid-Market": {
-      "median_years": 5,
-      "n": 92
-    },
-    "AE - Enterprise": {
-      "median_years": 5,
-      "n": 111
+      "n": 39
     },
     "VP Sales": {
       "median_years": 10,
-      "n": 27
+      "n": 28
     },
     "RVP": {
       "median_years": 10,
