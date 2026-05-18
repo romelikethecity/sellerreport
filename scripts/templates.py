@@ -885,7 +885,7 @@ def signup_form_partial(form_id: str = "nl-form-inline", msg_id: str = "nl-msg-i
   <form id=\"{form_id}\" class=\"nl-signup-form\">
     <input type=\"email\" name=\"email\" class=\"nl-signup-input\"
            placeholder=\"you@company.com\" required>
-    <button type=\"submit\" class=\"nl-signup-btn\">Subscribe — free</button>
+    <button type=\"submit\" class=\"nl-signup-btn\">Subscribe (free)</button>
     <p class=\"nl-signup-msg\" id=\"{msg_id}\"></p>
     <p class=\"nl-signup-fine\">No spam. Unsubscribe anytime.</p>
   </form>
@@ -1031,9 +1031,9 @@ CAREER_LADDER_ORDER = [
 
 
 def _fmt_money_short(n):
-    """90000 -> $90K · 1500000 -> $1.5M · None -> —."""
+    """90000 -> $90K · 1500000 -> $1.5M · None -> 'n/a'."""
     if n is None or n <= 0:
-        return "—"
+        return "n/a"
     if n >= 1_000_000:
         return f"${n / 1_000_000:.1f}M"
     return f"${n // 1000}K"
@@ -1073,7 +1073,7 @@ def career_map_ladder(comp_data: dict) -> str:
 </div>""")
 
     footnote = ('<p class="career-ladder-footnote">'
-                '* Limited sample (n&lt;10) — directional only.</p>'
+                '* Limited sample (n&lt;10), directional only.</p>'
                 if has_limited else "")
 
     return f"""
@@ -1091,12 +1091,12 @@ PREVIEW_TIER_ORDER = [
 
 
 def _signal_pct(market_intel: dict, key: str) -> str:
-    """Render a comp_signals key as a percent of total_jobs, or '—' if missing."""
+    """Render a comp_signals key as a percent of total_jobs, or 'n/a' if missing."""
     signals = market_intel.get("comp_signals", {})
     n = signals.get(key, 0)
     total = market_intel.get("total_jobs", 0)
     if not total:
-        return "—"
+        return "n/a"
     return f"{round(100 * n / total)}%"
 
 
@@ -1146,7 +1146,7 @@ def newsletter_preview_partial(comp_data: dict, market_intel: dict,
         f"""<div class="preview-featured-card">
   <div class="preview-featured-title">{j.get('title', '')}</div>
   <div class="preview-featured-meta">{j.get('company', '')} · {j.get('location', '')}</div>
-  <div class="preview-featured-salary">{_fmt_money_short(j.get('min_amount'))} — {_fmt_money_short(j.get('max_amount'))}</div>
+  <div class="preview-featured-salary">{_fmt_money_short(j.get('min_amount'))} to {_fmt_money_short(j.get('max_amount'))}</div>
 </div>""" for j in jobs)
 
     return f"""
@@ -1162,7 +1162,7 @@ def newsletter_preview_partial(comp_data: dict, market_intel: dict,
         <span class="preview-toolbar-title">Inbox &mdash; The Seller Report</span>
       </div>
       <div class="preview-body">
-        <div class="preview-header-bar">THE SELLER REPORT — {date_str}</div>
+        <div class="preview-header-bar">THE SELLER REPORT | {date_str}</div>
 
         <div class="preview-stats">
           <div class="preview-stat-card">

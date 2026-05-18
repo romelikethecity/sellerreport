@@ -3,8 +3,8 @@
 Generate the Seller Report newsletter archive page + per-issue HTML pages.
 
 Reads newsletters/*.md, writes:
-  site/newsletter/index.html         — paginated archive index
-  site/newsletter/YYYY-MM-DD/index.html  — per-issue rendered HTML
+  site/newsletter/index.html         : paginated archive index
+  site/newsletter/YYYY-MM-DD/index.html  : per-issue rendered HTML
 
 Each page integrates with the site's existing CSS at /css/styles.css and
 includes a signup form that posts to the central D1 worker.
@@ -58,7 +58,7 @@ def list_issues() -> list[dict]:
             md = f.read()
         # Extract first H1 as the title
         title_match = re.search(r"^# (.+)$", md, re.MULTILINE)
-        title = title_match.group(1) if title_match else f"Issue — {date_iso}"
+        title = title_match.group(1) if title_match else f"Issue: {date_iso}"
         issues.append({"date": date_iso, "title": title, "md": md, "path": path})
     return issues
 

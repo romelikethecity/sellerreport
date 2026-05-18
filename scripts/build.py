@@ -225,7 +225,7 @@ def build_homepage():
     testimonials_html = "\n".join(
         f'''<div class="testimonial-card">
               <p class="testimonial-quote">"{q}"</p>
-              <p class="testimonial-author">— {a}</p>
+              <p class="testimonial-author">{a}</p>
             </div>''' for q, a in testimonials
     )
 
@@ -253,7 +253,7 @@ def build_homepage():
   <div class="stats-grid">
     <div class="stat-card"><div class="stat-number">{fmt_number(n_jobs)}+</div><div class="stat-label">Active Roles</div></div>
     <div class="stat-card"><div class="stat-number">{remote_pct}%</div><div class="stat-label">Remote</div></div>
-    <div class="stat-card"><div class="stat-number">{fmt_salary(median_total) if median_total else '—'}</div><div class="stat-label">Median Total Comp</div></div>
+    <div class="stat-card"><div class="stat-number">{fmt_salary(median_total) if median_total else 'n/a'}</div><div class="stat-label">Median Total Comp</div></div>
     <div class="stat-card"><div class="stat-number">{n_tools}+</div><div class="stat-label">Tools Tracked</div></div>
   </div>
 </section>
@@ -335,7 +335,7 @@ def build_homepage():
 </section>
 
 <section class="cta-section">
-  <h2>Get this in your inbox every Monday — free</h2>
+  <h2>Get this in your inbox every Monday, free</h2>
   <p class="section-subtitle">B2B sales jobs, comp by tier, tools in demand. No spam.</p>
   {signup_form_hero(form_id="cta-form", msg_id="cta-msg", ga_label="footer_cta")}
 </section>
@@ -360,7 +360,9 @@ def build_homepage():
 
 def _job_card_html(j, link=True):
     """Render a single job as a card."""
-    title = esc(j.get("title", "Untitled"))
+    # Normalize em/en dashes in scraped titles to a regular hyphen for our chrome.
+    raw_title = (j.get("title") or "Untitled").replace("—", "-").replace("–", "-")
+    title = esc(raw_title)
     company = esc(j.get("company", "")) or "Company not listed"
     location = esc(j.get("location", "")) or "Location not specified"
 
@@ -971,7 +973,7 @@ def _article_content_sales_job_market():
 
 <p>Turnaround hires account for {fmt_number(turnaround)} listings. These are companies rebuilding sales teams after restructuring, pivots, or layoffs. And {fmt_number(immediate)} postings flag "immediate" hiring needs, meaning companies are behind on pipeline and willing to move fast.</p>
 
-<p>The takeaway: sales hiring is aggressive. The <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS Sales Occupations Outlook</a> projects continued growth through 2033. Companies are not just filling seats. They are building capacity for the next 12-18 months.</p>
+<p>Sales hiring is aggressive. The <a href="https://www.bls.gov/ooh/sales/" target="_blank" rel="noopener noreferrer">BLS Sales Occupations Outlook</a> projects continued growth through 2033. Companies are not just filling seats. They are building capacity for the next 12-18 months.</p>
 
 <h2>Compensation: What the Market Pays</h2>
 
@@ -999,7 +1001,7 @@ def _article_content_sales_job_market():
 
 <p>{fmt_number(enterprise_seg)} postings target enterprise buyers. {fmt_number(smb_seg)} focus on SMB. Mid-market sits at {fmt_number(MARKET_DATA.get('segment', {}).get('Mid Market', 0))} roles, and {fmt_number(MARKET_DATA.get('segment', {}).get('Fortune 500', 0))} specifically call out Fortune 500 targets.</p>
 
-<p>Enterprise deals remain the highest-compensation path. <a href="https://www.gartner.com/en/sales/topics/sales-technology" target="_blank" rel="noopener noreferrer">Gartner's sales research</a> shows that enterprise deal complexity continues to increase, pushing compensation upward. Longer cycles, bigger checks, bigger paychecks.</p>
+<p>Enterprise deals remain the highest-compensation path. <a href="https://www.gartner.com/en/sales/topics/sales-technology" target="_blank" rel="noopener noreferrer">Gartner's sales research</a> shows that enterprise deal complexity keeps rising, pushing compensation upward. Longer cycles, bigger checks, bigger paychecks.</p>
 
 <h2>Geography and Remote Work</h2>
 
@@ -1060,7 +1062,7 @@ def _article_content_ae_vs_sdr():
 
 <p>Most SDR roles use a 60/40 or 70/30 base-to-variable split. The <a href="https://www.bls.gov/oes/current/oes414199.htm" target="_blank" rel="noopener noreferrer">BLS data on sales representative compensation</a> provides government-verified baseline figures. A posting showing $58K base likely has an OTE of $75-85K when you add in commission from booked meetings and qualified pipeline generated.</p>
 
-<p>The SDR tier has the highest volume of job postings relative to available candidates. Companies churn through SDRs quickly. Tenure averages 14-18 months before promotion or departure. That high turnover creates constant openings, which is good for entry but bad for negotiation leverage.</p>
+<p>The SDR tier has the highest volume of job postings relative to available candidates. Companies churn through SDRs quickly. Tenure averages 14-18 months before promotion or departure. That high turnover creates constant openings, which is good for entry but bad for your negotiating position.</p>
 
 <h2>The AE Jump: Where Real Money Starts</h2>
 
@@ -1325,7 +1327,7 @@ def _article_content_remote_sales():
 
 <h2>Remote Sales Infrastructure</h2>
 
-<p>Selling remotely requires a different setup than selling in an office. The successful remote sellers in today's market invest in three areas:</p>
+<p>Selling remotely requires a different setup than selling in an office. The successful remote sellers we see invest in three areas:</p>
 
 <p><strong>Communication quality.</strong> Good camera, good mic, good lighting. You are on video all day. Investment: $500-1,000 for a setup that makes you look professional and eliminates audio issues.</p>
 
@@ -1565,7 +1567,7 @@ def _article_content_ae_salary():
 
 <p><strong>SMB AEs</strong> ({fmt_number(smb_seg)} roles) close high volumes of smaller deals. Cycles run 1-4 weeks. Base salaries are lower, but the velocity of deals can push total earnings higher than expected if the comp plan rewards volume. SMB roles are also where many AEs build their early track record before moving upmarket.</p>
 
-<p>{fmt_number(enterprise_deal)} postings explicitly reference enterprise-deal-size contracts. {fmt_number(seven_fig)} mention seven-figure deal values. If you can point to closed deals at these levels, your compensation leverage increases substantially.</p>
+<p>{fmt_number(enterprise_deal)} postings explicitly reference enterprise-deal-size contracts. {fmt_number(seven_fig)} mention seven-figure deal values. If you can point to closed deals at these levels, your negotiating power on compensation increases substantially.</p>
 
 <h2>Geographic Salary Differences</h2>
 
@@ -1613,7 +1615,7 @@ def _article_content_ae_salary():
 
 <p><strong>Technical depth.</strong> AEs who can run their own product demos, speak credibly about integrations, and handle technical objections without calling in a sales engineer are rare. This skill compresses sales cycles and makes you more efficient, which directly translates to higher earnings.</p>
 
-<h2>AE Salary Negotiation Leverage Points</h2>
+<h2>Where AEs Have the Most Negotiating Power</h2>
 
 <p>When negotiating an AE offer, focus on these elements in order of impact:</p>
 
@@ -1669,7 +1671,7 @@ def _article_content_ae_salary():
 
 <p><strong>Retention-linked compensation.</strong> More companies are tying a portion of AE variable compensation to customer retention metrics. If your customers churn within 12 months, you may lose 10-20% of the related commission (a clawback). This trend reflects companies' focus on revenue quality, not just revenue volume. When evaluating a comp plan with retention clauses, ask for the historical churn rate on AE-sourced deals. If it is below 10%, the clause is unlikely to affect your earnings. If it is above 20%, the clause creates real risk.</p>
 
-<p>The AE role continues to be the financial engine of a sales career. Base salary is the foundation, but OTE, equity, accelerators, and the structural terms of your comp plan collectively determine what you take home. Understand all the components, negotiate them as a package, and choose the segment and company that align with your strengths. That combination produces the highest long-term AE earnings trajectory.</p>"""
+<p>The AE role remains the financial engine of a sales career. Base salary is the foundation, but OTE, equity, accelerators, and the structural terms of your comp plan collectively determine what you take home. Understand all the components, negotiate them as a package, and choose the segment and company that align with your strengths. That combination produces the highest long-term AE earnings trajectory.</p>"""
 
 
 def _article_content_career_path():
@@ -2213,7 +2215,7 @@ def _article_content_sdr_to_ae():
 
 <p><strong>Days 61-90:</strong> Close your first deal. The pressure of the first close is real. Having pipeline from day one ensures you have enough at-bats. Once you close your first deal, the psychological barrier breaks and the role starts feeling natural.</p>
 
-<p>The SDR-to-AE transition is the highest-leverage career move in sales. The median base jump from {fmt_salary(entry.get('median', 0))} to {fmt_salary(mid.get('median', 0))} is just the starting point. Factor in aggressive variable comp, uncapped commissions at strong companies, and the career path that opens from the AE role, and this single promotion can add $500K+ to your lifetime earnings.</p>
+<p>The SDR-to-AE transition is the highest-impact career move in sales. The median base jump from {fmt_salary(entry.get('median', 0))} to {fmt_salary(mid.get('median', 0))} is just the starting point. Factor in aggressive variable comp, uncapped commissions at strong companies, and the career path that opens from the AE role, and this single promotion can add $500K+ to your lifetime earnings.</p>
 
 <h2>Building Your Promotion Case</h2>
 
@@ -2379,7 +2381,7 @@ def _article_content_remote_sales_guide():
 
 <p><strong>Distributed sales teams at office-based companies.</strong> Some companies maintain headquarters but hire sales reps anywhere. This model works well for AEs covering geographic territories. The risk: if management is office-based and your team is remote, proximity bias can affect promotion decisions and deal assignment. Ask about the distribution of the sales team during your interview.</p>
 
-<p>The remote sales landscape continues to expand. The companies that hire remotely today are building the management practices, coaching tools, and cultural norms that will define sales team structure for the next decade. Getting into remote sales now positions you for a career in the model that is growing, not the one that is shrinking.</p>
+<p>The remote sales market keeps expanding. The companies that hire remotely today are building the management practices, coaching tools, and cultural norms that will define sales team structure for the next decade. Getting into remote sales now positions you for a career in the model that is growing, not the one that is shrinking.</p>
 
 <p>One final consideration: remote sales skills are becoming baseline expectations rather than differentiators. Companies that operated in person before 2020 now expect every seller to be proficient on video, with digital prospecting tools, and in asynchronous communication. Whether your title says "remote" or not, the skill set is the same. Building remote selling proficiency today prepares you for every sales role you will hold in the future, regardless of whether the office label says remote, hybrid, or on-site. The distinction is fading. The skills are permanent.</p>"""
 
@@ -2425,7 +2427,7 @@ def _article_content_best_companies_careers():
 
 <p>Who this is best for: everyone from SDRs to directors. Growth-stage offers the best balance of learning, earning, and career advancement at every level.</p>
 
-<p><strong>Late-stage and public companies.</strong> Highest compensation floors, most structured environments. Benefits packages are comprehensive. Equity is liquid (RSUs in public companies vest into cash). Career paths are well-defined but can be slow. Promotion timelines are longer because there are more people competing for fewer management roles.</p>
+<p><strong>Late-stage and public companies.</strong> Highest compensation floors, most structured environments. Benefits packages are full-featured. Equity is liquid (RSUs in public companies vest into cash). Career paths are well-defined but can be slow. Promotion timelines are longer because there are more people competing for fewer management roles.</p>
 
 <p>Who this is best for: people who value stability, benefits, and brand-name resume additions. Enterprise AEs at public SaaS companies earn some of the highest total compensation packages in the profession.</p>
 
@@ -2497,7 +2499,7 @@ def _article_content_best_companies_careers():
 
 <p><strong>Sales team of 20-100.</strong> Structured and professional. Dedicated SDR, AE, and management tracks. Formal enablement programs. Clear promotion criteria. The trade-off: you are one of many, and standing out requires consistent top-quartile performance. Career paths are well-defined but competitive.</p>
 
-<p><strong>Sales team of 100+.</strong> Enterprise-scale operations with specialized roles, dedicated operations teams, and layers of management. The highest compensation floors and the most comprehensive benefits. Promotion timelines are longer because there are more people competing for fewer seats. Career advancement often requires moving between teams or regions.</p>
+<p><strong>Sales team of 100+.</strong> Enterprise-scale operations with specialized roles, dedicated operations teams, and layers of management. The highest compensation floors and the broadest benefits. Promotion timelines are longer because there are more people competing for fewer seats. Career advancement often requires moving between teams or regions.</p>
 
 <h2>Evaluating the Sales Leader</h2>
 
@@ -2760,7 +2762,7 @@ def _article_content_quota_expectations():
 
 <p><strong>Directors:</strong> Own multiple teams or a segment. Quotas of $20M-$50M+ depending on company size. At this level, quota attainment is as much about strategy (market selection, comp plan design, hiring caliber) as execution.</p>
 
-<p><strong>VPs:</strong> Own the entire company revenue target or a major division. Quotas of $50M-$200M+. VP-level compensation ties to company-wide revenue attainment, making it the most leveraged position in the org. Your success depends on every decision you make about people, process, and strategy.</p>
+<p><strong>VPs:</strong> Own the entire company revenue target or a major division. Quotas of $50M-$200M+. VP-level compensation ties to company-wide revenue attainment, making it the most exposed position in the org. Your success depends on every decision you make about people, process, and strategy.</p>
 
 <h2>How to Evaluate Quota Before Accepting an Offer</h2>
 
@@ -3026,7 +3028,7 @@ def _article_content_comp_negotiation():
 
 <p><strong>AE level:</strong> More levers available. Negotiate quota and territory first (ask for specifics about the account list or territory and whether it has been worked before). Then ramp terms. Then accelerators. Then base. Equity is negotiable at startups and growth-stage companies.</p>
 
-<p><strong>Senior/Enterprise AE:</strong> At this level, you have the most leverage. Enterprise AE candidates are scarce ({fmt_number(enterprise_seg)} enterprise-focused roles compete for a small talent pool). Negotiate aggressively on accelerators (push for 1.5-2x above plan), ramp (3-4 months guaranteed), and equity. Your track record of closing large deals is your leverage. Use it.</p>
+<p><strong>Senior/Enterprise AE:</strong> At this level, you have the most pull. Enterprise AE candidates are scarce ({fmt_number(enterprise_seg)} enterprise-focused roles compete for a small talent pool). Negotiate aggressively on accelerators (push for 1.5-2x above plan), ramp (3-4 months guaranteed), and equity. Your track record of closing large deals is your strongest negotiating position. Use it.</p>
 
 <p><strong>Director level:</strong> Negotiate team size, hiring authority, and management comp structure alongside personal compensation. A director who controls their hiring and territory assignment decisions will perform better than one who inherits a team with no authority to change it.</p>
 
@@ -3058,15 +3060,15 @@ def _article_content_comp_negotiation():
 
 <h2>Timing Your Negotiation</h2>
 
-<p>When you negotiate matters as much as what you negotiate. Understanding the hiring process timeline gives you leverage at the right moment:</p>
+<p>When you negotiate matters as much as what you negotiate. Understanding the hiring process timeline shows you the right moment to make your ask:</p>
 
 <p><strong>Before the first call:</strong> Do not discuss numbers. If a recruiter asks for your salary expectations in the application or initial screen, deflect with: "I would like to understand the full scope of the role and the comp structure before discussing specific numbers." You lose use the moment you anchor first.</p>
 
-<p><strong>After the final interview, before the offer:</strong> This is your maximum leverage point. The company has invested 4-6 hours of interview time, made a decision, and is ready to close. They do not want to restart the process. Any reasonable negotiation request at this stage has a high probability of success because the cost of losing you exceeds the cost of accommodating your ask.</p>
+<p><strong>After the final interview, before the offer:</strong> This is your strongest negotiating position. The company has invested 4-6 hours of interview time, made a decision, and is ready to close. They do not want to restart the process. Any reasonable negotiation request at this stage has a high probability of success because the cost of losing you exceeds the cost of accommodating your ask.</p>
 
 <p><strong>After receiving the written offer:</strong> You have 3-7 days (sometimes more) to respond. Use this time to evaluate every component, calculate the total package value, and prepare your specific asks. Do not accept or reject in the same conversation where you receive the offer. Say: "Thank you. I want to review the full package carefully. Can I come back to you by [date]?"</p>
 
-<p><strong>After starting the role:</strong> Negotiation leverage drops significantly once you are employed. The company knows the switching cost is high for you. Mid-year comp adjustments are rare and usually only happen if you have external offers or extraordinary performance. Negotiate before you sign, not after.</p>
+<p><strong>After starting the role:</strong> Your negotiating position drops significantly once you are employed. The company knows the switching cost is high for you. Mid-year comp adjustments are rare and usually only happen if you have external offers or extraordinary performance. Negotiate before you sign, not after.</p>
 
 <h2>Equity Negotiation for Sales Professionals</h2>
 
@@ -3971,7 +3973,7 @@ ARTICLE_FAQS = {
     "sales-quota-expectations-by-role": [
         ("What is a typical SDR quota?", f"SDR quotas typically require 12-20 qualified meetings per month or $100K-$400K in pipeline value. Enterprise SDRs ({fmt_number(MARKET_DATA.get('segment', {}).get('Enterprise', 0))} roles) generate fewer meetings at higher values. At well-calibrated companies, 65-75% of SDRs hit quota monthly."),
         ("What is a normal AE quota?", f"AE quotas vary by segment: SMB AEs carry $400K-$800K annual, mid-market AEs carry $600K-$1.2M, and enterprise AEs carry $800K-$2M+. {fmt_number(MARKET_DATA.get('deal_size', {}).get('Seven Figure', 0))} postings reference seven-figure deal values at the enterprise level."),
-        ("What is a good OTE-to-quota ratio?", f"The standard ratio is 5:1 to 8:1. If your OTE is $200K, a fair quota is $1M-$1.6M. Below 4:1 warrants investigation. Above 10:1 means the company expects very high leverage and fewer than 40% of reps likely hit target."),
+        ("What is a good OTE-to-quota ratio?", f"The standard ratio is 5:1 to 8:1. If your OTE is $200K, a fair quota is $1M-$1.6M. Below 4:1 warrants investigation. Above 10:1 means the company expects very high productivity per rep and fewer than 40% of reps likely hit target."),
         ("How does quota ramp work for new sales hires?", "Standard ramp: Month 1 at 0-25% quota, Month 2 at 25-50%, Month 3 at 50-75%, Month 4+ at full quota. The best companies offer guaranteed ramp (full OTE regardless of performance). Non-recoverable draws are second best. Recoverable draws create debt pressure and are the worst option."),
         ("What percentage of sales reps hit their quota?", "At healthy companies, 60-70% of the team hits plan. Below 50% indicates unrealistic quotas or inadequate enablement. Above 80% suggests quotas may be set too low, which often leads to aggressive raises the following year. Always ask about team attainment rates during interviews."),
     ],
@@ -5397,11 +5399,11 @@ def build_about_page():
         <h2 style="font-size:1.4rem;margin-top:40px;margin-bottom:12px;">Part of the Network</h2>
         <p>The Seller Report is part of a network of career intelligence sites covering different segments of the B2B job market:</p>
         <ul style="margin-top:12px;padding-left:20px;color:var(--sr-text-secondary);">
-            <li style="margin-bottom:8px;"><a href="https://therevopsreport.com">The RevOps Report</a> — Revenue Operations</li>
-            <li style="margin-bottom:8px;"><a href="https://thecroreport.com">The CRO Report</a> — Executive Sales Leadership</li>
-            <li style="margin-bottom:8px;"><a href="https://gtmepulse.com">GTME Pulse</a> — GTM Engineers</li>
-            <li style="margin-bottom:8px;"><a href="https://theaimarketpulse.com">AI Market Pulse</a> — AI & ML Careers</li>
-            <li style="margin-bottom:8px;"><a href="https://b2bsalestools.com">B2B Sales Tools</a> — Sales Tech Reviews</li>
+            <li style="margin-bottom:8px;"><a href="https://therevopsreport.com">The RevOps Report</a>: Revenue Operations</li>
+            <li style="margin-bottom:8px;"><a href="https://thecroreport.com">The CRO Report</a>: Executive Sales Leadership</li>
+            <li style="margin-bottom:8px;"><a href="https://gtmepulse.com">GTME Pulse</a>: GTM Engineers</li>
+            <li style="margin-bottom:8px;"><a href="https://theaimarketpulse.com">AI Market Pulse</a>: AI & ML Careers</li>
+            <li style="margin-bottom:8px;"><a href="https://b2bsalestools.com">B2B Sales Tools</a>: Sales Tech Reviews</li>
         </ul>
     </div>
 </div>"""

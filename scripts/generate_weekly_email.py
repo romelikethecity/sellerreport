@@ -272,20 +272,20 @@ def compute_diff(jobs_data, comp_data, market_intel, previous):
 
 def fmt_money(n):
     if n is None or n <= 0:
-        return "—"
+        return "n/a"
     if n >= 1_000_000:
         return f"${n / 1_000_000:.1f}M"
     return f"${n // 1000}K"
 
 
 def fmt_count(n):
-    return f"{n:,}" if n is not None else "—"
+    return f"{n:,}" if n is not None else "n/a"
 
 
 def trend_arrow_count(val):
     """Coloured arrow for an integer count change."""
     if val is None:
-        return f'<span style="color: {BRAND["muted"]};">—</span>'
+        return f'<span style="color: {BRAND["muted"]};">n/a</span>'
     if val > 0:
         return f'<span style="color: {BRAND["green_light"]};">&#9650; +{val:,}</span>'
     if val < 0:
@@ -296,7 +296,7 @@ def trend_arrow_count(val):
 def trend_arrow_money(val):
     """Coloured arrow for a dollar change."""
     if val is None:
-        return f'<span style="color: {BRAND["muted"]};">—</span>'
+        return f'<span style="color: {BRAND["muted"]};">n/a</span>'
     if val > 0:
         return f'<span style="color: {BRAND["green_light"]};">&#9650; +${val:,}</span>'
     if val < 0:
@@ -307,7 +307,7 @@ def trend_arrow_money(val):
 def trend_arrow_pct(val):
     """Coloured arrow for a percent-point change."""
     if val is None:
-        return f'<span style="color: {BRAND["muted"]};">—</span>'
+        return f'<span style="color: {BRAND["muted"]};">n/a</span>'
     if val > 0:
         return f'<span style="color: {BRAND["green_light"]};">&#9650; +{val}pp</span>'
     if val < 0:
@@ -399,7 +399,7 @@ def generate_email_html(diff, date_iso):
         elif sal_max > 0:
             range_str = f"up to ${int(sal_max/1000)}K"
         else:
-            range_str = "—"
+            range_str = "n/a"
         title = r["title"][:42] + "…" if len(r["title"]) > 42 else r["title"]
         company = r["company"][:30]
         role_rows += f"""
@@ -443,7 +443,7 @@ def generate_email_html(diff, date_iso):
 
     html = f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Seller Report — {date_str}</title>
+<title>The Seller Report | {date_str}</title>
 </head>
 <body style="margin:0;padding:0;background:{BRAND['bg']};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:{BRAND['bg']};">
@@ -542,7 +542,7 @@ def generate_email_html(diff, date_iso):
 
   <!-- Career map -->
   {f'''<tr><td style="padding:0 24px 24px;">
-    <h2 style="margin:0 0 12px;font-size:14px;color:{BRAND['accent']};text-transform:uppercase;letter-spacing:1.5px;">Career map — years experience</h2>
+    <h2 style="margin:0 0 12px;font-size:14px;color:{BRAND['accent']};text-transform:uppercase;letter-spacing:1.5px;">Career map: years experience</h2>
     <table width="100%" cellpadding="0" cellspacing="0" style="background:{BRAND['surface']};border-radius:8px;">
       {career_rows}
     </table>
@@ -616,7 +616,7 @@ def generate_email_html(diff, date_iso):
         <p style="margin:0 0 8px;font-size:16px;font-weight:600;color:{BRAND['text']};">Know someone in B2B sales?</p>
         <p style="margin:0 0 14px;font-size:14px;color:{BRAND['text_secondary']};">Forward this email to anyone job-hunting or running a sales team.</p>
         <p style="margin:0;font-size:13px;color:{BRAND['text_secondary']};">
-          Not subscribed? <a href="{SITE_URL}" style="color:{BRAND['accent']};text-decoration:underline;font-weight:600;">Sign up here</a> — free, every Monday.
+          Not subscribed? <a href="{SITE_URL}" style="color:{BRAND['accent']};text-decoration:underline;font-weight:600;">Sign up here</a>, free, every Monday.
         </p>
       </td></tr>
     </table>
@@ -647,7 +647,7 @@ def generate_markdown(diff, date_iso):
     date_str = pretty_date(date_iso)
     lines = []
     n = diff["total_jobs"]
-    lines.append(f"# The Seller Report — Week of {date_str}\n")
+    lines.append(f"# The Seller Report: Week of {date_str}\n")
     job_delta = ""
     if diff["job_change"] is not None:
         sign = "+" if diff["job_change"] >= 0 else ""
@@ -679,19 +679,19 @@ def generate_markdown(diff, date_iso):
             elif sal_max > 0:
                 range_str = f"up to ${int(sal_max/1000)}K"
             else:
-                range_str = "—"
-            lines.append(f"- **{r['title']}** at {r['company']} — {range_str}")
+                range_str = "n/a"
+            lines.append(f"- **{r['title']}** at {r['company']}: {range_str}")
         lines.append("")
 
     if diff["tools"]:
         lines.append("## Tools the market wants\n")
         for t in diff["tools"]:
             pct = round(100 * t["count"] / n, 1) if n else 0
-            lines.append(f"- **{t['name']}** — {t['count']:,} mentions ({pct}%)")
+            lines.append(f"- **{t['name']}**: {t['count']:,} mentions ({pct}%)")
         lines.append("")
 
     if diff["career_map"]:
-        lines.append("## Career map — years experience\n")
+        lines.append("## Career map: years experience\n")
         lines.append("| Tier | Median years |")
         lines.append("|---|---|")
         for c in diff["career_map"]:
@@ -701,7 +701,7 @@ def generate_markdown(diff, date_iso):
     if diff["top_companies"]:
         lines.append("## Top hiring this week\n")
         for c in diff["top_companies"]:
-            lines.append(f"- **{c['name']}** — {c['count']:,} openings")
+            lines.append(f"- **{c['name']}**: {c['count']:,} openings")
         lines.append("")
 
     lines.append("---\n")
@@ -720,7 +720,7 @@ def build_subject(diff, date_iso):
     date_short = datetime.strptime(date_iso, "%Y-%m-%d").strftime("%b %d")
     if n > 0 and diff["salary_median"] > 0:
         return f"The Seller Report: {n:,} sales roles, {median} median (Week of {date_short})"
-    return f"The Seller Report — Week of {date_short}"
+    return f"The Seller Report: Week of {date_short}"
 
 
 # ---------------------------------------------------------------------------

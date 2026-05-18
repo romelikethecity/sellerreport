@@ -1,0 +1,170 @@
+{
+  "saved_at": "2026-05-18T13:25:09.965089",
+  "total_jobs": 7920,
+  "salary_median": 100000,
+  "disclosure_rate": 58.3,
+  "by_tier": {
+    "Director / Sales Manager": {
+      "median_base": 125000,
+      "median_total": 177000,
+      "n": 444
+    },
+    "SDR/BDR": {
+      "median_base": 55000,
+      "median_total": 80000,
+      "n": 364
+    },
+    "AE - Enterprise": {
+      "median_base": 134200,
+      "median_total": 180100,
+      "n": 603
+    },
+    "AE - Mid-Market": {
+      "median_base": 90000,
+      "median_total": 142350,
+      "n": 313
+    },
+    "RVP": {
+      "median_base": 199000,
+      "median_total": 253080,
+      "n": 54
+    },
+    "AE - SMB": {
+      "median_base": 70000,
+      "median_total": 102875,
+      "n": 106
+    },
+    "VP Sales": {
+      "median_base": 175300,
+      "median_total": 250000,
+      "n": 224
+    },
+    "CRO": {
+      "median_base": 230000,
+      "median_total": 337500,
+      "n": 35
+    }
+  },
+  "tools": {
+    "Salesforce": 899,
+    "Hubspot": 280,
+    "Linkedin Sales Navigator": 159,
+    "Zoominfo": 144,
+    "Aws": 111,
+    "Salesloft": 99,
+    "Gong": 98,
+    "Azure": 75,
+    "Gcp": 74,
+    "Apollo": 54,
+    "Clari": 46,
+    "G2": 38,
+    "Catalyst": 32,
+    "Kubernetes": 29,
+    "6Sense": 25,
+    "Claude": 23,
+    "Dynamics 365": 22,
+    "Tableau": 21,
+    "Power Bi": 18,
+    "Clay": 17,
+    "Instantly": 16,
+    "Openai": 16,
+    "Bedrock": 15,
+    "Outreach Io": 15,
+    "Docusign": 14,
+    "Walnut": 12,
+    "Demandbase": 12,
+    "Zoho Crm": 11,
+    "Nooks": 10,
+    "Clari Forecast": 9,
+    "Orum": 9,
+    "Mulesoft": 9,
+    "Chili Piper": 8,
+    "Chili Piper Routing": 8,
+    "Zapier": 8,
+    "Gemini": 8,
+    "Anthropic": 7,
+    "Gong Engage": 7,
+    "Cognism": 7,
+    "Segment": 7,
+    "Highspot": 6,
+    "Pipedrive": 6,
+    "Monday Sales": 6,
+    "Docker": 6,
+    "Python": 5,
+    "Leadiq": 5,
+    "Looker": 5,
+    "Marketo": 5,
+    "Qualified": 5,
+    "Postal": 5
+  },
+  "top_hiring_companies": {
+    "Anthropic": 39,
+    "Salesforce": 26,
+    "Amazon Web Services": 22,
+    "Deloitte": 20,
+    "JPMorganChase": 15,
+    "NetApp": 14,
+    "ADP": 14,
+    "GitLab Inc": 14,
+    "Google": 13,
+    "Tata Consultancy Services (TCS)": 13,
+    "Rippling": 13,
+    "Gartner": 12,
+    "Accenture": 10,
+    "Logic, Inc.": 10,
+    "Clearwater Analytics (CWAN)": 10,
+    "Ingram Micro": 9,
+    "Box": 9,
+    "Snowflake": 9,
+    "YipitData": 9,
+    "Performance Foodservice": 8
+  },
+  "hiring_signals": {
+    "Immediate": 21,
+    "Turnaround": 20,
+    "Growth Hire": 8
+  },
+  "location_mix": {
+    "remote": 628,
+    "onsite": 2273,
+    "unknown": 1
+  },
+  "salary_history": [
+    {
+      "date": "2026-05-14",
+      "median": 85000
+    },
+    {
+      "date": "2026-05-15",
+      "median": 85000
+    },
+    {
+      "date": "2026-05-15",
+      "median": 100000
+    },
+    {
+      "date": "2026-05-15",
+      "median": 100000
+    },
+    {
+      "date": "2026-05-15",
+      "median": 100000
+    },
+    {
+      "date": "2026-05-18",
+      "median": 100000
+    },
+    {
+      "date": "2026-05-18",
+      "median": 100000
+    },
+    {
+      "date": "2026-05-18",
+      "median": 100000
+    },
+    {
+      "date": "2026-05-18",
+      "median": 100000
+    }
+  ]
+}
