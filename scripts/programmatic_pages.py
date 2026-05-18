@@ -1603,7 +1603,7 @@ CITY_CONFIG = {
         "metro_key": "Austin",
         "col_index": 113,
         "employers": ["Dell", "Indeed", "Atlassian", "Oracle", "Cloudflare", "SolarWinds"],
-        "notes": "Austin's sales market expanded sharply during the 2020-2024 tech relocations and remains a top-five US metro for SaaS sales hiring. Lower cost of living than SF or NYC creates strong real-income leverage for relocators.",
+        "notes": "Austin's sales market expanded sharply during the 2020-2024 tech relocations and remains a top-five US metro for SaaS sales hiring. Lower cost of living than SF or NYC stretches the take-home further for relocators.",
     },
     "boston": {
         "name": "Boston",
@@ -1624,7 +1624,7 @@ CITY_CONFIG = {
         "metro_key": "Los Angeles",
         "col_index": 152,
         "employers": ["Snap", "ServiceTitan", "Procore", "Disney", "Hulu", "Riot Games"],
-        "notes": "Los Angeles sales compensation reflects a mix of media, entertainment, vertical SaaS, and consumer technology. Compensation runs above the US median but the cost of living premium reduces real-income leverage.",
+        "notes": "Los Angeles sales compensation reflects a mix of media, entertainment, vertical SaaS, and consumer technology. Compensation runs above the US median but the cost of living premium narrows real-income gains.",
     },
     "seattle": {
         "name": "Seattle",
@@ -1638,7 +1638,7 @@ CITY_CONFIG = {
         "metro_key": "Denver",
         "col_index": 121,
         "employers": ["Gusto", "Pax8", "Guild Education", "Ibotta", "Webroot", "Quantum Metric"],
-        "notes": "Denver's sales market grew through the 2020-2024 SaaS relocations and remains a top mid-tier US metro for sales hiring. Lower cost of living than SF or Boston produces meaningful real-income leverage.",
+        "notes": "Denver's sales market grew through the 2020-2024 SaaS relocations and remains a top mid-tier US metro for sales hiring. Lower cost of living than SF or Boston stretches take-home pay further.",
     },
     "atlanta": {
         "name": "Atlanta",
