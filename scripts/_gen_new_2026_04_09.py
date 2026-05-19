@@ -13,7 +13,7 @@ POSTS = [
         "title": "Day in the Life of a Top SDR: How High Performers Spend Their Hours",
         "description": "Real time-block breakdowns from top-performing SDRs. How they manage prospecting, calling, sequencing, and the daily habits that separate them from average reps.",
         "body": """<p>Most SDRs work the same number of hours and produce dramatically different results. The difference is rarely effort. It is how they spend their time. Top SDRs treat their day as a series of structured time blocks that align with when buyers are most likely to engage. Average SDRs react to whatever lands in their inbox first.</p>
-<p>This is what a top SDR's day actually looks like, based on time-block patterns from reps consistently in the top 20% of their team.</p>
+<p>This is what a top SDR's day looks like, based on time-block patterns from reps consistently in the top 20% of their team.</p>
 <h2>The Morning Block: 8:00-10:30 AM</h2>
 <p>The first two and a half hours are the most valuable of the day. Top SDRs use them for outbound calling. The reasoning is simple: buyers are at their desk, haven't been pulled into back-to-back meetings yet, and are more likely to answer.</p>
 <p>The block looks like this: 8:00-8:15 review the top 30 prospects for the day, 8:15-9:30 power dial through them, 9:30-10:00 second pass for prospects who didn't pick up, 10:00-10:30 followup emails to anyone who answered but couldn't talk.</p>
@@ -53,7 +53,7 @@ POSTS = [
 <p>Average SDRs produce 30-50% of these numbers and wonder why they're missing quota. The gap isn't talent. It is time allocation.</p>
 <h2>The Real Pattern</h2>
 <p>The single most important habit of top SDRs is treating prime selling hours (8-10:30 AM and 1-3:30 PM) as sacred. Nothing gets in the way of those blocks. Not internal meetings, not email, not Slack, not coffee chats with coworkers. The rest of the day is flexible. Those four hours are not.</p>
-<p>If your SDR team is missing quota, the diagnostic question is simple: are they actually calling during prime calling hours? In most teams, the answer is no. Reps are in standups, slack channels, email, and CRM cleanup during the hours that matter most. The fix isn't more calls. It is better timing.</p>
+<p>If your SDR team is missing quota, the diagnostic question is simple: are they calling during prime calling hours? In most teams, the answer is no. Reps are in standups, slack channels, email, and CRM cleanup during the hours that matter most. The fix isn't more calls. It is better timing.</p>
 """,
         "faqs": [
             ("What time of day should SDRs make cold calls?", "8:00-10:30 AM and 1:00-3:30 PM are the highest-value calling blocks. Buyers are at their desk and not yet pulled into back-to-back meetings. Answer rates drop significantly outside these windows, especially after 3:30 PM when meeting loads dominate. Top SDRs treat these blocks as sacred."),
@@ -152,10 +152,10 @@ POSTS = [
     {
         "slug": "sales-bootcamps-and-certifications-worth-it",
         "title": "Sales Bootcamps and Certifications: Which Ones Are Worth It in 2026",
-        "description": "Honest review of sales bootcamps and certifications. Which ones improve careers, which ones are credentialing theater, and what hiring managers actually look for.",
-        "body": """<p>Sales bootcamps and certifications are a $1B+ market in 2026 marketed primarily to people trying to break into sales, transition to sales from other fields, or accelerate their progression within sales. Some of these programs are genuinely useful. Most are credentialing theater that produces a certificate hiring managers don't value.</p>
+        "description": "Honest review of sales bootcamps and certifications. Which ones improve careers, which ones are credentialing theater, and what hiring managers look for.",
+        "body": """<p>Sales bootcamps and certifications are a $1B+ market in 2026 marketed primarily to people trying to break into sales, transition to sales from other fields, or accelerate their progression within sales. A handful of these programs are useful. Most are credentialing theater that produces a certificate hiring managers don't value.</p>
 <p>This is an honest review of what's worth doing and what isn't.</p>
-<h2>What Hiring Managers Actually Care About</h2>
+<h2>What Hiring Managers Care About</h2>
 <p>Before evaluating any specific program, it helps to understand what hiring managers value when reviewing sales candidates. From thousands of sales hiring conversations, the hierarchy is:</p>
 <ol>
 <li><strong>Track record of quota attainment</strong> (most important)</li>
@@ -180,7 +180,7 @@ POSTS = [
 <h2>Sales Certifications Worth Considering</h2>
 <h3>HubSpot Sales Software Certification</h3>
 <p>Free. Earned by completing HubSpot Academy training. Demonstrates familiarity with HubSpot CRM and sales tools. Hiring managers at HubSpot-using companies value the credential.</p>
-<p>Worth it for: any sales professional working with or planning to work with HubSpot. The certification is free and the training is genuinely useful. Higher value when the company you're targeting uses HubSpot.</p>
+<p>Worth it for: any sales professional working with or planning to work with HubSpot. The certification is free and the training is useful. Higher value when the company you're targeting uses HubSpot.</p>
 <h3>Salesforce Trailhead Certifications</h3>
 <p>Free training, paid exams. Salesforce Administrator certification ($200) is the most valuable for sales operations and RevOps roles. Sales Cloud Consultant ($200) is more advanced. Other Salesforce certifications target specific roles (developer, marketing, service).</p>
 <p>Worth it for: sales operations and RevOps candidates. The certifications signal real Salesforce competence and are valued by employers. For pure sales roles (SDR, AE), Salesforce certifications are nice-to-have but not differentiating.</p>
@@ -205,7 +205,7 @@ POSTS = [
 <p>For an AE: MEDDIC or company-specific methodology training, consistent enterprise deal experience, and Pavilion membership for network and community. Skip generic certifications.</p>
 <p>For sales operations: Salesforce Administrator certification, RevOps community memberships, and demonstrated operational impact on real teams.</p>
 <h2>The Pattern</h2>
-<p>The best investment for any sales professional is getting genuinely good at the work. Bootcamps and certifications can accelerate that for people without prior experience. They cannot replace it for people who have it. Hiring managers recognize the difference, and so do the buyers you'll be selling to.</p>
+<p>The best investment for any sales professional is getting good at the work itself. Bootcamps and certifications can accelerate that for people without prior experience. They cannot replace it for people who have it. Hiring managers recognize the difference, and so do the buyers you'll be selling to.</p>
 """,
         "faqs": [
             ("Are sales bootcamps worth the money?", "For career changers with no sales background, yes. Programs like SV Academy provide both training and placement support, leading to legitimate entry-level sales roles. For candidates with existing sales experience, bootcamps add little. The value is for people breaking into sales, not advancing within it."),

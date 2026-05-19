@@ -26,7 +26,7 @@ POST = {
 <p><strong>Autonomous AI SDRs</strong> like 11x's Alice, Artisan's Ava, AiSDR, and Bosh from Relevance AI handle prospecting research, sequencing, and meeting booking with no human in the loop. They are deployed at companies like Canva, Autodesk, and KPMG.</p>
 <p><strong>AI sales assist tools</strong> like Regie.ai, Persana, and Lavender augment existing SDRs instead of replacing them. They write better cold emails, generate sequences, and personalize outreach at scale.</p>
 <p><strong>Voice AI SDRs</strong> like 11x's Julian, Air.ai, and Phonely take cold calls. They handle the phone leg of the SDR job, with conversation quality that varies enormously by use case.</p>
-<p>For a comprehensive directory of every tool in the category, see <a href="https://thegtmindex.com/ai-sdr/" target="_blank" rel="noopener">The GTM Index's AI SDR & Outbound directory</a>.</p>
+<p>For a full directory of every tool in the category, see <a href="https://thegtmindex.com/ai-sdr/" target="_blank" rel="noopener">The GTM Index's AI SDR & Outbound directory</a>.</p>
 <h2>Which SDR Jobs Are Most at Risk</h2>
 <p>The SDR jobs most exposed to AI replacement share a common profile. If your job description matches this pattern, the risk is real.</p>
 <ul>
@@ -60,11 +60,11 @@ POST = {
 <p><strong>Senior SDR / SDR Manager (with AI focus).</strong> Existing SDR managers are picking up AI tooling responsibility on top of human team management. Comp typically gets a 15-25% bump for the expanded scope.</p>
 <p><strong>Sales Engineer / SDR hybrid.</strong> For technical products, the SE-SDR hybrid is emerging as the human counterpart to AI top-of-funnel. The role does technical discovery and product demonstration that AI cannot handle. Comp lands between SDR ($80K-$110K OTE) and traditional SE ($150K-$200K OTE).</p>
 <h2>How to Position Your Career</h2>
-<p>If you are currently an SDR or AE worried about AI displacement, here is the playbook based on what hiring managers are actually looking for in 2026.</p>
+<p>If you are currently an SDR or AE worried about AI displacement, here is the playbook based on what hiring managers are looking for in 2026.</p>
 <p><strong>Get hands-on with AI SDR tools.</strong> Deploy 11x or AiSDR or Regie in your current role. Even if your company is not formally adopting them, getting hands-on experience makes you a more valuable hire. List the tools on your resume.</p>
 <p><strong>Move toward enterprise or strategic accounts.</strong> If you are at a transactional, low-ASP company, the AI replacement risk is highest. Enterprise SDR roles are better-protected and pay more. The transition is doable in 12-18 months.</p>
 <p><strong>Develop AE-level skills now.</strong> The clearest path out of SDR-replacement risk is into the AE role. Our guide on <a href="/insights/sdr-to-ae-promotion-timeline/">SDR-to-AE promotion</a> covers the timeline and what hiring managers want to see. Acceleration matters more in 2026 than it did in 2024.</p>
-<p><strong>Consider the operator track.</strong> The AI SDR Operator role pays significantly more than traditional SDR work. If you have analytical inclinations, this path is genuinely lucrative. RevOps adjacency makes the transition cleaner than going straight from SDR to RevOps.</p>
+<p><strong>Consider the operator track.</strong> The AI SDR Operator role pays significantly more than traditional SDR work. If you have analytical inclinations, this path is lucrative. RevOps adjacency makes the transition cleaner than going straight from SDR to RevOps.</p>
 <p><strong>Build domain depth.</strong> Specialized vertical knowledge (healthcare, fintech, regulated industries) is durable. SDRs who become legitimate experts in their industry are much harder to replace than generalists.</p>
 <h2>What This Means for the Next Two Years</h2>
 <p>The reality on the ground is that AI SDR adoption is uneven. Some companies are aggressive, most are experimental, many are not yet deploying anything. SDR hiring will not collapse in the next two years. It will change.</p>

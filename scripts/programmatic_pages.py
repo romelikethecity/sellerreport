@@ -261,7 +261,7 @@ TOOL_FACTS = {
         "integrations": "Gmail, Outlook, LinkedIn Sales Navigator, Slack, 1000+ Marketplace apps",
         "free_trial": "Free CRM tier",
         "deal_breaker": "Enterprise tier pricing climbs steeply once you cross 50 reps",
-        "summary": "The default CRM choice for SMB and mid-market sales teams. Free tier is genuinely useful. Pricing climbs once you need Professional or Enterprise reporting and automation depth.",
+        "summary": "The default CRM choice for SMB and mid-market sales teams. Free tier is usable for small teams. Pricing climbs once you need Professional or Enterprise reporting and automation depth.",
         "source": "HubSpot public pricing page and 2024 Q3 earnings call",
     },
     "salesforce": {
@@ -554,7 +554,7 @@ COMPARE_NARRATIVES = {
     ("cognism", "lusha"): {
         "use_case": "B2B contact data with European coverage",
         "verdict_short": "Cognism is an enterprise data platform. Lusha is a Chrome extension. Different jobs.",
-        "verdict_long": "Cognism is built for SDR teams selling into EMEA at scale, with phone-verified Diamond Data, advanced filtering, and Salesforce or HubSpot sync. Lusha is built for individual reps who want a one-click way to grab direct dials and emails off LinkedIn profiles. Different jobs. Most teams that compare them are really asking whether they need a platform or a lookup tool. If you build lists of 500+ contacts at a time and run multi-channel outbound, Cognism. If you research one prospect at a time and never export a list, Lusha.",
+        "verdict_long": "Cognism is built for SDR teams selling into EMEA at scale, with phone-verified Diamond Data, advanced filtering, and Salesforce or HubSpot sync. Lusha is built for individual reps who want a one-click way to grab direct dials and emails off LinkedIn profiles. Different jobs. Most teams that compare them are asking whether they need a platform or a lookup tool. If you build lists of 500+ contacts at a time and run multi-channel outbound, Cognism. If you research one prospect at a time and never export a list, Lusha.",
         "best_for_a": "EMEA SDR teams that need phone-verified contacts at scale",
         "best_for_b": "Individual reps and small teams doing LinkedIn-led prospecting",
         "pricing_note": "Cognism $1,500-2,500/seat/yr. Lusha $0 free to $79/seat/mo Premium.",
@@ -903,7 +903,7 @@ ALTERNATIVE_SETS = {
     "salesloft": {
         "name": "Salesloft",
         "category": "Sales engagement platform",
-        "why_switch": "Teams evaluate Salesloft alternatives when annual contract minimums exceed budget, when the Rhythm workflow does not match how the team actually prioritizes activity, or when consolidation onto a single Apollo or HubSpot stack reduces total tooling spend.",
+        "why_switch": "Teams evaluate Salesloft alternatives when annual contract minimums exceed budget, when the Rhythm workflow does not match how the team prioritizes activity day-to-day, or when consolidation onto a single Apollo or HubSpot stack reduces total tooling spend.",
         "alternatives": ["outreach", "apollo", "groove", "hubspot-sales", "instantly", "linkedin-sales-navigator"],
     },
     "zoominfo": {
@@ -1134,7 +1134,7 @@ def build_alternative_pages(output_dir):
 {per_alt_html}
 
 <h2>How to pick the right {target_name} alternative</h2>
-<p>Start with what {target_name} does well for your team today. List the two or three features that drive the most rep workflow value. Then map each alternative against those features. The mistake most teams make is evaluating alternatives on every feature instead of the two or three that actually drive pipeline. A {target_name} alternative that wins on 18 of 20 features but loses on the two that matter most produces worse outcomes.</p>
+<p>Start with what {target_name} does well for your team today. List the two or three features that drive the most rep workflow value. Then map each alternative against those features. The mistake most teams make is evaluating alternatives on every feature instead of the two or three that drive pipeline. A {target_name} alternative that wins on 18 of 20 features but loses on the two that matter most produces worse outcomes.</p>
 
 <p>Pricing matters second. Total cost of ownership at scale typically runs 15-25% above per-seat list price once you factor in implementation, training, admin time, and integration work. Most teams that switch tools see 4-6 weeks of productivity dip during the cutover. Plan accordingly.</p>
 

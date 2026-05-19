@@ -79,20 +79,20 @@ def fix_schemas(html, post):
 POST = {
     "slug": "will-voice-ai-replace-phone-sales-roles",
     "title": "Will Voice AI Replace Phone-Based Sales Roles? An Honest Look at the Inside Sales Career in 2026",
-    "description": "Voice AI is taking real sales calls in 2026. Here is what the data says about which phone-based sales roles are at risk, what hiring trends actually show, and how to position your career.",
+    "description": "Voice AI is taking real sales calls in 2026. Here is what the data says about which phone-based sales roles are at risk, what hiring trends show, and how to position your career.",
     "body": """<p>The headlines are loud here too. 11x's Julian is taking real calls. Air.ai pitches multi-hour autonomous conversations. Sierra and Decagon are handling enterprise customer service voice. Every BDR scrolling LinkedIn sees vendor demos that look like a job replacement plan. The question is unavoidable: is phone-based sales work going away?</p>
 <p>The honest answer differs meaningfully from the AI SDR equivalent. Voice AI is real, but its working use cases are narrower than email-based AI SDRs. Some phone-based sales jobs face real displacement risk. Many do not. Here is what the data says about voice AI in sales, which roles are exposed, and what to do about it.</p>
-<h2>What Voice AI Actually Does Today</h2>
+<h2>What Voice AI Does Today</h2>
 <p>Voice AI in 2026 falls into three categories. Each handles different parts of phone-based sales work, and each has different limits.</p>
 <p><strong>Voice AI infrastructure</strong> like Vapi, Retell, Bland, and ElevenLabs Conversational provides the building blocks for custom voice agents. Companies build their own agents on these platforms. Quality is high but requires engineering work.</p>
 <p><strong>Turnkey sales voice agents</strong> like 11x's Julian, Air.ai, and Phonely handle outbound calls and inbound qualification with no custom build required. Quality varies by vendor and use case fit.</p>
 <p><strong>Customer service voice agents</strong> like Sierra, Decagon, Replicant, and PolyAI handle inbound support and Tier 1 customer service calls. Different deployment model than outbound sales but adjacent enough to affect inside sales rep work.</p>
-<p>For a comprehensive directory of every voice AI tool in the category, see <a href="https://thegtmindex.com/voice-ai/" target="_blank" rel="noopener">The GTM Index Voice AI Agents directory</a>.</p>
+<p>For a full directory of every voice AI tool in the category, see <a href="https://thegtmindex.com/voice-ai/" target="_blank" rel="noopener">The GTM Index Voice AI Agents directory</a>.</p>
 <h2>Which Phone-Based Sales Jobs Are Most at Risk</h2>
 <p>Voice AI is more selective in what it can replace than email-based AI SDRs. Specific role profiles face real displacement risk in 2026.</p>
 <ul>
 <li><strong>High-volume cold dialers running scripted lists.</strong> If your day is dialing 100+ contacts per day with a tight script and minimal customization, voice AI does this for less.</li>
-<li><strong>After-hours and weekend qualifiers.</strong> Companies that previously hired weekend or evening BDR coverage are the first to swap in voice AI. The cost savings are clear and the work is often genuinely tedious.</li>
+<li><strong>After-hours and weekend qualifiers.</strong> Companies that previously hired weekend or evening BDR coverage are the first to swap in voice AI. The cost savings are clear and the work is often tedious enough that AI handles it without quality loss.</li>
 <li><strong>Appointment-setters whose job ends at the booked meeting.</strong> If your role is purely calendaring, confirming meetings, and handling no-show follow-up, voice AI handles this reliably today.</li>
 <li><strong>Tier 1 inside sales reps qualifying low-complexity inbound.</strong> Form-fill follow-up calls where you ask the same five questions and route accordingly. Voice AI does this in seconds with comparable accuracy.</li>
 </ul>
@@ -122,11 +122,11 @@ POST = {
 <p><strong>Senior BDR / Strategic Account BDR.</strong> The traditional BDR role is bifurcating. The strategic version focuses on warm calling, account research, and complex inbound qualification. Comp is rising 15-25% versus traditional BDR roles to reflect the more strategic scope.</p>
 <p><strong>Voice-Augmented Inbound Qualifier.</strong> A new role at companies running high-volume inbound: human reps overseeing voice AI qualification of low-complexity leads while handling complex qualification themselves. Quotas are 3-5x higher than traditional inbound roles, with comp adjusted accordingly.</p>
 <h2>How to Position Your Career</h2>
-<p>If you are currently a BDR, inside sales rep, or AE worried about voice AI displacement, here is the playbook based on what hiring managers are actually looking for in 2026.</p>
+<p>If you are currently a BDR, inside sales rep, or AE worried about voice AI displacement, here is the playbook based on what hiring managers are looking for in 2026.</p>
 <p><strong>Get hands-on with voice AI tools.</strong> Even if your company is not deploying them, get experience with Vapi, Retell, or any turnkey voice AI platform. List the experience on your resume. Inside sales reps who have managed voice AI deployments are more attractive hires than those who have not.</p>
 <p><strong>Move toward warm calling and strategic accounts.</strong> If your job is mostly cold dialing scripted lists, the voice AI replacement risk is real. Ask for warm-calling responsibilities, account research projects, or named account assignments. The transition is doable in 6-12 months at most companies.</p>
-<p><strong>Develop AE-level discovery skills now.</strong> The clearest path out of voice AI replacement risk is into the AE role. Active listening, complex discovery, and multi-stakeholder navigation are the skills voice AI cannot replicate. Our <a href="/insights/sdr-to-ae-promotion-timeline/">SDR-to-AE promotion guide</a> covers what hiring managers are actually looking for.</p>
-<p><strong>Consider the operator track.</strong> The Voice AI Operator role pays significantly more than traditional BDR work. If you have analytical inclinations, this path is genuinely lucrative. The role is less defined than AI SDR Operator equivalents, which means fewer applicants and faster transitions for those who position correctly.</p>
+<p><strong>Develop AE-level discovery skills now.</strong> The clearest path out of voice AI replacement risk is into the AE role. Active listening, complex discovery, and multi-stakeholder navigation are the skills voice AI cannot replicate. Our <a href="/insights/sdr-to-ae-promotion-timeline/">SDR-to-AE promotion guide</a> covers what hiring managers want to see on a resume.</p>
+<p><strong>Consider the operator track.</strong> The Voice AI Operator role pays significantly more than traditional BDR work. If you have analytical inclinations, this path is lucrative. The role is less defined than AI SDR Operator equivalents, which means fewer applicants and faster transitions for those who position correctly.</p>
 <p><strong>Build domain expertise.</strong> Specialized vertical knowledge (healthcare, fintech, legal) is durable. Inside sales reps who become legitimate experts in their industry are much harder to replace than generalists. Voice AI faces both performance and regulatory gaps in regulated industries.</p>
 <h2>What This Means for the Next Two Years</h2>
 <p>The reality on the ground is that voice AI adoption is more uneven than email-based AI SDR adoption. Many companies are experimenting; few are fully deployed. BDR and inside sales hiring will not collapse in the next two years. It will continue the bifurcation already underway: pure cold-dial roles compressing, strategic and complex roles growing.</p>
