@@ -847,7 +847,7 @@ def _tco_paragraph(a, b, narrative, band, bucket, page_slug):
     else:
         impl_anchor = (
             f"Total cost of ownership at 50-rep scale typically runs 20-30% above per-seat list price once you "
-            f"add admin time, integration mapping, and the training cost of getting reps to actually use the platform."
+            f"add admin time, integration mapping, and the training cost of getting reps to adopt the platform."
         )
 
     if band == "enterprise":
@@ -1044,7 +1044,7 @@ def _implementation_paragraphs(a, b, narrative, band, bucket, page_slug):
             patterns = [
                 (f"{tool['name']} implementation runs 30-90 days for a typical mid-market CRM rollout. The bottleneck is the data model: object permissions, custom fields, validation rules, and pipeline stages. Plan for 1 dedicated admin FTE plus stakeholder workshops across sales, marketing, and customer success. Re-launch the pipeline review cadence the same week the platform goes live or adoption stalls."),
                 (f"{tool['name']} go-lives that ship under 45 days share three traits: a clean source of truth for accounts and contacts pre-migration, a frozen feature scope for v1, and a sales-ops owner who runs the rollout instead of delegating to IT."),
-                (f"{tool['name']} rollouts that drag past 90 days almost always failed at the same step: trying to migrate every legacy report from the old CRM. Most reports are unused. Migrate the 8-12 reports the team actually consults weekly and rebuild the rest only when someone asks for them."),
+                (f"{tool['name']} rollouts that drag past 90 days almost always failed at the same step: trying to migrate every legacy report from the old CRM. Most reports are unused. Migrate the 8-12 reports the team consults weekly and rebuild the rest only when someone asks for them."),
             ]
         elif bucket == "data":
             patterns = [
@@ -1114,7 +1114,7 @@ def _compare_faqs(a, b, narrative, page_slug=""):
 
     startup_advice_variants = [
         f"At 10 reps, the deciding factors are total cost, time to value, and admin overhead. {narrative['verdict_short']} The lower-cost option in this comparison is almost always the right starting point for startup-stage teams. You can graduate once your motion is proven.",
-        f"At 10 reps, what matters is shipping a working sales process this quarter, not picking the platform you will run at 200 reps. {narrative['verdict_short']} Optimize for time-to-first-pipeline; revisit the choice in 12 months once you have data on how the team actually sells.",
+        f"At 10 reps, what matters is shipping a working sales process this quarter, not picking the platform you will run at 200 reps. {narrative['verdict_short']} Optimize for time-to-first-pipeline; revisit the choice in 12 months once you have data on how the team sells.",
         f"At 10 reps, the cost difference between {a['name']} and {b['name']} matters less than the admin tax. Pick whichever tool one person on your team has shipped before. {narrative['verdict_short']}",
         f"At 10 reps, premature standardization is a real risk. {narrative['verdict_short']} If you cannot commit to a 12-month contract, run the cheaper option monthly until rep count crosses 20 and your motion stabilizes.",
     ]
@@ -2476,7 +2476,7 @@ def build_city_role_pages(output_dir, comp_data):
         <h1>Sales Salaries in {city_data['name']} 2026</h1>
         <p class="section-subtitle">Sales compensation in {city_data['name']} across {len(role_entries)} roles, anchored to 2026 hiring data and adjusted for local cost of living.</p>
 
-        <p>{city_data['name']} is one of the largest US sales hiring markets in 2026. This page covers compensation across the {len(role_entries)} sales roles we benchmark in the {city_data['name']} metro, the top employers actively hiring sellers right now, the cost-of-living context that determines what a posted salary actually buys, and the industries driving the bulk of {city_data['name']} sales hiring demand.</p>
+        <p>{city_data['name']} is one of the largest US sales hiring markets in 2026. This page covers compensation across the {len(role_entries)} sales roles we benchmark in the {city_data['name']} metro, the top employers actively hiring sellers right now, the cost-of-living context that determines what a posted salary buys, and the industries driving the bulk of {city_data['name']} sales hiring demand.</p>
 
         <h2>Pay benchmarks by role</h2>
         {rows}
