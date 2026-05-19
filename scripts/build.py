@@ -1385,6 +1385,23 @@ def _article_content_sdr_salary_guide():
 
     return f"""<p>The SDR (Sales Development Representative) role is where most sales careers start. The <a href="https://www.bls.gov/ooh/sales/wholesale-and-manufacturing-sales-representatives.htm" target="_blank" rel="noopener noreferrer">BLS sales representative outlook</a> classifies SDRs under wholesale and manufacturing sales, projecting steady growth. It is also the role with the most opaque compensation. Companies post wide ranges, recruiters deflect questions about variable comp, and candidates accept offers without understanding the full picture. We pulled salary data from {fmt_number(TOTAL_JOBS)} sales job postings to give you the real numbers.</p>
 
+<div class="data-callout">
+<h3 style="margin-top:0;">Want city-specific SDR pay data?</h3>
+<p>This article covers the national picture. For local benchmarks with cost-of-living adjustments and top employers, jump to the city-by-city SDR pages:</p>
+<ul>
+<li><a href="/salaries/san-francisco/sdr/">SDR salary in San Francisco</a></li>
+<li><a href="/salaries/new-york/sdr/">SDR salary in New York</a></li>
+<li><a href="/salaries/boston/sdr/">SDR salary in Boston</a></li>
+<li><a href="/salaries/seattle/sdr/">SDR salary in Seattle</a></li>
+<li><a href="/salaries/los-angeles/sdr/">SDR salary in Los Angeles</a></li>
+<li><a href="/salaries/austin/sdr/">SDR salary in Austin</a></li>
+<li><a href="/salaries/denver/sdr/">SDR salary in Denver</a></li>
+<li><a href="/salaries/chicago/sdr/">SDR salary in Chicago</a></li>
+<li><a href="/salaries/atlanta/sdr/">SDR salary in Atlanta</a></li>
+</ul>
+<p style="margin-bottom:0;">Each city page shows median base, OTE, quota expectations, and the top sales employers actively hiring SDRs in that metro right now.</p>
+</div>
+
 <h2>SDR Base Salary in 2026</h2>
 
 <p>Entry-level sales roles (SDR, BDR, Sales Development Representative, Business Development Representative) pay a median base salary of {fmt_salary(entry.get('median', 0))}. The range runs from {fmt_salary(entry.get('min_base_avg', 0))} at the low end to {fmt_salary(entry.get('max_base_avg', 0))} at the top.</p>
@@ -1538,6 +1555,23 @@ def _article_content_ae_salary():
     solution_count = MARKET_DATA.get("methodology", {}).get("Solution Selling", 0)
 
     return f"""<p>Account Executive is the role where sales compensation gets interesting. <a href="https://www.bls.gov/oes/current/oes414199.htm" target="_blank" rel="noopener noreferrer">BLS sales compensation data</a> provides baseline wage statistics for this category. The variable range between a bottom-quartile and top-quartile AE at the same company can exceed $80K. We analyzed {fmt_number(TOTAL_JOBS)} sales job postings to break down what AEs earn in 2026, what drives the variance, and where the money is.</p>
+
+<div class="data-callout">
+<h3 style="margin-top:0;">Want city-specific Account Executive pay data?</h3>
+<p>This article covers the national picture. For local benchmarks with cost-of-living adjustments and top employers, jump to the city-by-city Account Executive pages:</p>
+<ul>
+<li><a href="/salaries/san-francisco/account-executive/">Account Executive salary in San Francisco</a></li>
+<li><a href="/salaries/new-york/account-executive/">Account Executive salary in New York</a></li>
+<li><a href="/salaries/boston/account-executive/">Account Executive salary in Boston</a></li>
+<li><a href="/salaries/seattle/account-executive/">Account Executive salary in Seattle</a></li>
+<li><a href="/salaries/los-angeles/account-executive/">Account Executive salary in Los Angeles</a></li>
+<li><a href="/salaries/austin/account-executive/">Account Executive salary in Austin</a></li>
+<li><a href="/salaries/denver/account-executive/">Account Executive salary in Denver</a></li>
+<li><a href="/salaries/chicago/account-executive/">Account Executive salary in Chicago</a></li>
+<li><a href="/salaries/atlanta/account-executive/">Account Executive salary in Atlanta</a></li>
+</ul>
+<p style="margin-bottom:0;">Each city page shows median base, OTE, quota bands, and the top sales employers actively hiring AEs in that metro right now.</p>
+</div>
 
 <h2>AE Base Salary: The Foundation</h2>
 
@@ -3265,6 +3299,10 @@ def _article_content_meddic_vs_meddpicc():
     seven_fig = MARKET_DATA.get("deal_size", {}).get("Seven Figure", 0)
 
     return f"""<p>MEDDIC and MEDDPICC are the two qualification frameworks most often required in enterprise SaaS job postings. {fmt_number(meddic_mentions)} sales roles in our dataset of {fmt_number(TOTAL_JOBS)} postings reference one or the other by name. The frameworks share most of their letters, but the difference between them maps directly to deal complexity, ramp time, and forecast accuracy. Picking the wrong one for your environment slows your team down without improving close rates.</p>
+
+<div class="data-callout">
+<p style="margin:0;"><strong>Read our deep dive on each methodology:</strong> the <a href="/methodologies/meddic/">MEDDIC framework guide</a> covers the six-element qualification model element by element, and the <a href="/methodologies/meddpicc/">MEDDPICC framework guide</a> walks through the eight-element enterprise extension. This article focuses on the comparison; the methodology guides cover each framework on its own terms.</p>
+</div>
 
 <h2>What Each Acronym Stands For</h2>
 
@@ -5762,6 +5800,10 @@ def main():
     print("  Building city x role salary pages...")
     n_city = programmatic_pages.build_city_role_pages(OUTPUT_DIR, COMP_DATA)
     print(f"    {n_city} city x role salary pages")
+
+    print("  Building salaries methodology page...")
+    n_methodology = programmatic_pages.build_salaries_methodology(OUTPUT_DIR, COMP_DATA, TOTAL_JOBS)
+    print(f"    {n_methodology} salaries methodology page")
 
     print("  Building companies page...")
     build_companies_page()

@@ -729,10 +729,18 @@ a:hover { color: var(--sr-accent-dark); }
 # HTML Head
 # ---------------------------------------------------------------------------
 
-def get_html_head(title, description, canonical_path, extra_head=""):
-    """Generate complete <head> section."""
+def get_html_head(title, description, canonical_path, extra_head="", suppress_site_suffix=False):
+    """Generate complete <head> section.
+
+    When ``suppress_site_suffix=True``, the ``<title>`` tag uses ``title`` verbatim
+    without appending ``" - {SITE_NAME}"``. Used for compare/methodology/salary
+    pages where Google already appends the site name in SERP and the suffix
+    pushes the visible title over the 65-char truncation point. The ``og:title``
+    and ``twitter:title`` still get the suffix for social previews.
+    """
     canonical = f"{SITE_URL}{canonical_path}"
     full_title = f"{title} - {SITE_NAME}" if title != SITE_NAME else SITE_NAME
+    head_title = title if (suppress_site_suffix and title != SITE_NAME) else full_title
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -740,7 +748,7 @@ def get_html_head(title, description, canonical_path, extra_head=""):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1D4ED8">
-    <title>{full_title}</title>
+    <title>{head_title}</title>
     <meta name="description" content="{description}">
     <link rel="canonical" href="{canonical}">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -1232,12 +1240,15 @@ def get_newsletter_html():
 
 def get_page_wrapper(title, description, canonical_path, body_content,
                      active_path="", extra_head="", body_class="", show_sources=False,
-                     show_newsletter=True):
+                     show_newsletter=True, suppress_site_suffix=False):
     """Assemble a full HTML document. Pass show_sources=True for content pages (E-E-A-T).
     Pass show_newsletter=False to suppress the sitewide nl-section (used by the homepage,
-    which has its own hero CTA + footer signup)."""
+    which has its own hero CTA + footer signup). Pass suppress_site_suffix=True for
+    page types whose ``title`` already runs near the 65-char SERP truncation point
+    (compare, methodologies, salaries by city x role)."""
     bc = f' class="{body_class}"' if body_class else ""
-    head = get_html_head(title, description, canonical_path, extra_head)
+    head = get_html_head(title, description, canonical_path, extra_head,
+                         suppress_site_suffix=suppress_site_suffix)
     nav = get_nav_html(active_path)
     newsletter = get_newsletter_html() if show_newsletter else ""
     footer = get_footer_html()
@@ -1452,7 +1463,7 @@ def get_sources_section():
         <li>Salary and compensation data sourced from <strong>3,200+</strong> verified job postings, updated weekly</li>
         <li>Employment projections from the <a href="https://www.bls.gov/ooh/sales/wholesale-and-manufacturing-sales-representatives.htm" target="_blank" rel="noopener">Bureau of Labor Statistics</a> Occupational Outlook Handbook</li>
         <li>Tool adoption data derived from job description analysis across verified employer listings</li>
-        <li><a href="/salary/methodology/">Read our full methodology</a></li>
+        <li><a href="/salaries/methodology/">Read our full methodology</a></li>
     </ul>
 </aside>'''
 
