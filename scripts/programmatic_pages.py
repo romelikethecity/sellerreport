@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from templates import (
     get_page_wrapper, write_page, get_breadcrumb_schema,
     get_faq_schema, get_article_schema, breadcrumb_html, faq_html,
+    generate_key_takeaways_block,
 )
 
 
@@ -41,9 +42,10 @@ def _card_grid_top(crumbs, h1, subtitle):
 
 
 def _article_page_body(crumbs, title, meta_desc, intro_html, body_inner_html, faqs,
-                      related_html, byline_extra=""):
+                      related_html, byline_extra="", key_takeaways=None):
     bc_html = breadcrumb_html(crumbs)
     faq_section = faq_html(faqs) if faqs else ""
+    takeaways_html = generate_key_takeaways_block(key_takeaways) if key_takeaways else ""
     body = f'''
 <section class="section">
     <div class="container">
@@ -51,6 +53,7 @@ def _article_page_body(crumbs, title, meta_desc, intro_html, body_inner_html, fa
         <div class="article-content">
             <h1>{title}</h1>
             <div class="article-meta">By Rome Thorndike &middot; {BUILD_DATE}{byline_extra}</div>
+            {takeaways_html}
             {intro_html}
             {body_inner_html}
             {faq_section}
@@ -62,6 +65,83 @@ def _article_page_body(crumbs, title, meta_desc, intro_html, body_inner_html, fa
     </div>
 </section>'''
     return body
+
+
+# ---------------------------------------------------------------------------
+# AEO key-takeaways generators (data-driven, grounded in the structured facts
+# that build each page; no fabricated stats, no em dashes, no banned words).
+# ---------------------------------------------------------------------------
+
+_NAME_SPECIAL = {
+    "hubspot-sales": "HubSpot Sales Hub",
+    "linkedin-sales-navigator": "LinkedIn Sales Navigator",
+    "chili-piper": "Chili Piper",
+    "salesforce": "Salesforce Sales Cloud",
+}
+
+
+def _display_name(slug):
+    if slug in TOOL_FACTS:
+        return TOOL_FACTS[slug]["name"]
+    if slug in ALTERNATIVE_SETS:
+        return ALTERNATIVE_SETS[slug]["name"]
+    if slug in _NAME_SPECIAL:
+        return _NAME_SPECIAL[slug]
+    return slug.replace("-", " ").title()
+
+
+def _oxford(names):
+    names = [n for n in names if n]
+    if not names:
+        return ""
+    if len(names) == 1:
+        return names[0]
+    return ", ".join(names[:-1]) + ", and " + names[-1]
+
+
+def _price_phrase(tool):
+    sp = (tool.get("starting_price") or "").strip()
+    if not sp or sp.lower() == "custom":
+        return "uses custom pricing"
+    return f"starts at {sp}"
+
+
+def _compare_takeaways(a, b):
+    out = [
+        f"{a['name']} {_price_phrase(a)} and targets {a['best_for']}.",
+        f"{b['name']} {_price_phrase(b)} and targets {b['best_for']}.",
+    ]
+    if a.get("key_feature") and b.get("key_feature"):
+        out.append(
+            f"{a['name']}'s standout feature is {a['key_feature']}; "
+            f"{b['name']} leads with {b['key_feature']}."
+        )
+    return out
+
+
+def _alternatives_takeaways(slug, data):
+    out = []
+    alt_names = [_display_name(s) for s in data.get("alternatives", [])[:4]]
+    if alt_names:
+        out.append(f"The leading alternatives to {data['name']} are {_oxford(alt_names)}.")
+    out.append(
+        f"{data['name']} sits in the {data['category']} category, "
+        f"so the right alternative depends on price, data coverage, and team size."
+    )
+    if slug in TOOL_FACTS and TOOL_FACTS[slug].get("deal_breaker"):
+        out.append(f"A frequent reason teams switch from {data['name']}: {TOOL_FACTS[slug]['deal_breaker']}.")
+    return out
+
+
+def _methodology_takeaways(m):
+    out = [m["definition"]]
+    when = (m.get("when_to_use") or "").strip()
+    if when:
+        first = when.split(". ")[0].rstrip(".")
+        out.append(f"{m['name']} fits {first[0].lower() + first[1:]}.")
+    if m.get("stat_anchor"):
+        out.append(m["stat_anchor"])
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -1259,7 +1339,8 @@ def build_compare_pages(output_dir):
 
         body = _article_page_body(
             crumbs, title, meta_desc, intro_html, body_inner, faqs, related_html,
-            byline_extra=f" &middot; {word_count} words"
+            byline_extra=f" &middot; {word_count} words",
+            key_takeaways=_compare_takeaways(a, b),
         )
 
         page = get_page_wrapper(
@@ -1586,7 +1667,8 @@ def build_alternative_pages(output_dir):
 
         body = _article_page_body(
             crumbs, title, meta_desc, intro_html, body_inner, faqs, related_html,
-            byline_extra=f" &middot; {word_count} words"
+            byline_extra=f" &middot; {word_count} words",
+            key_takeaways=_alternatives_takeaways(slug, data),
         )
 
         page = get_page_wrapper(
@@ -1980,7 +2062,8 @@ def build_methodology_pages(output_dir):
 
         body = _article_page_body(
             crumbs, title, meta_desc, intro_html, body_inner, faqs, related_html,
-            byline_extra=f" &middot; {word_count} words"
+            byline_extra=f" &middot; {word_count} words",
+            key_takeaways=_methodology_takeaways(m),
         )
 
         page = get_page_wrapper(

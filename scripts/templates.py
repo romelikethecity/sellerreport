@@ -722,6 +722,40 @@ a:hover { color: var(--sr-accent-dark); }
 .cta-section h2 { color: #fff; margin: 0 0 8px; }
 .cta-section .section-subtitle { color: rgba(255,255,255,0.75); margin: 0 0 24px; }
 .cta-section .hero-signup-fine { color: rgba(255,255,255,0.6); }
+
+/* AEO Key Takeaways block (LLM-extractable summary for AI Overviews / ChatGPT) */
+.key-takeaways {
+    background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.02) 100%);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-left: 4px solid var(--sr-accent);
+    padding: 1.5rem 1.75rem;
+    border-radius: 0 12px 12px 0;
+    margin: 0 0 2.5rem 0;
+}
+.key-takeaways__heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sr-accent-dark);
+    margin: 0 0 1rem 0;
+}
+.key-takeaways__list { margin: 0; padding-left: 0; list-style: none; }
+.key-takeaways__list li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.6rem;
+    color: var(--sr-text);
+    line-height: 1.6;
+}
+.key-takeaways__list li:last-child { margin-bottom: 0; }
+.key-takeaways__list li::before {
+    content: "\\2192";
+    position: absolute;
+    left: 0;
+    color: var(--sr-accent);
+    font-weight: 700;
+}
 """
 
 
@@ -775,7 +809,7 @@ def get_html_head(title, description, canonical_path, extra_head="", suppress_si
     <meta property="og:image:height" content="630">
     <meta name="twitter:image" content="{SITE_URL}/assets/social/og-default.png">
 
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css?v=2">
 {"" if not GA_MEASUREMENT_ID else f"""
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
@@ -1454,6 +1488,23 @@ def get_article_schema(title, description, slug, date_published, word_count, url
 # ---------------------------------------------------------------------------
 # Visual Component Helpers
 # ---------------------------------------------------------------------------
+
+def generate_key_takeaways_block(items, heading="Key Takeaways"):
+    """Render a top-of-article key-takeaways block (LLM-extractable summary).
+
+    Sits directly under the H1/byline, above the article body. LLMs
+    preferentially extract from the first chunk of a page; a structured
+    takeaways list is one of the most-cited formats in AI Overviews and
+    ChatGPT answers. Each bullet should lead with a specific fact or number.
+    """
+    if not items:
+        return ""
+    bullets = "".join(f"<li>{item}</li>" for item in items)
+    return f'''<aside class="key-takeaways" aria-label="{heading}">
+          <h2 class="key-takeaways__heading">{heading}</h2>
+          <ul class="key-takeaways__list">{bullets}</ul>
+        </aside>'''
+
 
 def get_sources_section():
     """Return E-E-A-T sources & methodology block for content pages."""

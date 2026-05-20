@@ -28,7 +28,7 @@ from templates import (get_page_wrapper, write_page, get_homepage_schema,
                        get_breadcrumb_schema, get_faq_schema,
                        get_article_schema, breadcrumb_html, faq_html, ALL_PAGES,
                        signup_form_hero, career_map_ladder,
-                       newsletter_preview_partial)
+                       newsletter_preview_partial, generate_key_takeaways_block)
 import programmatic_pages
 
 # ---------------------------------------------------------------------------
@@ -949,6 +949,136 @@ ARTICLES = [
         "date": "2026-05-14",
     },
 ]
+
+
+# Per-article key takeaways (AEO: LLM-extractable summaries). Each bullet leads
+# with a specific fact or number drawn from the article body. No em-dashes, no
+# banned words, no restatement-as-insight (per ROME_WRITING_STYLE.md).
+ARTICLE_KEY_TAKEAWAYS = {
+    "sales-job-market-2026": [
+        "Analysis covers 7,920 sales job postings scraped from major boards in early 2026, spanning SDR through SVP roles.",
+        "Growth-stage hiring dominates posting volume, while enterprise roles still pay the highest compensation.",
+        "Channel and direct motions lead the market, and employers increasingly name specific tools and methodologies in postings.",
+    ],
+    "ae-vs-sdr-salary": [
+        "SDR base pay sits near a $60K median; the AE jump is where variable comp and total earnings first scale.",
+        "Senior and enterprise AE roles form the premium tier below sales leadership at the director and VP levels.",
+        "Base-to-variable splits widen as you climb, so OTE matters more than base at every step up the ladder.",
+        "Compensation variance tracks industry, deal size, and geography more than tenure alone.",
+    ],
+    "best-companies-hiring-sales": [
+        "Companies are ranked by open sales-role volume across a dataset of 7,920 job postings, updated weekly.",
+        "Posting volume alone does not signal a good employer; pay quality and role mix matter alongside headcount.",
+        "Tech, financial services, healthcare, and home services are the highest-volume sectors hiring sales reps now.",
+    ],
+    "negotiate-sales-compensation": [
+        "Roughly 70% of employers expect candidates to counter the first sales offer, so accepting it leaves money on the table.",
+        "OTE is the number that matters; negotiate the total package rather than base salary in isolation.",
+        "Quota, territory, ramp, and accelerators are negotiable levers most candidates never raise.",
+    ],
+    "remote-sales-jobs": [
+        "3,377 of 7,920 sales jobs in the dataset are remote-eligible, about 43% of the market.",
+        "Remote roles tend to pay better than on-site equivalents and open up geographic arbitrage on cost of living.",
+        "Some roles go remote far more often than others, and specific company signals predict which.",
+    ],
+    "sdr-salary-guide-2026": [
+        "The SDR role is where most sales careers start and where published compensation is most opaque.",
+        "OTE matters more than base for SDRs, and pay shifts with geography and company stage.",
+        "1099 contractor classification and capped commission are SDR compensation red flags worth screening for.",
+    ],
+    "account-executive-salary-2026": [
+        "The gap between a bottom-quartile and top-quartile AE at the same company can exceed $80K, driven mostly by variable pay.",
+        "OTE, not base, is where AE compensation separates; base is the foundation and accelerators decide top earnings.",
+        "Market segment and geography move AE pay more than title alone, with enterprise roles paying the clear premium.",
+        "Figures draw on 7,920 sales job postings updated weekly, plus BLS baseline wage statistics.",
+    ],
+    "sales-career-path-guide": [
+        "The sales ladder runs SDR (months 0-18), AE, senior AE, manager or director, then VP across roughly 8 to 12 years.",
+        "Sales can reach executive-level pay without a graduate degree or a switch out of the function.",
+        "The path splits into an individual-contributor track and a management track at the senior AE stage.",
+    ],
+    "how-to-get-into-sales": [
+        "Most sales roles require no specific degree or certification, making sales one of the most accessible high-earning careers.",
+        "SaaS SDR and BDR, inside sales, SMB AE, and outbound roles are the most realistic entry points without experience.",
+        "The hiring process runs five stages, from application through a mock call to the offer.",
+    ],
+    "sales-interview-questions-2026": [
+        "Sales interview patterns shift by seniority: SDR screens for potential, AE for skill, leadership for strategy.",
+        "Behavioral questions apply at every level, with strategic depth increasing toward VP roles.",
+        "Mock calls and assessments are standard exercises, so prepare a role-specific checklist before the loop.",
+    ],
+    "sdr-to-ae-promotion-timeline": [
+        "The SDR-to-AE jump produces the largest percentage pay increase in sales, moving base from about $60K to $90K.",
+        "Standard promotion timelines run 15 to 18 months, with readiness markers at months 3-6, 9-12, and 15-18.",
+        "Promotion-ready SDRs show consistent quota attainment plus closing-skill signals before the conversation starts.",
+    ],
+    "remote-sales-jobs-guide": [
+        "3,377 of 7,920 sales postings are fully remote, about 43% of the market before counting hybrid roles.",
+        "Remote sales roles carry a salary premium over on-site equivalents at comparable seniority.",
+        "Remote availability varies by role, so targeting remote-friendly SaaS companies accelerates a remote career.",
+    ],
+    "best-companies-sales-careers-2026": [
+        "Company quality predicts sales career advancement more than any single compensation number.",
+        "Five signals separate strong employers: product-market fit, enablement investment, growth, comp transparency, and promotion record.",
+        "Sales team size, from 1-5 up to 100-plus, shapes training depth and promotion speed.",
+    ],
+    "sales-resume-guide": [
+        "Sales hiring managers spend 6 to 10 seconds on a first resume pass, screening for quota attainment and revenue numbers.",
+        "Numbers, tools, and role progression are the signals that survive that pass; everything else reads as noise.",
+        "Tailoring to the role and to ATS keywords matters, against base benchmarks of $60K SDR, $90K AE, $120K senior AE.",
+    ],
+    "sales-quota-expectations-by-role": [
+        "OTE-to-quota ratios below 4:1 are aggressive for the rep, and ratios above 10:1 are generous.",
+        "Quota scales with company stage and market segment, and ramp quota steps up month by month.",
+        "Asking about accelerators above 100% attainment reveals how the plan rewards overperformance.",
+    ],
+    "sales-burnout-prevention": [
+        "SDR average tenure runs 14 to 18 months, and AE turnover runs 25% to 35% annually at most companies.",
+        "Constant rejection, quota pressure, and compensation volatility are the structural drivers of sales burnout.",
+        "Burnout patterns shift by stage, from SDR years 1-2 through VP burnout at year 8 and beyond.",
+    ],
+    "sales-compensation-negotiation": [
+        "Sales comp has multiple levers: base, variable, OTE, equity, ramp, quota, territory, accelerators, and draw.",
+        "Negotiating only base salary leaves the largest gains untouched; negotiate the total package instead.",
+        "Let the company name the first number, then ask for the full comp plan document before you counter.",
+    ],
+    "inside-sales-vs-field-sales": [
+        "Inside sales runs by phone, email, and video; field sales runs through in-person meetings and site visits.",
+        "The two tracks differ on compensation profile, daily lifestyle, and the skills each one builds.",
+        "Market trends favor inside sales growth, though field roles hold ground in complex, high-touch deals.",
+    ],
+    "meddic-vs-meddpicc": [
+        "237 of 7,920 sales postings reference MEDDIC or MEDDPICC by name, concentrated in enterprise SaaS roles.",
+        "MEDDPICC adds Paper Process and Competition to MEDDIC, fitting longer and more contested deals.",
+        "The framework a job posting names signals the deal complexity and forecast discipline the team expects.",
+    ],
+    "cold-email-open-rates-2026": [
+        "Cold email open rates fell across most B2B sectors between 2023 and 2025 as privacy and filtering rules changed.",
+        "Apple Mail Privacy Protection and Gmail tab filtering distort reported open data, so vendor benchmarks overstate reach.",
+        "Deliverability, not subject lines, drives most of the real variance in cold email performance.",
+        "A four-touch cadence over roughly 18 days is a common performing sequence structure.",
+    ],
+    "discovery-call-frameworks": [
+        "Discovery quality compounds into pipeline coverage, win rate, deal size, and cycle length downstream.",
+        "SPIN, MEDDIC, GAP, and Command of the Message each structure discovery differently for different deal types.",
+        "Top AEs follow a deliberate question sequence and start multithreading from the first discovery call.",
+    ],
+    "sales-forecasting-accuracy": [
+        "The average B2B sales team forecasts revenue within 25% of actual outcomes, too wide a band for finance or hiring.",
+        "Pipeline-stage, weighted, bottoms-up, and AI or predictive methods trade accuracy against reporting effort.",
+        "Methodology fit depends on sales-cycle length, from short cycles under 90 days to multi-quarter deals.",
+    ],
+    "pipeline-coverage-ratios": [
+        "3x coverage is the mid-market default, 4x the enterprise standard, and 5x is reserved for new markets.",
+        "Coverage below 2x signals a recovery conversation, not a normal pipeline.",
+        "A coverage number means little without pipeline freshness and sales-cycle length as context.",
+    ],
+    "sales-onboarding-ramp-time": [
+        "Median B2B SaaS ramp time runs 5 to 7 months, with wide variance by segment and role complexity.",
+        "The first 30 days should cover product, ICP, and methodology before any independent prospecting.",
+        "Draw structures and milestone certifications at day 14, day 30, and day 45 shape a healthy ramp.",
+    ],
+}
 
 
 def _article_content_sales_job_market():
@@ -4142,6 +4272,9 @@ def build_insight_articles():
             faq_section = faq_html(faqs)
             faq_schema_html = get_faq_schema(faqs)
 
+        # AEO key-takeaways block (LLM-extractable summary, top of article)
+        takeaways_html = generate_key_takeaways_block(ARTICLE_KEY_TAKEAWAYS.get(slug, []))
+
         body = f'''
 <section class="section">
     <div class="container">
@@ -4149,6 +4282,7 @@ def build_insight_articles():
         <div class="article-content">
             <h1>{art["title"]}</h1>
             <div class="article-meta">By Rome Thorndike &middot; {art["date"]} &middot; {word_count} words</div>
+            {takeaways_html}
             {article_html}
             {faq_section}
             <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--sr-border);">
@@ -5019,6 +5153,26 @@ def _tool_card_html(slug, override_desc=None, is_winner=False):
     </div>'''
 
 
+def _roundup_takeaways(roundup):
+    """Data-driven AEO key takeaways for a tool roundup, grounded in TOOLS facts."""
+    out = []
+    w = TOOLS.get(roundup.get("winner_slug"))
+    r = TOOLS.get(roundup.get("runner_up_slug"))
+    if w and r:
+        out.append(
+            f'{roundup["winner_label"]} is {w["name"]} at {w["score"]}/10, '
+            f'with {r["name"]} ({r["score"]}/10) as {roundup["runner_up_label"].lower()}.'
+        )
+    names = [TOOLS[s]["name"] for s, _, _ in roundup["tools"] if s in TOOLS]
+    if names:
+        listed = names if len(names) <= 6 else names[:6]
+        oxford = ", ".join(listed[:-1]) + ", and " + listed[-1] if len(listed) > 1 else listed[0]
+        out.append(f"This guide reviews {len(names)} tools, including {oxford}.")
+    if w and w.get("best_for"):
+        out.append(f'{w["name"]} is the best fit for {w["best_for"]}.')
+    return out
+
+
 def build_tool_roundups():
     """Generate roundup article pages."""
     for roundup in TOOL_ROUNDUPS:
@@ -5068,6 +5222,7 @@ def build_tool_roundups():
         <div class="article-content">
             <h1>{title}</h1>
             <div class="article-meta">By Rome Thorndike &middot; {roundup["date"]} &middot; {len(roundup["tools"])} tools reviewed</div>
+            {generate_key_takeaways_block(_roundup_takeaways(roundup))}
             <p style="font-size: 1.1rem; line-height: 1.75; margin-bottom: 24px;">{roundup["intro"]}</p>
 
             {winner_callout}
@@ -5321,7 +5476,7 @@ def build_companies_page():
     for rank, (company, count) in enumerate(top, 1):
         # Get salary data for this company
         co_jobs = [j for j in ALL_JOBS if j.get("company") == company]
-        co_salaries = [j["salary_max"] for j in co_jobs if j.get("salary_max") and j["salary_max"] > 0]
+        co_salaries = [j["max_amount"] for j in co_jobs if j.get("max_amount") and j["max_amount"] > 0]
         salary_str = f"Avg max: {fmt_salary(int(sum(co_salaries)/len(co_salaries)))}" if co_salaries else "Salary not disclosed"
         remote_count = sum(1 for j in co_jobs if j.get("is_remote"))
         remote_str = f" · {remote_count} remote" if remote_count else ""
@@ -5361,10 +5516,11 @@ def build_company_pages():
         co_slug = slugify(company)
         co_jobs = sorted(
             [j for j in ALL_JOBS if j.get("company") == company],
-            key=lambda j: j.get("salary_max") or 0,
+            key=lambda j: j.get("max_amount") or 0,
             reverse=True
         )
-        co_salaries = [j["salary_max"] for j in co_jobs if j.get("salary_max") and j["salary_max"] > 0]
+        co_salaries = [j["max_amount"] for j in co_jobs if j.get("max_amount") and j["max_amount"] > 0]
+        co_mins = [j["min_amount"] for j in co_jobs if j.get("min_amount") and j["min_amount"] > 0]
         remote_count = sum(1 for j in co_jobs if j.get("is_remote"))
 
         # Stats row
@@ -5385,6 +5541,33 @@ def build_company_pages():
             </div>
         </div>"""
 
+        # Data-driven market summary (grounded entirely in the live listings)
+        role_word = "role" if count == 1 else "roles"
+        summary_parts = [f"{esc(company)} has {count} open sales {role_word} on the Seller Report job board"]
+        if remote_count == count and count:
+            summary_parts[0] += ", every one of them remote."
+        elif remote_count:
+            summary_parts[0] += f", {remote_count} of which can be done remotely."
+        else:
+            summary_parts[0] += "."
+        if co_salaries and co_mins:
+            avg_max = int(sum(co_salaries) / len(co_salaries))
+            summary_parts.append(
+                f"Listed pay runs from {fmt_salary(min(co_mins))} to {fmt_salary(max(co_salaries))}, "
+                f"averaging {fmt_salary(avg_max)} at the top of the band across roles that disclose a range."
+            )
+        sen_counts = Counter(
+            j["seniority"] for j in co_jobs
+            if j.get("seniority") and j["seniority"] not in ("", "other")
+        )
+        if sen_counts:
+            sen_str = ", ".join(f"{v} {k.lower()}" for k, v in sen_counts.most_common(3))
+            summary_parts.append(f"Hiring spans {sen_str}.")
+        summary_html = (
+            '<p style="color:var(--sr-text-secondary);line-height:1.7;margin-bottom:28px;'
+            'max-width:780px;">' + " ".join(summary_parts) + "</p>"
+        )
+
         # Job cards
         job_cards = ""
         for j in co_jobs[:50]:  # Show top 50 jobs per company
@@ -5399,6 +5582,7 @@ def build_company_pages():
     <div class="section">
         <h1 style="font-size:2.2rem;font-weight:800;margin-bottom:8px;">{esc(company)} Sales Jobs</h1>
         <p class="section-subtitle">{count} open sales positions at {esc(company)}.</p>
+        {summary_html}
         {stats_html}
         <div class="card-grid">{job_cards}</div>
         {more_html}
